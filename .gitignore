@@ -20,3 +20,7 @@ yarn-error.log*
 generated-cra-app
 .cra-template-rb
 template
+
+# IDE specific stuff
+.idea/
+.vscode/
