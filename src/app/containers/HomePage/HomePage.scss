@@ -1,0 +1,122 @@
+.header {
+    padding: 25px 190px;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
+}
+
+.ui.secondary.menu .item {
+    margin: 0 15px;
+}
+
+.outerLoginContainer {
+    width: 1080px;
+    height: 600px;
+    margin: 130px auto;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+  
+.mainLoginContainer {
+    width: 50%;
+    text-align: center;
+    margin-top: 120px;
+}
+  
+.loginImageContainer {
+    width: 50%;
+    text-align: center;
+}
+  
+.loginButtonContainer {
+    margin-top: 75px;
+}
+
+.signInButton {
+    margin-right: 60px;
+}
+
+.discoverContainer {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    padding: 50px;
+
+    h1 {
+        box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 500px;
+        padding: 30px;
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: 70px;
+    }
+}
+
+.discoverCategoryFooter {
+    display: flex;
+    margin: 80px auto 40px auto;
+    justify-content: center;
+
+    h3 {
+        text-align: center;
+        margin: auto 20px;
+    }
+}
+
+.aboutContainer {
+    padding: 50px;
+    margin: 65px 0px;
+
+    h1 {
+        box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 500px;
+        padding: 30px;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    p {
+        font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+        font-size: 16px;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+
+    .ui.basic.button {
+        display: flex;
+        justify-content: center;
+        margin: 20px auto;
+    }
+}
+
+.servicesContainer {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    padding: 50px;
+    height: 800px;
+
+    h1 {
+        box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 500px;
+        padding: 30px;
+        text-align: center;
+    }
+}
+
+.contactContainer {
+    padding: 50px;
+    margin: 65px 0px;
+    height: 500px;
+
+    h1 {
+        box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 500px;
+        padding: 30px;
+        text-align: center;
+        margin-bottom: 60px;
+    }
+}
+
+.footer {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    padding: 50px;
+    height: 400px;
+}

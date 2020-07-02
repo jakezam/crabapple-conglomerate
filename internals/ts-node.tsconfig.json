@@ -4,6 +4,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmit": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "paths": {
+      "style/*": ["src/style/*"]
+    }
   }
 }
