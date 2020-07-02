@@ -30,6 +30,7 @@
     "jest-styled-components": "7.0.2",
     "lint-staged": "10.0.8",
     "node-plop": "0.25.0",
+    "node-sass": "4.14.1",
     "plop": "2.6.0",
     "prettier": "2.0.1",
     "react": "16.13.0",
@@ -43,8 +44,8 @@
     "react-test-renderer": "16.13.0",
     "redux-injectors": "1.3.0",
     "redux-saga": "1.1.3",
-    "replace-in-file": "6.0.0",
     "sanitize.css": "11.0.0",
+    "semantic-ui-react": "0.88.2",
     "serve": "11.3.0",
     "shelljs": "0.8.3",
     "styled-components": "5.0.1",
@@ -68,11 +69,7 @@
     "lint:fix": "yarn eslint -- --fix src",
     "lint:css": "stylelint src/**/*.css",
     "generate": "cross-env TS_NODE_PROJECT='./internals/ts-node.tsconfig.json' plop --plopfile internals/generators/plopfile.ts",
-    "cleanAndSetup": "ts-node --project=./internals/ts-node.tsconfig.json ./internals/scripts/clean.ts",
     "prettify": "prettier --write"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -98,7 +95,7 @@
       "prettier --write"
     ]
   },
-  "husky(remove-everything-in-these-parentheses.See-the-issue-#29)": {
+  "husky": {
     "hooks": {
       "pre-commit": "npm run checkTs && lint-staged"
     }
