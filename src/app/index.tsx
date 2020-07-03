@@ -12,8 +12,9 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import { GlobalStyle } from 'styles/global-styles';
 
-import { HomePage } from './containers/HomePage/Loadable';
+// import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
+import { SellerProfilePage } from './containers/SellerProfilePage/Loadable';
 
 export function App() {
   return (
@@ -26,7 +27,8 @@ export function App() {
       </Helmet>
 
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        {/* <Route exact path="/" component={HomePage} /> */}
+        <Route exact path="/" component={SellerProfilePage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
