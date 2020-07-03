@@ -1,5 +1,62 @@
   
 .header {
     padding: 25px 190px;
-    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    height: 90px;
+    text-align: center;
+}
+
+.profileContainer {
+    display: flex;
+    padding: 100px 0;
+    background-color: #f6f6ff;
+    justify-content: center;
+}
+
+.leftHalf {
+    // margin-left: 195px;
+
+    .profileInfo {
+        width: 730px;
+        height: 450px;
+        text-align: center;
+        box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        background-color: white;
+    }
+
+    .porfolioContainer, .recentPostContainer, .reviewContainer, .aboutContainer {
+        width: 730px;
+        height: 450px;
+        text-align: center;
+        margin-top: 75px;
+        box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        background-color: white;
+    }
+}
+
+.rightHalf {
+    margin-left: 100px;
+
+    .otherCategoryProfiles {
+        width: 300px;
+        height: 450px;
+        text-align: center;
+        box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        background-color: white;
+    }
+
+    .previousJobs, .followingContainer {
+        width: 300px;
+        height: 450px;
+        text-align: center;
+        margin-top: 75px;
+        box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        background-color: white;
+    }
+}
+
+.footer {
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    padding: 50px;
+    height: 400px;
 }
