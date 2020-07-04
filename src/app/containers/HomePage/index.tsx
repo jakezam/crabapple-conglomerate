@@ -44,7 +44,6 @@ export function HomePage() {
       <div className="contactContainer">
         <h1>Contact Us</h1>
       </div>
-      <div className="footer">footer container</div>
     </>
   );
 }
