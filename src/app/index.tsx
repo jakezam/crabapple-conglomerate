@@ -14,7 +14,7 @@ import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
-
+import { Footer } from './containers/Footer/Loadable';
 export function App() {
   return (
     <BrowserRouter>
@@ -30,6 +30,7 @@ export function App() {
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
+      <Footer />
     </BrowserRouter>
   );
 }
