@@ -14,13 +14,13 @@
 }
 
 .leftHalf {
-    // margin-left: 195px;
 
     .profileInfo {
         width: 730px;
         height: 450px;
         text-align: center;
-        box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
         background-color: white;
     }
 
@@ -29,7 +29,8 @@
         height: 450px;
         text-align: center;
         margin-top: 75px;
-        box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
         background-color: white;
     }
 }
@@ -41,7 +42,8 @@
         width: 300px;
         height: 450px;
         text-align: center;
-        box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
         background-color: white;
     }
 
@@ -50,7 +52,8 @@
         height: 450px;
         text-align: center;
         margin-top: 75px;
-        box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
         background-color: white;
     }
 }
@@ -59,4 +62,39 @@
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     padding: 50px;
     height: 400px;
+}
+
+
+
+.profileGrid {
+
+    .profileImageContainer {
+        border: 6px solid white;
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.075), 0 6px 10px 0 rgba(0, 0, 0, 0.075);
+    
+        img {
+            width: 100%;
+        }
+    }
+
+    .nameAndReviews {
+        h1 {
+            text-align: left;
+            padding-top: 15px;
+        }
+
+        p {
+            text-align: left;
+        }
+    }
+
+    .followBtn, .sendRequestBtn{
+        margin-top: 20px;
+        padding: 12px;
+        width: 145px;
+    }
+}
+
+.ui.grid {
+    margin: 0;
 }
