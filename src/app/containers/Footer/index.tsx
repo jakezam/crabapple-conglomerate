@@ -4,46 +4,48 @@
  *
  */
 
-import React from 'react';
+import React, { memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 
 import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
-import { reducer, sliceKey } from './slice';
-import { selectFooter } from './selectors';
 import { footerSaga } from './saga';
 
 interface Props {}
 
-export function Footer(props: Props) {
-  useInjectReducer({ key: sliceKey, reducer: reducer });
-  useInjectSaga({ key: sliceKey, saga: footerSaga });
+export const Footer = memo((props: Props) => {
+  useInjectSaga({ key: 'footer', saga: footerSaga });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const footer = useSelector(selectFooter);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const dispatch = useDispatch();
-  const STYLE = {
-    footerBackground: {
-      backgroundColor: 'gray',
-      flex: 1,
-    },
-  };
+  const { t, i18n } = useTranslation();
+
   return (
     <>
-      <link
-        rel="stylesheet"
-        type="text/css"
-        href="semantic/dist/semantic.min.css"
-      />
-      <footer style={STYLE.footerBackground}>
-        <div className="ui vertical footer segment">
-          Stuff to go in the footer
+      <div className="footer" style={{ textAlign: 'center', height: 150 }}>
+        <div className="ui 3 column grid" style={{}}>
+          <div className="column" style={{ width: '33%', textAlign: 'left' }}>
+            <h1>inployd</h1>A better way to work
+          </div>
+          <div
+            className="column"
+            style={{ width: '33%', textAlign: 'left', padding: 'top' }}
+          >
+            <div className="ui list">
+              <div className="item">
+                <a href="#">Terms and Conditions</a>
+              </div>
+            </div>
+            <div className="ui list">
+              <div className="item">
+                <a href="#">Privacy Policy</a>
+              </div>
+            </div>
+          </div>
+          <div className="column"></div>
         </div>
-      </footer>
+      </div>
     </>
   );
-}
-
-const Div = styled.div``;
+});
