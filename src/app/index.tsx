@@ -14,6 +14,7 @@ import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
+import { Signup } from './containers/Signup/Loadable';
 
 export function App() {
   return (
@@ -26,8 +27,9 @@ export function App() {
       </Helmet>
 
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={Signup} />
         <Route component={NotFoundPage} />
+        <Route path="/signup" component={Signup} />
       </Switch>
       <GlobalStyle />
     </BrowserRouter>
