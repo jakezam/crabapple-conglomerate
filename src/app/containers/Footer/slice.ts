@@ -6,7 +6,7 @@ import { ContainerState } from './types';
 export const initialState: ContainerState = {};
 
 const footerSlice = createSlice({
-  name: 'footer',
+  name: 'signup',
   initialState,
   reducers: {
     someAction(state, action: PayloadAction<any>) {},
