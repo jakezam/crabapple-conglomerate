@@ -32,6 +32,7 @@ export function App() {
       </Switch>
       <Footer />
       <GlobalStyle />
+      <Footer />
     </BrowserRouter>
   );
 }
