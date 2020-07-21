@@ -9,12 +9,13 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-
+import 'semantic-ui-css/semantic.min.css';
 import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { Footer } from './containers/Footer/Loadable';
+
 export function App() {
   return (
     <BrowserRouter>
@@ -29,6 +30,7 @@ export function App() {
         <Route exact path="/" component={HomePage} />
         <Route component={NotFoundPage} />
       </Switch>
+      <Footer />
       <GlobalStyle />
       <Footer />
     </BrowserRouter>

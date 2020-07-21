@@ -6,9 +6,11 @@
 
 import React, { memo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components/macro';
 
-import { useInjectSaga } from 'utils/redux-injectors';
+import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { footerSaga } from './saga';
 
 interface Props {}
