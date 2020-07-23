@@ -5,5 +5,6 @@
   You have to declare them here manually
 */
 export interface RootState {
+  signup: import('c:/Users/Jacob Zamani/Documents/GitHub/crabapple-conglomerate/src/app/containers/Footer/types').FooterState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }
