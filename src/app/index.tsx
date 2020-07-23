@@ -15,6 +15,7 @@ import { GlobalStyle } from 'styles/global-styles';
 // import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { SellerProfilePage } from './containers/SellerProfilePage/Loadable';
+import { Header } from './components/Header';
 import { Footer } from './containers/Footer/Loadable';
 
 export function App() {
@@ -27,6 +28,7 @@ export function App() {
         <meta name="description" content="A React Boilerplate application" />
       </Helmet>
 
+      <Header />
       <Switch>
         {/* <Route exact path="/" component={HomePage} /> */}
         <Route exact path="/" component={SellerProfilePage} />

@@ -1,14 +1,22 @@
-import React from 'react';
-import { Menu } from 'semantic-ui-react';
+/**
+ *
+ * Header
+ *
+ */
+import React, { memo } from 'react';
+import { Menu, Input } from 'semantic-ui-react';
+import './Header.scss';
 
-export default class HomeHeader extends React.Component {
-  state = { activeItem: 'home' };
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+interface Props {}
 
-  render() {
-    const { activeItem } = this.state;
-    return (
+export const Header = memo((props: Props) => {
+  let activeItem = 'home';
+  return (
+    <div className="header">
       <Menu secondary>
+        <Menu.Menu position="left">
+          <Input icon="search" placeholder="Search..." />
+        </Menu.Menu>
         <Menu.Menu position="right">
           <Menu.Item
             name="home"
@@ -37,6 +45,6 @@ export default class HomeHeader extends React.Component {
           />
         </Menu.Menu>
       </Menu>
-    );
-  }
-}
+    </div>
+  );
+});
