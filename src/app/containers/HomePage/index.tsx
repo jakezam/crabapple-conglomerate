@@ -2,7 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import css from './HomePage.scss';
 import { Button } from 'semantic-ui-react';
-import HomeHeader from './components/HomeHeader';
 import { DiscoverBlock } from './components/DiscoverBlock';
 // import { ProfilePlaceholder } from './components/ProfilePlaceholder';
 
@@ -16,13 +15,10 @@ export function HomePage() {
         <title>Home Page</title>
         <meta name="description" content="A Boilerplate application homepage" />
       </Helmet>
-      <div className="header">
-        <HomeHeader />
-      </div>
       <div className="outerLoginContainer">
         <div className="mainLoginContainer">
           <h1>inployd</h1>
-          <h4>A better way to find professionals</h4>
+          <h4>A better way to work</h4>
           <div className="loginButtonContainer">
             <Button>Sign In</Button>
             <Button>Sign Up</Button>
