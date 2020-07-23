@@ -7,5 +7,6 @@ import { SellerProfilePageState } from 'app/containers/SellerProfilePage/types';
 */
 export interface RootState {
   sellerProfilePage?: SellerProfilePageState;
+  signup: import('c:/Users/Jacob Zamani/Documents/GitHub/crabapple-conglomerate/src/app/containers/Footer/types').FooterState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }
