@@ -117,5 +117,8 @@
         "statements": 90
       }
     }
+  },
+  "devDependencies": {
+    "@types/node-sass": "4.11.1"
   }
 }
