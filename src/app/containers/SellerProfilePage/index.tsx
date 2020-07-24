@@ -14,7 +14,7 @@ import { reducer, sliceKey } from './utils/slice';
 import { selectSellerProfilePage } from './utils/selectors';
 import { sellerProfilePageSaga } from './utils/saga';
 import './SellerProfilePage.scss';
-import { Button, Grid } from 'semantic-ui-react';
+import { ProfileInfoBox } from './components/ProfileInfoBox';
 
 interface Props {}
 
@@ -33,27 +33,10 @@ export function SellerProfilePage(props: Props) {
         <title>SellerProfilePage</title>
         <meta name="description" content="Description of SellerProfilePage" />
       </Helmet>
-      <div className="header">Header</div>
       <div className="profileContainer">
         <div className="leftHalf">
           <div className="profileInfo">
-            <Grid className="profileGrid">
-              <Grid.Row>
-                <Grid.Column width={4}>
-                  <div className="profileImageContainer">
-                    <img src="logo512.png" alt="none"></img>
-                  </div>
-                </Grid.Column>
-                <Grid.Column width={8} className="nameAndReviews">
-                  <h1>Alejandro's Landscaping Co.</h1>
-                  <p>Reviews (0)</p>
-                </Grid.Column>
-                <Grid.Column width={4}>
-                  <Button className="followBtn">Follow</Button>
-                  <Button className="sendRequestBtn">Send Job Request</Button>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
+            <ProfileInfoBox />
           </div>
           <div className="porfolioContainer">Portfolio</div>
           <div className="recentPostContainer">Recent Posts</div>
@@ -66,7 +49,6 @@ export function SellerProfilePage(props: Props) {
           <div className="followingContainer">Following</div>
         </div>
       </div>
-      <div className="footer">Footer</div>
     </>
   );
 }
