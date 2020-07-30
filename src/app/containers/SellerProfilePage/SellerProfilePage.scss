@@ -28,9 +28,8 @@
     .reviewContainer,
     .aboutContainer {
         width: 730px;
-        height: 450px;
-        text-align: center;
-        margin-top: 75px;
+        // height: 450px;
+        margin-top: 25px;
         // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
         box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
         background-color: white;
@@ -43,7 +42,6 @@
     .otherCategoryProfiles {
         width: 300px;
         height: 450px;
-        text-align: center;
         // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
         box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
         background-color: white;
@@ -53,74 +51,57 @@
     .followingContainer {
         width: 300px;
         height: 450px;
-        text-align: center;
-        margin-top: 75px;
+        margin-top: 35px;
         // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
         box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
         background-color: white;
     }
 }
 
-.profileGrid {
+.ui.grid {
+    margin: 0;
+}
 
-    .profileImageContainer {
-        border: 6px solid white;
-        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.075), 0 6px 10px 0 rgba(0, 0, 0, 0.075);
+.aboutContainer {
+    padding: 2rem 0 2.5rem;
+    min-height: 150px;
 
-        img {
-            width: 100%;
-        }
-    }
-
-    .nameAndReviews {
-        h1 {
-            text-align: left;
-            padding-top: 15px;
-        }
-
-        p {
-            text-align: left;
-        }
-    }
-
-    .midRow {
-        padding-top: 0 !important;
-    }
-
-    .followBtn,
-    .sendRequestBtn {
-        margin-top: 20px;
-        padding: 12px;
-        width: 145px;
-    }
-
-    .subcategories {
-        width: 145px;
-        // margin-right: 5.5px;
-    }
-
-    .ui.vertical.menu {
-        width: 14rem;
+    h2 {
+        text-align: left;
+        padding: 0 2rem;
     }
 
     h3 {
-        text-align: left;
+        padding: 0 2rem;
     }
 
-    .location {
-        padding-left: 5px;
-    }
-
-    .reviews {
-        padding-left: 5px;
-        margin-top: 12px;
-    }
-
-    .followerCount {
-        margin-top: 0;
+    p {
+        padding: 0 2rem;
+        text-indent: 30px;
     }
 }
 
-.ui.grid {
-    margin: 0;
+.porfolioContainer,
+.recentPostContainer,
+.reviewContainer {
+    min-height: 450px;
+}
+
+.otherCategoryProfiles {
+    text-align: left;
+
+    h4 {
+        margin-bottom: 0 !important;
+        padding: 1rem;
+    }
+}
+
+.previousJobs,
+.followingContainer {
+    text-align: left;
+
+    h4 {
+        margin-bottom: 0 !important;
+        padding: 1rem;
+    }
 }

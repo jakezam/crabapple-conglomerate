@@ -1,5 +1,6 @@
 import React from 'react';
-import '../SellerProfilePage.scss';
+// import '../SellerProfilePage.scss';
+import './ProfileInfoBox.scss';
 import { Button, Grid, Dropdown, Menu } from 'semantic-ui-react';
 
 interface Props {}
