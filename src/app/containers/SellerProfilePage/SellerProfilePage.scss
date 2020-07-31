@@ -1,107 +1,116 @@
 .profileContainer {
-    display: flex;
-    padding: 100px 0;
-    background-color: #f6f6ff;
-    justify-content: center;
+  display: flex;
+  padding: 100px 0;
+  background-color: #f6f6ff;
+  justify-content: center;
 }
 
 .leftHalf {
+  .profileInfo {
+    width: 730px;
+    height: 405px;
+    text-align: center;
+    // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05),
+      0 6px 5px 0 rgba(0, 0, 0, 0.075);
+    background-color: white;
 
-    .profileInfo {
-        width: 730px;
-        height: 405px;
-        text-align: center;
-        // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
-        background-color: white;
-
-        .headerTag {
-            padding: 20px;
-            color: white;
-            background: #38834a;
-            margin-bottom: 15px;
-        }
+    .headerTag {
+      padding: 20px;
+      color: white;
+      background: #38834a;
+      margin-bottom: 15px;
     }
+  }
 
-    .porfolioContainer,
-    .recentPostContainer,
-    .reviewContainer,
-    .aboutContainer {
-        width: 730px;
-        // height: 450px;
-        margin-top: 25px;
-        // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
-        background-color: white;
-    }
+  .porfolioContainer,
+  .recentActivityContainer,
+  .reviewContainer,
+  .aboutContainer {
+    width: 730px;
+    // height: 450px;
+    margin-top: 25px;
+    // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05),
+      0 6px 5px 0 rgba(0, 0, 0, 0.075);
+    background-color: white;
+  }
 }
 
 .rightHalf {
-    margin-left: 100px;
+  margin-left: 100px;
 
-    .otherCategoryProfiles {
-        width: 300px;
-        height: 450px;
-        // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
-        background-color: white;
-    }
+  .otherCategoryProfiles {
+    width: 300px;
+    height: 450px;
+    // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05),
+      0 6px 5px 0 rgba(0, 0, 0, 0.075);
+    background-color: white;
+  }
 
-    .previousJobs,
-    .followingContainer {
-        width: 300px;
-        height: 450px;
-        margin-top: 35px;
-        // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
-        background-color: white;
-    }
+  .previousJobs,
+  .followingContainer {
+    width: 300px;
+    height: 450px;
+    margin-top: 35px;
+    // box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05),
+      0 6px 5px 0 rgba(0, 0, 0, 0.075);
+    background-color: white;
+  }
 }
 
 .ui.grid {
-    margin: 0;
+  margin: 0;
 }
 
 .aboutContainer {
-    padding: 2rem 0 2.5rem;
-    min-height: 150px;
+  padding: 2rem 0 2.5rem;
+  min-height: 150px;
 
-    h2 {
-        text-align: left;
-        padding: 0 2rem;
-    }
+  h2 {
+    text-align: left;
+    padding: 0 2rem;
+  }
 
-    h3 {
-        padding: 0 2rem;
-    }
+  h3 {
+    padding: 0 2rem;
+  }
 
-    p {
-        padding: 0 2rem;
-        text-indent: 30px;
-    }
+  p {
+    padding: 0 2rem;
+    text-indent: 30px;
+  }
 }
 
 .porfolioContainer,
-.recentPostContainer,
+.recentActivityContainer,
 .reviewContainer {
-    min-height: 450px;
+  padding: 2rem 0 2.5rem;
+  min-height: 450px;
+
+  h2 {
+    text-align: left;
+    padding: 0 2rem;
+  }
 }
 
 .otherCategoryProfiles {
-    text-align: left;
+  text-align: left;
 
-    h4 {
-        margin-bottom: 0 !important;
-        padding: 1rem;
-    }
+  h4 {
+    margin-bottom: 0 !important;
+    padding: 1rem;
+  }
 }
 
 .previousJobs,
 .followingContainer {
-    text-align: left;
+  text-align: left;
 
-    h4 {
-        margin-bottom: 0 !important;
-        padding: 1rem;
-    }
+  h4 {
+    margin-bottom: 0 !important;
+    padding: 1rem;
+  }
 }

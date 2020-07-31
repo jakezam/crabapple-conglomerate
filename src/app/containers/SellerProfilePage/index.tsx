@@ -44,35 +44,42 @@ export function SellerProfilePage(props: Props) {
           <div className="aboutContainer">
             <h2>About</h2>
             <p>
-              We are a blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Venenatis lectus magna fringilla urna. Facilisis mauris sit amet
+              massa vitae. Purus in mollis nunc sed id semper risus in. Arcu
+              cursus euismod quis viverra nibh cras.
             </p>
             <h3>Services and Packages:</h3>
             <p>
-              We offer blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah
+              Nullam vehicula ipsum a arcu. Id aliquet lectus proin nibh nisl.
+              Interdum posuere lorem ipsum dolor. Odio aenean sed adipiscing
+              diam donec adipiscing tristique risus. Nunc consequat interdum
+              varius sit amet mattis vulputate enim. Commodo ullamcorper a lacus
+              vestibulum sed arcu.
             </p>
             <h3>Pricing Options:</h3>
             <p>
-              Our services blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah
+              Quam pellentesque nec nam aliquam sem et. Nec ullamcorper sit amet
+              risus. Ut enim blandit volutpat maecenas volutpat. Proin fermentum
+              leo vel orci porta non pulvinar neque.
             </p>
             <h3>Target Locations:</h3>
             <p>
-              We generally blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah
+              Pharetra sit amet aliquam id diam maecenas ultricies. Morbi tempus
+              iaculis urna id volutpat lacus. Non odio euismod lacinia at quis
+              risus sed vulputate.
             </p>
           </div>
-          <div className="porfolioContainer">Portfolio</div>
-          <div className="reviewContainer">Reviews</div>
-          <div className="recentPostContainer">Recent Posts</div>
+          <div className="reviewContainer">
+            <h2>Ratings and Reviews</h2>
+          </div>
+          <div className="recentActivityContainer">
+            <h2>Recent Activity</h2>
+          </div>
+          <div className="porfolioContainer">
+            <h2>Portfolio</h2>
+          </div>
         </div>
         <div className="rightHalf">
           <div className="otherCategoryProfiles">
