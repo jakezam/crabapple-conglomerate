@@ -1,4 +1,4 @@
-//import { FooterState } from 'app/containers/Footer/types'; UNCOMMENT THIS WHEN MERGING
+import { FooterState } from 'app/containers/Footer/types'; 
 import { SignupState } from 'app/containers/Signup/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
@@ -8,6 +8,6 @@ import { SignupState } from 'app/containers/Signup/types';
 */
 export interface RootState {
   signup?: SignupState;
-  //footer?: FooterState UNCOMMENT THIS LINE WHEN MERGING WITH A BRANCH THAT HAS THE FOOTER
+  footer?: FooterState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }
