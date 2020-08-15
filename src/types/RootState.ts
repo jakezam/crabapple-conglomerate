@@ -1,3 +1,5 @@
+import { FooterState } from 'app/containers/Footer/types'; 
+import { SignupState } from 'app/containers/Signup/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
 /* 
@@ -5,6 +7,7 @@
   You have to declare them here manually
 */
 export interface RootState {
-  signup: import('c:/Users/Jacob Zamani/Documents/GitHub/crabapple-conglomerate/src/app/containers/Footer/types').FooterState;
+  signup?: SignupState;
+  footer?: FooterState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }
