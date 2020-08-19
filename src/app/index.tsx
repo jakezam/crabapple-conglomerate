@@ -18,6 +18,7 @@ import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { Signup } from './containers/Signup/Loadable';
 import { Header } from './components/Header';
 import { Footer } from './containers/Footer/Loadable';
+import { Discover } from './containers/Discover/Loadable';
 
 export function App() {
   return (
@@ -31,11 +32,11 @@ export function App() {
 
       <Header />
       <Switch>
-        <Route exact path="/" component={Signup} />
+        <Route exact path="/" component={Discover} />
         <Route component={NotFoundPage} />
         <Route path="/signup" component={Signup} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
       <GlobalStyle />
     </BrowserRouter>
   );
