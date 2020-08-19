@@ -20,6 +20,9 @@ import { Tab } from 'semantic-ui-react';
 import { AccountSettings } from 'app/components/AccountSettings/Loadable';
 import { PrivacySettings } from 'app/components/PrivacySettings/Loadable';
 import { CommunicationSettings } from 'app/components/CommunicationSettings/Loadable';
+
+import './Settings.scss';
+
 interface Props {}
 
 export function Settings(props: Props) {
@@ -70,7 +73,7 @@ export function Settings(props: Props) {
         <i className="settings icon"></i>
         <div className="content">
           Profile Settings
-          <div className="sub header">
+          <div className="sub-header">
             Manage your profile's preferences and settings
           </div>
         </div>
@@ -79,7 +82,7 @@ export function Settings(props: Props) {
         <div className="active item">Tab 1</div>
         <div className="item">Tab 2</div>
       </div> */}
-      <Tab panes={panes}></Tab>
+      <Tab className="settings-tabs" panes={panes}></Tab>
     </>
   );
 }
