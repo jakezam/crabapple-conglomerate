@@ -18,7 +18,7 @@ import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { Signup } from './containers/Signup/Loadable';
 import { Header } from './components/Header';
 import { Footer } from './containers/Footer/Loadable';
-
+import { Settings } from './containers/Settings/Loadable';
 export function App() {
   return (
     <BrowserRouter>
@@ -31,11 +31,11 @@ export function App() {
 
       <Header />
       <Switch>
-        <Route exact path="/" component={Signup} />
+        <Route exact path="/" component={Settings} />
         <Route component={NotFoundPage} />
         <Route path="/signup" component={Signup} />
       </Switch>
-      <Footer />
+      {/* <Footer /> */}
       <GlobalStyle />
     </BrowserRouter>
   );

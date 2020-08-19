@@ -1,5 +1,6 @@
-import { FooterState } from 'app/containers/Footer/types'; 
+import { FooterState } from 'app/containers/Footer/types';
 import { SignupState } from 'app/containers/Signup/types';
+import { SettingsState } from 'app/containers/Settings/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
 /* 
@@ -9,5 +10,6 @@ import { SignupState } from 'app/containers/Signup/types';
 export interface RootState {
   signup?: SignupState;
   footer?: FooterState;
+  settings?: SettingsState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }
