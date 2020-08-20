@@ -38,10 +38,10 @@ export function SellerProfilePage(props: Props) {
       </Helmet>
       <div className="profileContainer">
         <div className="leftHalf">
-          <div className="profileInfo">
+          <div className="profileInfo profilePageBox">
             <ProfileInfoBox />
           </div>
-          <div className="aboutContainer">
+          <div className="aboutContainer profilePageBox">
             <h2>About</h2>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -71,18 +71,18 @@ export function SellerProfilePage(props: Props) {
               risus sed vulputate.
             </p>
           </div>
-          <div className="reviewContainer">
+          <div className="reviewContainer profilePageBox">
             <h2>Ratings and Reviews</h2>
           </div>
-          <div className="recentActivityContainer">
+          <div className="recentActivityContainer profilePageBox">
             <h2>Recent Activity</h2>
           </div>
-          <div className="porfolioContainer">
+          <div className="porfolioContainer profilePageBox">
             <h2>Portfolio</h2>
           </div>
         </div>
         <div className="rightHalf">
-          <div className="otherCategoryProfiles">
+          <div className="otherCategoryProfiles profilePageBox">
             <h4>Other Landscapers in your area:</h4>
             <SuggestedAccount
               username="Smith Landscaping"
@@ -100,14 +100,14 @@ export function SellerProfilePage(props: Props) {
               rating={0.0}
             />
           </div>
-          <div className="previousJobs">
+          <div className="previousJobs profilePageBox">
             <h4>Previous Jobs:</h4>
             <SuggestedUser fullName="Jacob Zamani" username="jaike_z23" />
             <SuggestedUser fullName="Thomas Arturi" username="teetle" />
             <SuggestedUser fullName="Emily Giovannone" username="emiwemi21" />
             <SuggestedUser fullName="Kevin Lee" username="kobomi" />
           </div>
-          <div className="followingContainer">
+          <div className="followingContainer profilePageBox">
             <h4>Following:</h4>
             <SuggestedUser fullName="Chris Faxon" username="faxmachine978" />
             <SuggestedUser fullName="Grace Vocalina" username="graciee0014" />
