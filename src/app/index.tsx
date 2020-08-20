@@ -12,7 +12,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-react';
 import { GlobalStyle } from 'styles/global-styles';
 
-// import { HomePage } from './containers/HomePage/Loadable';
+import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { SellerProfilePage } from './containers/SellerProfilePage/Loadable';
 import { Header } from './components/Header';
