@@ -1,4 +1,4 @@
-import { SigninPageState } from 'app/containers/SigninPage/types';
+import { SignInPageState } from 'app/containers/SignInPage/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
 /* 
@@ -6,6 +6,6 @@ import { SigninPageState } from 'app/containers/SigninPage/types';
   You have to declare them here manually
 */
 export interface RootState {
-  signinPage?: SigninPageState;
+  signinPage?: SignInPageState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }
