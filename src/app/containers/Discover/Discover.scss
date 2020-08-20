@@ -1,0 +1,48 @@
+.discoverPageContainer {
+    display: flex;
+    padding: 75px 0;
+    background-color: #f6f6ff;
+    justify-content: center;
+}
+
+.discoverBox {
+    border: 1px solid rgba(34, 36, 38, .15);
+    color: rgba(0, 0, 0, .87);
+    border-radius: .28571429rem;
+    // box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.075);
+
+    background-color: white;
+}
+
+.discoverAfterBox {
+    margin-top: 50px;
+}
+
+.discover-leftHalf {
+
+    .discover-searchBox {
+        input {
+            margin-left: 0 !important;
+            padding-right: 400px !important;
+        }
+    }
+
+    .discover-suggested {
+        width: 630px;
+        height: 220px;
+    }
+
+    .discover-byCategory {
+        width: 630px;
+        height: 600px;
+    }
+}
+
+.discover-rightHalf {
+    margin-left: 100px;
+
+    .discover-suggestedBox {
+        width: 300px;
+        height: 450px;
+    }
+}

@@ -9,14 +9,20 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
+
+// import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import 'semantic-ui-react';
 import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import { SellerProfilePage } from './containers/SellerProfilePage/Loadable';
+
+import { Signup } from './containers/Signup/Loadable';
+import { SignInPage } from './containers/SignInPage/Loadable';
 import { Header } from './components/Header';
 import { Footer } from './containers/Footer/Loadable';
+import { Discover } from './containers/Discover/Loadable';
 
 export function App() {
   return (
@@ -30,9 +36,9 @@ export function App() {
 
       <Header />
       <Switch>
-        {/* <Route exact path="/" component={HomePage} /> */}
-        <Route exact path="/" component={SellerProfilePage} />
+        <Route exact path="/" component={Discover} />
         <Route component={NotFoundPage} />
+        <Route path="/signup" component={Signup} />
       </Switch>
       <GlobalStyle />
       <Footer />
