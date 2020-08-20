@@ -1,3 +1,4 @@
+import { SellerProfilePageState } from 'app/containers/SellerProfilePage/types';
 import { SignInPageState } from 'app/containers/SignInPage/types';
 import { FooterState } from 'app/containers/Footer/types';
 import { SignupState } from 'app/containers/Signup/types';
@@ -9,6 +10,7 @@ import { DiscoverState } from 'app/containers/Discover/types';
   You have to declare them here manually
 */
 export interface RootState {
+  sellerProfilePage?: SellerProfilePageState;
   signinPage?: SignInPageState;
   signup?: SignupState;
   footer?: FooterState;

@@ -16,6 +16,7 @@ import { GlobalStyle } from 'styles/global-styles';
 
 import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
+import { SellerProfilePage } from './containers/SellerProfilePage/Loadable';
 
 import { Signup } from './containers/Signup/Loadable';
 import { SignInPage } from './containers/SignInPage/Loadable';
@@ -39,8 +40,8 @@ export function App() {
         <Route component={NotFoundPage} />
         <Route path="/signup" component={Signup} />
       </Switch>
-      {/* <Footer /> */}
       <GlobalStyle />
+      <Footer />
     </BrowserRouter>
   );
 }
