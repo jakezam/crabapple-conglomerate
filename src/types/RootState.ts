@@ -1,3 +1,4 @@
+import { SettingsState } from 'app/containers/Settings/types';
 import { SellerProfilePageState } from 'app/containers/SellerProfilePage/types';
 import { SignInPageState } from 'app/containers/SignInPage/types';
 import { FooterState } from 'app/containers/Footer/types';
@@ -14,6 +15,7 @@ export interface RootState {
   signinPage?: SignInPageState;
   signup?: SignupState;
   footer?: FooterState;
+  settings?: SettingsState;
   discover?: DiscoverState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }

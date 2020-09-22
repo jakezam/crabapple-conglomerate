@@ -22,6 +22,7 @@ import { Signup } from './containers/Signup/Loadable';
 import { SignInPage } from './containers/SignInPage/Loadable';
 import { Header } from './components/Header';
 import { Footer } from './containers/Footer/Loadable';
+import { Settings } from './containers/Settings/Loadable';
 import { Discover } from './containers/Discover/Loadable';
 
 export function App() {
