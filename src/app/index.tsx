@@ -37,9 +37,12 @@ export function App() {
 
       <Header />
       <Switch>
-        <Route exact path="/" component={Discover} />
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/login" component={SignInPage} />
+        <Route exact path="/discover" component={Discover} />
+        <Route exact path="/settings" component={Settings} />
         <Route component={NotFoundPage} />
-        <Route path="/signup" component={Signup} />
       </Switch>
       <GlobalStyle />
       <Footer />

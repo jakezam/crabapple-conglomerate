@@ -1,7 +1,16 @@
 .header {
-    padding: 25px 190px;
+    padding: 25px 170px;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.075);
     height: 90px;
+
+    img {
+        width: 43px;
+        height: 43px;
+        border: 2.5px white solid;
+        border-radius: 6px;
+        margin-left: 20px;
+        box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.045), 0 2px 4px 0 rgba(0, 0, 0, 0.045)
+    }
 }
 
 .ui.icon.input>input {

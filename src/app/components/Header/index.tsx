@@ -4,7 +4,7 @@
  *
  */
 import React, { memo } from 'react';
-import { Menu, Input } from 'semantic-ui-react';
+import { Menu, Input, Button, Popup, Grid } from 'semantic-ui-react';
 import './Header.scss';
 
 interface Props {}
@@ -14,35 +14,27 @@ export const Header = memo((props: Props) => {
   return (
     <div className="header">
       <Menu secondary>
-        <Menu.Menu position="left">
-          <Input icon="search" placeholder="Search..." />
-        </Menu.Menu>
+        <Menu.Item name="Home" active={activeItem === 'home'} />
+        <Menu.Item name="Discover" active={activeItem === 'discover'} />
+        <Menu.Item name="Messages" active={activeItem === 'messages'} />
+        <Menu.Item
+          name="Notifications"
+          active={activeItem === 'notifications'}
+        />
         <Menu.Menu position="right">
-          <Menu.Item
-            name="home"
-            active={activeItem === 'home'}
-            // onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="discover"
-            active={activeItem === 'discover'}
-            // onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="about"
-            active={activeItem === 'about'}
-            // onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="services"
-            active={activeItem === 'services'}
-            // onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name="contact us"
-            active={activeItem === 'contact'}
-            // onClick={this.handleItemClick}
-          />
+          <Menu.Item>
+            <Input icon="search" placeholder="Search..." />
+          </Menu.Item>
+          <Popup
+            trigger={<img src="logo512.png" alt="none"></img>}
+            flowing
+            hoverable
+          >
+            <Button basic color="red">
+              Logout
+            </Button>
+            <Button basic>Settings</Button>
+          </Popup>
         </Menu.Menu>
       </Menu>
     </div>
