@@ -28,18 +28,6 @@ export function HomePage() {
           <span>Image container</span>
         </div>
       </div>
-      <DiscoverBlock />
-      <div className="aboutContainer">
-        <h1>What is inployd?</h1>
-        <p>{dummyText}</p>
-        <Button basic>Read More</Button>
-      </div>
-      <div className="servicesContainer">
-        <h1>Categories and Services</h1>
-      </div>
-      <div className="contactContainer">
-        <h1>Contact Us</h1>
-      </div>
     </>
   );
 }
