@@ -3,24 +3,9 @@
  * Footer
  *
  */
-
 import React, { memo } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
-import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components/macro';
 
-import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
-import { footerSaga } from './saga';
-
-interface Props {}
-
-export const Footer = memo((props: Props) => {
-  useInjectSaga({ key: 'footer', saga: footerSaga });
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { t, i18n } = useTranslation();
-
+export const Footer = memo(() => {
   return (
     <>
       <div className="footer" style={{ textAlign: 'center', height: 150 }}>
@@ -34,12 +19,12 @@ export const Footer = memo((props: Props) => {
           >
             <div className="ui list">
               <div className="item">
-                <a href="#">Terms and Conditions</a>
+                <a href="www.google.com">Terms and Conditions</a>
               </div>
             </div>
             <div className="ui list">
               <div className="item">
-                <a href="#">Privacy Policy</a>
+                <a href="www.google.com">Privacy Policy</a>
               </div>
             </div>
           </div>

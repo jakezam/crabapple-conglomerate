@@ -3,40 +3,14 @@
  * Settings
  *
  */
-
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { useTranslation } from 'react-i18next';
-import { useSelector, useDispatch } from 'react-redux';
-import styled from 'styled-components/macro';
-
-import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
-import { reducer, sliceKey } from './slice';
-import { selectSettings } from './selectors';
-import { settingsSaga } from './saga';
-
 import { Tab } from 'semantic-ui-react';
-
 import { AccountSettings } from 'app/components/AccountSettings/Loadable';
 import { PrivacySettings } from 'app/components/PrivacySettings/Loadable';
 import { CommunicationSettings } from 'app/components/CommunicationSettings/Loadable';
-
 import './Settings.scss';
 
-interface Props {}
-
-export function Settings(props: Props) {
-  useInjectReducer({ key: sliceKey, reducer: reducer });
-  useInjectSaga({ key: sliceKey, saga: settingsSaga });
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const settings = useSelector(selectSettings);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const dispatch = useDispatch();
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { t, i18n } = useTranslation();
-
+export function Settings() {
   const panes = [
     {
       menuItem: 'AccountSettingsTab',
@@ -86,5 +60,3 @@ export function Settings(props: Props) {
     </>
   );
 }
-
-const Div = styled.div``;

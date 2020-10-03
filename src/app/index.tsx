@@ -9,15 +9,10 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
-
-// import { NotFoundPage } from './components/NotFoundPage/Loadable';
 import 'semantic-ui-react';
 import { GlobalStyle } from 'styles/global-styles';
-
 import { HomePage } from './containers/HomePage/Loadable';
 import { NotFoundPage } from './components/NotFoundPage/Loadable';
-import { SellerProfilePage } from './containers/SellerProfilePage/Loadable';
-
 import { Signup } from './containers/Signup/Loadable';
 import { SignInPage } from './containers/SignInPage/Loadable';
 import { Header } from './components/Header';

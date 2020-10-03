@@ -4,7 +4,7 @@
  *
  */
 import React, { memo } from 'react';
-import { Menu, Input, Button, Popup, Grid } from 'semantic-ui-react';
+import { Menu, Input, Button, Popup } from 'semantic-ui-react';
 import './Header.scss';
 
 interface Props {}
