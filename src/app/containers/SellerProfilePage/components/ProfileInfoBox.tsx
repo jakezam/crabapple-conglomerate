@@ -8,9 +8,9 @@ interface Props {}
 export function ProfileInfoBox(props: Props) {
   return (
     <div>
-      <div className="headerTag">
+      {/* <div className="headerTag">
         <h1>Landscaping</h1>
-      </div>
+      </div> */}
       <Grid className="profileGrid">
         <Grid.Row>
           <Grid.Column width={4}>
