@@ -3,28 +3,10 @@
  * SignInPage
  *
  */
-
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
-import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
-import { reducer, sliceKey } from './slice';
-import { selectSignInPage } from './selectors';
-import { signInPageSaga } from './saga';
-
 import './SignInPage.scss';
 
-interface Props {}
-
-export function SignInPage(props: Props) {
-  useInjectReducer({ key: sliceKey, reducer: reducer });
-  useInjectSaga({ key: sliceKey, saga: signInPageSaga });
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const signInPage = useSelector(selectSignInPage);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const dispatch = useDispatch();
-
+export function SignInPage() {
   return (
     <>
       <div className="ui centered container" style={{ width: '30%' }}>

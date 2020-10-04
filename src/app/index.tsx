@@ -9,7 +9,7 @@ import { Signup } from './containers/Signup/Loadable';
 import { SignInPage } from './containers/SignInPage/Loadable';
 import { Header } from './components/Header';
 import { Footer } from './containers/Footer/Loadable';
-// import { Settings } from './containers/Settings/Loadable';
+import { Settings } from './containers/Settings/Loadable';
 import { Discover } from './containers/Discover/Loadable';
 import { SellerProfilePage } from './containers/SellerProfilePage/Loadable';
 
@@ -29,8 +29,7 @@ export function App() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={SignInPage} />
         <Route exact path="/discover" component={Discover} />
-        {/* <Route exact path="/settings" component={Settings} /> */}
-        <Route exact path="/profile-provider" component={SellerProfilePage} />
+        <Route exact path="/settings" component={Settings} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
