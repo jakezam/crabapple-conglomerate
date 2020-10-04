@@ -30,6 +30,7 @@ export function App() {
         <Route exact path="/login" component={SignInPage} />
         <Route exact path="/discover" component={Discover} />
         <Route exact path="/settings" component={Settings} />
+        <Route exact path="/profile-provider" component={SellerProfilePage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
