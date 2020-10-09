@@ -14,6 +14,13 @@ export const Header = memo((props: Props) => {
   return (
     <div className="header">
       <Menu secondary>
+        <Menu.Item name="logo">
+          <img
+            style={{ height: '55px', width: '125px' }}
+            src="black_inployd.png"
+            alt="none"
+          />
+        </Menu.Item>
         <Menu.Item name="Home" active={activeItem === 'home'} />
         <Menu.Item name="Discover" active={activeItem === 'discover'} />
         <Menu.Item name="Messages" active={activeItem === 'messages'} />
@@ -26,7 +33,13 @@ export const Header = memo((props: Props) => {
             <Input icon="search" placeholder="Search..." />
           </Menu.Item>
           <Popup
-            trigger={<img src="logo512.png" alt="none"></img>}
+            trigger={
+              <img
+                style={{ height: '50px', width: '25px' }}
+                src="blue_pine.png"
+                alt="none"
+              />
+            }
             flowing
             hoverable
           >

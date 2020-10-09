@@ -4,10 +4,11 @@
  *
  */
 import React, { memo } from 'react';
+import styled from 'styled-components';
 
 export const Footer = memo(() => {
   return (
-    <>
+    <Base>
       <div className="footer" style={{ textAlign: 'center', height: 150 }}>
         <div className="ui 3 column grid" style={{}}>
           <div className="column" style={{ width: '33%', textAlign: 'left' }}>
@@ -31,6 +32,12 @@ export const Footer = memo(() => {
           <div className="column"></div>
         </div>
       </div>
-    </>
+    </Base>
   );
 });
+
+const Base = styled.div`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+`;
