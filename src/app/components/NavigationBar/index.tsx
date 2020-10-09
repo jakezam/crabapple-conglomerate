@@ -1,5 +1,5 @@
 /**
- * Header
+ * NavigationBar
  */
 
 // Package Imports //
@@ -9,7 +9,7 @@ import { Search, Button } from 'semantic-ui-react';
 
 // Component Imports //
 
-export function Header() {
+export function NavigationBar() {
   return (
     <Background>
       <Base>

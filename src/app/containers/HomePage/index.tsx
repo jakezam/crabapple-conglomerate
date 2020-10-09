@@ -8,13 +8,13 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet-async';
 
 // Component Imports //
-import { Header } from '../../components/Header';
+import { NavigationBar } from '../../components/NavigationBar';
 import { Footer } from '../../components/Footer';
 
 export function HomePage() {
   return (
     <>
-      <Header />
+      <NavigationBar />
       <Base>
         <Helmet>
           <meta charSet="utf-8" />
