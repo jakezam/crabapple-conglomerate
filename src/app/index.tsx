@@ -12,17 +12,19 @@ import { SignInPage } from './containers/SignInPage/Loadable';
 import { Settings } from './containers/Settings/Loadable';
 import { Discover } from './containers/Discover/Loadable';
 import { SellerProfilePage } from './containers/SellerProfilePage/Loadable';
+import { SplashPage } from './containers/SplashPage/Loadable';
 
 export function App() {
   return (
     <BrowserRouter>
-      <Helmet titleTemplate="inployed - %s" defaultTitle="inployed">
+      <Helmet titleTemplate="inployd - %s" defaultTitle="inployd">
         <meta name="description" content="A React Boilerplate application" />
       </Helmet>
 
       {/*<Header />*/}
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={SplashPage} />
+        <Route exact path="/home" component={HomePage} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/login" component={SignInPage} />
         <Route exact path="/discover" component={Discover} />
