@@ -6,11 +6,11 @@ import 'semantic-ui-react';
 
 // Component Imports //
 import { HomePage } from './containers/HomePage/Loadable';
-import { NotFoundPage } from './components/NotFoundPage/Loadable';
-import { Signup } from './containers/Signup/Loadable';
+import { NotFoundPage } from './containers/NotFoundPage/Loadable';
+import { SignUpPage } from './containers/SignUpPage/Loadable';
 import { SignInPage } from './containers/SignInPage/Loadable';
-import { Settings } from './containers/Settings/Loadable';
-import { Discover } from './containers/Discover/Loadable';
+import { SettingsPage } from './containers/SettingsPage/Loadable';
+import { DiscoverPage } from './containers/DiscoverPage/Loadable';
 import { SellerProfilePage } from './containers/SellerProfilePage/Loadable';
 import { SplashPage } from './containers/SplashPage/Loadable';
 
@@ -24,10 +24,10 @@ export function App() {
       <Switch>
         <Route exact path="/" component={SplashPage} />
         <Route exact path="/home" component={HomePage} />
-        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/signup" component={SignUpPage} />
         <Route exact path="/login" component={SignInPage} />
-        <Route exact path="/discover" component={Discover} />
-        <Route exact path="/settings" component={Settings} />
+        <Route exact path="/discover" component={DiscoverPage} />
+        <Route exact path="/settings" component={SettingsPage} />
         <Route exact path="/profile-provider" component={SellerProfilePage} />
         <Route component={NotFoundPage} />
       </Switch>

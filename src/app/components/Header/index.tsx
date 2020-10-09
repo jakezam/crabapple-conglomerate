@@ -5,7 +5,7 @@
 // Package Imports //
 import React from 'react';
 import styled from 'styled-components';
-import { Search, Button, Icon } from 'semantic-ui-react';
+import { Search, Button } from 'semantic-ui-react';
 
 // Component Imports //
 
@@ -53,7 +53,10 @@ const Background = styled.div`
   top: 0;
   height: 5em;
   width: 100%;
-  background-image: linear-gradient(aquamarine, white);
+  background-color: aquamarine;
+  -webkit-box-shadow: 0px 11px 32px -7px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: 0px 11px 32px -7px rgba(0, 0, 0, 0.47);
+  box-shadow: 0px 11px 32px -7px rgba(0, 0, 0, 0.47);
   display: flex;
   justify-content: center;
 

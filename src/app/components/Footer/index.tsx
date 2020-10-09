@@ -5,7 +5,7 @@
 // Package Imports //
 import React from 'react';
 import styled from 'styled-components';
-import { Search, Button, Icon, Grid } from 'semantic-ui-react';
+import { Icon, Grid } from 'semantic-ui-react';
 
 // Component Imports //
 
@@ -117,12 +117,12 @@ const Base = styled.div`
   //border: solid red;
 `;
 
-const TitleBox = styled.div`
-  margin: 1em;
-  display: flex;
-  flex-direction: row;
-  //border: solid black;
-`;
+// const TitleBox = styled.div`
+//   margin: 1em;
+//   display: flex;
+//   flex-direction: row;
+//   //border: solid black;
+// `;
 
 const ContentBox = styled.div`
   display: flex;

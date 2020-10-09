@@ -5,7 +5,6 @@
 // Package Imports //
 import React from 'react';
 import styled from 'styled-components';
-import { Button } from 'semantic-ui-react';
 import { Helmet } from 'react-helmet-async';
 
 // Component Imports //
@@ -37,8 +36,8 @@ const Base = styled.div`
   flex-direction: column;
 `;
 
-const ProfileView = styled.div``;
-
-const FeedView = styled.div``;
-
-const JobsView = styled.div``;
+// const ProfileView = styled.div``;
+//
+// const FeedView = styled.div``;
+//
+// const JobsView = styled.div``;

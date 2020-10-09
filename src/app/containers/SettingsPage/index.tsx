@@ -1,6 +1,6 @@
 /**
  *
- * Settings
+ * SettingsPage
  *
  */
 import React from 'react';
@@ -10,7 +10,7 @@ import { PrivacySettings } from 'app/components/PrivacySettings/Loadable';
 import { CommunicationSettings } from 'app/components/CommunicationSettings/Loadable';
 import './Settings.scss';
 
-export function Settings() {
+export function SettingsPage() {
   const panes = [
     {
       menuItem: 'AccountSettingsTab',

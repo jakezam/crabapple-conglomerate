@@ -1,6 +1,6 @@
+// Package Imports
 import React from 'react';
 import styled from 'styled-components/macro';
-import { P } from './P';
 import { Helmet } from 'react-helmet-async';
 
 export function NotFoundPage() {
@@ -18,7 +18,7 @@ export function NotFoundPage() {
           </span>
           4
         </Title>
-        <P>Page not found.</P>
+        <ErrorMessage>Page not found.</ErrorMessage>
       </Wrapper>
     </>
   );
@@ -42,4 +42,11 @@ const Title = styled.div`
   span {
     font-size: 3.125rem;
   }
+`;
+
+export const ErrorMessage = styled.p`
+  font-size: 1rem;
+  line-height: 1.5;
+  color: ${p => p.theme.textSecondary};
+  margin: 0.625rem 0 1.5rem 0;
 `;
