@@ -7,6 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button, Divider, Form } from 'semantic-ui-react';
+import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 
 import { useInjectSaga } from 'utils/redux-injectors';
@@ -19,9 +20,7 @@ export function SplashPage(props: Props) {
 
   return (
     <>
-      <Header>
-        <Logo src="black_inployd.png" alt="none" />
-      </Header>
+      <Header />
       <Body>
         <InnerBody>
           <LoginBox>
@@ -60,20 +59,6 @@ export function SplashPage(props: Props) {
     </>
   );
 }
-
-const Header = styled.div`
-  padding: 13px 170px;
-  height: 90px;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.075);
-`;
-
-const Logo = styled.img`
-  height: 70px;
-  width: 157px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-`;
 
 const Body = styled.div`
   padding: 10px;
