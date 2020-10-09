@@ -1,9 +1,13 @@
 /**
- *
  * SignUpPage
- *
  */
+
+// Package Imports //
 import React from 'react';
+import styled from 'styled-components';
+
+// Component Imports //
+import { Footer } from '../../components/Footer';
 
 export function SignUpPage() {
   return (
@@ -75,6 +79,7 @@ export function SignUpPage() {
           <button className="ui fluid primary button">Sign in</button>
         </div>
       </div>
+      <Footer />
     </>
   );
 }
