@@ -1,55 +1,98 @@
 /**
- *
  * Header
- *
  */
-import React, { memo } from 'react';
-import { Menu, Input, Button, Popup } from 'semantic-ui-react';
-import './Header.scss';
 
-interface Props {}
+// Package Imports //
+import React from 'react';
+import styled from 'styled-components';
+import { Search, Button, Icon } from 'semantic-ui-react';
 
-export const Header = memo((props: Props) => {
-  let activeItem = 'home';
+// Component Imports //
+
+export function Header() {
   return (
-    <div className="header">
-      <Menu secondary>
-        <Menu.Item name="logo">
-          <img
-            style={{ height: '55px', width: '125px' }}
-            src="black_inployd.png"
-            alt="none"
-          />
-        </Menu.Item>
-        <Menu.Item name="Home" active={activeItem === 'home'} />
-        <Menu.Item name="Discover" active={activeItem === 'discover'} />
-        <Menu.Item name="Messages" active={activeItem === 'messages'} />
-        <Menu.Item
-          name="Notifications"
-          active={activeItem === 'notifications'}
-        />
-        <Menu.Menu position="right">
-          <Menu.Item>
-            <Input icon="search" placeholder="Search..." />
-          </Menu.Item>
-          <Popup
-            trigger={
-              <img
-                style={{ height: '50px', width: '25px' }}
-                src="blue_pine.png"
-                alt="none"
-              />
-            }
-            flowing
-            hoverable
-          >
-            <Button basic color="red">
-              Logout
-            </Button>
-            <Button basic>Settings</Button>
-          </Popup>
-        </Menu.Menu>
-      </Menu>
-    </div>
+    <Background>
+      <Base>
+        <LeftContent>
+          <IconClickable>
+            <i
+              className="huge info card icon"
+              style={{
+                display: 'flex',
+                alignSelf: 'center',
+              }}
+            />
+          </IconClickable>
+          <Search />
+        </LeftContent>
+
+        <RightContent>
+          <IconClickable>
+            <Button circular size={'huge'} icon={'home'} />
+          </IconClickable>
+
+          <IconClickable>
+            <Button circular size={'huge'} icon={'briefcase'} />
+          </IconClickable>
+
+          <IconClickable>
+            <Button circular size={'huge'} icon={'bell'} />
+          </IconClickable>
+
+          <IconClickable>
+            <Button circular size={'huge'} icon={'meh'} />
+          </IconClickable>
+        </RightContent>
+      </Base>
+    </Background>
   );
-});
+}
+
+const Background = styled.div`
+  position: absolute;
+  top: 0;
+  height: 5em;
+  width: 100%;
+  background-image: linear-gradient(aquamarine, white);
+  display: flex;
+  justify-content: center;
+
+  //border: solid orange;
+`;
+
+const Base = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-left: 15%;
+  margin-right: 15%;
+
+  //border: solid red;
+`;
+
+const LeftContent = styled.div`
+  display: flex;
+  flex: 4;
+  flex-direction: row;
+  align-items: center;
+
+  //border: solid lightcoral;
+`;
+
+const RightContent = styled.div`
+  display: flex;
+  flex: 2;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+
+  //border: solid lawngreen;
+`;
+
+const IconClickable = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  //border: solid blue;
+`;

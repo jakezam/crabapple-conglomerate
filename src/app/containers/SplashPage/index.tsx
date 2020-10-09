@@ -7,6 +7,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button, Divider, Form } from 'semantic-ui-react';
+import { Footer } from '../../components/Footer';
 
 import { useInjectSaga } from 'utils/redux-injectors';
 import { splashPageSaga } from './saga';
@@ -55,15 +56,15 @@ export function SplashPage(props: Props) {
           <ImageBox></ImageBox>
         </InnerBody>
       </Body>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 }
 
 const Header = styled.div`
   padding: 13px 170px;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.075);
   height: 90px;
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.075);
 `;
 
 const Logo = styled.img`
@@ -101,12 +102,4 @@ const ImageBox = styled.div`
   width: 50%;
   padding: 25px;
   background-color: black;
-`;
-
-const Footer = styled.div`
-  width: 100%;
-  height: 100px;
-  -webkit-box-shadow: 0px -4px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px -4px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px -4px 5px 0px rgba(0, 0, 0, 0.75);
 `;
