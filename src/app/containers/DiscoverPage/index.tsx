@@ -1,6 +1,6 @@
 /**
  *
- * Discover
+ * DiscoverPage
  *
  */
 
@@ -8,7 +8,7 @@ import React from 'react';
 import { Input } from 'semantic-ui-react';
 import './Discover.scss';
 
-export function Discover() {
+export function DiscoverPage() {
   return (
     <>
       <div className="discoverPageContainer">

@@ -1,11 +1,11 @@
 /**
  *
- * Signup
+ * SignUpPage
  *
  */
 import React from 'react';
 
-export function Signup() {
+export function SignUpPage() {
   return (
     <>
       <div className="ui centered container" style={{ width: '30%' }}>
