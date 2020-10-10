@@ -97,7 +97,7 @@ export function Footer() {
 }
 
 const Background = styled.div`
-  position: absolute;
+  // position: absolute;
   bottom: 0;
   width: 100%;
   //background-image: linear-gradient(white, aquamarine);
