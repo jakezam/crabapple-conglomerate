@@ -1,22 +1,22 @@
 /**
- *
  * SplashPage
- *
  */
 
+// Package Imports //
 import React from 'react';
 import styled from 'styled-components';
 import { Button, Divider, Form } from 'semantic-ui-react';
+// import { useHistory } from 'react-router-dom';
+import { push } from 'connected-react-router';
+
+// Component Imports //
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import { useDispatch } from 'react-redux';
 
-import { useInjectSaga } from 'utils/redux-injectors';
-import { splashPageSaga } from './saga';
-
-interface Props {}
-
-export function SplashPage(props: Props) {
-  // useInjectSaga({ key: 'splashPage', saga: splashPageSaga });
+export function SplashPage() {
+  // const history = useHistory();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -31,7 +31,7 @@ export function SplashPage(props: Props) {
               </Form.Field>
               <Form.Field>
                 <label>Password</label>
-                <input placeholder="" />
+                <input placeholder="**************" />
               </Form.Field>
               <Button
                 primary
@@ -48,6 +48,9 @@ export function SplashPage(props: Props) {
               positive
               color="green"
               style={{ width: '100%', margin: '10px 0' }}
+              onClick={() => {
+                dispatch(push('/signup'));
+              }}
             >
               Create Account
             </Button>

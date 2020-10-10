@@ -13,6 +13,7 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import * as serviceWorker from 'serviceWorker';
 import 'sanitize.css/sanitize.css';
+import { history } from 'utils/history';
 
 // Import root app
 import { App } from 'app';
@@ -23,8 +24,9 @@ import { configureAppStore } from 'store/configureStore';
 
 // Initialize languages
 import './locales/i18n';
+import { ConnectedRouter } from 'connected-react-router';
 
-const store = configureAppStore();
+export const store = configureAppStore(history);
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
 interface Props {
@@ -32,11 +34,13 @@ interface Props {
 }
 const ConnectedApp = ({ Component }: Props) => (
   <Provider store={store}>
-    <HelmetProvider>
-      <React.StrictMode>
+    <ConnectedRouter history={history}>
+      <HelmetProvider>
+        {/*<React.StrictMode>*/}
         <Component />
-      </React.StrictMode>
-    </HelmetProvider>
+        {/*</React.StrictMode>*/}
+      </HelmetProvider>
+    </ConnectedRouter>
   </Provider>
 );
 const render = (Component: typeof App) => {
