@@ -6,8 +6,8 @@ up with reputable producers to get jobs done! Contracting building
 construction to website development inployd will be able to do it!
 
 ## Programming Overview
- - Take note this is the front end repository
- - Uses react, [redux](https://redux.js.org/), 
+ - **T**ake note this is the front end repository
+ - **U**ses react, [redux](https://redux.js.org/), 
    [redux-toolkit](https://redux-toolkit.js.org/), 
    [saga](https://github.com/redux-saga/redux-saga), 
    [router](https://reactrouter.com/), 
@@ -15,12 +15,12 @@ construction to website development inployd will be able to do it!
    [lots](https://github.com/react-boilerplate/redux-injectors)
    [of](https://github.com/react-boilerplate/redux-injectors)
    [other stuff](https://github.com/staylor/react-helmet-async)
- - Boilerplate from 
+ - **B**oilerplate from 
    [React Boilerplate meets CRA](https://github.com/react-boilerplate/react-boilerplate-cra-template)
- - [Semantic UI](https://react.semantic-ui.com/)
+ - [**S**emantic UI](https://react.semantic-ui.com/)
  
 ## Git Best Practices
- - To keep the git repository organized and easier to use we will use:
-   - Git flow: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
-   - Conventional Commits: https://www.conventionalcommits.org/en/v1.0.0/
+ - **T**o keep the git repository organized and easier to use we will use:
+   - **G**it flow: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+   - **C**onventional Commits: https://www.conventionalcommits.org/en/v1.0.0/
 
