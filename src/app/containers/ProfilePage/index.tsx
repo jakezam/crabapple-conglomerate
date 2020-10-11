@@ -12,6 +12,7 @@ import { Footer } from '../../components/Footer';
 import { NavigationBar } from '../../components/NavigationBar';
 import { selectViewedUser } from '../../../store/ViewedUser/selectors';
 import { actions as vUActions } from '../../../store/ViewedUser/slice';
+import { ProfileBox } from './components/ProfileBox';
 
 interface Props {}
 
@@ -37,7 +38,9 @@ export function ProfilePage(props: Props) {
       <NavigationBar />
       <MainBody>
         <LeftBody>
-          <ProfileInfoBox></ProfileInfoBox>
+          <ProfileInfoBox>
+            <ProfileBox user={viewedUser} actions={vUActions} />
+          </ProfileInfoBox>
           {ProviderContent}
           <RecentActivityContainer></RecentActivityContainer>
         </LeftBody>
@@ -63,7 +66,7 @@ const LeftBody = styled.div``;
 
 const ProfileInfoBox = styled.div`
   width: 730px;
-  height: 320px;
+  // height: 320px;
   text-align: center;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
