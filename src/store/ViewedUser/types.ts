@@ -3,7 +3,18 @@ export interface ViewedUserState {
   firstName: string;
   lastName: string;
   isProvider: boolean;
-  providerInfo: object;
+  isSelf: boolean;
+  numFollowing: number;
+  followerCount: number;
+  isFollowing: boolean;
+  providerInfo: {
+    companyName: string;
+    websiteURL: string;
+    category: string;
+    subcategories: {};
+    rating: number;
+    location: string;
+  };
 }
 
 export type ContainerState = ViewedUserState;
