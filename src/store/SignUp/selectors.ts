@@ -15,3 +15,8 @@ export const selectStep = createSelector(
   [selectDomain],
   signUpState => signUpState.currentStep,
 );
+
+export const selectUserCreated = createSelector(
+  [selectDomain],
+  signUpState => signUpState.userCreated,
+);

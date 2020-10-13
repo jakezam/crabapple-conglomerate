@@ -3,21 +3,64 @@
  */
 
 // Package Imports //
-import React from 'react';
-import { Button, Form, Step, Icon } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import { Step, Icon, Label } from 'semantic-ui-react';
+import {
+  Form,
+  Input,
+  TextArea,
+  Checkbox,
+  Radio,
+  RadioGroup,
+  Dropdown,
+  Select,
+} from 'formsy-semantic-ui-react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-// import { RootState } from '../../../store/types';
+import { useForm } from 'react-hook-form';
 
 // Component Imports //
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { selectStep } from '../../../store/SignUp/selectors';
-import { actions as sUActions } from '../../../store/SignUp/slice';
+import { push } from 'connected-react-router';
+
+type Inputs = {
+  emailAddress: string;
+  password: string;
+  confirmPass: string;
+};
 
 export function SignUpPage() {
+  // Local State //
+  const [formContent, setFormContent] = useState({
+    emailAddress: '',
+    password: '',
+    confirmPass: '',
+  });
+  /////////////////
+
+  // Hooks //
   const dispatch = useDispatch();
   const signUpStep = useSelector(selectStep);
+  const { register, handleSubmit, watch, errors, setValue, trigger } = useForm<
+    Inputs
+  >();
+  ///////////
+
+  const onSubmit = (data, e) => {
+    // API call to create user
+    // Display is user already exists
+  };
+
+  const onBack = () => {
+    if (signUpStep === 0) {
+      dispatch(push('/'));
+      return;
+    }
+  };
+
+  const errorLabel = <Label color="red" pointing />;
 
   return (
     <>
@@ -29,74 +72,101 @@ export function SignUpPage() {
               <Step active={signUpStep === 0}>
                 <Icon name="caret right" />
                 <Step.Content>
-                  <Step.Title>The Basics!</Step.Title>
+                  <Step.Title>Step One</Step.Title>
                 </Step.Content>
               </Step>
 
               <Step active={signUpStep === 1}>
                 <Icon name="caret right" />
                 <Step.Content>
-                  <Step.Title>Help us help you!</Step.Title>
+                  <Step.Title>Step Two</Step.Title>
                 </Step.Content>
               </Step>
 
-              {/*<Step>*/}
-              {/*  <Icon name="caret right" />*/}
-              {/*  <Step.Content>*/}
-              {/*    <Step.Title>Finalize!</Step.Title>*/}
-              {/*  </Step.Content>*/}
-              {/*</Step>*/}
+              <Step>
+                <Icon name="caret right" />
+                <Step.Content>
+                  <Step.Title>Step Three</Step.Title>
+                </Step.Content>
+              </Step>
             </Step.Group>
           </StepBox>
 
           <ContentBox>
             {/*Step One*/}
-            <Form hidden={signUpStep !== 0}>
-              <Form.Field>
-                <label>Email Address</label>
-                <input placeholder="name@example.com" />
-              </Form.Field>
-              <Form.Field>
-                <label>Password</label>
-                <input placeholder="**************" />
-              </Form.Field>
-            </Form>
-
-            {/*Step Two*/}
-            <Form hidden={signUpStep !== 1}>
-              <Form.Field>
-                <label>Second Input</label>
-                <input placeholder="1" />
-              </Form.Field>
-              <Form.Field>
-                <label>Second Password</label>
-                <input placeholder="**************" />
-              </Form.Field>
-            </Form>
-
-            <ButtonBox>
-              <Button
-                color={'red'}
-                onClick={() => {
-                  console.log(`Current Step: ${signUpStep}`);
-                  console.log(`Decrementing Step`);
-                  dispatch(sUActions.decrementStep());
+            <Form
+              onValidSubmit={handleSubmit(onSubmit)}
+              hidden={signUpStep !== 0}
+            >
+              <Form.Input
+                fluid
+                name="firstName"
+                label="First Name"
+                placeholder={'John'}
+                validations="isWords"
+                required
+                validationErrors={{
+                  isEmail: 'Please input a valid first name',
+                  isDefaultRequiredValue: 'First name is Required',
                 }}
-              >
-                Back
-              </Button>
-
-              <Button
-                color={'green'}
-                onClick={() => {
-                  console.log(`Current Step: ${signUpStep}`);
-                  console.log(`Incrementing Step`);
-                  dispatch(sUActions.incrementStep());
+                errorLabel={errorLabel}
+              />
+              <Form.Input
+                fluid
+                name="lastName"
+                label="Last Name"
+                placeholder={'Doe'}
+                validations="isWords"
+                required
+                validationErrors={{
+                  isEmail: 'Please input a valid last name',
+                  isDefaultRequiredValue: 'Last name is Required',
                 }}
-              >
-                Next
-              </Button>
-            </ButtonBox>
+                errorLabel={errorLabel}
+              />
+              <Form.Input
+                fluid
+                name="emailAddress"
+                label="Email Address"
+                placeholder={'inployd@inployd.com'}
+                validations="isEmail"
+                required
+                validationErrors={{
+                  isEmail: 'Please input a valid email address',
+                  isDefaultRequiredValue: 'Email address is Required',
+                }}
+                errorLabel={errorLabel}
+              />
+              <Form.Input
+                fluid
+                name="password"
+                label="Password"
+                placeholder={'*************'}
+                validations="minLength:8"
+                required
+                validationErrors={{
+                  minLength: 'Password must at least eight characters long',
+                  isDefaultRequiredValue: 'Password is Required',
+                }}
+                errorLabel={errorLabel}
+              />
+              <Form.Input
+                fluid
+                name="confirmPass"
+                label="Confirm Password"
+                validations="equalsField:password"
+                required
+                validationErrors={{
+                  equalsField: 'Password must match',
+                  isDefaultRequiredValue: 'Password must match',
+                }}
+                errorLabel={errorLabel}
+              />
+              <Form.Group>
+                <Form.Button onClick={onBack} content="Back" />
+                <Form.Button content="Submit" />
+              </Form.Group>
+            </Form>
           </ContentBox>
         </InnerBody>
       </Body>
@@ -113,8 +183,8 @@ const Body = styled.div`
 `;
 
 const InnerBody = styled.div`
-  width: 710px;
-  height: 400px;
+  width: 50%;
+  height: 50%;
   margin: 4.5% auto;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
@@ -125,6 +195,7 @@ const InnerBody = styled.div`
 
 const ButtonBox = styled.div`
   display: flex;
+  margin: 1em;
 `;
 
 const StepBox = styled.div`

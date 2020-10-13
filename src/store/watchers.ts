@@ -20,7 +20,7 @@ function* watch<TAction extends IType>(
 }
 
 export function* watchSignUp() {
-  yield watch(signUp.actions.incrementStep, updateSignUp);
+  yield watch(signUp.actions.setUserCreated, updateSignUp);
 }
 
 // export function* watchSignIn() {

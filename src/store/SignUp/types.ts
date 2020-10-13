@@ -1,7 +1,14 @@
 export interface SignUpState {
   currentStep: number;
-  emailAddress: string;
-  password: string;
+  userCreated: {
+    created: boolean;
+    returnedUser: string;
+  };
+}
+
+export interface userObject {
+  created: boolean;
+  returnedUser: string;
 }
 
 export type ContainerState = SignUpState;
