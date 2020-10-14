@@ -11,6 +11,7 @@ module.exports = {
     'prettier',
     'prettier/react',
     'prettier/@typescript-eslint',
+    'plugin:react/recommended',
   ],
   plugins: ['prettier'],
   rules: {
@@ -19,7 +20,11 @@ module.exports = {
   overrides: [
     {
       files: ['**/*.ts?(x)'],
-      rules: { 'prettier/prettier': ['warn', prettierOptions] },
+      rules: {
+        'prettier/prettier': ['warn', prettierOptions],
+        // 'no-unused-vars': 'off',
+        // '@typescript-eslint/no-unused-vars': 0,
+      },
     },
   ],
 };

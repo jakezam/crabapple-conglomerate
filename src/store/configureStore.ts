@@ -13,6 +13,7 @@ import createSagaMiddleware from 'redux-saga';
 import { History } from 'history';
 import { createReducer } from './reducers';
 import { initSagas } from './saga';
+import { Environment } from './environment';
 
 export function configureAppStore(history?: History) {
   const reduxSagaMonitorOptions = {};
@@ -50,6 +51,9 @@ export function configureAppStore(history?: History) {
   }
 
   runSaga(initSagas);
+
+  // Initalize API
+  const env = new Environment();
 
   return store;
 }

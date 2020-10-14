@@ -1,3 +1,5 @@
+/* eslint-disable  @typescript-eslint/no-unused-vars */
+
 import { all } from 'redux-saga/effects';
 import { spawnSaga } from 'store/helpers';
 import { watchSignUp } from './watchers';

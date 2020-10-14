@@ -2,6 +2,8 @@
  * SignUpPage
  */
 
+/* eslint-disable  @typescript-eslint/no-unused-vars */
+
 // Package Imports //
 import React, { useEffect, useState } from 'react';
 import { Step, Icon, Label } from 'semantic-ui-react';
@@ -24,6 +26,8 @@ import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { selectStep } from '../../../store/SignUp/selectors';
 import { push } from 'connected-react-router';
+import { Api } from 'services/api';
+import { REACT_APP_API_BASE_URL } from '../../../utils/env.config';
 
 type Inputs = {
   emailAddress: string;
