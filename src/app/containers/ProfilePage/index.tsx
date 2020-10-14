@@ -20,7 +20,15 @@ export function ProfilePage(props: Props) {
   const dispatch = useDispatch();
   const viewedUser = useSelector(selectViewedUser);
 
-  let ProviderContent;
+  let ProviderContent = <div />;
+  let recommendedProfiles = (
+    <div>
+      <RecommendedContainer></RecommendedContainer>
+      <RecommendedContainer
+        style={{ marginTop: '25px' }}
+      ></RecommendedContainer>
+    </div>
+  );
   if (viewedUser.isProvider) {
     ProviderContent = (
       <div>
@@ -29,8 +37,17 @@ export function ProfilePage(props: Props) {
         <ReviewContainer></ReviewContainer>
       </div>
     );
-  } else {
-    ProviderContent = <div />;
+    recommendedProfiles = (
+      <div>
+        <RecommendedContainer></RecommendedContainer>
+        <RecommendedContainer
+          style={{ marginTop: '25px' }}
+        ></RecommendedContainer>
+        <RecommendedContainer
+          style={{ marginTop: '25px' }}
+        ></RecommendedContainer>
+      </div>
+    );
   }
 
   return (
@@ -44,11 +61,7 @@ export function ProfilePage(props: Props) {
           {ProviderContent}
           <RecentActivityContainer></RecentActivityContainer>
         </LeftBody>
-        <RightBody>
-          <OtherCategoryProfiles></OtherCategoryProfiles>
-          <PreviousJobs></PreviousJobs>
-          <FollowingContainer></FollowingContainer>
-        </RightBody>
+        <RightBody>{recommendedProfiles}</RightBody>
       </MainBody>
       <Footer />
     </>
@@ -127,7 +140,7 @@ const RightBody = styled.div`
   margin-left: 100px;
 `;
 
-const OtherCategoryProfiles = styled.div`
+const RecommendedContainer = styled.div`
   width: 300px;
   height: 450px;
   border: 1px solid rgba(34, 36, 38, 0.15);
@@ -137,24 +150,24 @@ const OtherCategoryProfiles = styled.div`
   background-color: white;
 `;
 
-const PreviousJobs = styled.div`
-  width: 300px;
-  height: 450px;
-  margin-top: 35px;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.28571429rem;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
-  background-color: white;
-`;
+// const PreviousJobs = styled.div`
+//   width: 300px;
+//   height: 450px;
+//   margin-top: 35px;
+//   border: 1px solid rgba(34, 36, 38, 0.15);
+//   color: rgba(0, 0, 0, 0.87);
+//   border-radius: 0.28571429rem;
+//   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
+//   background-color: white;
+// `;
 
-const FollowingContainer = styled.div`
-  width: 300px;
-  height: 450px;
-  margin-top: 35px;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.28571429rem;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
-  background-color: white;
-`;
+// const FollowingContainer = styled.div`
+//   width: 300px;
+//   height: 450px;
+//   margin-top: 35px;
+//   border: 1px solid rgba(34, 36, 38, 0.15);
+//   color: rgba(0, 0, 0, 0.87);
+//   border-radius: 0.28571429rem;
+//   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
+//   background-color: white;
+// `;
