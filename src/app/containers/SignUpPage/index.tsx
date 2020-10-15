@@ -53,6 +53,10 @@ export function SignUpPage() {
   ///////////
 
   const onSubmit = (data, e) => {
+    console.log(REACT_APP_API_BASE_URL);
+    let api = new Api();
+    const test = api.GetUsers();
+
     // API call to create user
     // Display is user already exists
   };
