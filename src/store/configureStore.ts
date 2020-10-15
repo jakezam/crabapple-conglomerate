@@ -52,8 +52,5 @@ export function configureAppStore(history?: History) {
 
   runSaga(initSagas);
 
-  // Initalize API
-  const env = new Environment();
-
   return store;
 }

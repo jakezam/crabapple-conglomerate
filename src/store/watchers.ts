@@ -6,7 +6,7 @@ import { spawnSaga } from 'store/helpers';
 
 // State Imports //
 import * as signUp from './SignUp/slice';
-import { updateSignUp } from './SignUp/saga';
+// import { updateSignUp } from './SignUp/saga';
 
 interface IType {
   type: string;
@@ -22,7 +22,7 @@ function* watch<TAction extends IType>(
 }
 
 export function* watchSignUp() {
-  yield watch(signUp.actions.setUserCreated, updateSignUp);
+  // yield watch(signUp.actions.setUserCreated, updateSignUp);
 }
 
 // export function* watchSignIn() {

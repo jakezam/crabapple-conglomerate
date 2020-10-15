@@ -7,3 +7,5 @@ export class Environment {
 
   api: Api;
 }
+
+export const env = new Environment();

@@ -16,7 +16,17 @@ export const selectStep = createSelector(
   signUpState => signUpState.currentStep,
 );
 
-export const selectUserCreated = createSelector(
+export const selectUserData = createSelector(
   [selectDomain],
-  signUpState => signUpState.userCreated,
+  signUpState => signUpState.userData,
+);
+
+export const selectUnableToCreate = createSelector(
+  [selectDomain],
+  signUpState => signUpState.unableToCreate,
+);
+
+export const selectCreatingAccount = createSelector(
+  [selectDomain],
+  signUpState => signUpState.creatingAccount,
 );

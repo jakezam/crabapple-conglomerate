@@ -7,8 +7,6 @@ import * as Types from './api.types';
 import { IUser, PostUserCreateRequest } from './api.types';
 import * as https from 'https';
 
-const API_PAGE_SIZE = 10;
-
 /**
  * Manages all requests to the API.
  */
@@ -46,29 +44,26 @@ export class Api {
   /**
    * Create A User
    */
-  async PostCreateUser({
-    FirstName,
-    LastName,
-    DateOfBirth,
-    Gender,
-    State,
-  }: PostUserCreateRequest): Promise<Types.PostUserCreateResponse> {
+  async PostCreateUser(
+    user: PostUserCreateRequest,
+  ): Promise<Types.PostUserCreateResponse> {
     const response: ApiResponse<any> = await this.apisauce.post('api/users', {
-      FirstName: FirstName,
-      LastName: LastName,
-      DateOfBirth: DateOfBirth,
-      Gender: Gender,
-      State: State,
+      FirstName: user.FirstName,
+      LastName: user.LastName,
+      DateOfBirth: user.DateOfBirth,
+      Gender: user.Gender,
+      State: user.State,
     });
 
-    console.log('Logging API Response: ', response);
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
 
     if (!response.ok) {
       const problem = getGeneralApiProblem(response);
       if (problem) return problem;
     }
 
-    return response.data.results;
+    return response.data;
   }
 
   /**
@@ -77,15 +72,14 @@ export class Api {
   async GetUsers(): Promise<Types.GetUsersResponse> {
     const response: ApiResponse<any> = await this.apisauce.get('api/users');
 
-    console.log('Logging API Response: ', response);
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
 
     if (!response.ok) {
       const problem = getGeneralApiProblem(response);
       if (problem) return problem;
     }
 
-    console.log('Logging API Data: ', response.data.results);
-
-    return response.data.results;
+    return response.data;
   }
 }
