@@ -7,6 +7,8 @@ export interface ViewedUserState {
   numFollowing: number;
   followerCount: number;
   isFollowing: boolean;
+  accountsInArea: Array<SubProfile>;
+  providersInArea: Array<SubProfile>;
   providerInfo: ProviderAddition;
   reviews: Array<Review>;
   totalReviews: number;
@@ -19,6 +21,8 @@ export interface ProviderAddition {
   subcategories: Array<string>;
   rating: number;
   location: string;
+  otherCategoryAccounts: Array<SubProfile>;
+  previousJobs: Array<SubProfile>;
 }
 
 export interface Review {
@@ -41,8 +45,10 @@ export interface SubProfile {
   isProvider: boolean;
   providerInfo: {
     companyName: string;
+    category: string;
     rating: number;
   };
+  profileTag: string;
 }
 
 export type ContainerState = ViewedUserState;

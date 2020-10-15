@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Button, Grid, Icon, Label, Rating } from 'semantic-ui-react';
+import { Button, Comment, Grid, Icon, Label, Rating } from 'semantic-ui-react';
 
 export function Review(props) {
   const {
@@ -59,17 +59,31 @@ export function Review(props) {
     <Body>
       <Grid style={{ padding: '0px 15px' }}>
         <Grid.Row>
-          <Grid.Column width={8} style={{ display: 'flex', padding: '0' }}>
-            <Rating
-              defaultRating={rating}
-              maxRating={5}
-              disabled
-              size="tiny"
-              style={{ marginTop: '0.15rem', marginRight: '4px' }}
-            />
-            <HeaderText>{rating} out of 5</HeaderText>
-            <HeaderText>{username}</HeaderText>
-            <DateText>- {date}</DateText>
+          <Grid.Column width={16} style={{ padding: '0' }}>
+            <Comment.Group minimal size="mini">
+              <Comment>
+                <Comment.Avatar
+                  as="a"
+                  src="https://react.semantic-ui.com/images/avatar/small/joe.jpg"
+                />
+                <Comment.Content>
+                  <Comment.Author as="a">{username}</Comment.Author>
+                  <Comment.Metadata>
+                    <span>{date}</span>
+                  </Comment.Metadata>
+                  <Comment.Text style={{ display: 'flex' }}>
+                    <Rating
+                      rating={rating}
+                      maxRating={5}
+                      disabled
+                      size="tiny"
+                      style={{ marginTop: '0.10rem', marginRight: '4px' }}
+                    />
+                    {rating} out of 5
+                  </Comment.Text>
+                </Comment.Content>
+              </Comment>
+            </Comment.Group>
           </Grid.Column>
         </Grid.Row>
         <Grid.Row style={{ padding: '0' }}>
@@ -91,23 +105,11 @@ const Body = styled.div`
   border-bottom: 1px solid grey;
 `;
 
-const HeaderText = styled.p`
-  font-size: 12px;
-  font-weight: bolder;
-  margin-right: 12px;
-  margin-bottom: 0;
-`;
-
 const RecommendText = styled.p`
   font-size: 11px;
   font-weight: bolder;
   margin-top: 1px;
   margin-bottom: 0;
-`;
-
-const DateText = styled.p`
-  font-size: 10px;
-  margin-top: 1px;
 `;
 
 const TitleText = styled.h4`
