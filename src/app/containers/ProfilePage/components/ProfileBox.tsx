@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { Button, Grid, Dropdown, Menu } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
+import { JobRequestForm } from './JobRequestForm';
 
 export function ProfileBox(props) {
   const { user, actions } = props;
@@ -52,11 +53,7 @@ export function ProfileBox(props) {
     );
 
     if (!user.isSelf) {
-      requestButton = (
-        <Button primary style={buttonStyle}>
-          Send Job Request
-        </Button>
-      );
+      requestButton = <JobRequestForm />;
     }
 
     let subcategories = user.providerInfo.subcategories.map(subcategory => (
@@ -107,7 +104,11 @@ export function ProfileBox(props) {
         <Grid.Row>
           <Grid.Column width={4}>
             <ImageContainer>
-              <img src="logo512.png" alt="none" style={{ width: '100%' }} />
+              <img
+                src="https://react.semantic-ui.com/images/avatar/small/matt.jpg"
+                alt="none"
+                style={{ width: '100%' }}
+              />
             </ImageContainer>
           </Grid.Column>
           <Grid.Column width={8}>

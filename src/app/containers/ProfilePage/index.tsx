@@ -11,9 +11,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Footer } from '../../components/Footer';
 import { NavigationBar } from '../../components/NavigationBar';
 import { Review } from '../../components/Review';
+import { RecommendedAccount } from '../../components/RecommendedAccount';
 import { selectViewedUser } from '../../../store/ViewedUser/selectors';
 import { actions as vUActions } from '../../../store/ViewedUser/slice';
 import { ProfileBox } from './components/ProfileBox';
+import { ReviewBox } from './components/ReviewBox';
 
 interface Props {}
 
@@ -22,40 +24,57 @@ export function ProfilePage(props: Props) {
   const viewedUser = useSelector(selectViewedUser);
 
   let reviews = viewedUser.reviews.map(review => <Review review={review} />);
+  let nearbyProviders = viewedUser.providersInArea.map(account => (
+    <RecommendedAccount account={account} />
+  ));
+  let nearbyAccounts = viewedUser.accountsInArea.map(account => (
+    <RecommendedAccount account={account} />
+  ));
 
   let ProviderContent = <div />;
   let recommendedProfiles = (
     <div>
-      <RecommendedContainer></RecommendedContainer>
-      <RecommendedContainer
-        style={{ marginTop: '25px' }}
-      ></RecommendedContainer>
+      <RecommendedContainer>
+        <h4>Services in Your Area</h4>
+        {nearbyProviders}
+      </RecommendedContainer>
+      <RecommendedContainer style={{ marginTop: '25px' }}>
+        <h4>People in Your Area</h4>
+        {nearbyAccounts}
+      </RecommendedContainer>
     </div>
   );
   if (viewedUser.isProvider) {
+    let otherProviders = viewedUser.providerInfo.otherCategoryAccounts.map(
+      account => <RecommendedAccount account={account} />,
+    );
+    let previousAccounts = viewedUser.providerInfo.previousJobs.map(account => (
+      <RecommendedAccount account={account} />
+    ));
+
     ProviderContent = (
       <div>
         <AboutContainer></AboutContainer>
         <PorfolioContainer></PorfolioContainer>
         <ReviewContainer>
-          <ReviewBoxHeader>
-            <p style={{ marginBottom: '10px' }}>
-              1-{viewedUser.reviews.length} of {viewedUser.totalReviews} Reviews
-            </p>
-          </ReviewBoxHeader>
-          {reviews}
+          <ReviewBox reviews={viewedUser.reviews} />
         </ReviewContainer>
       </div>
     );
     recommendedProfiles = (
       <div>
-        <RecommendedContainer></RecommendedContainer>
-        <RecommendedContainer
-          style={{ marginTop: '25px' }}
-        ></RecommendedContainer>
-        <RecommendedContainer
-          style={{ marginTop: '25px' }}
-        ></RecommendedContainer>
+        <RecommendedContainer>
+          <h4>Other {viewedUser.providerInfo.category} in Area</h4>
+          {otherProviders}
+        </RecommendedContainer>
+        <RecommendedContainer style={{ marginTop: '25px' }}>
+          <h4>Previously Worked With</h4>
+          {previousAccounts}
+        </RecommendedContainer>
+        <RecommendedContainer style={{ marginTop: '25px' }}>
+          <h4>Services in Your Area</h4>
+          {nearbyProviders}
+        </RecommendedContainer>
       </div>
     );
   }
@@ -137,7 +156,7 @@ const RecentActivityContainer = styled.div`
 const ReviewContainer = styled.div`
   width: 730px;
   padding: 2rem;
-  min-height: 150px;
+  min-height: 700px;
   margin-top: 25px;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
@@ -160,6 +179,7 @@ const RightBody = styled.div`
 const RecommendedContainer = styled.div`
   width: 300px;
   height: 450px;
+  padding: 15px;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
