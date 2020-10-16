@@ -6,6 +6,7 @@ import 'semantic-ui-react';
 
 // Component Imports //
 import { HomePage } from './containers/HomePage/Loadable';
+import { JobsPage } from './containers/JobsPage/Loadable';
 import { NotFoundPage } from './containers/NotFoundPage/Loadable';
 import { SignUpPage } from './containers/SignUpPage/Loadable';
 import { SignInPage } from './containers/SignInPage/Loadable';
@@ -42,6 +43,9 @@ export function App() {
         </Route>
         <Route exact path="/profile-provider">
           <SellerProfilePage />
+        </Route>
+        <Route exact path="/jobs">
+          <JobsPage />
         </Route>
         <Route>
           <NotFoundPage />
