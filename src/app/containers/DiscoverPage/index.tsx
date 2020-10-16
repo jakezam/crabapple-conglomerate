@@ -6,11 +6,13 @@
 
 import React from 'react';
 import { Input } from 'semantic-ui-react';
+import { NavigationBar } from '../../components/NavigationBar';
 import './Discover.scss';
 
 export function DiscoverPage() {
   return (
-    <>
+    <div>
+      <NavigationBar />
       <div className="discoverPageContainer">
         <div className="discover-leftHalf">
           <Input
@@ -28,6 +30,6 @@ export function DiscoverPage() {
           <div className="discover-suggestedBox discoverAfterBox discoverBox" />
         </div>
       </div>
-    </>
+    </div>
   );
 }
