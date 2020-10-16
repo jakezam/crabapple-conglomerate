@@ -1,9 +1,10 @@
 // Package Imports//
-import { takeLatest, all } from 'redux-saga/effects';
+import { takeLatest, all, put, call } from 'redux-saga/effects';
 import { spawnSaga } from 'store/helpers';
 
 // State Imports //
 import * as signUp from './SignUp/slice';
+import { updateSignUp } from './SignUp/saga';
 
 interface IType {
   type: string;
@@ -19,7 +20,7 @@ function* watch<TAction extends IType>(
 }
 
 export function* watchSignUp() {
-  yield watch(signUp.actions.incrementStep);
+  yield watch(signUp.actions.incrementStep, updateSignUp);
 }
 
 // export function* watchSignIn() {
