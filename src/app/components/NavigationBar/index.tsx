@@ -57,19 +57,7 @@ const Body = styled.div`
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.075);
   height: 90px;
   width: 100%;
-<<<<<<< feature/nicholas.arnold/sign-up-page
-  background-color: aquamarine;
-  // -webkit-box-shadow: 0px 11px 32px -7px rgba(0, 0, 0, 0.47);
-  // -moz-box-shadow: 0px 11px 32px -7px rgba(0, 0, 0, 0.47);
-  // box-shadow: 0px 11px 32px -7px rgba(0, 0, 0, 0.47);
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.075);
-  display: flex;
-  justify-content: center;
-
-  //border: solid orange;
-=======
   background-color: #f0f9ff;
->>>>>>> feat: Redone Navigation Bar
 `;
 
 const ProfilePic = styled.img`

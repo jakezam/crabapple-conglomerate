@@ -99,7 +99,7 @@ export function ProfilePage(props: Props) {
 
 const MainBody = styled.div`
   display: flex;
-  padding: 130px 0;
+  padding: 80px 0 130px 0;
   // background-color: #f4f4f4;
   justify-content: center;
 `;
