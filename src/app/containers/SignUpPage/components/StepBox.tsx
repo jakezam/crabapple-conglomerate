@@ -1,9 +1,14 @@
 import { Icon, Step } from 'semantic-ui-react';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectStep } from '../../../../store/SignUp/selectors';
+import styled from 'styled-components';
 
-export function stepBox() {
+export function StepBox() {
+  const signUpStep = useSelector(selectStep);
+
   return (
-    <StepBox>
+    <Box>
       <Step.Group vertical>
         <Step active={signUpStep === 0}>
           <Icon name="caret right" />
@@ -26,6 +31,17 @@ export function stepBox() {
           </Step.Content>
         </Step>
       </Step.Group>
-    </StepBox>
+    </Box>
   );
 }
+
+const Box = styled.div`
+  width: 50%;
+  padding: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: solid rgba(34, 36, 38, 0.15);
+
+  //border: solid red;
+`;

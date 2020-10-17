@@ -3,7 +3,9 @@ import { Icon, Popup } from 'semantic-ui-react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import React from 'react';
 
-export function step3() {
+const errorLabel = <Label color="red" pointing />;
+
+export function Step3() {
   return (
     <Form onValidSubmit={handleSubmit(onSubmitStep3)} hidden={signUpStep !== 3}>
       <Form.Input

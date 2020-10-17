@@ -5,27 +5,7 @@
 /* eslint-disable  @typescript-eslint/no-unused-vars */
 
 // Package Imports //
-import React, { useEffect, useState } from 'react';
-import {
-  Step,
-  Icon,
-  Label,
-  Modal,
-  Button,
-  Message,
-  Popup,
-} from 'semantic-ui-react';
-import {
-  Form,
-  Input,
-  TextArea,
-  Checkbox,
-  Radio,
-  RadioGroup,
-  Dropdown,
-  Select,
-} from 'formsy-semantic-ui-react';
-import SemanticDatepicker from 'react-semantic-ui-datepickers';
+import React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
@@ -38,11 +18,11 @@ import {
 import { actions, sliceKey } from '../../../store/SignUp/slice';
 
 // Component Imports //
-import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import { IUser } from '../../../store/SignUp/types';
 import { useInjectSaga } from '../../../utils/redux-injectors';
 import { signUpPageSaga } from 'store/SignUp/saga';
+import { Step } from 'semantic-ui-react';
 
 type Inputs = {
   emailAddress: string;
@@ -174,8 +154,6 @@ export function SignUpPage() {
     dispatch(actions.setStep(2));
   };
 
-  const errorLabel = <Label color="red" pointing />;
-
   return (
     <>
       <Header />
@@ -202,18 +180,19 @@ export function SignUpPage() {
         </Modal>
 
         <InnerBody>
+          <StepBox />
           <ContentBox>
             {/*Step zero -- init user*/}
-            <step0 />
+            <Step0 />
 
             {/*Step one -- provider yes/no*/}
-            <step1 />
+            <Step1 />
 
             {/*Step two -- Consumer Final*/}
-            <step2 />
+            <Step2 />
 
             {/*Step three -- Provider Final*/}
-            <step3 />
+            <Step3 />
           </ContentBox>
         </InnerBody>
       </Body>
@@ -254,17 +233,6 @@ const InnerBody = styled.div`
 const ButtonBox = styled.div`
   display: flex;
   margin: 1em;
-`;
-
-const StepBox = styled.div`
-  width: 50%;
-  padding: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-right: solid rgba(34, 36, 38, 0.15);
-
-  //border: solid red;
 `;
 
 const ContentBox = styled.div`

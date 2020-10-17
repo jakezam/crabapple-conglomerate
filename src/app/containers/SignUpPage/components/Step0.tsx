@@ -1,10 +1,21 @@
 import { Form } from 'formsy-semantic-ui-react';
 import React from 'react';
+import { Label } from 'semantic-ui-react';
+import { useForm } from 'react-hook-form';
 
-export function step0() {
+const errorLabel = <Label color="red" pointing />;
+type FormInputs = {
+  emailAddress: string;
+  password: string;
+  confirmPass: string;
+};
+
+export function Step0() {
+  const { handleSubmit } = useForm<FormInputs>();
+
   return (
     <Form
-      onValidSubmit={handleSubmit(onSubmitStep0)}
+      onValidSubmit={handleSubmit(onSubmit)}
       hidden={signUpStep !== 0}
       loading={submitting}
     >

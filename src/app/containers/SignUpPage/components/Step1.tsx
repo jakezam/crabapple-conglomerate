@@ -2,7 +2,9 @@ import { Message } from 'semantic-ui-react';
 import { Form } from 'formsy-semantic-ui-react';
 import React from 'react';
 
-export function step1() {
+const errorLabel = <Label color="red" pointing />;
+
+export function Step1() {
   return (
     <Form hidden={signUpStep !== 1}>
       <Message>
