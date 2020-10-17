@@ -35,6 +35,11 @@ export function NavigationBar() {
           icon={'lightbulb'}
           active={activeItem === 'notifications'}
         />
+        <Menu.Item
+          name="My Profile"
+          icon={'user'}
+          active={activeItem === 'profile'}
+        />
         <Menu.Menu position="right">
           <Menu.Item>
             {/* <Input style={{paddingRight: '12.671429em !important', marginLeft: '140px'}} icon="search" placeholder="Search..." /> */}

@@ -17,12 +17,13 @@ export function JobPane(props) {
     footer = (
       <>
         <Grid.Row style={{ paddingTop: '50px' }}>
-          <Grid.Column floated="left" width={11}>
+          <Grid.Column width={7}>
+            <ModificationForm job={job} />
+          </Grid.Column>
+          <Grid.Column floated="left" width={9}>
             <Button color="green" size="small">
               COMPLETE JOB
             </Button>
-          </Grid.Column>
-          <Grid.Column floated="right" width={5}>
             <Button color="red" size="small">
               CANCEL JOB
             </Button>
@@ -47,7 +48,7 @@ export function JobPane(props) {
       );
     }
   } else {
-    if (job.isProviding) {
+    if (job.isProviding || (!job.isProviding && job.wasModified)) {
       header = (
         <>
           <Grid.Row style={{ paddingBottom: '50px' }}>
