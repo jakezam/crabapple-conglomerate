@@ -6,6 +6,8 @@ export interface JobsState {
 export interface Job {
   userId: string;
   username: string;
+  phoneNumber: string;
+  emailAddress: string;
   jobTitle: string;
   jobDescription: string;
   isAccepted: boolean;

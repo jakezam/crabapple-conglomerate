@@ -8,6 +8,8 @@ export const initialState: ContainerState = {
     {
       userId: '',
       username: 'Jacob Zamani',
+      phoneNumber: '(XXX)-XXX-XXXX',
+      emailAddress: 'joe@schmoe.com',
       jobTitle: 'Permanant Landscaper',
       jobDescription:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
@@ -19,7 +21,9 @@ export const initialState: ContainerState = {
     },
     {
       userId: '',
-      username: 'Emily Giovannone',
+      username: 'Grace Vocalina',
+      phoneNumber: '(XXX)-XXX-XXXX',
+      emailAddress: 'joe@schmoe.com',
       jobTitle: 'Leaf Cleaning',
       jobDescription:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
@@ -31,7 +35,9 @@ export const initialState: ContainerState = {
     },
     {
       userId: '',
-      username: 'Grace Vocalina',
+      username: 'Madison Daniels',
+      phoneNumber: '(XXX)-XXX-XXXX',
+      emailAddress: 'joe@schmoe.com',
       jobTitle: 'Branch Trimming',
       jobDescription:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
@@ -44,6 +50,8 @@ export const initialState: ContainerState = {
     {
       userId: '',
       username: 'Austin Jose',
+      phoneNumber: '(XXX)-XXX-XXXX',
+      emailAddress: 'joe@schmoe.com',
       jobTitle: 'Company Commercial Film',
       jobDescription:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',

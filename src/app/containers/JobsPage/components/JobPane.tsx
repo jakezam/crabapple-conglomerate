@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 import { Button, Grid, Header, Message } from 'semantic-ui-react';
+import { ModificationForm } from './ModificationForm';
 
 export function JobPane(props) {
   const { job } = props;
@@ -50,15 +51,15 @@ export function JobPane(props) {
       header = (
         <>
           <Grid.Row style={{ paddingBottom: '50px' }}>
-            <Grid.Column floated="left" width={16}>
+            <Grid.Column width={5}>
+              <ModificationForm job={job} />
+            </Grid.Column>
+            <Grid.Column floated="left" width={11}>
               <Button color="green" size="small">
                 ACCEPT JOB
               </Button>
               <Button color="red" size="small">
                 REJECT JOB
-              </Button>
-              <Button primary size="small">
-                MODIFY JOB
               </Button>
             </Grid.Column>
           </Grid.Row>
@@ -110,6 +111,22 @@ export function JobPane(props) {
         </Grid.Column>
         <Grid.Column width={12} style={{ display: 'flex' }}>
           <p style={{ fontSize: '15px' }}>{job.beginDate}</p>
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column width={4}>
+          <h4>Phone Number:</h4>
+        </Grid.Column>
+        <Grid.Column width={12} style={{ display: 'flex' }}>
+          <p style={{ fontSize: '15px' }}>{job.phoneNumber}</p>
+        </Grid.Column>
+      </Grid.Row>
+      <Grid.Row>
+        <Grid.Column width={4}>
+          <h4>Email Address:</h4>
+        </Grid.Column>
+        <Grid.Column width={12} style={{ display: 'flex' }}>
+          <p style={{ fontSize: '15px' }}>{job.emailAddress}</p>
         </Grid.Column>
       </Grid.Row>
       <Grid.Row style={{ paddingBottom: '0' }}>
