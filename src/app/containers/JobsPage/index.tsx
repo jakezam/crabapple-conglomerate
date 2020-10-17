@@ -23,13 +23,20 @@ export function JobsPage(props: Props) {
   const dispatch = useDispatch();
   const jobState = useSelector(selectJobs);
 
-  let panes = Array<{ menuItem: string; render: () => JSX.Element }>();
+  let panes = Array<{
+    menuItem: { key: string; icon: string; content: string };
+    render: () => JSX.Element;
+  }>();
   jobState.jobs.forEach(job => {
+    let iconName = '';
+    if ((!job.isAccepted && job.isProviding) || job.wasModified) {
+      iconName = 'exclamation circle';
+    }
     let nextPane = {
-      menuItem: job.username,
+      menuItem: { key: job.username, icon: iconName, content: job.username },
       render: () => (
-        <Tab.Pane style={{ height: '600px' }}>
-          <JobPane job={job} isProvider={jobState.isProvider} />
+        <Tab.Pane style={{ minHeight: '600px' }}>
+          <JobPane job={job} />
         </Tab.Pane>
       ),
     };
@@ -51,5 +58,5 @@ export function JobsPage(props: Props) {
 }
 
 const Body = styled.div`
-  padding: 100px;
+  padding: 75px 100px 100px 100px;
 `;

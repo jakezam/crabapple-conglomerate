@@ -1,6 +1,5 @@
 export interface JobsState {
   userId: string;
-  isProvider: boolean;
   jobs: Array<Job>;
 }
 
@@ -12,6 +11,8 @@ export interface Job {
   isAccepted: boolean;
   beginDate: string;
   isOngoing: boolean;
+  isProviding: boolean;
+  wasModified: boolean;
 }
 
 export type ContainerState = JobsState;
