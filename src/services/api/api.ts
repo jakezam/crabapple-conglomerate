@@ -4,7 +4,12 @@ import { ApisauceInstance, create, ApiResponse } from 'apisauce';
 import { getGeneralApiProblem } from './api.problem';
 import { ApiConfig, DEFAULT_API_CONFIG } from './api.config';
 import * as Types from './api.types';
-import { IUser, PostUserCreateRequest } from './api.types';
+import {
+  IUser,
+  PostUserCreateRequest,
+  GetProvidersResponse,
+  IProvider,
+} from './api.types';
 import * as https from 'https';
 
 /**
@@ -81,5 +86,58 @@ export class Api {
     }
 
     return response.data;
+  }
+
+  /**
+   * Get All Users
+   */
+  async GetUserById(id: string): Promise<Types.GetUsersResponse> {
+    const route = 'api/users/' + id;
+    const response: ApiResponse<IUser> = await this.apisauce.get(route);
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
+  }
+
+  /**
+   * Get All Users
+   */
+  async GetProviders(): Promise<Types.GetProvidersResponse> {
+    const response: ApiResponse<any> = await this.apisauce.get('api/providers');
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return response.data;
+  }
+
+  /**
+   * Get All Users
+   */
+  async GetProvidersById(id: string): Promise<Types.GetProvidersResponse> {
+    const route = 'api/providers/' + id;
+    const response: ApiResponse<IProvider> = await this.apisauce.get(route);
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
   }
 }

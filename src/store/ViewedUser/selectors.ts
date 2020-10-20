@@ -10,3 +10,13 @@ export const selectViewedUser = createSelector(
   [selectDomain],
   viewedUserState => viewedUserState,
 );
+
+export const selectViewedUserId = createSelector(
+  [selectDomain],
+  viewedUserState => viewedUserState.userId,
+);
+
+export const selectProfileLoading = createSelector(
+  [selectDomain],
+  viewedUserState => viewedUserState.isLoading,
+);

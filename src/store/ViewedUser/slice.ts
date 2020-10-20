@@ -1,9 +1,10 @@
 import { createSlice } from 'utils/@reduxjs/toolkit';
-import { ContainerState } from 'store/ViewedUser/types';
+import { ContainerState, ViewedUserState } from 'store/ViewedUser/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
-  userId: '',
+  userId: 1,
+  isLoading: false,
   firstName: 'Jacob',
   lastName: 'Zamani',
   isProvider: true,
@@ -13,7 +14,7 @@ export const initialState: ContainerState = {
   isFollowing: false,
   accountsInArea: [
     {
-      userId: 'saPqwnIUw879N',
+      userId: '2',
       firstName: 'Nick',
       lastName: 'Arnold',
       isProvider: false,
@@ -25,7 +26,7 @@ export const initialState: ContainerState = {
       profileTag: 'Found nearby',
     },
     {
-      userId: 'saPqwnIUw879N',
+      userId: '3',
       firstName: 'Grace',
       lastName: 'Vocalina',
       isProvider: false,
@@ -39,7 +40,7 @@ export const initialState: ContainerState = {
   ],
   providersInArea: [
     {
-      userId: 'saPqwnIUw879N',
+      userId: '4',
       firstName: 'First',
       lastName: 'Last',
       isProvider: true,
@@ -51,7 +52,7 @@ export const initialState: ContainerState = {
       profileTag: 'Found nearby',
     },
     {
-      userId: 'saPqwnIUw879N',
+      userId: '5',
       firstName: 'First',
       lastName: 'Last',
       isProvider: true,
@@ -134,11 +135,30 @@ const viewedUserSlice = createSlice({
   name: 'viewedUser',
   initialState,
   reducers: {
-    changeId(state: ContainerState, action: PayloadAction<string>) {
+    changeId(state: ContainerState, action: PayloadAction<number>) {
       state.userId = action.payload;
     },
     changeFollowStatus(state: ContainerState) {
       state.isFollowing = !state.isFollowing;
+    },
+    setPageLoading(state: ContainerState, action: PayloadAction<boolean>) {
+      state.isLoading = action.payload;
+    },
+    setProfile(state: ContainerState, action: PayloadAction<ContainerState>) {
+      console.log('Firing setProfile: ', action.payload);
+      state.isLoading = false;
+      state.firstName = action.payload.firstName;
+      state.lastName = action.payload.lastName;
+      state.isProvider = action.payload.isProvider;
+      state.isSelf = action.payload.isSelf;
+      state.numFollowing = action.payload.numFollowing;
+      state.followerCount = action.payload.followerCount;
+      state.isFollowing = action.payload.isFollowing;
+      state.accountsInArea = action.payload.accountsInArea;
+      state.providersInArea = action.payload.providersInArea;
+      state.providerInfo = action.payload.providerInfo;
+      state.reviews = action.payload.reviews;
+      state.totalReviews = action.payload.totalReviews;
     },
   },
 });

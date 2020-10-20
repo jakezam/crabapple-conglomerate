@@ -7,7 +7,20 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import { Button, Comment, Grid, Icon, Label, Rating } from 'semantic-ui-react';
 
-export function Review(props) {
+interface Props {
+  review: {
+    username: string;
+    rating: number;
+    title: string;
+    message: string;
+    date: string;
+    wouldRecommend: boolean;
+    numLikes: number;
+    numDislikes: number;
+  };
+}
+
+export function Review(props: Props) {
   const {
     username,
     rating,

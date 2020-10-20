@@ -18,10 +18,22 @@ export interface PostUserCreateRequest {
   State: string;
 }
 
+export interface IProvider {
+  providerId: number;
+  company: string;
+  category: string;
+  website: string;
+  rating: number;
+}
+
 export type PostUserCreateResponse =
   | { kind: 'ok'; response: IUser }
   | GeneralApiProblem;
 
 export type GetUsersResponse =
-  | { kind: 'ok'; response: IUser }
+  | { kind: 'ok'; response?: IUser }
+  | GeneralApiProblem;
+
+export type GetProvidersResponse =
+  | { kind: 'ok'; response?: IProvider }
   | GeneralApiProblem;

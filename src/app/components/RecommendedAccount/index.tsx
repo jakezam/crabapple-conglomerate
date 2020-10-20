@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /**
  *
  * RecommendedAccount
@@ -50,7 +51,9 @@ export function RecommendedAccount(props) {
             src="https://react.semantic-ui.com/images/avatar/small/elliot.jpg"
           />
           <Comment.Content>
-            <Comment.Author as="a">{displayName}</Comment.Author>
+            <Comment.Author as="a" href="/discover">
+              {displayName}
+            </Comment.Author>
             {/* {metaTag} */}
             <Comment.Text style={{ display: 'flex', color: 'rgba(0,0,0,.57)' }}>
               {tag}

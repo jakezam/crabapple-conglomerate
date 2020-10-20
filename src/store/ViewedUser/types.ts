@@ -1,5 +1,6 @@
 export interface ViewedUserState {
-  userId: string;
+  userId: number;
+  isLoading: boolean;
   firstName: string;
   lastName: string;
   isProvider: boolean;

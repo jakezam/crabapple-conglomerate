@@ -44,9 +44,10 @@ export function App() {
         <Route exact path="/profile-provider">
           <SellerProfilePage />
         </Route>
-        <Route exact path="/profile">
+        {/* <Route exact path="/profile">
           <ProfilePage />
-        </Route>
+        </Route> */}
+        <Route path="/profile/:id" component={ProfilePage} />
         <Route>
           <NotFoundPage />
         </Route>

@@ -22,7 +22,7 @@ import { Header } from '../../components/Header';
 import { IUser } from '../../../store/SignUp/types';
 import { useInjectSaga } from '../../../utils/redux-injectors';
 import { signUpPageSaga } from 'store/SignUp/saga';
-import { Step } from 'semantic-ui-react';
+import { Button, Modal, Step } from 'semantic-ui-react';
 
 type Inputs = {
   emailAddress: string;
@@ -180,19 +180,19 @@ export function SignUpPage() {
         </Modal>
 
         <InnerBody>
-          <StepBox />
+          {/* <StepBox /> */}
           <ContentBox>
             {/*Step zero -- init user*/}
-            <Step0 />
+            {/* <Step0 /> */}
 
             {/*Step one -- provider yes/no*/}
-            <Step1 />
+            {/* <Step1 /> */}
 
             {/*Step two -- Consumer Final*/}
-            <Step2 />
+            {/* <Step2 /> */}
 
             {/*Step three -- Provider Final*/}
-            <Step3 />
+            {/* <Step3 /> */}
           </ContentBox>
         </InnerBody>
       </Body>

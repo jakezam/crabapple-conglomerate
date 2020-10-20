@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 import { Review } from '../../../components/Review';
@@ -14,7 +15,7 @@ export function ReviewBox(props) {
     endIndex = reviews.length;
   }
   let reviewArr = reviews.slice(reviewIndex, endIndex);
-  let reviewBlock = reviewArr.map(review => <Review review={review} />);
+  let reviewBlock = reviewArr.map(review => <Review key={0} review={review} />);
 
   let totalPages;
   if (reviews.length % 2 == 0) {

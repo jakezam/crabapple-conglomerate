@@ -1,34 +1,55 @@
+/* eslint-disable react/prop-types */
 /**
  *
  * ProfilePage
  *
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Footer } from '../../components/Footer';
 import { NavigationBar } from '../../components/NavigationBar';
-import { Review } from '../../components/Review';
 import { RecommendedAccount } from '../../components/RecommendedAccount';
+
 import { selectViewedUser } from '../../../store/ViewedUser/selectors';
-import { actions as vUActions } from '../../../store/ViewedUser/slice';
+import { actions, sliceKey } from '../../../store/ViewedUser/slice';
+import { useInjectSaga } from '../../../utils/redux-injectors';
+import { profilePageSaga } from 'store/ViewedUser/saga';
+
 import { ProfileBox } from './components/ProfileBox';
 import { ReviewBox } from './components/ReviewBox';
+import { Dimmer, Loader, Segment } from 'semantic-ui-react';
 
-interface Props {}
+export function ProfilePage(props) {
+  useInjectSaga({ key: sliceKey, saga: profilePageSaga });
 
-export function ProfilePage(props: Props) {
   const dispatch = useDispatch();
   const viewedUser = useSelector(selectViewedUser);
+  const id = props.match.params.id;
 
-  let reviews = viewedUser.reviews.map(review => <Review review={review} />);
+  useEffect(() => {
+    dispatch(actions.changeId(id));
+  }, [dispatch, id]);
+
+  console.log(viewedUser);
+
+  if (viewedUser.isLoading) {
+    return (
+      <>
+        <NavigationBar />
+        <Segment basic loading style={{ margin: '300px 0' }} />
+        <Footer />
+      </>
+    );
+  }
+
   let nearbyProviders = viewedUser.providersInArea.map(account => (
-    <RecommendedAccount account={account} />
+    <RecommendedAccount key={0} account={account} />
   ));
   let nearbyAccounts = viewedUser.accountsInArea.map(account => (
-    <RecommendedAccount account={account} />
+    <RecommendedAccount key={0} account={account} />
   ));
 
   let ProviderContent = <div />;
@@ -46,10 +67,10 @@ export function ProfilePage(props: Props) {
   );
   if (viewedUser.isProvider) {
     let otherProviders = viewedUser.providerInfo.otherCategoryAccounts.map(
-      account => <RecommendedAccount account={account} />,
+      account => <RecommendedAccount key={0} account={account} />,
     );
     let previousAccounts = viewedUser.providerInfo.previousJobs.map(account => (
-      <RecommendedAccount account={account} />
+      <RecommendedAccount key={0} account={account} />
     ));
 
     ProviderContent = (
@@ -85,7 +106,7 @@ export function ProfilePage(props: Props) {
       <MainBody>
         <LeftBody>
           <ProfileInfoBox>
-            <ProfileBox user={viewedUser} actions={vUActions} />
+            <ProfileBox user={viewedUser} actions={actions} />
           </ProfileInfoBox>
           {ProviderContent}
           <RecentActivityContainer></RecentActivityContainer>
