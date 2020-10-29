@@ -1,11 +1,20 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Button, Grid, Dropdown, Menu } from 'semantic-ui-react';
+import {
+  Button,
+  Grid,
+  Dropdown,
+  Menu,
+  Rating,
+  Segment,
+} from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { JobRequestForm } from './JobRequestForm';
 
 export function ProfileBox(props) {
-  const { user, actions } = props;
+  const { user, actions, reviewCount } = props;
   const dispatch = useDispatch();
 
   let buttonStyle = { marginTop: '20px', padding: '12px', width: '145px' };
@@ -40,56 +49,38 @@ export function ProfileBox(props) {
   let displayName = user.firstName + ' ' + user.lastName;
   let rating = <div />;
   let requestButton = <div />;
-  let categories = <div />;
-  let location = <div />;
-  let website = <div />;
   let provider = <div />;
   if (user.isProvider) {
     displayName = user.providerInfo.companyName;
     rating = (
-      <h3 style={{ textAlign: 'left', paddingLeft: '5px', marginTop: '12px' }}>
-        Reviews ({user.providerInfo.rating})
-      </h3>
+      <HorizontalAlign>
+        <Rating
+          rating={user.providerInfo.rating}
+          maxRating={5}
+          disabled
+          size="huge"
+          style={{ marginTop: '1px', marginRight: '4px' }}
+        />
+        {/* <ReviewHeader>Reviews ({user.reviews.length})</ReviewHeader> */}
+        <ReviewHeader>Reviews ({reviewCount})</ReviewHeader>
+      </HorizontalAlign>
     );
 
     if (!user.isSelf) {
       requestButton = <JobRequestForm />;
     }
 
-    let subcategories = user.providerInfo.subcategories.map(subcategory => (
-      <Dropdown.Item style={{ width: '145px' }}>{subcategory}</Dropdown.Item>
-    ));
-
-    categories = (
-      <Menu vertical style={{ width: '14rem' }}>
-        <Dropdown item text={user.providerInfo.category}>
-          <Dropdown.Menu>{subcategories}</Dropdown.Menu>
-        </Dropdown>
-      </Menu>
-    );
-
-    location = (
-      <h4 style={{ paddingLeft: '5px', textAlign: 'left' }}>
-        {user.providerInfo.location}
-      </h4>
-    );
-
-    website = (
-      <h4 style={{ textAlign: 'left', paddingLeft: '5px', paddingTop: '2px' }}>
-        {user.providerInfo.websiteURL}
-      </h4>
-    );
-
     provider = (
       <>
         <Grid.Row style={{ paddingTop: '0' }}>
-          <Grid.Column width={6}>{rating}</Grid.Column>
-          <Grid.Column width={5}></Grid.Column>
-          <Grid.Column width={5}>{categories}</Grid.Column>
-        </Grid.Row>
-        <Grid.Row style={{ paddingTop: '30px', paddingBottom: '30px' }}>
-          <Grid.Column width={11}>{website}</Grid.Column>
-          <Grid.Column width={5}>{location}</Grid.Column>
+          <Grid.Column>
+            <Segment floated="left" style={{ width: '25%' }}>
+              <h4 style={{ margin: '0 0' }}>{user.providerInfo.category}</h4>
+            </Segment>
+            <Segment floated="right" style={{ marginTop: '0', width: '25%' }}>
+              <h4 style={{ margin: '0 0' }}>{user.providerInfo.location}</h4>
+            </Segment>
+          </Grid.Column>
         </Grid.Row>
       </>
     );
@@ -122,7 +113,9 @@ export function ProfileBox(props) {
               {displayName}
             </h1>
             <HorizontalAlign>
-              <h4 style={{ textAlign: 'left', marginTop: '0' }}>
+              <h4
+                style={{ textAlign: 'left', marginTop: '0', marginLeft: '4px' }}
+              >
                 {followerCount}
               </h4>
               <h4
@@ -135,6 +128,7 @@ export function ProfileBox(props) {
                 {followingCount}
               </h4>
             </HorizontalAlign>
+            {rating}
           </Grid.Column>
           <Grid.Column width={4}>
             {followButton}
@@ -155,4 +149,10 @@ const ImageContainer = styled.div`
 
 const HorizontalAlign = styled.div`
   display: flex;
+`;
+
+const ReviewHeader = styled.h4`
+  text-align: left;
+  padding-left: 5px;
+  margin-top: 3px;
 `;

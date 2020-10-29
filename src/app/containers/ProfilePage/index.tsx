@@ -17,29 +17,51 @@ import { selectViewedUser } from '../../../store/ViewedUser/selectors';
 import { actions, sliceKey } from '../../../store/ViewedUser/slice';
 import { useInjectSaga } from '../../../utils/redux-injectors';
 import { profilePageSaga } from 'store/ViewedUser/saga';
+import {
+  actions as reviewActions,
+  sliceKey as reviewSliceKey,
+} from '../../../store/Review/slice';
+import { reviewSaga } from 'store/Review/saga';
+import { selectReview } from '../../../store/Review/selectors';
 
 import { ProfileBox } from './components/ProfileBox';
 import { ReviewBox } from './components/ReviewBox';
-import { Dimmer, Loader, Segment } from 'semantic-ui-react';
+import { Message, Segment } from 'semantic-ui-react';
 
 export function ProfilePage(props) {
   useInjectSaga({ key: sliceKey, saga: profilePageSaga });
+  useInjectSaga({ key: reviewSliceKey, saga: reviewSaga });
 
   const dispatch = useDispatch();
   const viewedUser = useSelector(selectViewedUser);
+  const reviewState = useSelector(selectReview);
   const id = props.match.params.id;
 
   useEffect(() => {
     dispatch(actions.changeId(id));
+    dispatch(reviewActions.setReceivingUserId(id));
   }, [dispatch, id]);
-
-  console.log(viewedUser);
 
   if (viewedUser.isLoading) {
     return (
       <>
         <NavigationBar />
         <Segment basic loading style={{ margin: '300px 0' }} />
+        <Footer />
+      </>
+    );
+  }
+
+  if (viewedUser.notFound) {
+    return (
+      <>
+        <NavigationBar />
+        <div style={{ margin: '150px 300px 350px 300px' }}>
+          <Message>
+            <Message.Header>User not found</Message.Header>
+            <p>The user you are searching for does not exist</p>
+          </Message>
+        </div>
         <Footer />
       </>
     );
@@ -78,7 +100,7 @@ export function ProfilePage(props) {
         <AboutContainer></AboutContainer>
         <PorfolioContainer></PorfolioContainer>
         <ReviewContainer>
-          <ReviewBox reviews={viewedUser.reviews} />
+          <ReviewBox reviews={reviewState.currReviews} />
         </ReviewContainer>
       </div>
     );
@@ -106,7 +128,11 @@ export function ProfilePage(props) {
       <MainBody>
         <LeftBody>
           <ProfileInfoBox>
-            <ProfileBox user={viewedUser} actions={actions} />
+            <ProfileBox
+              user={viewedUser}
+              actions={actions}
+              reviewCount={reviewState.currReviews.length}
+            />
           </ProfileInfoBox>
           {ProviderContent}
           <RecentActivityContainer></RecentActivityContainer>
@@ -177,20 +203,13 @@ const RecentActivityContainer = styled.div`
 const ReviewContainer = styled.div`
   width: 730px;
   padding: 2rem;
-  min-height: 700px;
+  // min-height: 700px;
   margin-top: 25px;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
   background-color: white;
-`;
-
-const ReviewBoxHeader = styled.div`
-  display: flex;
-  width: 100%;
-  font-size: 11px;
-  border-bottom: 1px solid grey;
 `;
 
 const RightBody = styled.div`
@@ -207,25 +226,3 @@ const RecommendedContainer = styled.div`
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
   background-color: white;
 `;
-
-// const PreviousJobs = styled.div`
-//   width: 300px;
-//   height: 450px;
-//   margin-top: 35px;
-//   border: 1px solid rgba(34, 36, 38, 0.15);
-//   color: rgba(0, 0, 0, 0.87);
-//   border-radius: 0.28571429rem;
-//   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
-//   background-color: white;
-// `;
-
-// const FollowingContainer = styled.div`
-//   width: 300px;
-//   height: 450px;
-//   margin-top: 35px;
-//   border: 1px solid rgba(34, 36, 38, 0.15);
-//   color: rgba(0, 0, 0, 0.87);
-//   border-radius: 0.28571429rem;
-//   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
-//   background-color: white;
-// `;

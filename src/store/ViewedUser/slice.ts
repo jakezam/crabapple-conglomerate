@@ -129,6 +129,7 @@ export const initialState: ContainerState = {
     },
   ],
   totalReviews: 2,
+  notFound: false,
 };
 
 const viewedUserSlice = createSlice({
@@ -145,7 +146,6 @@ const viewedUserSlice = createSlice({
       state.isLoading = action.payload;
     },
     setProfile(state: ContainerState, action: PayloadAction<ContainerState>) {
-      console.log('Firing setProfile: ', action.payload);
       state.isLoading = false;
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
@@ -157,8 +157,11 @@ const viewedUserSlice = createSlice({
       state.accountsInArea = action.payload.accountsInArea;
       state.providersInArea = action.payload.providersInArea;
       state.providerInfo = action.payload.providerInfo;
-      state.reviews = action.payload.reviews;
+      // state.reviews = action.payload.reviews;
       state.totalReviews = action.payload.totalReviews;
+    },
+    setPageNotFound(state: ContainerState, action: PayloadAction<boolean>) {
+      state.notFound = action.payload;
     },
   },
 });

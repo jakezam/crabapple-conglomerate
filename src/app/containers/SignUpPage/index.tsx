@@ -116,6 +116,7 @@ export function SignUpPage() {
 
     dispatch(
       actions.setUserData({
+        userId: 1,
         firstName: userData.firstName,
         lastName: userData.lastName,
         emailAddress: userData.emailAddress,

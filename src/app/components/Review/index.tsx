@@ -70,7 +70,7 @@ export function Review(props: Props) {
 
   return (
     <Body>
-      <Grid style={{ padding: '0px 15px' }}>
+      <Grid style={{ padding: '0 15px 15px 15px' }}>
         <Grid.Row>
           <Grid.Column width={16} style={{ padding: '0' }}>
             <Comment.Group minimal size="mini">
@@ -106,7 +106,7 @@ export function Review(props: Props) {
           <ResponseBox>{message}</ResponseBox>
         </Grid.Row>
         <Grid.Row>{recommendation}</Grid.Row>
-        <Grid.Row>{likeReview}</Grid.Row>
+        {/* <Grid.Row>{likeReview}</Grid.Row> */}
       </Grid>
     </Body>
   );

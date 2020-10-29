@@ -22,15 +22,18 @@ function* getProfile() {
 
   const id = yield select(selectViewedUserId);
   console.log('Profile Page Saga: Fetching User State for user', id);
-  console.log('Profile Page Saga: GET USER');
   const userResponse: GetUsersResponse = yield env.api.GetUserById(id);
-  console.log('Reponse user: RESPONSE => ', userResponse);
+  console.log('GET USER: RESPONSE => ', userResponse);
 
-  // Now set the state of the Profile
+  if (userResponse.kind !== 'ok') {
+    console.log('User not found');
+    yield put(actions.setPageLoading(false));
+    yield put(actions.setPageNotFound(true));
+    return;
+  }
 
-  console.log('Profile Page Saga: GET PROVIDER DATA');
   const providerResp: GetProvidersResponse = yield env.api.GetProvidersById(id);
-  console.log('Profile Page Saga: RESPONSE => ', providerResp);
+  console.log('GET PROVIDER DATA: RESPONSE => ', providerResp);
 
   if (providerResp.kind !== 'ok') {
     console.log('User is not a provider');
@@ -78,6 +81,7 @@ function* getProfile() {
     providerInfo: providerData,
     reviews: [],
     totalReviews: 0,
+    notFound: false,
   };
   yield put(actions.setProfile(userData));
 }

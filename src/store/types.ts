@@ -3,6 +3,7 @@ import { CaseReducerActions } from '@reduxjs/toolkit';
 
 // State Imports //
 import { SignUpState } from './SignUp/types';
+import { ReviewState } from './Review/types';
 import { ViewedUserState } from './ViewedUser/types';
 
 // Type Exports //
@@ -30,6 +31,7 @@ export type NullableString = string | null | undefined;
 
 export interface RootState {
   // State Assignment
+  review: ReviewState;
   signUp: SignUpState;
   viewedUser: ViewedUserState;
 }

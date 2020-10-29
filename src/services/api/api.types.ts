@@ -26,6 +26,22 @@ export interface IProvider {
   rating: number;
 }
 
+export interface IReview {
+  createdDate: string;
+  description: string;
+  header: string;
+  rating: number;
+  receivingUserId: number;
+  reviewId: number;
+  userId: number;
+  username: string;
+  wouldRecommend: boolean;
+}
+
+export interface ReviewSet {
+  reviews: Array<IReview>;
+}
+
 export type PostUserCreateResponse =
   | { kind: 'ok'; response: IUser }
   | GeneralApiProblem;
@@ -36,4 +52,8 @@ export type GetUsersResponse =
 
 export type GetProvidersResponse =
   | { kind: 'ok'; response?: IProvider }
+  | GeneralApiProblem;
+
+export type GetReviewSetResponse =
+  | { kind: 'ok'; response?: ReviewSet }
   | GeneralApiProblem;

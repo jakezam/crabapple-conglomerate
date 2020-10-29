@@ -9,6 +9,7 @@ import { history } from 'utils/history';
 
 import { reducer as signUp } from './SignUp/slice';
 import { reducer as viewedUser } from './ViewedUser/slice';
+import { reducer as review } from './Review/slice';
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
@@ -29,6 +30,7 @@ export function createReducer(injectedReducers: InjectedReducersType = {}) {
   const rootReducer = combineReducers({
     signUp,
     viewedUser,
+    review,
     ...injectedReducers,
     router: connectRouter(history) as Reducer<RouterState, AnyAction>,
   });

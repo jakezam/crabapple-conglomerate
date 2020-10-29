@@ -35,26 +35,9 @@ export function ReviewBox(props) {
     </Dropdown>
   );
 
-  return (
-    <Body>
-      <Grid style={{ borderBottom: '1px solid grey', margin: '0 -2px' }}>
-        <Grid.Column width={12} style={{ padding: '0 1rem' }}>
-          <ReviewBoxHeader>
-            <p style={{ marginTop: '9px' }}>
-              {reviewIndex + 1}-{endIndex} of {reviews.length} Reviews
-            </p>
-          </ReviewBoxHeader>
-        </Grid.Column>
-        <Grid.Column
-          floated="left"
-          width={4}
-          style={{ padding: '4px 1rem', display: 'flex' }}
-        >
-          <ReviewForm />
-          {filter}
-        </Grid.Column>
-      </Grid>
-      {reviewBlock}
+  let pageTurner = <div />;
+  if (reviews.length > 2) {
+    pageTurner = (
       <div style={{ paddingTop: '20px' }}>
         <Pagination
           activePage={active}
@@ -67,8 +50,52 @@ export function ReviewBox(props) {
           style={{ margin: 'auto' }}
         />
       </div>
-    </Body>
+    );
+  }
+
+  let mainBody = (
+    <Grid style={{ margin: '10px -2px' }}>
+      <Grid.Column width={12} style={{ padding: '0 1rem' }}>
+        <ReviewBoxHeader>
+          <p style={{ fontSize: '13px', marginTop: '9px' }}>No Reviews</p>
+        </ReviewBoxHeader>
+      </Grid.Column>
+      <Grid.Column
+        floated="left"
+        width={4}
+        style={{ padding: '4px 1rem', display: 'flex' }}
+      >
+        <ReviewForm />
+      </Grid.Column>
+    </Grid>
   );
+  if (reviews.length > 0) {
+    mainBody = (
+      <>
+        <Grid style={{ borderBottom: '1px solid grey', margin: '0 -2px' }}>
+          <Grid.Column width={12} style={{ padding: '0 1rem' }}>
+            <ReviewBoxHeader>
+              <p style={{ marginTop: '9px' }}>
+                {reviewIndex + 1}-{endIndex} of {reviews.length} Reviews
+              </p>
+            </ReviewBoxHeader>
+          </Grid.Column>
+          <Grid.Column
+            floated="left"
+            width={4}
+            style={{ padding: '4px 1rem', display: 'flex' }}
+          >
+            <ReviewForm />
+            {filter}
+          </Grid.Column>
+        </Grid>
+        {reviewBlock}
+        {pageTurner}
+      </>
+    );
+  }
+
+  return <Body>{mainBody}</Body>;
 }
 
 const Body = styled.div``;

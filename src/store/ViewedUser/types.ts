@@ -13,6 +13,7 @@ export interface ViewedUserState {
   providerInfo: ProviderAddition;
   reviews: Array<Review>;
   totalReviews: number;
+  notFound: boolean;
 }
 
 export interface ProviderAddition {

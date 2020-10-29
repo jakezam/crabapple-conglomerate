@@ -7,6 +7,7 @@ export const initialState: ContainerState = {
   unableToCreate: false,
   creatingAccount: false,
   userData: {
+    userId: 1,
     firstName: '',
     lastName: '',
     emailAddress: '',

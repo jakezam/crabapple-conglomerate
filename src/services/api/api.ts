@@ -9,6 +9,7 @@ import {
   PostUserCreateRequest,
   GetProvidersResponse,
   IProvider,
+  ReviewSet,
 } from './api.types';
 import * as https from 'https';
 
@@ -129,6 +130,21 @@ export class Api {
   async GetProvidersById(id: string): Promise<Types.GetProvidersResponse> {
     const route = 'api/providers/' + id;
     const response: ApiResponse<IProvider> = await this.apisauce.get(route);
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
+  }
+
+  async GetProviderReviews(id: string): Promise<Types.GetReviewSetResponse> {
+    const route = 'api/reviews/?userId=' + id + '&receivedReviews=true';
+    const response: ApiResponse<ReviewSet> = await this.apisauce.get(route);
 
     // TEMP DEBUG //
     console.log('== Logging API Response: ', await response, ' ==');
