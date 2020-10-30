@@ -3,6 +3,7 @@ import { CaseReducerActions } from '@reduxjs/toolkit';
 
 // State Imports //
 import { SignUpState } from './SignUp/types';
+import { JobsState } from './Jobs/types';
 
 // Type Exports //
 export type ILoading = { loading: boolean };
@@ -30,4 +31,5 @@ export type NullableString = string | null | undefined;
 export interface RootState {
   // State Assignment
   signUp: SignUpState;
+  jobs: JobsState;
 }
