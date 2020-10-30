@@ -34,14 +34,11 @@ export function JobPane(props) {
     if (job.wasModified) {
       header = (
         <>
-          <Grid.Row style={{ paddingBottom: '50px' }}>
-            <Grid.Column floated="left" width={16}>
-              <Button color="green" size="small">
-                ACCEPT MODIFICATION
-              </Button>
-              <Button color="red" size="small">
-                REJECT MODIFICATION
-              </Button>
+          <Grid.Row>
+            <Grid.Column floated="left" width={16} style={{ paddingLeft: '0' }}>
+              <Message warning>
+                <p>Job was modified</p>
+              </Message>
             </Grid.Column>
           </Grid.Row>
         </>
@@ -189,7 +186,7 @@ const InfoBody = styled.div`
 const MessagingBody = styled.div`
   width: 50%;
   height: 100%;
-  padding: 15px 50px;
+  padding: 15px 5px 15px 30px;
 `;
 
 const MessageHeader = styled.div`
