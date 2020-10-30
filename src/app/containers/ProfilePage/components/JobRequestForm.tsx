@@ -1,30 +1,41 @@
-/* eslint-disable react/prop-types */
+/**
+ *
+ * RecommendedAccount
+ *
+ */
 import React from 'react';
 import styled from 'styled-components/macro';
 import { Button, Form, Modal, TextArea } from 'semantic-ui-react';
+import content from '*.scss';
 
-export function ModificationForm(props) {
+export function JobRequestForm() {
   const [open, setOpen] = React.useState(false);
-  const { job } = props;
 
   let btnTrigger = (
-    <Button primary size="small">
-      MODIFY JOB
+    <Button
+      primary
+      style={{ marginTop: '20px', padding: '12px', width: '145px' }}
+    >
+      Send Job Request
     </Button>
   );
 
   let content = (
     <Form>
-      <Form.Input fluid label="Working with" value={job.username} disabled />
-      <Form.Input fluid label="Working on" value={job.jobTitle} />
-      <Form.Input label="Date" value={job.beginDate} />
-      <Form.Input label="Email Address" value={job.emailAddress} disabled />
-      <Form.Input label="Phone Number" value={job.phoneNumber} disabled />
+      <Form.Group widths="equal">
+        <Form.Input fluid label="First name" placeholder="First name" />
+        <Form.Input fluid label="Last name" placeholder="Last name" />
+      </Form.Group>
       <Form.Field
         control={TextArea}
         label="Description"
-        value={job.jobDescription}
+        placeholder="Briefly describe the job you're planning..."
       />
+      <Form.Input label="Email" placeholder="joe@schmoe.com" />
+      <Form.Field width="4">
+        <label>Phone Number</label>
+        <input placeholder="(XXX)-XXX-XXXX" />
+      </Form.Field>
     </Form>
   );
 
@@ -36,14 +47,14 @@ export function ModificationForm(props) {
         open={open}
         trigger={btnTrigger}
       >
-        <Modal.Header>Modify Job</Modal.Header>
+        <Modal.Header>Build Request</Modal.Header>
         <Modal.Content>{content}</Modal.Content>
         <Modal.Actions>
           <Button color="black" onClick={() => setOpen(false)}>
             Cancel
           </Button>
           <Button
-            content="Send Modifications"
+            content="Send"
             labelPosition="right"
             icon="checkmark"
             onClick={() => setOpen(false)}

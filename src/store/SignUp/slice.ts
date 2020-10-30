@@ -1,10 +1,19 @@
 import { createSlice } from 'utils/@reduxjs/toolkit';
-import { ContainerState } from 'store/SignUp/types';
+import { ContainerState, IUser } from 'store/SignUp/types';
+import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
-  currentStep: 0,
-  emailAddress: '',
-  password: '',
+  currentStep: 3,
+  unableToCreate: false,
+  creatingAccount: false,
+  userData: {
+    userId: 1,
+    firstName: '',
+    lastName: '',
+    emailAddress: '',
+    password: '',
+    confirmPassword: '',
+  },
 };
 
 const signUpSlice = createSlice({
@@ -16,6 +25,18 @@ const signUpSlice = createSlice({
     },
     decrementStep(state: ContainerState) {
       state.currentStep = state.currentStep - 1;
+    },
+    setStep(state: ContainerState, action: PayloadAction<number>) {
+      state.currentStep = action.payload;
+    },
+    setUserData(state: ContainerState, action: PayloadAction<IUser>) {
+      state.userData = action.payload;
+    },
+    setCreatingAccount(state: ContainerState, action: PayloadAction<boolean>) {
+      state.creatingAccount = action.payload;
+    },
+    setUnableToCreate(state: ContainerState, action: PayloadAction<boolean>) {
+      state.unableToCreate = action.payload;
     },
   },
 });

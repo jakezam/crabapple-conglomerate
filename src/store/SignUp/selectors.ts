@@ -15,3 +15,18 @@ export const selectStep = createSelector(
   [selectDomain],
   signUpState => signUpState.currentStep,
 );
+
+export const selectUserData = createSelector(
+  [selectDomain],
+  signUpState => signUpState.userData,
+);
+
+export const selectUnableToCreate = createSelector(
+  [selectDomain],
+  signUpState => signUpState.unableToCreate,
+);
+
+export const selectCreatingAccount = createSelector(
+  [selectDomain],
+  signUpState => signUpState.creatingAccount,
+);

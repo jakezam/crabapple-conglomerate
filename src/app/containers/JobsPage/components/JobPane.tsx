@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components/macro';
 import { Button, Grid, Header, Message } from 'semantic-ui-react';
