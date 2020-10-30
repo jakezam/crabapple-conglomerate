@@ -4,7 +4,12 @@ import { ApisauceInstance, create, ApiResponse } from 'apisauce';
 import { getGeneralApiProblem } from './api.problem';
 import { ApiConfig, DEFAULT_API_CONFIG } from './api.config';
 import * as Types from './api.types';
-import { IUser, PostUserCreateRequest } from './api.types';
+import {
+  IProvider,
+  IUser,
+  PostProviderCreateRequest,
+  PostUserCreateRequest,
+} from './api.types';
 import * as https from 'https';
 
 /**
@@ -47,7 +52,7 @@ export class Api {
   async PostCreateUser(
     user: PostUserCreateRequest,
   ): Promise<Types.PostUserCreateResponse> {
-    const response: ApiResponse<any> = await this.apisauce.post('api/users', {
+    const response: ApiResponse<IUser> = await this.apisauce.post('api/users', {
       FirstName: user.FirstName,
       LastName: user.LastName,
       DateOfBirth: user.DateOfBirth,
@@ -63,14 +68,24 @@ export class Api {
       if (problem) return problem;
     }
 
-    return response.data;
+    return { kind: 'ok', response: response.data };
   }
 
   /**
-   * Get All Users
+   * Create A Provider
    */
-  async GetUsers(): Promise<Types.GetUsersResponse> {
-    const response: ApiResponse<any> = await this.apisauce.get('api/users');
+  async PostCreateProvider(
+    provider: PostProviderCreateRequest,
+  ): Promise<Types.PostProviderCreateResponse> {
+    const response: ApiResponse<IProvider> = await this.apisauce.post(
+      'api/provider',
+      {
+        ProviderId: provider.ProviderId,
+        Company: provider.Company,
+        Category: provider.Category,
+        Website: provider.Website,
+      } as PostProviderCreateRequest,
+    );
 
     // TEMP DEBUG //
     console.log('== Logging API Response: ', await response, ' ==');
@@ -80,6 +95,23 @@ export class Api {
       if (problem) return problem;
     }
 
-    return response.data;
+    return { kind: 'ok', response: response.data };
   }
+
+  /**
+   * Get All Users
+   */
+  // async GetUsers(): Promise<Types.GetUsersResponse> {
+  //   const response: ApiResponse<IUser> = await this.apisauce.get('api/users');
+  //
+  //   // TEMP DEBUG //
+  //   console.log('== Logging API Response: ', await response, ' ==');
+  //
+  //   if (!response.ok) {
+  //     const problem = getGeneralApiProblem(response);
+  //     if (problem) return problem;
+  //   }
+  //
+  //   return response.data;
+  // }
 }

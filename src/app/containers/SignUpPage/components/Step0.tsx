@@ -1,23 +1,67 @@
-import { Form } from 'formsy-semantic-ui-react';
+import { Form, Checkbox } from 'formsy-semantic-ui-react';
 import React from 'react';
 import { Label } from 'semantic-ui-react';
 import { useForm } from 'react-hook-form';
+import { actions } from '../../../../store/SignUp/slice';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectCreatingAccount,
+  selectStep,
+} from '../../../../store/SignUp/selectors';
+import { push } from 'connected-react-router';
+import { IUserData } from '../../../../store/SignUp/types';
 
-const errorLabel = <Label color="red" pointing />;
 type FormInputs = {
+  firstName: string;
+  lastName: string;
   emailAddress: string;
   password: string;
   confirmPass: string;
 };
 
+const errorLabel = <Label color="red" pointing />;
+
+/* Initial User Creation, here the user will enter their
+   First Name, Last Name, Email Address, and Password */
+/* Opted to not include gender and location information as
+   it is not necessarily needed. User location can be obtained
+   through browser. Such a location option will be included in
+   the settings. */
 export function Step0() {
+  // Hooks //
   const { handleSubmit } = useForm<FormInputs>();
+  const dispatch = useDispatch();
+  const signUpStep = useSelector(selectStep);
+  const creatingAccount = useSelector(selectCreatingAccount);
+  ///////////
+
+  // Create 'User' Account In Database //
+  const onSubmit = (data, e) => {
+    let userData: IUserData = e;
+    console.log('== Firing Step Zero! ==', userData);
+
+    dispatch(
+      actions.setUserData({
+        userId: '', // Might remove this in the future from this action
+        firstName: userData.firstName,
+        lastName: userData.lastName,
+        emailAddress: userData.emailAddress,
+        password: userData.password,
+        confirmPassword: userData.confirmPassword,
+      }),
+    );
+  };
+
+  // Send back to Splash Page //
+  const onBack = () => {
+    dispatch(push('/'));
+  };
 
   return (
     <Form
       onValidSubmit={handleSubmit(onSubmit)}
       hidden={signUpStep !== 0}
-      loading={submitting}
+      loading={creatingAccount}
     >
       <Form.Input
         fluid
@@ -59,11 +103,12 @@ export function Step0() {
         errorLabel={errorLabel}
       />
       <Form.Input
+        type={'password'}
         fluid
         name="password"
         label="Password"
         placeholder={'*************'}
-        validations="minLength:8"
+        validations="minLength:8" // Possibly require more?
         required
         validationErrors={{
           minLength: 'Password must at least eight characters long',
@@ -72,6 +117,7 @@ export function Step0() {
         errorLabel={errorLabel}
       />
       <Form.Input
+        type={'password'}
         fluid
         name="confirmPassword"
         label="Confirm Password"
@@ -84,14 +130,24 @@ export function Step0() {
         }}
         errorLabel={errorLabel}
       />
-      <Form.Group>
+      <Checkbox
+        label="Accept privacy policy and terms of service"
+        name={'tosCheck'}
+        required
+        validationErrors={{
+          isDefaultRequiredValue: '',
+        }}
+      />
+      <Form.Group
+        style={{ display: 'flex', justifyContent: 'center', margin: '15px' }}
+      >
         <Form.Button
           primary
-          disabled={submitting}
-          onClick={onBackStep0}
+          disabled={creatingAccount}
+          onClick={onBack}
           content="Back"
         />
-        <Form.Button primary disabled={submitting} content="Submit" />
+        <Form.Button primary disabled={creatingAccount} content="Submit" />
       </Form.Group>
     </Form>
   );

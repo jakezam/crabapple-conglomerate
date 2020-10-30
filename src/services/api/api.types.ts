@@ -10,6 +10,15 @@ export interface IUser {
   createdDate: Date;
 }
 
+export interface IProvider {
+  id: number;
+  ProviderId: number;
+  Company: string;
+  Category: string;
+  Website: string;
+  Rating: number;
+}
+
 export interface PostUserCreateRequest {
   FirstName: string;
   LastName: string;
@@ -18,8 +27,19 @@ export interface PostUserCreateRequest {
   State: string;
 }
 
+export interface PostProviderCreateRequest {
+  ProviderId: number;
+  Company: string;
+  Category: string;
+  Website?: string;
+}
+
 export type PostUserCreateResponse =
-  | { kind: 'ok'; response: IUser }
+  | { kind: 'ok'; response?: IUser }
+  | GeneralApiProblem;
+
+export type PostProviderCreateResponse =
+  | { kind: 'ok'; response?: IProvider }
   | GeneralApiProblem;
 
 export type GetUsersResponse =
