@@ -5,6 +5,7 @@ import { CaseReducerActions } from '@reduxjs/toolkit';
 import { SignUpState } from './SignUp/types';
 import { ReviewState } from './Review/types';
 import { ViewedUserState } from './ViewedUser/types';
+import { JobsState } from './Jobs/types';
 
 // Type Exports //
 export type ILoading = { loading: boolean };
@@ -34,4 +35,5 @@ export interface RootState {
   review: ReviewState;
   signUp: SignUpState;
   viewedUser: ViewedUserState;
+  jobs: JobsState;
 }

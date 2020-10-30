@@ -6,6 +6,7 @@ import 'semantic-ui-react';
 
 // Component Imports //
 import { HomePage } from './containers/HomePage/Loadable';
+import { JobsPage } from './containers/JobsPage/Loadable';
 import { NotFoundPage } from './containers/NotFoundPage/Loadable';
 import { ProfilePage } from './containers/ProfilePage/Loadable';
 import { SignUpPage } from './containers/SignUpPage/Loadable';
@@ -44,10 +45,10 @@ export function App() {
         <Route exact path="/profile-provider">
           <SellerProfilePage />
         </Route>
-        {/* <Route exact path="/profile">
-          <ProfilePage />
-        </Route> */}
         <Route path="/profile/:id" component={ProfilePage} />
+        <Route exact path="/jobs">
+          <JobsPage />
+        </Route>
         <Route>
           <NotFoundPage />
         </Route>
