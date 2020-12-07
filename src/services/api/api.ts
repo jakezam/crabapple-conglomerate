@@ -10,6 +10,7 @@ import {
   GetProvidersResponse,
   IProvider,
   ReviewSet,
+  PostProviderCreateRequest,
 } from './api.types';
 import * as https from 'https';
 

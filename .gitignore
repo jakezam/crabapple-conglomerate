@@ -24,3 +24,5 @@ template
 # IDE specific stuff
 .idea/
 .vscode/
+
+package-lock.json
