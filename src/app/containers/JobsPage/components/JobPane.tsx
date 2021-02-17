@@ -158,14 +158,14 @@ export function JobPane(props) {
         <MessageHeader>
           <Header as="h3" icon="mail" content="Messages" block />
         </MessageHeader>
-        <Message warning>
+        {/* <Message warning>
           <Message.Header>Change coming soon</Message.Header>
           <p>
             Unfortunately in-app messaging has not been implemented, but our
             developers are hard at work and we hope to have this feature done
             ASAP!
           </p>
-        </Message>
+        </Message> */}
       </MessagingBody>
     </Body>
   );

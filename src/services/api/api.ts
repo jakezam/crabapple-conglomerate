@@ -136,6 +136,35 @@ export class Api {
   }
 
   /**
+   * Create A Provider
+  //  */
+  // async UpdateProvider(
+  //   provider: UpdateProviderRequest,
+  //   id: string,
+  // ): Promise<Types.UpdateProviderResponse> {
+  //   const route = 'api/providers/' + id;
+  //   const response: ApiResponse<IProvider> = await this.apisauce.post(
+  //     route,
+  //     {
+  //       ProviderId: provider.ProviderId,
+  //       Company: provider.Company,
+  //       Category: provider.Category,
+  //       Website: provider.Website,
+  //     } as UpdateProviderRequest,
+  //   );
+
+  //   // TEMP DEBUG //
+  //   console.log('== Logging API Response: ', await response, ' ==');
+
+  //   if (!response.ok) {
+  //     const problem = getGeneralApiProblem(response);
+  //     if (problem) return problem;
+  //   }
+
+  //   return { kind: 'ok', response: response.data };
+  // }
+
+  /**
    * Get All Users
    */
   async GetProvidersById(id: string): Promise<Types.GetProvidersResponse> {

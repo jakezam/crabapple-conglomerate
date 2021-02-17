@@ -13,8 +13,8 @@ import { SignUpPage } from './containers/SignUpPage/Loadable';
 import { SignInPage } from './containers/SignInPage/Loadable';
 import { SettingsPage } from './containers/SettingsPage/Loadable';
 import { DiscoverPage } from './containers/DiscoverPage/Loadable';
-import { SellerProfilePage } from './containers/SellerProfilePage/Loadable';
 import { SplashPage } from './containers/SplashPage/Loadable';
+import { NotificationsPage } from './containers/NotificationsPage/Loadable';
 
 export function App() {
   return (
@@ -42,8 +42,8 @@ export function App() {
         <Route exact path="/settings">
           <SettingsPage />
         </Route>
-        <Route exact path="/profile-provider">
-          <SellerProfilePage />
+        <Route exact path="/notifications">
+          <NotificationsPage />
         </Route>
         <Route path="/profile/:id" component={ProfilePage} />
         <Route exact path="/jobs">

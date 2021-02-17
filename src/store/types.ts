@@ -6,6 +6,7 @@ import { SignUpState } from './SignUp/types';
 import { ReviewState } from './Review/types';
 import { ViewedUserState } from './ViewedUser/types';
 import { JobsState } from './Jobs/types';
+import { DiscoverState } from './Discover/types';
 
 // Type Exports //
 export type ILoading = { loading: boolean };
@@ -36,4 +37,5 @@ export interface RootState {
   signUp: SignUpState;
   viewedUser: ViewedUserState;
   jobs: JobsState;
+  discover: DiscoverState;
 }

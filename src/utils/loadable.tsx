@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 import React, { lazy, Suspense } from 'react';
 
 interface Opts {

@@ -66,7 +66,7 @@ export function SignUpPage() {
           {signUpStep === 2 && <StepBox />}
           <ContentBox>
             {/*Step zero -- init user*/}
-            {/* <Step0 /> */}
+            <Step0 />
 
             {/*/!*Step one -- provider yes/no*!/*/}
             <Step1 />

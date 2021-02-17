@@ -14,8 +14,8 @@ import { FormInputs as Step2dot4Inputs } from '../../app/containers/SignUpPage/c
 import { FormInputs as Step2dot5Inputs } from '../../app/containers/SignUpPage/components/substeps/Step2dot5';
 
 export const initialState: ContainerState = {
-  currentStep: 2, // Starts at 0
-  currentSubStep: 4, // Starts at 1
+  currentStep: 0, // Starts at 0
+  currentSubStep: 1, // Starts at 1
   unableToCreate: false,
   creatingAccount: false,
   /* We will want to get the categories from some database via API */
