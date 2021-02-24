@@ -1,4 +1,4 @@
-# crabapple-conglomerate
+# Inployd
 
 ## General Overview
 This is a mock up repository a business exchange app in the works.
