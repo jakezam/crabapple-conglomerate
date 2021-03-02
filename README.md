@@ -1,5 +1,7 @@
 # Inployd
 
+This is a work in progress, the code for this project is found in the `develop` branch
+
 ## General Overview
 This is a mock up repository a business exchange app in the works.
  - App is to be a web and mobile app
