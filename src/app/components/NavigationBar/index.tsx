@@ -31,7 +31,7 @@ export function NavigationBar() {
         <Menu.Menu position="left">
           <Logo src="inployd_logo_v2.PNG" alt="none" />
         </Menu.Menu>
-        <Menu.Item
+        {/* <Menu.Item
           name="Home"
           icon={'home'}
           active={activeItem === 'home'}
@@ -39,7 +39,7 @@ export function NavigationBar() {
             setActive('home');
             dispatch(push('/home'));
           }}
-        />
+        /> */}
         <Menu.Item
           name="Discover"
           icon={'map'}
@@ -50,9 +50,9 @@ export function NavigationBar() {
           }}
         />
         <Menu.Item
-          name="Jobs"
-          icon={'suitcase'}
-          active={activeItem === 'jobs'}
+          name="Consultations"
+          icon={'address card'}
+          active={activeItem === 'Consultations'}
           onClick={(e, { name }) => {
             dispatch(push('/jobs'));
           }}

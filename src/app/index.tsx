@@ -27,9 +27,9 @@ export function App() {
         <Route exact path="/">
           <SplashPage />
         </Route>
-        <Route exact path="/home">
+        {/* <Route exact path="/home">
           <HomePage />
-        </Route>
+        </Route> */}
         <Route exact path="/signup">
           <SignUpPage />
         </Route>

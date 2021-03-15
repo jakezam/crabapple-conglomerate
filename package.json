@@ -30,6 +30,7 @@
     "fontfaceobserver": "2.1.0",
     "formsy-react": "2.2.1",
     "formsy-semantic-ui-react": "2.0.6",
+    "generate": "0.14.0",
     "history": "4.10.1",
     "husky": "4.2.3",
     "i18next": "19.3.4",
