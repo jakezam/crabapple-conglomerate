@@ -5,6 +5,7 @@
   "devDependencies": {
     "@babel/helper-skip-transparent-expression-wrappers": "7.12.1",
     "@commitlint/cli": "12.0.1",
+    "@commitlint/config-conventional": "12.0.1",
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "11.2.5",
     "@types/dotenv": "8.2.0",
