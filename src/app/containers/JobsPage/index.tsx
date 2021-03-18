@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 /**
  *
  * JobsPage
@@ -6,21 +5,15 @@
  */
 
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
-
 import { selectJobs } from '../../../store/Jobs/selectors';
-import { actions as vUActions } from '../../../store/Jobs/slice';
-
 import { Tab } from 'semantic-ui-react';
 import { NavigationBar } from '../../components/NavigationBar';
 import { Footer } from '../../components/Footer';
 import { JobPane } from './components/JobPane';
 
-interface Props {}
-
-export function JobsPage(props: Props) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function JobsPage() {
   const dispatch = useDispatch();
   const jobState = useSelector(selectJobs);
 
@@ -30,9 +23,11 @@ export function JobsPage(props: Props) {
   }>();
   jobState.jobs.forEach(job => {
     let iconName = '';
+
     if ((!job.isAccepted && job.isProviding) || job.wasModified) {
       iconName = 'exclamation circle';
     }
+
     let nextPane = {
       menuItem: { key: job.username, icon: iconName, content: job.username },
       render: () => (
@@ -41,6 +36,7 @@ export function JobsPage(props: Props) {
         </Tab.Pane>
       ),
     };
+
     panes.push(nextPane);
   });
 

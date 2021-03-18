@@ -1,8 +1,11 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components/macro';
 import { Button, Grid, Header, Message } from 'semantic-ui-react';
 import { ModificationForm } from './ModificationForm';
+import Calendar from '@toast-ui/react-calendar';
+import 'tui-date-picker/dist/tui-date-picker.css';
+import 'tui-time-picker/dist/tui-time-picker.css';
+import 'tui-calendar/dist/tui-calendar.css';
 
 export function JobPane(props) {
   const { job } = props;
@@ -32,6 +35,7 @@ export function JobPane(props) {
         </Grid.Row>
       </>
     );
+
     if (job.wasModified) {
       header = (
         <>
@@ -154,19 +158,45 @@ export function JobPane(props) {
         <Header as="h3" icon="info circle" content="Job Information" block />
         {jobInfo}
       </InfoBody>
-      <MessagingBody>
-        <MessageHeader>
-          <Header as="h3" icon="mail" content="Messages" block />
-        </MessageHeader>
-        {/* <Message warning>
-          <Message.Header>Change coming soon</Message.Header>
-          <p>
-            Unfortunately in-app messaging has not been implemented, but our
-            developers are hard at work and we hope to have this feature done
-            ASAP!
-          </p>
-        </Message> */}
-      </MessagingBody>
+      <CalendarContainer>
+        <Calendar
+          // ref={this.cal}
+          calendars={[
+            {
+              id: '0',
+              name: 'Schedule',
+              bgColor: '#9e5fff',
+              borderColor: '#9e5fff',
+            },
+          ]}
+          height={'100%'}
+          // view={this.currentView}
+          // week={this.mobile ? mobileWeekOptions : weekOptions}
+          taskView={false}
+          scheduleView={['time']}
+          // useCreationPopup={true}
+          useDetailPopup={true}
+          // schedules={this.state.prevSchedule}
+          // onClickSchedule={onClickSchedule}
+          // onBeforeCreateSchedule={onBeforeCreateSchedule}
+          // onBeforeDeleteSchedule={onBeforeDeleteSchedule}
+          // onBeforeUpdateSchedule={onBeforeUpdateSchedule}
+          // onAfterRenderSchedule={onAfterRenderSchedule}
+        />
+      </CalendarContainer>
+      {/*<MessagingBody>*/}
+      {/*  <MessageHeader>*/}
+      {/*    <Header as="h3" icon="mail" content="Messages" block />*/}
+      {/*  </MessageHeader>*/}
+      {/*  /!* <Message warning>*/}
+      {/*    <Message.Header>Change coming soon</Message.Header>*/}
+      {/*    <p>*/}
+      {/*      Unfortunately in-app messaging has not been implemented, but our*/}
+      {/*      developers are hard at work and we hope to have this feature done*/}
+      {/*      ASAP!*/}
+      {/*    </p>*/}
+      {/*  </Message> *!/*/}
+      {/*</MessagingBody>*/}
     </Body>
   );
 }
@@ -184,12 +214,20 @@ const InfoBody = styled.div`
   border-right: 1px solid #d7d7d7;
 `;
 
-const MessagingBody = styled.div`
-  width: 50%;
-  height: 100%;
-  padding: 15px 5px 15px 30px;
+const CalendarContainer = styled.div`
+  display: flex;
+  flex: 1;
+
+  // DEBUG STYLES //
+  border: 5px solid red;
 `;
 
-const MessageHeader = styled.div`
-  margin-bottom: 50px;
-`;
+// const MessagingBody = styled.div`
+//   width: 50%;
+//   height: 100%;
+//   padding: 15px 5px 15px 30px;
+// `;
+//
+// const MessageHeader = styled.div`
+//   margin-bottom: 50px;
+// `;
