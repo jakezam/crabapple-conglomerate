@@ -24,7 +24,7 @@ construction to website development inployd will be able to do it!
 
 ## How to get started
 
-- Clone the respository
+- Clone the repository
 - Run: yarn install
 - Then run: yarn start
 
