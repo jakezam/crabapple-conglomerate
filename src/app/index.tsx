@@ -11,6 +11,7 @@ import { NotFoundPage } from './containers/NotFoundPage/Loadable';
 import { ProfilePage } from './containers/ProfilePage/Loadable';
 import { SignUpPage } from './containers/SignUpPage/Loadable';
 import { SignInPage } from './containers/SignInPage/Loadable';
+import { SearchResultPage } from './containers/SearchResultsPage/Loadable';
 import { SettingsPage } from './containers/SettingsPage/Loadable';
 import { DiscoverPage } from './containers/DiscoverPage/Loadable';
 import { SplashPage } from './containers/SplashPage/Loadable';
@@ -46,6 +47,10 @@ export function App() {
           <NotificationsPage />
         </Route>
         <Route path="/profile/:id" component={ProfilePage} />
+        <Route
+          path="/results/:category?/:keyword?"
+          component={SearchResultPage}
+        />
         <Route exact path="/jobs">
           <JobsPage />
         </Route>
