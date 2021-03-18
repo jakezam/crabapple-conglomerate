@@ -5,6 +5,7 @@ import { PayloadAction } from '@reduxjs/toolkit';
 export const initialState: ContainerState = {
   userId: '',
   recentlyViewed: [],
+  searchResults: [],
 };
 
 const discoverSlice = createSlice({

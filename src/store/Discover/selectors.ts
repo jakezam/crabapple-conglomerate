@@ -1,12 +1,12 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from 'types/index';
-import { initialState } from 'store/Jobs/slice';
+import { initialState } from 'store/Discover/slice';
 
-const selectDomain = (state: RootState) => state.jobs || initialState;
+const selectDomain = (state: RootState) => state.discover || initialState;
 // const stepSelector = (state: RootState) =>
 //   state.signUp.currentStep || initialState.currentStep;
 
-export const selectJobs = createSelector(
+export const selectDiscover = createSelector(
   [selectDomain],
-  jobsState => jobsState,
+  discoverState => discoverState,
 );
