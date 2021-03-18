@@ -6,24 +6,18 @@ const prettierOptions = JSON.parse(
 );
 
 module.exports = {
-  extends: [
-    'react-app',
-    'prettier',
-    'prettier/react',
-    'prettier/@typescript-eslint',
-    'plugin:react/recommended',
-  ],
+  extends: ['react-app', 'prettier'],
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': ['error', prettierOptions],
+    'react/display-name': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
   },
   overrides: [
     {
       files: ['**/*.ts?(x)'],
       rules: {
         'prettier/prettier': ['warn', prettierOptions],
-        // 'no-unused-vars': 'off',
-        // '@typescript-eslint/no-unused-vars': 0,
       },
     },
   ],

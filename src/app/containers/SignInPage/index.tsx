@@ -49,7 +49,7 @@ export function SignInPage() {
             className="ui horizontal divider"
             style={{ textTransform: 'lowercase' }}
           >
-            Don't have an account?
+            {"Don't have an account?"}
           </div>
           <button className="medium fluid positive ui button createAccount-button">
             Create Account

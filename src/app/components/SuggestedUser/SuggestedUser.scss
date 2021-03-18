@@ -1,29 +1,30 @@
 .suggestedUser {
-    width: 300px;
-    text-align: left;
-    margin-top: 0 !important;
+  width: 300px;
+  text-align: left;
+  margin-top: 0 !important;
 
-    .rowNoBottomPadding {
-        padding-top: 0.5rem;
-        padding-bottom: 0 !important;
-    }
+  .rowNoBottomPadding {
+    padding-top: 0.5rem;
+    padding-bottom: 0 !important;
+  }
 
-    .suggestedProfileImage {
-        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.075), 0 6px 10px 0 rgba(0, 0, 0, 0.075);
-    }
+  .suggestedProfileImage {
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.075),
+      0 6px 10px 0 rgba(0, 0, 0, 0.075);
+  }
 
-    .columnNoLeftPadding {
-        padding-left: 0px !important;
-    }
+  .columnNoLeftPadding {
+    padding-left: 0px !important;
+  }
 
-    .suggestedUser-fullName {
-        margin-top: 13px;
-        margin-bottom: 0px;
-    }
+  .suggestedUser-fullName {
+    margin-top: 13px;
+    margin-bottom: 0px;
+  }
 
-    .suggestedUser-username {
-        margin-top: 5px !important;
-        font-size: 13px;
-        color: #7d7a7a;
-    }
+  .suggestedUser-username {
+    margin-top: 5px !important;
+    font-size: 13px;
+    color: #7d7a7a;
+  }
 }

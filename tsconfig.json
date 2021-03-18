@@ -14,11 +14,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
-    "baseUrl": "./src"
+    "jsx": "react-jsx",
+    "baseUrl": "./src",
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
-  "rules": {
-    "no-unused-vars": "off"
-  }
+  "rules": {}
 }

@@ -42,7 +42,7 @@ export function SplashPage() {
               </Button>
             </Form>
             <Divider horizontal style={{ textTransform: 'lowercase' }}>
-              don't have an account?
+              {"don't have an account?"}
             </Divider>
             <Button
               positive
@@ -55,7 +55,7 @@ export function SplashPage() {
               Create Account
             </Button>
           </LoginBox>
-          <ImageBox></ImageBox>
+          <ImageBox />
         </InnerBody>
       </Body>
       <Footer />

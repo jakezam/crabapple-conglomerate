@@ -18,7 +18,7 @@ export function ReviewBox(props) {
   let reviewBlock = reviewArr.map(review => <Review key={0} review={review} />);
 
   let totalPages;
-  if (reviews.length % 2 == 0) {
+  if (reviews.length % 2 === 0) {
     totalPages = reviews.length / 2;
   } else {
     totalPages = reviews.length / 2;
