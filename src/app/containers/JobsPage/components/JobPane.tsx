@@ -6,6 +6,7 @@ import Calendar from '@toast-ui/react-calendar';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 import 'tui-calendar/dist/tui-calendar.css';
+import { TimePicker } from './TimePicker';
 
 export function JobPane(props) {
   const { job } = props;
@@ -154,35 +155,12 @@ export function JobPane(props) {
 
   return (
     <Body>
-      <InfoBody>
-        <Header as="h3" icon="info circle" content="Job Information" block />
-        {jobInfo}
-      </InfoBody>
+      {/*<InfoBody>*/}
+      {/*  <Header as="h3" icon="info circle" content="Job Information" block />*/}
+      {/*  {jobInfo}*/}
+      {/*</InfoBody>*/}
       <CalendarContainer>
-        <Calendar
-          // ref={this.cal}
-          calendars={[
-            {
-              id: '0',
-              name: 'Schedule',
-              bgColor: '#9e5fff',
-              borderColor: '#9e5fff',
-            },
-          ]}
-          height={'100%'}
-          // view={this.currentView}
-          // week={this.mobile ? mobileWeekOptions : weekOptions}
-          taskView={false}
-          scheduleView={['time']}
-          // useCreationPopup={true}
-          useDetailPopup={true}
-          // schedules={this.state.prevSchedule}
-          // onClickSchedule={onClickSchedule}
-          // onBeforeCreateSchedule={onBeforeCreateSchedule}
-          // onBeforeDeleteSchedule={onBeforeDeleteSchedule}
-          // onBeforeUpdateSchedule={onBeforeUpdateSchedule}
-          // onAfterRenderSchedule={onAfterRenderSchedule}
-        />
+        <TimePicker />
       </CalendarContainer>
       {/*<MessagingBody>*/}
       {/*  <MessageHeader>*/}
@@ -202,9 +180,13 @@ export function JobPane(props) {
 }
 
 const Body = styled.div`
-  width: 100%;
-  height: 100%;
+  //width: 100%;
+  //height: 100%;
   display: flex;
+  flex: 1;
+
+  // DEBUG STYLES //
+  border: 5px green solid;
 `;
 
 const InfoBody = styled.div`

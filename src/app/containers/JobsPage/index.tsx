@@ -56,4 +56,7 @@ export function JobsPage() {
 
 const Body = styled.div`
   padding: 75px 100px 100px 100px;
+
+  // DEBUG STYLES //
+  border: 5px solid purple;
 `;
