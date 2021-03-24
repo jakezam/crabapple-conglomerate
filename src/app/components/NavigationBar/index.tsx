@@ -10,6 +10,7 @@ import { Menu, Input, Search, Button, Popup, Grid } from 'semantic-ui-react';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { push } from 'connected-react-router';
+// import logo from '../../../../public/inployd_logo_v2.PNG';
 
 // Component Imports //
 
@@ -24,12 +25,17 @@ export function NavigationBar() {
 
   const [activeItem, setActive] = React.useState(currActive);
 
-  let popupTrigger = <ProfilePic src="logo512.png" alt="none" />;
+  let popupTrigger = (
+    <ProfilePic src={process.env.PUBLIC_URL + '/logo512.png'} alt="none" />
+  );
   return (
     <Body>
       <Menu secondary>
         <Menu.Menu position="left">
-          <Logo src="inployd_logo_v2.PNG" alt="none" />
+          <Logo
+            src={process.env.PUBLIC_URL + '/inployd_logo_v2.PNG'}
+            alt="none"
+          />
         </Menu.Menu>
         {/* <Menu.Item
           name="Home"

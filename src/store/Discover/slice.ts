@@ -27,6 +27,111 @@ export const initialState: ContainerState = {
         ],
       },
     },
+    {
+      userId: '',
+      username: "Jordan's Contracting",
+      userTag: "Jordan's Contracting",
+      isProvider: true,
+      providerData: {
+        category: 'Contracting',
+        rating: 4,
+        location: 'Shelton CT',
+        skills: [
+          {
+            name: 'Kitchens',
+            rate: 'N/A',
+          },
+          {
+            name: 'Bathrooms',
+            rate: 'N/A',
+          },
+        ],
+      },
+    },
+    {
+      userId: '',
+      username: "Jordan's Contracting",
+      userTag: "Jordan's Contracting",
+      isProvider: true,
+      providerData: {
+        category: 'Contracting',
+        rating: 4,
+        location: 'Shelton CT',
+        skills: [
+          {
+            name: 'Kitchens',
+            rate: 'N/A',
+          },
+          {
+            name: 'Bathrooms',
+            rate: 'N/A',
+          },
+        ],
+      },
+    },
+    {
+      userId: '',
+      username: "Jordan's Contracting",
+      userTag: "Jordan's Contracting",
+      isProvider: true,
+      providerData: {
+        category: 'Contracting',
+        rating: 4,
+        location: 'Shelton CT',
+        skills: [
+          {
+            name: 'Kitchens',
+            rate: 'N/A',
+          },
+          {
+            name: 'Bathrooms',
+            rate: 'N/A',
+          },
+        ],
+      },
+    },
+    {
+      userId: '',
+      username: "Jordan's Contracting",
+      userTag: "Jordan's Contracting",
+      isProvider: true,
+      providerData: {
+        category: 'Contracting',
+        rating: 4,
+        location: 'Shelton CT',
+        skills: [
+          {
+            name: 'Kitchens',
+            rate: 'N/A',
+          },
+          {
+            name: 'Bathrooms',
+            rate: 'N/A',
+          },
+        ],
+      },
+    },
+    {
+      userId: '',
+      username: "Jordan's Contracting",
+      userTag: "Jordan's Contracting",
+      isProvider: true,
+      providerData: {
+        category: 'Contracting',
+        rating: 4,
+        location: 'Shelton CT',
+        skills: [
+          {
+            name: 'Kitchens',
+            rate: 'N/A',
+          },
+          {
+            name: 'Bathrooms',
+            rate: 'N/A',
+          },
+        ],
+      },
+    },
   ],
 };
 

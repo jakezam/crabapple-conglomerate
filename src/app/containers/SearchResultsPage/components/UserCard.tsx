@@ -37,6 +37,7 @@ export function UserCard(props: Props) {
   let rating = <></>;
   let location = <></>;
   let border = <></>;
+  let category = <></>;
   let skillsTab = <></>;
 
   if (isProvider) {
@@ -79,6 +80,21 @@ export function UserCard(props: Props) {
       </>
     );
 
+    category = (
+      <>
+        <h4
+          style={{
+            textAlign: 'left',
+            paddingTop: '5px',
+            paddingLeft: '2px',
+            marginBottom: '7px',
+          }}
+        >
+          {providerData.category}
+        </h4>
+      </>
+    );
+
     let endIndex = Math.min(providerData.skills.length, 2);
     let reducedSkills = providerData.skills.slice(0, endIndex);
     // @ts-ignore
@@ -112,7 +128,7 @@ export function UserCard(props: Props) {
           </Grid.Row>
           {border}
           <Grid.Row style={{ padding: '9px 15px 20px 15px' }}>
-            {cardTitle}
+            {category}
             <Table celled style={{ marginTop: '2px' }}>
               <Table.Body>{skillsTab}</Table.Body>
             </Table>
@@ -128,13 +144,15 @@ const Body = styled.div``;
 const CardContainer = styled.div`
   width: 250px;
   min-height: 240px;
-  margin-top: 50px;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
   background-color: white;
   cursor: pointer;
+  float: left;
+  margin-left: 100px;
+  margin-top: 50px;
 `;
 
 const ImageContainer = styled.div`

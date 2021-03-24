@@ -33,7 +33,14 @@ export function SearchResultsPage() {
   return (
     <>
       <NavigationBar />
-      <Body>{results}</Body>
+      <Body>
+        <div>
+          <FilterContainer>Filter</FilterContainer>
+        </div>
+        <div>
+          <ResultsContainer>{results}</ResultsContainer>
+        </div>
+      </Body>
       <Footer />
     </>
   );
@@ -41,25 +48,30 @@ export function SearchResultsPage() {
 
 const Body = styled.div`
   display: flex;
-  padding: 75px 0;
-  justify-content: center;
   font-family: 'Nunito';
+  justify-content: center;
+  margin-bottom: 50px;
+  padding: 30px 0;
 `;
 
-const CardContainer = styled.div`
-  width: 250px;
-  min-height: 250px;
-  margin-top: 50px;
+const FilterContainer = styled.div`
+  width: 200px;
+  height: 250px;
+  margin-top: 49px;
+  margin-left: 100px;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
   background-color: white;
-  cursor: pointer;
 `;
 
-const ImageContainer = styled.div`
-  border: 1px solid white;
-  border-radius: 0.28571429rem;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
+const ResultsContainer = styled.div`
+  margin-left: 30px;
+  margin-right: 20px;
+  padding-left: 59px;
+  padding-right: 38px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 `;
