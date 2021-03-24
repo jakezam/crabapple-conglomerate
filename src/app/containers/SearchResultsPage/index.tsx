@@ -5,7 +5,7 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -15,7 +15,7 @@ import { actions as vUActions } from '../../../store/Jobs/slice';
 import { Footer } from '../../components/Footer';
 import { NavigationBar } from '../../components/NavigationBar';
 import { UserCard } from './components/UserCard';
-import { Comment, Grid, Rating, Table } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 import { useParams } from 'react-router-dom';
 
@@ -26,9 +26,31 @@ export function SearchResultsPage() {
   const dispatch = useDispatch();
   const discoverState = useSelector(selectDiscover);
 
-  let results = discoverState.searchResults.map(user => (
-    <UserCard key={0} user={user} />
-  ));
+  let numResults = discoverState.searchResults.length;
+  let numUsers = Math.min(6, numResults);
+  const [numCards, setNumCards] = useState(numUsers);
+
+  let usersToDisplay = discoverState.searchResults.slice(0, numCards);
+  let results = usersToDisplay.map(user => <UserCard key={0} user={user} />);
+
+  let loadMoreBtn = <></>;
+  let buttonStyle = { margin: '40px 41%', padding: '12px', width: '165px' };
+  if (numCards < numResults) {
+    console.log('Load more');
+    loadMoreBtn = (
+      <>
+        <Button
+          primary
+          style={buttonStyle}
+          onClick={() => {
+            setNumCards(Math.min(numCards + 3, numResults));
+          }}
+        >
+          Load More
+        </Button>
+      </>
+    );
+  }
 
   return (
     <>
@@ -39,6 +61,7 @@ export function SearchResultsPage() {
         </div>
         <div>
           <ResultsContainer>{results}</ResultsContainer>
+          <div>{loadMoreBtn}</div>
         </div>
       </Body>
       <Footer />
