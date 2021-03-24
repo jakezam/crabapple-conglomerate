@@ -80,7 +80,10 @@ export function UserCard(props: Props) {
       </>
     );
 
-    let skills = providerData.skills.map(skill => (
+    let endIndex = Math.min(providerData.skills.length, 2);
+    let reducedSkills = providerData.skills.slice(0, endIndex);
+    // @ts-ignore
+    skillsTab = reducedSkills.map(skill => (
       <Table.Row>
         <Table.Cell>{skill.name}</Table.Cell>
         <Table.Cell>{skill.rate}</Table.Cell>
@@ -112,16 +115,7 @@ export function UserCard(props: Props) {
           <Grid.Row style={{ padding: '9px 15px 20px 15px' }}>
             {cardTitle}
             <Table celled style={{ marginTop: '2px' }}>
-              <Table.Body>
-                <Table.Row>
-                  <Table.Cell>Kitchens</Table.Cell>
-                  <Table.Cell>N/A</Table.Cell>
-                </Table.Row>
-                <Table.Row>
-                  <Table.Cell>Bathrooms</Table.Cell>
-                  <Table.Cell>N/A</Table.Cell>
-                </Table.Row>
-              </Table.Body>
+              <Table.Body>{skillsTab}</Table.Body>
             </Table>
           </Grid.Row>
         </Grid>

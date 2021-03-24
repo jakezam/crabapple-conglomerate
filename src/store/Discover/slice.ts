@@ -15,7 +15,16 @@ export const initialState: ContainerState = {
         category: 'Contracting',
         rating: 4,
         location: 'Shelton CT',
-        skills: [],
+        skills: [
+          {
+            name: 'Kitchens',
+            rate: 'N/A',
+          },
+          {
+            name: 'Bathrooms',
+            rate: 'N/A',
+          },
+        ],
       },
     },
   ],

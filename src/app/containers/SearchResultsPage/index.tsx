@@ -20,7 +20,7 @@ import { Comment, Grid, Rating, Table } from 'semantic-ui-react';
 import { useParams } from 'react-router-dom';
 
 export function SearchResultsPage() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // @ts-ignore
   let { category, keyword } = useParams();
 
   const dispatch = useDispatch();
