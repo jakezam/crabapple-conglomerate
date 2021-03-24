@@ -26,12 +26,14 @@ export function SearchResultsPage() {
   const dispatch = useDispatch();
   const discoverState = useSelector(selectDiscover);
 
+  let results = discoverState.searchResults.map(user => (
+    <UserCard key={0} user={user} />
+  ));
+
   return (
     <>
       <NavigationBar />
-      <Body>
-        <UserCard />
-      </Body>
+      <Body>{results}</Body>
       <Footer />
     </>
   );

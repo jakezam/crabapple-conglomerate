@@ -5,7 +5,20 @@ import { PayloadAction } from '@reduxjs/toolkit';
 export const initialState: ContainerState = {
   userId: '',
   recentlyViewed: [],
-  searchResults: [],
+  searchResults: [
+    {
+      userId: '',
+      username: "Jordan's Contracting",
+      userTag: "Jordan's Contracting",
+      isProvider: true,
+      providerData: {
+        category: 'Contracting',
+        rating: 4,
+        location: 'Shelton CT',
+        skills: [],
+      },
+    },
+  ],
 };
 
 const discoverSlice = createSlice({

@@ -18,8 +18,8 @@ export interface SmallAccount {
 }
 
 export interface ProviderSkills {
-  names: Array<String>;
-  rates: Array<String>;
+  name: string;
+  rate: string;
 }
 
 export type ContainerState = DiscoverState;
