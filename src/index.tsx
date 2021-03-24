@@ -7,7 +7,6 @@
 
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -17,9 +16,7 @@ import { history } from 'utils/history';
 
 // Import root app
 import { App } from 'app';
-
 import { HelmetProvider } from 'react-helmet-async';
-
 import { configureAppStore } from 'store/configureStore';
 
 // Initialize languages
@@ -32,6 +29,7 @@ const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 interface Props {
   Component: typeof App;
 }
+
 const ConnectedApp = ({ Component }: Props) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>

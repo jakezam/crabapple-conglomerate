@@ -11,10 +11,10 @@ import { CommunicationSettings } from 'app/components/CommunicationSettings/Load
 import './Settings.scss';
 
 export function SettingsPage() {
-  const panes = [
+  const panes: any = [
     {
       menuItem: 'AccountSettingsTab',
-      render: () => (
+      render: component => (
         <Tab.Pane>
           <AccountSettings />
         </Tab.Pane>
@@ -44,11 +44,11 @@ export function SettingsPage() {
         className="ui center aligned icon header"
         style={{ boxShadow: 'none', paddingBottom: '120px' }}
       >
-        <i className="settings icon"></i>
+        <i className="settings icon" />
         <div className="content">
           Profile Settings
           <div className="sub-header">
-            Manage your profile's preferences and settings
+            {"Manage your profile's preferences and settings"}
           </div>
         </div>
       </h2>
@@ -56,7 +56,7 @@ export function SettingsPage() {
         <div className="active item">Tab 1</div>
         <div className="item">Tab 2</div>
       </div> */}
-      <Tab className="settings-tabs" panes={panes}></Tab>
+      <Tab className="settings-tabs" panes={panes} />
     </>
   );
 }

@@ -9,11 +9,11 @@ import { useTranslation } from 'react-i18next';
 
 interface Props {}
 
-export const AccountSettings = memo((props: Props) => {
+export const AccountSettings = (props: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { t, i18n } = useTranslation();
 
   return <Div>Account Settings</Div>;
-});
+};
 
 const Div = styled.div``;
