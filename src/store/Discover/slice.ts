@@ -7,7 +7,7 @@ export const initialState: ContainerState = {
   recentlyViewed: [],
   searchResults: [
     {
-      userId: '',
+      userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',
       username: "Jordan's Contracting",
       userTag: "Jordan's Contracting",
       isProvider: true,
@@ -28,7 +28,7 @@ export const initialState: ContainerState = {
       },
     },
     {
-      userId: '',
+      userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',
       username: "Jordan's Contracting",
       userTag: "Jordan's Contracting",
       isProvider: true,
@@ -49,7 +49,7 @@ export const initialState: ContainerState = {
       },
     },
     {
-      userId: '',
+      userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',
       username: "Jordan's Contracting",
       userTag: "Jordan's Contracting",
       isProvider: true,
@@ -70,7 +70,7 @@ export const initialState: ContainerState = {
       },
     },
     {
-      userId: '',
+      userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',
       username: "Jordan's Contracting",
       userTag: "Jordan's Contracting",
       isProvider: true,
@@ -91,7 +91,7 @@ export const initialState: ContainerState = {
       },
     },
     {
-      userId: '',
+      userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',
       username: "Jordan's Contracting",
       userTag: "Jordan's Contracting",
       isProvider: true,
@@ -112,7 +112,7 @@ export const initialState: ContainerState = {
       },
     },
     {
-      userId: '',
+      userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',
       username: "Jordan's Contracting",
       userTag: "Jordan's Contracting",
       isProvider: true,

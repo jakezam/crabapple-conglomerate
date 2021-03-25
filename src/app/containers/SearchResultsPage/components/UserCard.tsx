@@ -9,12 +9,16 @@ import styled from 'styled-components/macro';
 import { Grid, Rating, Table } from 'semantic-ui-react';
 import { SmallAccount } from '../../../../store/Discover/types';
 
+import { useDispatch } from 'react-redux';
+import { push } from 'connected-react-router';
+
 interface Props {
   key: number;
   user: SmallAccount;
 }
 
 export function UserCard(props: Props) {
+  const dispatch = useDispatch();
   let userData = props.user;
   let isProvider = userData.isProvider;
   let providerData = userData.providerData;
@@ -109,31 +113,37 @@ export function UserCard(props: Props) {
   return (
     <Body>
       <CardContainer>
-        <Grid style={{ padding: '10px' }}>
-          <Grid.Row style={{ paddingTop: '20px', minHeight: '105px' }}>
-            <Grid.Column style={{ paddingLeft: '20px' }} width={6}>
-              <ImageContainer>
-                <img
-                  src="https://react.semantic-ui.com/images/avatar/large/matt.jpg"
-                  alt="none"
-                  style={{ width: '100%' }}
-                />
-              </ImageContainer>
-            </Grid.Column>
-            <Grid.Column style={{ paddingLeft: '1px' }} width={10}>
-              {cardTitle}
-              {rating}
-              {location}
-            </Grid.Column>
-          </Grid.Row>
-          {border}
-          <Grid.Row style={{ padding: '9px 15px 20px 15px' }}>
-            {category}
-            <Table celled style={{ marginTop: '2px' }}>
-              <Table.Body>{skillsTab}</Table.Body>
-            </Table>
-          </Grid.Row>
-        </Grid>
+        <div
+          onClick={() => {
+            dispatch(push('/profile/' + userData.userId));
+          }}
+        >
+          <Grid style={{ padding: '10px' }}>
+            <Grid.Row style={{ paddingTop: '20px', minHeight: '105px' }}>
+              <Grid.Column style={{ paddingLeft: '20px' }} width={6}>
+                <ImageContainer>
+                  <img
+                    src="https://react.semantic-ui.com/images/avatar/large/matt.jpg"
+                    alt="none"
+                    style={{ width: '100%' }}
+                  />
+                </ImageContainer>
+              </Grid.Column>
+              <Grid.Column style={{ paddingLeft: '1px' }} width={10}>
+                {cardTitle}
+                {rating}
+                {location}
+              </Grid.Column>
+            </Grid.Row>
+            {border}
+            <Grid.Row style={{ padding: '9px 15px 20px 15px' }}>
+              {category}
+              <Table celled style={{ marginTop: '2px' }}>
+                <Table.Body>{skillsTab}</Table.Body>
+              </Table>
+            </Grid.Row>
+          </Grid>
+        </div>
       </CardContainer>
     </Body>
   );
