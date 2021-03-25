@@ -1,9 +1,12 @@
 import { createSlice } from 'utils/@reduxjs/toolkit';
-import { ContainerState } from 'store/Discover/types';
+import { ContainerState, ISearchQuery } from 'store/Discover/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
   userId: '',
+  pageLoading: false,
+  searchQuery: '',
+  categorySearch: false,
   recentlyViewed: [],
   searchResults: [
     {
@@ -141,6 +144,13 @@ const discoverSlice = createSlice({
   reducers: {
     changeId(state: ContainerState, action: PayloadAction<string>) {
       state.userId = action.payload;
+    },
+    setPageLoading(state: ContainerState, action: PayloadAction<boolean>) {
+      state.pageLoading = action.payload;
+    },
+    updateQuery(state: ContainerState, action: PayloadAction<ISearchQuery>) {
+      state.searchQuery = action.payload.query;
+      state.categorySearch = action.payload.isCategory;
     },
   },
 });

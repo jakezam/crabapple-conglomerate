@@ -1,5 +1,8 @@
 export interface DiscoverState {
   userId: string;
+  pageLoading: boolean;
+  searchQuery: string;
+  categorySearch: boolean;
   recentlyViewed: Array<SmallAccount>;
   searchResults: Array<SmallAccount>;
 }
@@ -20,6 +23,11 @@ export interface SmallAccount {
 export interface ProviderSkills {
   name: string;
   rate: string;
+}
+
+export interface ISearchQuery {
+  query: string;
+  isCategory: boolean;
 }
 
 export type ContainerState = DiscoverState;
