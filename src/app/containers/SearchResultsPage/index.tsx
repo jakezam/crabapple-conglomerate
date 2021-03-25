@@ -5,49 +5,52 @@
  *
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { selectDiscover } from '../../../store/Discover/selectors';
-import { actions as vUActions } from '../../../store/Jobs/slice';
+import { actions, sliceKey } from 'store/Discover/slice';
+import { discoverPageSaga } from 'store/Discover/saga';
+import { ISearchQuery } from 'store/Discover/types';
 
 import { Footer } from '../../components/Footer';
 import { NavigationBar } from '../../components/NavigationBar';
-import { UserCard } from './components/UserCard';
-import { Button } from 'semantic-ui-react';
+import { ResultBlock } from './components/ResultBlock';
+import { Segment } from 'semantic-ui-react';
 
 import { useParams } from 'react-router-dom';
+import { useInjectSaga } from 'redux-injectors';
 
 export function SearchResultsPage() {
+  useInjectSaga({ key: sliceKey, saga: discoverPageSaga });
   // @ts-ignore
   let { category, keyword } = useParams();
 
   const dispatch = useDispatch();
   const discoverState = useSelector(selectDiscover);
 
-  let numResults = discoverState.searchResults.length;
-  let numUsers = Math.min(6, numResults);
-  const [numCards, setNumCards] = useState(numUsers);
+  let urlQuery = keyword;
+  let categorySearch = false;
+  if (keyword == null) {
+    urlQuery = category;
+    categorySearch = true;
+  }
+  const queryPayload: ISearchQuery = {
+    query: urlQuery,
+    isCategory: categorySearch,
+  };
 
-  let usersToDisplay = discoverState.searchResults.slice(0, numCards);
-  let results = usersToDisplay.map(user => <UserCard key={0} user={user} />);
+  useEffect(() => {
+    dispatch(actions.updateQuery(queryPayload));
+  }, [dispatch, category, keyword]);
 
-  let loadMoreBtn = <></>;
-  let buttonStyle = { margin: '40px 41%', padding: '12px', width: '165px' };
-  if (numCards < numResults) {
-    console.log('Load more');
-    loadMoreBtn = (
+  if (discoverState.pageLoading) {
+    return (
       <>
-        <Button
-          primary
-          style={buttonStyle}
-          onClick={() => {
-            setNumCards(Math.min(numCards + 3, numResults));
-          }}
-        >
-          Load More
-        </Button>
+        <NavigationBar />
+        <Segment basic loading style={{ margin: '300px 0' }} />
+        <Footer />
       </>
     );
   }
@@ -60,8 +63,7 @@ export function SearchResultsPage() {
           <FilterContainer>Filter</FilterContainer>
         </div>
         <div>
-          <ResultsContainer>{results}</ResultsContainer>
-          <div>{loadMoreBtn}</div>
+          <ResultBlock key={0} results={discoverState.searchResults} />
         </div>
       </Body>
       <Footer />
@@ -87,14 +89,4 @@ const FilterContainer = styled.div`
   border-radius: 0.28571429rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
   background-color: white;
-`;
-
-const ResultsContainer = styled.div`
-  margin-left: 30px;
-  margin-right: 20px;
-  padding-left: 59px;
-  padding-right: 38px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
 `;
