@@ -9,6 +9,6 @@ function* getSearchedUsers() {
   yield put(actions.setPageLoading(false));
 }
 
-export function* profilePageSaga() {
+export function* discoverPageSaga() {
   yield takeLatest(actions.updateQuery, getSearchedUsers);
 }
