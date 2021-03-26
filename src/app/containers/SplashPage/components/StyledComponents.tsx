@@ -1,46 +1,53 @@
-import styled from 'styled-components';
-import { Button } from 'semantic-ui-react';
-
-interface IsMobile {
-  isMobile: boolean;
-}
+import styled from 'styled-components/macro';
 
 export const Container = styled.div`
-  //position: absolute;
-  //bottom: 0;
+  width: 100vw;
+  height: 100vh;
+
   display: flex;
   flex: 1;
   flex-direction: column;
 
   // DEBUG STYLES //
-  //border: 5px solid red;
+  //border: solid 5px green;
 `;
 
-export const TopBox = styled.div<IsMobile>`
+export const Content = styled.div`
   display: flex;
-  flex: 1;
-  flex-direction: ${props => (props.isMobile ? 'column' : 'row')};
-
-  // DEBUG STYLES //
-  //border: 5px solid red;
-`;
-
-export const CopyrightBox = styled.div`
-  display: flex;
-  flex: 1;
+  flex: 100;
   justify-content: center;
-  font-size: 16px;
+  align-items: center;
 
   // DEBUG STYLES //
-  //border: 5px solid red;
+  //border: solid 5px purple;
 `;
 
-export const Segment = styled.div<IsMobile>`
-  overflow: hidden;
-  display: flex;
-  flex: 1;
-  flex-direction: ${props => (props.isMobile ? 'row' : 'column')};
+export const ImageBox = styled.div`
+  height: min(280px, 30vw);
+  width: min(280px, 30vw);
+
+  background-color: black;
 
   // DEBUG STYLES //
-  //border: 5px solid red;
+  //border: solid 5px purple;
+`;
+
+export const ButtonContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  // DEBUG STYLES //
+  //border: solid 5px purple;
+`;
+
+export const FormBox = styled.div`
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  // DEBUG STYLES //
+  //border: solid 5px purple;
 `;

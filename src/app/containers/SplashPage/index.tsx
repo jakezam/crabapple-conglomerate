@@ -22,9 +22,11 @@ export function SplashPage() {
 }
 
 const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex: 1;
 
   // DEBUG STYLES //
-  border: solid 5px red;
+  //border: solid 5px red;
 `;

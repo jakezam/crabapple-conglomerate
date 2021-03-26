@@ -1,48 +1,49 @@
 /**
  * Footer
  */
-import React from 'react';
+import React, { useState } from 'react';
+import { Button, Icon, Label } from 'semantic-ui-react';
+import { mobileMediaParameters } from '../../../utils/env.config';
+import { useMediaQuery } from 'react-responsive';
 import {
   Container,
   CopyrightBox,
   Segment,
   TopBox,
-} from '../../containers/SplashPage/components/StyledComponents';
+} from './components/StyledComponents';
 import ReactDynamicFont from 'react-dynamic-font';
-import { Button, Icon, Label } from 'semantic-ui-react';
-import { mobileMediaParameters } from '../../../utils/env.config';
-import { useMediaQuery } from 'react-responsive';
+import useResizeObserver from 'use-resize-observer';
 
 export function Footer() {
   const isMobile = useMediaQuery(mobileMediaParameters);
 
   return (
-    <Container>
+    <Container isMobile={isMobile}>
       <TopBox isMobile={isMobile}>
         <Segment isMobile={isMobile}>
           <Button fluid>
-            <Label>About Us</Label>
+            <ReactDynamicFont content={'About Us'} />
           </Button>
           <Button fluid>
-            <Label>Privacy Policy</Label>
-          </Button>
-        </Segment>
-
-        <Segment isMobile={isMobile}>
-          <Button fluid>
-            <Label>Feedback</Label>
-          </Button>
-          <Button fluid>
-            <Label>Terms Of Service</Label>
+            <ReactDynamicFont content={'Privacy Policy'} />
           </Button>
         </Segment>
 
         <Segment isMobile={isMobile}>
           <Button fluid>
-            <Label>Support</Label>
+            <ReactDynamicFont content={'Feedback'} />
           </Button>
           <Button fluid>
-            <Label>Cookie Policy</Label>
+            <ReactDynamicFont content={'Terms Of Service'} />
+          </Button>
+        </Segment>
+
+        <Segment isMobile={isMobile}>
+          <Button fluid>
+            <ReactDynamicFont content={'Support'} />
+          </Button>
+          <Button fluid>
+            <ReactDynamicFont content={'Cookie Policy'} />
           </Button>
         </Segment>
       </TopBox>
