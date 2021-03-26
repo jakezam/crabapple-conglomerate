@@ -10,12 +10,16 @@ import {
 } from '../../containers/SplashPage/components/StyledComponents';
 import ReactDynamicFont from 'react-dynamic-font';
 import { Button, Icon, Label } from 'semantic-ui-react';
+import { mobileMediaParameters } from '../../../utils/env.config';
+import { useMediaQuery } from 'react-responsive';
 
 export function Footer() {
+  const isMobile = useMediaQuery(mobileMediaParameters);
+
   return (
     <Container>
-      <TopBox>
-        <Segment>
+      <TopBox isMobile={isMobile}>
+        <Segment isMobile={isMobile}>
           <Button fluid>
             <Label>About Us</Label>
           </Button>
@@ -24,7 +28,7 @@ export function Footer() {
           </Button>
         </Segment>
 
-        <Segment>
+        <Segment isMobile={isMobile}>
           <Button fluid>
             <Label>Feedback</Label>
           </Button>
@@ -33,7 +37,7 @@ export function Footer() {
           </Button>
         </Segment>
 
-        <Segment>
+        <Segment isMobile={isMobile}>
           <Button fluid>
             <Label>Support</Label>
           </Button>

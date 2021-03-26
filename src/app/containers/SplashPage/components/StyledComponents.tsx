@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Button } from 'semantic-ui-react';
 
+interface IsMobile {
+  isMobile: boolean;
+}
+
 export const Container = styled.div`
   //position: absolute;
   //bottom: 0;
@@ -12,9 +16,10 @@ export const Container = styled.div`
   //border: 5px solid red;
 `;
 
-export const TopBox = styled.div`
+export const TopBox = styled.div<IsMobile>`
   display: flex;
   flex: 1;
+  flex-direction: ${props => (props.isMobile ? 'column' : 'row')};
 
   // DEBUG STYLES //
   //border: 5px solid red;
@@ -30,11 +35,11 @@ export const CopyrightBox = styled.div`
   //border: 5px solid red;
 `;
 
-export const Segment = styled.div`
+export const Segment = styled.div<IsMobile>`
   overflow: hidden;
   display: flex;
   flex: 1;
-  flex-direction: column;
+  flex-direction: ${props => (props.isMobile ? 'row' : 'column')};
 
   // DEBUG STYLES //
   //border: 5px solid red;
