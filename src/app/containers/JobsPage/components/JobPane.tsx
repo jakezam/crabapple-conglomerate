@@ -155,26 +155,13 @@ export function JobPane(props) {
 
   return (
     <Body>
-      {/*<InfoBody>*/}
-      {/*  <Header as="h3" icon="info circle" content="Job Information" block />*/}
-      {/*  {jobInfo}*/}
-      {/*</InfoBody>*/}
+      <InfoBody>
+        <Header as="h3" icon="info circle" content="Job Information" block />
+        {jobInfo}
+      </InfoBody>
       <CalendarContainer>
         <TimePicker />
       </CalendarContainer>
-      {/*<MessagingBody>*/}
-      {/*  <MessageHeader>*/}
-      {/*    <Header as="h3" icon="mail" content="Messages" block />*/}
-      {/*  </MessageHeader>*/}
-      {/*  /!* <Message warning>*/}
-      {/*    <Message.Header>Change coming soon</Message.Header>*/}
-      {/*    <p>*/}
-      {/*      Unfortunately in-app messaging has not been implemented, but our*/}
-      {/*      developers are hard at work and we hope to have this feature done*/}
-      {/*      ASAP!*/}
-      {/*    </p>*/}
-      {/*  </Message> *!/*/}
-      {/*</MessagingBody>*/}
     </Body>
   );
 }
@@ -199,17 +186,8 @@ const InfoBody = styled.div`
 const CalendarContainer = styled.div`
   display: flex;
   flex: 1;
+  flex-direction: column;
 
   // DEBUG STYLES //
   border: 5px solid red;
 `;
-
-// const MessagingBody = styled.div`
-//   width: 50%;
-//   height: 100%;
-//   padding: 15px 5px 15px 30px;
-// `;
-//
-// const MessageHeader = styled.div`
-//   margin-bottom: 50px;
-// `;

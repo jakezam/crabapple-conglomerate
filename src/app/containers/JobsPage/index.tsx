@@ -12,6 +12,7 @@ import { Tab } from 'semantic-ui-react';
 import { NavigationBar } from '../../components/NavigationBar';
 import { Footer } from '../../components/Footer';
 import { JobPane } from './components/JobPane';
+import { TimePicker } from './components/TimePicker';
 
 export function JobsPage() {
   const dispatch = useDispatch();

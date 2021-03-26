@@ -167,61 +167,62 @@ export const TimePicker = () => {
   ////////////////////////
 
   return (
-    <Container>
-      {/*<h3 className="hr mt-1">Select a Time</h3>*/}
-
-      <div>
-        <div style={{ display: 'flex', alignSelf: 'left' }}>
-          <Button style={{ margin: '0.2em' }} onClick={calBack}>
-            Back
-          </Button>
-          <Button style={{ margin: '0.2em' }} onClick={calReturn}>
-            Today
-          </Button>
-          <Button style={{ margin: '0.2em' }} onClick={calNext}>
-            Next
-          </Button>
-          <Dropdown
-            style={{ margin: '0.2em' }}
-            isOpen={calTypeOpen}
-            toggle={() => {
-              setCalTypeOpen(!calTypeOpen);
-            }}
-          >
-            {/*<DropdownToggle caret>{this.currentView}</DropdownToggle>*/}
-            <DropdownMenu>
-              <DropdownItem onClick={setDayView}>Day</DropdownItem>
-              <DropdownItem onClick={setWeekView}>Week</DropdownItem>
-              <DropdownItem onClick={setMonthView}>Month</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </div>
-        <Calendar
-          ref={calRef}
-          calendars={[
-            {
-              id: '0',
-              name: 'Schedule',
-              bgColor: '#9e5fff',
-              borderColor: '#9e5fff',
-            },
-          ]}
-          height={'100%'}
-          view={currentView}
-          week={weekOptions}
-          taskView={false}
-          scheduleView={['time']}
-          // useCreationPopup={true}
-          useDetailPopup={true}
-          schedules={prevSchedule}
-          onClickSchedule={onClickSchedule}
-          onBeforeCreateSchedule={onBeforeCreateSchedule}
-          onBeforeDeleteSchedule={onBeforeDeleteSchedule}
-          onBeforeUpdateSchedule={onBeforeUpdateSchedule}
-          onAfterRenderSchedule={onAfterRenderSchedule}
-        />
+    <>
+      <div style={{ display: 'flex', alignSelf: 'left' }}>
+        <Button style={{ margin: '0.2em' }} onClick={calBack}>
+          Back
+        </Button>
+        <Button style={{ margin: '0.2em' }} onClick={calReturn}>
+          Today
+        </Button>
+        <Button style={{ margin: '0.2em' }} onClick={calNext}>
+          Next
+        </Button>
+        <Dropdown
+          style={{ margin: '0.2em' }}
+          isOpen={calTypeOpen}
+          toggle={() => {
+            setCalTypeOpen(!calTypeOpen);
+          }}
+        >
+          {/*<DropdownToggle caret>{this.currentView}</DropdownToggle>*/}
+          <DropdownMenu>
+            <DropdownItem onClick={setDayView}>Day</DropdownItem>
+            <DropdownItem onClick={setWeekView}>Week</DropdownItem>
+            <DropdownItem onClick={setMonthView}>Month</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </div>
-    </Container>
+      <Calendar
+        ref={calRef}
+        calendars={[
+          {
+            id: '0',
+            name: 'Schedule',
+            bgColor: '#9e5fff',
+            borderColor: '#9e5fff',
+          },
+        ]}
+        style={{
+          display: 'flex',
+          flex: 1,
+          border: 'red solid 5px',
+        }}
+        height={'100%'}
+        view={currentView}
+        week={weekOptions}
+        taskView={false}
+        scheduleView={['time']}
+        // useCreationPopup={true}
+        useDetailPopup={true}
+        schedules={prevSchedule}
+        onClickSchedule={onClickSchedule}
+        onBeforeCreateSchedule={onBeforeCreateSchedule}
+        onBeforeDeleteSchedule={onBeforeDeleteSchedule}
+        onBeforeUpdateSchedule={onBeforeUpdateSchedule}
+        onAfterRenderSchedule={onAfterRenderSchedule}
+      />
+    </>
   );
 };
 
