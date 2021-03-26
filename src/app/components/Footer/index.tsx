@@ -21,35 +21,35 @@ export function Footer() {
     <Container isMobile={isMobile}>
       <TopBox isMobile={isMobile}>
         <Segment isMobile={isMobile}>
-          <Button fluid>
+          <Button fluid style={{ backgroundColor: 'transparent' }}>
             <ReactDynamicFont content={'About Us'} />
           </Button>
-          <Button fluid>
+          <Button fluid style={{ backgroundColor: 'transparent' }}>
             <ReactDynamicFont content={'Privacy Policy'} />
           </Button>
         </Segment>
 
         <Segment isMobile={isMobile}>
-          <Button fluid>
+          <Button fluid style={{ backgroundColor: 'transparent' }}>
             <ReactDynamicFont content={'Feedback'} />
           </Button>
-          <Button fluid>
+          <Button fluid style={{ backgroundColor: 'transparent' }}>
             <ReactDynamicFont content={'Terms Of Service'} />
           </Button>
         </Segment>
 
         <Segment isMobile={isMobile}>
-          <Button fluid>
+          <Button fluid style={{ backgroundColor: 'transparent' }}>
             <ReactDynamicFont content={'Support'} />
           </Button>
-          <Button fluid>
+          <Button fluid style={{ backgroundColor: 'transparent' }}>
             <ReactDynamicFont content={'Cookie Policy'} />
           </Button>
         </Segment>
       </TopBox>
 
       <CopyrightBox>
-        <Label>2021 inployd</Label>
+        <Label style={{ backgroundColor: 'transparent' }}>2021 inployd</Label>
         <Icon name={'copyright'} />
       </CopyrightBox>
     </Container>

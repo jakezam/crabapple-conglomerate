@@ -13,9 +13,11 @@ import { push } from 'connected-react-router';
 import { mobileMediaParameters } from '../../../utils/env.config';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
+import { useHistory } from 'react-router-dom';
 
 export const SplashPage = () => {
   const dispatch = useDispatch();
+  // const history = useHistory();
   const isMobile = useMediaQuery(mobileMediaParameters);
 
   return (

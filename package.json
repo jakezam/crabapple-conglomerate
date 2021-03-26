@@ -48,7 +48,7 @@
     "formsy-react": "2.2.5",
     "formsy-semantic-ui-react": "2.1.1",
     "generate": "0.14.0",
-    "history": "5.0.0",
+    "history": "4.10.1",
     "i18next": "19.9.2",
     "i18next-browser-languagedetector": "6.0.1",
     "immutable": "4.0.0-rc.12",
