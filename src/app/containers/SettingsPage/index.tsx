@@ -41,7 +41,7 @@ export function SettingsPage() {
 
   return (
     <>
-      <NavigationBar/>
+      <NavigationBar />
       <h2
         className="ui center aligned icon header"
         style={{ boxShadow: 'none', paddingBottom: '120px' }}
@@ -58,5 +58,3 @@ export function SettingsPage() {
     </>
   );
 }
-
-

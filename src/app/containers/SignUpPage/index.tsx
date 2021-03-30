@@ -1,10 +1,6 @@
 /**
  * SignUpPage
  */
-
-/* eslint-disable  @typescript-eslint/no-unused-vars */
-
-// Package Imports //
 import React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -13,8 +9,6 @@ import {
   selectUnableToCreate,
 } from '../../../store/SignUp/selectors';
 import { actions, sliceKey } from '../../../store/SignUp/slice';
-
-// Component Imports //
 import { Header } from '../../components/Header';
 import { useInjectSaga } from '../../../utils/redux-injectors';
 import { signUpPageSaga } from 'store/SignUp/saga';
@@ -36,7 +30,7 @@ export function SignUpPage() {
   ///////////
 
   return (
-    <>
+    <Container>
       <Header />
       <Body>
         <Modal
@@ -63,6 +57,8 @@ export function SignUpPage() {
         </Modal>
 
         <InnerBody>
+          <h1>Sign Up</h1>
+
           {signUpStep === 2 && <StepBox />}
           <ContentBox>
             {/*Step zero -- init user*/}
@@ -77,13 +73,26 @@ export function SignUpPage() {
         </InnerBody>
       </Body>
       {/*<Footer />*/}
-    </>
+    </Container>
   );
 }
+
+export const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  // DEBUG STYLES //
+  //border: solid 5px green;
+`;
 
 const Body = styled.div`
   display: flex;
   flex: 1;
+  flex-direction: column;
   align-items: center;
 `;
 
@@ -91,7 +100,9 @@ const InnerBody = styled.div`
   margin: 4.5% auto;
   padding: 2.5%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.75rem;
