@@ -3,7 +3,12 @@ import {Container, Grid, Header, List, Table, Modal, Button} from 'semantic-ui-r
 
 function MessageModal(props) {
     const [open, setOpen] = React.useState(false)
-    const {from, subject, message, messageId} = props;
+    const {
+        from, 
+        subject, 
+        message, 
+        messageId, 
+        firstColumn } = props;
     return (
       <Modal
         onClose={() => setOpen(false)}
@@ -11,7 +16,7 @@ function MessageModal(props) {
         open={open}
         trigger={<Button>View</Button>}
       >
-        <Modal.Header>Message From: {from}</Modal.Header>
+        <Modal.Header>Message {firstColumn}: {from}</Modal.Header>
         <Modal.Content image>
           <Modal.Description>
             <Header>{subject}</Header>
