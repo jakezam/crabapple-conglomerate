@@ -6,3 +6,5 @@ export enum Environment {
   Production = 'production',
   Staging = 'staging',
 }
+
+export const mobileMediaParameters = { query: '(max-width: 750px)' };

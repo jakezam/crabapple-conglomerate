@@ -1,93 +1,70 @@
-/**
- * SplashPage
- */
-
-// Package Imports //
 import React from 'react';
-import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import {
+  ButtonContainer,
+  Container,
+  Content,
+  FormBox,
+  ImageBox,
+} from './components/StyledComponents';
+import { useMediaQuery } from 'react-responsive';
 import { Button, Divider, Form } from 'semantic-ui-react';
-// import { useHistory } from 'react-router-dom';
 import { push } from 'connected-react-router';
-
-// Component Imports //
+import { mobileMediaParameters } from '../../../utils/env.config';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
-export function SplashPage() {
-  // const history = useHistory();
+export const SplashPage = () => {
   const dispatch = useDispatch();
+  // const history = useHistory();
+  const isMobile = useMediaQuery(mobileMediaParameters);
 
   return (
-    <>
+    <Container>
       <Header />
-      <Body>
-        <InnerBody>
-          <LoginBox>
-            <Form>
-              <Form.Field>
-                <label>Username</label>
-                <input placeholder="name@example.com" />
-              </Form.Field>
-              <Form.Field>
-                <label>Password</label>
-                <input placeholder="**************" />
-              </Form.Field>
-              <Button
-                primary
-                color="blue"
-                style={{ width: '100%', margin: '10px 0' }}
-              >
+
+      <Content>
+        <FormBox>
+          <Form>
+            <Form.Field style={{ paddingRight: '1em' }}>
+              <label>Username</label>
+              <input placeholder="name@example.com" />
+            </Form.Field>
+            <Form.Field style={{ paddingRight: '1em' }}>
+              <label>Password</label>
+              <input placeholder="**************" />
+            </Form.Field>
+
+            <ButtonContainer>
+              <Button primary color="blue" style={{ width: '80%' }}>
                 Sign In
               </Button>
-            </Form>
-            <Divider horizontal style={{ textTransform: 'lowercase' }}>
-              {"don't have an account?"}
-            </Divider>
+            </ButtonContainer>
+          </Form>
+
+          <Divider horizontal style={{ textTransform: 'lowercase' }}>
+            {"don't have an account?"}
+          </Divider>
+
+          <ButtonContainer>
             <Button
+              style={{ width: '80%' }}
               positive
               color="green"
-              style={{ width: '100%', margin: '10px 0' }}
               onClick={() => {
                 dispatch(push('/signup'));
               }}
             >
               Create Account
             </Button>
-          </LoginBox>
-          <ImageBox />
-        </InnerBody>
-      </Body>
+          </ButtonContainer>
+        </FormBox>
+
+        {!isMobile && <ImageBox />}
+      </Content>
+
       <Footer />
-    </>
+    </Container>
   );
-}
-
-const Body = styled.div`
-  padding: 10px;
-  position: relative;
-  display: flex;
-  align-items: center;
-`;
-
-const InnerBody = styled.div`
-  width: 710px;
-  height: 400px;
-  margin: 4.5% auto;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
-  display: flex;
-`;
-
-const LoginBox = styled.div`
-  width: 50%;
-  padding: 40px;
-`;
-
-const ImageBox = styled.div`
-  width: 50%;
-  padding: 25px;
-  background-color: black;
-`;
+};
