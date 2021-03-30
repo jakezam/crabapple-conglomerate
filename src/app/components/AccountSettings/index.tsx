@@ -25,22 +25,40 @@ export const AccountSettings = (props: Props) => {
               name="username"
               placeholder="Username"
               value="jakezam"
-            ></input>
+            />
+          </div>
+          <div className="field">
             <label style={label_style}>Email</label>
             <input
               type="text"
               name="username"
               placeholder="Email"
               value="zamanj@rpi.edu"
-            ></input>
-            <div className="ui divider" />
+            />
+          </div>
+          <div className="ui divider" />
+          <div style={{ textAlign: 'center' }}>
+            <h3>Reset Password</h3>
+          </div>
+          <div className="field">
             <label style={label_style}>Old Password</label>
             <input
               type="password"
-              name="password"
-              placeholder="New Password"
-            ></input>
+              name="old_password"
+              placeholder="Old Password"
+            />
           </div>
+          <div className="field">
+            <label style={label_style}>New Password</label>
+            <input
+              type="password"
+              name="new_password"
+              placeholder="New Password"
+            />
+          </div>
+          <button className="ui button" type="submit">
+            Submit
+          </button>
         </form>
       </div>
     </>
@@ -48,6 +66,11 @@ export const AccountSettings = (props: Props) => {
 };
 
 let label_style = {
+  fontFamily: "Lato,'Helvetica Neue',Arial,Helvetica,sans-serif",
+  marginTop: '2%',
+};
+
+let label_section = {
   fontFamily: "Lato,'Helvetica Neue',Arial,Helvetica,sans-serif",
   marginTop: '2%',
 };
