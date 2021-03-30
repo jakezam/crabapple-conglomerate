@@ -7,6 +7,7 @@
 import React from 'react';
 import { NavigationBar } from '../../components/NavigationBar';
 import {Container, Grid, Header, List, Table} from 'semantic-ui-react';
+import MessageModal from './components/MessageModal';
 export function NotificationsPage() {
   let messages = [
     {
@@ -32,8 +33,15 @@ export function NotificationsPage() {
               <Table celled selectable>
               <Table.Header>
                 <Table.Row>
-                  <Table.HeaderCell>From</Table.HeaderCell>
-                  <Table.HeaderCell>Subject</Table.HeaderCell>
+                  <Table.HeaderCell>
+                    From
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    Subject
+                  </Table.HeaderCell>
+                  <Table.HeaderCell>
+                    View Message
+                  </Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
                 {messages.map(el => {
@@ -42,7 +50,16 @@ export function NotificationsPage() {
                       <Table.Cell>
                         {el.firstName} {el.lastName}
                       </Table.Cell>
-                      <Table.Cell>{el.subject}</Table.Cell>
+                      <Table.Cell>
+                        {el.subject}
+                      </Table.Cell>
+                      <Table.Cell>
+                        <MessageModal 
+                          messageId={el.messageId}
+                          subject={el.subject} 
+                          message={el.message}
+                          from={el.firstName + ' ' + el.lastName} />
+                        </Table.Cell>
                     </Table.Row>
                   );
                 })}
