@@ -19,14 +19,22 @@ export const AccountSettings = (props: Props) => {
       <div>
         <form className="ui form">
           <div className="field">
-            <label
-              style={{
-                fontFamily:
-                  "Lato,'Helvetica Neue',Arial,Helvetica,sans-serif",
-              }}
-            >
+            <label style={label_style}>
               Username
             </label>
+            <input type="text" name="username" placeholder="Username" value="jakezam">
+            </input>
+            <label style={label_style}>
+              Email
+            </label>
+            <input type="text" name="username" placeholder="Email" value="zamanj@rpi.edu">
+            </input>
+            <div className="ui divider"/>
+            <label style={label_style}>
+              Old Password
+            </label>
+            <input type="password" name="password" placeholder="New Password">
+            </input>
           </div>
         </form>
       </div>
@@ -34,4 +42,9 @@ export const AccountSettings = (props: Props) => {
   )
 };
 
+let label_style = {
+  fontFamily:
+    "Lato,'Helvetica Neue',Arial,Helvetica,sans-serif",
+  marginTop: "2%"
+}
 const Div = styled.div``;
