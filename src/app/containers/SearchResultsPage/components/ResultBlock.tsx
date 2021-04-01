@@ -34,7 +34,7 @@ export function ResultBlock(props: Props) {
   let results = usersToDisplay.map(user => <UserCard key={0} user={user} />);
 
   let loadMoreBtn = <></>;
-  let buttonStyle = { margin: '40px 41%', padding: '12px', width: '165px' };
+  let buttonStyle = { margin: '40px 45%', padding: '12px', width: '165px' };
   if (numCards < numResults) {
     console.log('Load more');
     loadMoreBtn = (
