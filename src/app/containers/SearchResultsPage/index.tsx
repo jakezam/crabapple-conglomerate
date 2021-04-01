@@ -58,10 +58,11 @@ export function SearchResultsPage() {
   return (
     <>
       <NavigationBar />
+      {/* <Header>
+        <h4 style={{ float: 'left', marginTop: '0' }}>Left</h4>
+        <h4 style={{ float: 'right', marginTop: '0' }}>Right</h4>
+      </Header> */}
       <Body>
-        <div>
-          <FilterContainer>Filter</FilterContainer>
-        </div>
         <div>
           <ResultBlock key={0} results={discoverState.searchResults} />
         </div>

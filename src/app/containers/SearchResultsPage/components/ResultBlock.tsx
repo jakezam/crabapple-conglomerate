@@ -47,6 +47,10 @@ export function ResultBlock(props: Props) {
 
   return (
     <Body>
+      <HeaderContainer>
+        <h4 style={{ float: 'left', margin: '0 auto 0 100px' }}>Left</h4>
+        <h4 style={{ float: 'right', margin: '0 11% 0 0' }}>Right</h4>
+      </HeaderContainer>
       <ResultsContainer>{results}</ResultsContainer>
       <div>{loadMoreBtn}</div>
     </Body>
@@ -56,11 +60,27 @@ export function ResultBlock(props: Props) {
 const Body = styled.div``;
 
 const ResultsContainer = styled.div`
-  margin-left: 30px;
+  margin-left: 2%;
   margin-right: 20px;
-  padding-left: 59px;
+  padding-left: 4%;
   padding-right: 38px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+`;
+
+const HeaderContainer = styled.div`
+  margin-left: 2%;
+  margin-right: 20px;
+  padding-left: 4%;
+  padding-right: 38px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+`;
+
+const Header = styled.div`
+  width: 90%;
+  margin: 90px auto;
+  padding: 10px;
 `;
