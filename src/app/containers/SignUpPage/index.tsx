@@ -56,7 +56,7 @@ export function SignUpPage() {
           </Modal.Actions>
         </Modal>
 
-        <InnerBody>
+        <InnerBody currentStep={signUpStep}>
           <h1>Sign Up</h1>
 
           {signUpStep === 2 && <StepBox />}
@@ -77,6 +77,10 @@ export function SignUpPage() {
   );
 }
 
+interface StepProps {
+  currentStep: number;
+}
+
 export const Container = styled.div`
   width: 100vw;
   height: 100vh;
@@ -86,7 +90,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   // DEBUG STYLES //
-  //border: solid 5px green;
+  border: solid 5px green;
 `;
 
 const Body = styled.div`
@@ -94,19 +98,25 @@ const Body = styled.div`
   flex: 1;
   flex-direction: column;
   align-items: center;
+
+  // DEBUG STYLES //
+  border: solid 5px green;
 `;
 
-const InnerBody = styled.div`
+const InnerBody = styled.div<StepProps>`
   margin: 4.5% auto;
   padding: 2.5%;
   display: flex;
-  flex-direction: column;
+  flex-direction: ${props => (props.currentStep > 1 ? 'row' : 'column')};
   justify-content: center;
   align-items: center;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.75rem;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
+
+  // DEBUG STYLES //
+  border: solid 5px green;
 `;
 
 const ContentBox = styled.div`

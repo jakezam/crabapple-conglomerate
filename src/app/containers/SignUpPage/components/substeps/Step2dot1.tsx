@@ -40,4 +40,7 @@ const Box = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  // DEBUG STYLES //
+  border: red 5px solid;
 `;
