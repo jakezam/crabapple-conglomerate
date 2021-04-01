@@ -8,6 +8,7 @@ import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  Modal,
 } from 'semantic-ui-react';
 import styled from 'styled-components/macro';
 
@@ -27,9 +28,13 @@ const weekOptions = {};
 // };
 ///////////////////////////
 
-export const TimePicker = () => {
+interface IProps {
+  setModalOpen: any;
+}
+
+export const TimePicker = ({ setModalOpen }: IProps) => {
   const calRef = useRef(null);
-  const [currentView, setCurrentView] = useState('day');
+  const [currentView, setCurrentView] = useState('week');
   const [calTypeOpen, setCalTypeOpen] = useState(false);
   const [prevSchedule, setPrevSchedule] = useState([
     {
@@ -168,7 +173,7 @@ export const TimePicker = () => {
 
   return (
     <>
-      <div style={{ display: 'flex', alignSelf: 'left' }}>
+      <Container>
         <Button style={{ margin: '0.2em' }} onClick={calBack}>
           Back
         </Button>
@@ -192,7 +197,27 @@ export const TimePicker = () => {
             <DropdownItem onClick={setMonthView}>Month</DropdownItem>
           </DropdownMenu>
         </Dropdown>
-      </div>
+        <ConfirmBox>
+          <Button
+            content="Cancel"
+            labelPosition="right"
+            icon="x"
+            negative={true}
+            onClick={() => {
+              setModalOpen(false);
+            }}
+          />
+          <Button
+            content="Confirm"
+            labelPosition="right"
+            icon="checkmark"
+            positive
+            onClick={() => {
+              setModalOpen(false);
+            }}
+          />
+        </ConfirmBox>
+      </Container>
       <Calendar
         ref={calRef}
         calendars={[
@@ -227,9 +252,19 @@ export const TimePicker = () => {
 };
 
 const Container = styled.div`
+  padding-bottom: 5px;
   display: flex;
   flex: 1;
 
   // DEBUG STYLES //
-  border: 5px solid orange;
+  //border: 5px solid orange;
+`;
+
+const ConfirmBox = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+
+  // DEBUG STYLES //
+  //border: 5px solid red;
 `;

@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
-import { Button, Grid, Header, Message } from 'semantic-ui-react';
+import { Button, Grid, Header, Message, Modal } from 'semantic-ui-react';
 import { ModificationForm } from './ModificationForm';
 import Calendar from '@toast-ui/react-calendar';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 import 'tui-calendar/dist/tui-calendar.css';
 import { TimePicker } from './TimePicker';
+import { jobPageShrink } from '../../../../utils/env.config';
+import { useMediaQuery } from 'react-responsive';
 
 export function JobPane(props) {
   const { job } = props;
+  const isSmaller = useMediaQuery(jobPageShrink);
 
   let dateMessage = 'Planned For:';
   if (job.isOngoing) {
@@ -154,40 +157,35 @@ export function JobPane(props) {
   );
 
   return (
-    <Body>
+    <Body isSmaller={isSmaller}>
       <InfoBody>
         <Header as="h3" icon="info circle" content="Job Information" block />
         {jobInfo}
       </InfoBody>
-      <CalendarContainer>
-        <TimePicker />
-      </CalendarContainer>
     </Body>
   );
 }
 
-const Body = styled.div`
-  //width: 100%;
-  //height: 100%;
+interface IsSmaller {
+  isSmaller: boolean;
+}
+
+const Body = styled.div<IsSmaller>`
   display: flex;
   flex: 1;
+  flex-direction: column;
 
   // DEBUG STYLES //
   border: 5px green solid;
 `;
 
 const InfoBody = styled.div`
-  width: 50%;
-  height: 100%;
-  padding: 15px;
-  border-right: 1px solid #d7d7d7;
-`;
-
-const CalendarContainer = styled.div`
   display: flex;
   flex: 1;
   flex-direction: column;
 
-  // DEBUG STYLES //
-  border: 5px solid red;
+  //width: 50%;
+  height: 100%;
+  padding: 15px;
+  border-right: 1px solid #d7d7d7;
 `;
