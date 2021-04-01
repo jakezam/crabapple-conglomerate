@@ -59,6 +59,8 @@ export function ResultBlock(props: Props) {
     distanceIcon = '';
   }
 
+  let resultCount = numResults + ' results';
+
   return (
     <Body>
       <HeaderContainer>
@@ -91,7 +93,7 @@ export function ResultBlock(props: Props) {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <h4 style={{ float: 'right', margin: '0 11% 0 0' }}>Right</h4>
+        <h4 style={{ float: 'right', margin: '0 11% 0 0' }}>{resultCount}</h4>
       </HeaderContainer>
       <ResultsContainer>{results}</ResultsContainer>
       <div>{loadMoreBtn}</div>
