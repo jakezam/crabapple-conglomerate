@@ -2,20 +2,17 @@
  * NavigationBar
  */
 
-// Package Imports //
 import React from 'react';
-import styled from 'styled-components';
-// import { Search, Button } from 'semantic-ui-react';
-import { Menu, Input, Search, Button, Popup, Grid } from 'semantic-ui-react';
-import { Link, useHistory } from 'react-router-dom';
+import { Button, Menu, Popup, Search } from 'semantic-ui-react';
+import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { push } from 'connected-react-router';
-
-// Component Imports //
+import { Body, Logo, ProfilePic } from './components/StyledComponents';
 
 export function NavigationBar() {
   const dispatch = useDispatch();
   const history = useHistory();
+
   let currActive = history.location.pathname.substring(1);
   let slashIndex = currActive.indexOf('/');
   if (slashIndex >= 0) {
@@ -31,15 +28,6 @@ export function NavigationBar() {
         <Menu.Menu position="left">
           <Logo src="inployd_logo_v2.PNG" alt="none" />
         </Menu.Menu>
-        {/* <Menu.Item
-          name="Home"
-          icon={'home'}
-          active={activeItem === 'home'}
-          onClick={(e, { name }) => {
-            setActive('home');
-            dispatch(push('/home'));
-          }}
-        /> */}
         <Menu.Item
           name="Discover"
           icon={'map'}
@@ -52,9 +40,9 @@ export function NavigationBar() {
         <Menu.Item
           name="Consultations"
           icon={'address card'}
-          active={activeItem === 'Consultations'}
+          active={activeItem === 'consultations'}
           onClick={(e, { name }) => {
-            dispatch(push('/jobs'));
+            dispatch(push('/consultations'));
           }}
         />
         <Menu.Item
@@ -91,28 +79,3 @@ export function NavigationBar() {
     </Body>
   );
 }
-
-const Body = styled.div`
-  padding: 18px 170px 18px 100px;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.075);
-  height: 90px;
-  width: 100%;
-  background-color: #f0f9ff;
-`;
-
-const ProfilePic = styled.img`
-  width: 43px;
-  height: 43px;
-  border: 2.5px white solid;
-  border-radius: 6px;
-  margin: auto 0 auto 20px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.045), 0 2px 4px 0 rgba(0, 0, 0, 0.045);
-  color: #white;
-`;
-
-const Logo = styled.img`
-  height: 56px;
-  width: 104px;
-  display: block;
-  margin-right: 40px;
-`;

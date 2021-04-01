@@ -22,9 +22,6 @@ export function App() {
         <Route exact path="/">
           <SplashPage />
         </Route>
-        {/*<Route exact path="/home">*/}
-        {/*  <HomePage />*/}
-        {/*</Route>*/}
         <Route exact path="/signup">
           <SignUpPage />
         </Route>
@@ -38,7 +35,7 @@ export function App() {
           <NotificationsPage />
         </Route>
         <Route path="/profile/:id" component={ProfilePage} />
-        <Route exact path="/jobs">
+        <Route exact path="/consultations">
           <JobsPage />
         </Route>
         <Route>
