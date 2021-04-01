@@ -13,7 +13,7 @@ export const Body = styled.div`
   background-color: #f0f9ff;
 
   // DEBUG STYLES //
-  //border: 5px solid red;
+  border: 5px solid red;
 `;
 
 export const ProfilePic = styled.img`
