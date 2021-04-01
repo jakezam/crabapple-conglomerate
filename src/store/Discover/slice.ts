@@ -7,6 +7,7 @@ export const initialState: ContainerState = {
   pageLoading: false,
   searchQuery: '',
   categorySearch: false,
+  filterByRating: true,
   recentlyViewed: [],
   searchResults: [
     {
@@ -151,6 +152,9 @@ const discoverSlice = createSlice({
     updateQuery(state: ContainerState, action: PayloadAction<ISearchQuery>) {
       state.searchQuery = action.payload.query;
       state.categorySearch = action.payload.isCategory;
+    },
+    setFilterKey(state: ContainerState, action: PayloadAction<boolean>) {
+      state.filterByRating = action.payload;
     },
   },
 });

@@ -58,10 +58,6 @@ export function SearchResultsPage() {
   return (
     <>
       <NavigationBar />
-      {/* <Header>
-        <h4 style={{ float: 'left', marginTop: '0' }}>Left</h4>
-        <h4 style={{ float: 'right', marginTop: '0' }}>Right</h4>
-      </Header> */}
       <Body>
         <div>
           <ResultBlock key={0} results={discoverState.searchResults} />
@@ -77,7 +73,7 @@ const Body = styled.div`
   font-family: 'Nunito';
   justify-content: center;
   margin-bottom: 50px;
-  padding: 30px 0;
+  padding: 70px 0;
 `;
 
 const FilterContainer = styled.div`

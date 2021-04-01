@@ -3,6 +3,7 @@ export interface DiscoverState {
   pageLoading: boolean;
   searchQuery: string;
   categorySearch: boolean;
+  filterByRating: boolean;
   recentlyViewed: Array<SmallAccount>;
   searchResults: Array<SmallAccount>;
 }
