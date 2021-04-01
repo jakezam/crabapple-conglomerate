@@ -8,3 +8,4 @@ export enum Environment {
 }
 
 export const mobileMediaParameters = { query: '(max-width: 750px)' };
+export const smallerDesktopMediaParameters = { query: '(max-width: 820px)' };

@@ -10,6 +10,7 @@ import { SettingsPage } from './containers/SettingsPage/Loadable';
 import { DiscoverPage } from './containers/DiscoverPage/Loadable';
 import { SplashPage } from './containers/SplashPage/Loadable';
 import { NotificationsPage } from './containers/NotificationsPage/Loadable';
+import '../styles/gobal.css';
 
 export function App() {
   return (
