@@ -27,7 +27,7 @@ export function ResultBlock(props: Props) {
   const filterByRating = useSelector(selectResultFilter);
 
   let numResults = users.length;
-  let numUsers = Math.min(6, numResults);
+  let numUsers = Math.min(8, numResults);
   const [numCards, setNumCards] = useState(numUsers);
 
   let usersToDisplay = users.slice(0, numCards);
@@ -43,7 +43,7 @@ export function ResultBlock(props: Props) {
           primary
           style={buttonStyle}
           onClick={() => {
-            setNumCards(Math.min(numCards + 3, numResults));
+            setNumCards(Math.min(numCards + 4, numResults));
           }}
         >
           Load More
