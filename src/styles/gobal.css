@@ -1,15 +1,15 @@
 ::-webkit-scrollbar {
-    width: 20px;
+  width: 20px;
 }
 ::-webkit-scrollbar-track {
-    background-color: transparent;
+  background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: lightgray;
-    border-radius: 20px;
-    border: 7px solid transparent;
-    background-clip: content-box;
+  background-color: lightgray;
+  border-radius: 20px;
+  border: 7px solid transparent;
+  background-clip: content-box;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #a8bbbf;
+  background-color: #a8bbbf;
 }
