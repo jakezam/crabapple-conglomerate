@@ -11,7 +11,9 @@ import {
   Modal,
 } from 'semantic-ui-react';
 import styled from 'styled-components/macro';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { selectJobs } from '../../../../store/Jobs/selectors';
+import { actions as jobsActions } from 'store/Jobs/slice';
 // Calendar Default Options //
 const mobileWeekOptions = {
   daynames: ['', '', '', '', '', '', ''],
@@ -34,6 +36,8 @@ interface IProps {
 
 export const TimePicker = ({ setModalOpen }: IProps) => {
   const calRef = useRef(null);
+  const jobsState = useSelector(selectJobs);
+  const dispatch = useDispatch();
   const [currentView, setCurrentView] = useState('week');
   const [calTypeOpen, setCalTypeOpen] = useState(false);
   const [prevSchedule, setPrevSchedule] = useState([
@@ -49,6 +53,23 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
       location: 'test',
     },
   ]);
+
+  // Add suggested times to calender
+  let suggestedTimes: Array<any> = [];
+  // TODO: Add a job ID to state
+  jobsState.jobs[0].suggestedTimes.forEach(time => {
+    suggestedTimes.push({
+      id: Math.random(),
+      calendarId: '0',
+      title: 'Suggested Time',
+      category: 'time',
+      dueDateClass: '',
+      start: time.beginTime,
+      end: time.endTime,
+      bgColor: 'lightblue',
+      location: 'test',
+    });
+  });
 
   const toggleCalType = prevState => {
     setCalTypeOpen(!calTypeOpen);
@@ -107,6 +128,15 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
       // state: scheduleData.state,
     };
 
+    // Add new suggested time to state
+    dispatch(
+      jobsActions.addSuggestedTime({
+        beginTime: scheduleData.start,
+        endTime: scheduleData.end,
+        date: '',
+      }),
+    );
+
     // @ts-ignore
     calRef.current.calendarInst.createSchedules([schedule]);
   };
@@ -120,6 +150,8 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
 
   const onBeforeUpdateSchedule = e => {
     const { schedule, changes } = e;
+
+    //TODO: Update suggested times in state
 
     // @ts-ignore
     calRef.current.calendarInst.updateSchedule(

@@ -12,9 +12,16 @@ export interface Job {
   jobDescription: string;
   isAccepted: boolean;
   beginDate: string;
+  suggestedTimes: Array<SuggestedTime>;
   isOngoing: boolean;
   isProviding: boolean;
   wasModified: boolean;
+}
+
+export interface SuggestedTime {
+  date: string;
+  beginTime: string;
+  endTime: string;
 }
 
 export type ContainerState = JobsState;
