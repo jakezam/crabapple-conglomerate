@@ -54,7 +54,13 @@ export function SettingsPage() {
           </div>
         </div>
       </h2>
-      <Tab className="settings-tabs" panes={panes} />
+      <div style={{display:"flex", justifyContent: "center"}}>
+        <Tab className="settings-tabs" panes={panes} style={tab_style}/>
+      </div>
     </>
   );
+};
+
+let tab_style = {
+  maxWidth:"100em"
 }

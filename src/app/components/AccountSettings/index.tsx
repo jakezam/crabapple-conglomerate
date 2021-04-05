@@ -25,6 +25,7 @@ export const AccountSettings = (props: Props) => {
               name="username"
               placeholder="Username"
               value="jakezam"
+              style={field_style}
             />
           </div>
           <div className="field">
@@ -34,6 +35,7 @@ export const AccountSettings = (props: Props) => {
               name="username"
               placeholder="Email"
               value="zamanj@rpi.edu"
+              style={field_style}
             />
           </div>
           <div className="ui divider" />
@@ -46,6 +48,7 @@ export const AccountSettings = (props: Props) => {
               type="password"
               name="old_password"
               placeholder="Old Password"
+              style={field_style}
             />
           </div>
           <div className="field">
@@ -54,6 +57,7 @@ export const AccountSettings = (props: Props) => {
               type="password"
               name="new_password"
               placeholder="New Password"
+              style={field_style}
             />
           </div>
           <button className="ui button" type="submit">
@@ -69,6 +73,10 @@ let label_style = {
   fontFamily: "Lato,'Helvetica Neue',Arial,Helvetica,sans-serif",
   marginTop: '2%',
 };
+
+let field_style = {
+  maxWidth: "40%"
+}
 
 let label_section = {
   fontFamily: "Lato,'Helvetica Neue',Arial,Helvetica,sans-serif",
