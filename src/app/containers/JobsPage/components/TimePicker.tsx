@@ -14,6 +14,8 @@ import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectJobs } from '../../../../store/Jobs/selectors';
 import { actions as jobsActions } from 'store/Jobs/slice';
+import { v4 as uuidv4 } from 'uuid';
+
 // Calendar Default Options //
 const mobileWeekOptions = {
   daynames: ['', '', '', '', '', '', ''],
@@ -40,24 +42,12 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
   const dispatch = useDispatch();
   const [currentView, setCurrentView] = useState('week');
   const [calTypeOpen, setCalTypeOpen] = useState(false);
-  const [prevSchedule, setPrevSchedule] = useState([
-    {
-      id: '1',
-      calendarId: '0',
-      title: 'test',
-      category: 'time',
-      dueDateClass: '',
-      start: new Date(),
-      end: new Date(),
-      bgColor: 'lightblue',
-      location: 'test',
-    },
-  ]);
+  const [prevSchedule, setPrevSchedule] = useState([]);
 
   // Add suggested times to calender
   let suggestedTimes: Array<any> = [];
   // TODO: Add a job ID to state
-  jobsState.jobs[0].suggestedTimes.forEach(time => {
+  jobsState.jobs[jobsState.selectedJob].suggestedTimes.forEach(time => {
     suggestedTimes.push({
       id: Math.random(),
       calendarId: '0',
@@ -131,9 +121,12 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
     // Add new suggested time to state
     dispatch(
       jobsActions.addSuggestedTime({
-        beginTime: scheduleData.start,
-        endTime: scheduleData.end,
-        date: '',
+        jobId: uuidv4(),
+        suggestedTime: {
+          beginTime: scheduleData.start,
+          endTime: scheduleData.end,
+          date: '',
+        },
       }),
     );
 

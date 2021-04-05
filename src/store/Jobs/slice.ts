@@ -1,11 +1,17 @@
 import { createSlice } from 'utils/@reduxjs/toolkit';
-import { ContainerState, SuggestedTime } from 'store/Jobs/types';
+import {
+  AddedSuggestedTime,
+  ContainerState,
+  SuggestedTime,
+} from 'store/Jobs/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
   userId: '',
+  selectedJob: '0',
   jobs: [
     {
+      jobId: '0',
       userId: '',
       username: 'Jacob Zamani',
       phoneNumber: '(XXX)-XXX-XXXX',
@@ -21,6 +27,7 @@ export const initialState: ContainerState = {
       wasModified: false,
     },
     {
+      jobId: '1',
       userId: '',
       username: 'Thomas Arturi',
       phoneNumber: '(XXX)-XXX-XXXX',
@@ -36,6 +43,7 @@ export const initialState: ContainerState = {
       wasModified: true,
     },
     {
+      jobId: '2',
       userId: '',
       username: 'Madison Daniels',
       phoneNumber: '(XXX)-XXX-XXXX',
@@ -51,6 +59,7 @@ export const initialState: ContainerState = {
       wasModified: false,
     },
     {
+      jobId: '3',
       userId: '',
       username: 'Austin Jose',
       phoneNumber: '(XXX)-XXX-XXXX',
@@ -77,10 +86,15 @@ const jobsSlice = createSlice({
     },
     addSuggestedTime(
       state: ContainerState,
-      action: PayloadAction<SuggestedTime>,
+      action: PayloadAction<AddedSuggestedTime>,
     ) {
       // TODO: Add a JobID to state to filter by
-      state.jobs[0].suggestedTimes.push(action.payload);
+      state.jobs[action.payload.jobId].suggestedTimes.push(
+        action.payload.suggestedTime,
+      );
+    },
+    setSelectedJob(state: ContainerState, action: PayloadAction<string>) {
+      state.selectedJob = action.payload;
     },
   },
 });

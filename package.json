@@ -84,7 +84,8 @@
     "serve": "11.3.2",
     "shelljs": "0.8.4",
     "styled-components": "5.2.1",
-    "use-resize-observer": "7.0.0"
+    "use-resize-observer": "7.0.0",
+    "uuid": "8.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

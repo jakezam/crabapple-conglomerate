@@ -1,9 +1,11 @@
 export interface JobsState {
   userId: string;
+  selectedJob: string;
   jobs: Array<Job>;
 }
 
 export interface Job {
+  jobId: string;
   userId: string;
   username: string;
   phoneNumber: string;
@@ -22,6 +24,11 @@ export interface SuggestedTime {
   date: string;
   beginTime: string;
   endTime: string;
+}
+
+export interface AddedSuggestedTime {
+  jobId: string;
+  suggestedTime: SuggestedTime;
 }
 
 export type ContainerState = JobsState;
