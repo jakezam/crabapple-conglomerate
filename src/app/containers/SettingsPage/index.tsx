@@ -54,7 +54,7 @@ export function SettingsPage() {
           </div>
         </div>
       </h2>
-      <div style={{display:"flex", justifyContent: "center", border: "5px solid red"}}>
+      <div style={{display:"flex", justifyContent: "center"}}>
         <Tab className="settings-tabs" panes={panes} style={tab_style}/>
       </div>
     </>

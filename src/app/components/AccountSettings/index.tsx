@@ -7,6 +7,7 @@ import React, { memo } from 'react';
 import styled from 'styled-components/macro';
 import { useTranslation } from 'react-i18next';
 import { Form } from 'semantic-ui-react';
+import {Message} from 'semantic-ui-react'
 
 interface Props {}
 
@@ -23,23 +24,36 @@ export const AccountSettings = (props: Props) => {
               <h3>General</h3>
             </div>
             <label style={label_style}>Username</label>
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value="jakezam"
-              style={field_style}
-            />
+            <FieldInfo>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value="jakezam"
+                style={field_style}
+              />
+              <Message info>
+                <div className="header">Changing Username</div>
+                <p>Your username must be unique.</p>
+              </Message>
+            </FieldInfo>
+
           </div>
           <div className="field">
             <label style={label_style}>Email</label>
-            <input
-              type="text"
-              name="username"
-              placeholder="Email"
-              value="zamanj@rpi.edu"
-              style={field_style}
-            />
+            <FieldInfo>
+              <input
+                type="text"
+                name="username"
+                placeholder="Email"
+                value="zamanj@rpi.edu"
+                style={field_style}
+              />
+              <Message info>
+                <div className="header">Changing Email</div>
+                <p>An email will be sent to the current address to verify the change.</p>
+              </Message>
+            </FieldInfo>
           </div>
 
           <label style={label_style}>Phone Number</label>
@@ -55,9 +69,13 @@ export const AccountSettings = (props: Props) => {
             </div>
           </div>
 
+          <button className="ui button" type="submit">
+            Save above changes
+          </button>
+
 
           <div className="ui divider" />
-          <div style={{ textAlign: 'center' }}>
+          <div style={{textAlign: 'center' }}>
             <h3>Reset Password</h3>
           </div>
           <div className="field">
@@ -87,13 +105,22 @@ export const AccountSettings = (props: Props) => {
   );
 };
 
+const FieldInfo = styled.div`
+  display: flex; 
+  flex-direction: row;
+  justify-content: flex-start; 
+  align-items: baseline; 
+  //border: 5px solid red;
+`;
+
 let label_style = {
   fontFamily: "Lato,'Helvetica Neue',Arial,Helvetica,sans-serif",
   marginTop: '2%',
 };
 
 let field_style = {
-  maxWidth: "40%"
+  maxWidth: "40%",
+  marginRight: "10%"
 }
 
 let label_section = {
