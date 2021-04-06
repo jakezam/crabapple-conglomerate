@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Footer } from '../../components/Footer';
 import { NavigationBar } from '../../components/NavigationBar';
-import { Comment, Grid, Image, Rating } from 'semantic-ui-react';
 import { RecentlyViewed } from './components/RecentlyViewed';
 import { CategoryContainer } from './components/CategoryContainer';
 

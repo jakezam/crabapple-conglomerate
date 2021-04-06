@@ -6,9 +6,31 @@
 
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
-import { Button } from 'semantic-ui-react';
+import { Button, Card, Popup } from 'semantic-ui-react';
+import { CategoryCard } from './CategoryCard';
 
 export function CategoryContainer() {
+  const categories = [
+    'Home Repair',
+    'Lawn Maintenance',
+    'Electrician',
+    'Cleaning Services',
+    'Furniture Assembly',
+    'Moving Services',
+    'Handyman',
+    'Painters',
+    'General Contracting',
+    'Personal Services',
+    'Winter Services',
+    'Event Coordinating',
+    'Photography/Videography',
+  ];
+
+  // THIS IS NOT THE FINAL SOLUTION, TO BE CHANGED LATER TO BE MADE DYNAMIC
+  let cards = categories.map(category => (
+    <CategoryCard key={0} category={category} />
+  ));
+
   return (
     <Body>
       <h4 style={{ padding: '20px 0px 0px 20px' }}>
