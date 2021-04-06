@@ -19,6 +19,9 @@ export const AccountSettings = (props: Props) => {
       <div>
         <form className="ui form">
           <div className="field">
+            <div style={{ textAlign: 'center' }}>
+              <h3>General</h3>
+            </div>
             <label style={label_style}>Username</label>
             <input
               type="text"
@@ -38,6 +41,21 @@ export const AccountSettings = (props: Props) => {
               style={field_style}
             />
           </div>
+
+          <label style={label_style}>Phone Number</label>
+          <div className="inline fields" style={field_style}>
+            <div className="field">
+              <input type="text" placeholder="(xxx)"/>
+            </div>
+            <div className="field">
+              <input type="text" placeholder="xxx"/>
+            </div>
+            <div className="field">
+              <input type="text" placeholder="xxxx"/>
+            </div>
+          </div>
+
+
           <div className="ui divider" />
           <div style={{ textAlign: 'center' }}>
             <h3>Reset Password</h3>
