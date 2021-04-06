@@ -75,15 +75,3 @@ const Body = styled.div`
   margin-bottom: 50px;
   padding: 70px 0;
 `;
-
-const FilterContainer = styled.div`
-  width: 200px;
-  height: 250px;
-  margin-top: 49px;
-  margin-left: 100px;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.28571429rem;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
-  background-color: white;
-`;
