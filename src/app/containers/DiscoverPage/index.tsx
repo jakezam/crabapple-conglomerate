@@ -23,10 +23,10 @@ export function DiscoverPage() {
           <RecentlyViewed />
           <CategoryContainer />
         </div>
-        <div style={{ marginLeft: '100px' }}>
+        {/* <div style={{ marginLeft: '100px' }}>
           <SuggestedContainer />
           <SuggestedContainer style={{ marginTop: '50px' }} />
-        </div>
+        </div> */}
       </Body>
       <Footer />
     </>

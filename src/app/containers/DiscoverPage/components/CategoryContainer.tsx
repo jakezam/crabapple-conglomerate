@@ -33,18 +33,17 @@ export function CategoryContainer() {
 
   return (
     <Body>
-      <h4 style={{ padding: '20px 0px 0px 20px' }}>
+      <h3 style={{ padding: '20px 0px 20px 20px' }}>
         Find a Service Provider in your Area:
-      </h4>
-      <AccountContainer>
-        <Button>Landscaping</Button>
-      </AccountContainer>
+      </h3>
+      <AccountContainer>{cards}</AccountContainer>
     </Body>
   );
 }
 
 const Body = styled.div`
-  max-width: 630px;
+  max-width: 1080px;
+  min-width: 230px;
   min-height: 600px;
   margin-top: 50px;
   border: 1px solid rgba(34, 36, 38, 0.15);
@@ -55,8 +54,6 @@ const Body = styled.div`
 `;
 
 const AccountContainer = styled.div`
-  max-width: 630px;
-  max-width: 230px;
   min-height: 600px;
 
   margin-left: 2%;
