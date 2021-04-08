@@ -19,10 +19,10 @@ Date.prototype.addHours = function (h) {
 
 export const initialState: ContainerState = {
   userId: '',
-  selectedJob: '0',
+  selectedJob: 0,
   jobs: [
     {
-      jobId: '0',
+      jobId: 0,
       userId: '',
       username: 'Jacob Zamani',
       phoneNumber: '(XXX)-XXX-XXXX',
@@ -34,10 +34,9 @@ export const initialState: ContainerState = {
       beginDate: 'October 10, 2020',
       suggestedTimes: [
         {
-          id: '1234',
           beginTime: new Date().toString(),
           // @ts-ignore
-          endTime: new Date().addHours(2),
+          endTime: new Date().addHours(3),
         },
       ],
       isOngoing: true,
@@ -45,7 +44,7 @@ export const initialState: ContainerState = {
       wasModified: false,
     },
     {
-      jobId: '1',
+      jobId: 1,
       userId: '',
       username: 'Thomas Arturi',
       phoneNumber: '(XXX)-XXX-XXXX',
@@ -61,7 +60,7 @@ export const initialState: ContainerState = {
       wasModified: true,
     },
     {
-      jobId: '2',
+      jobId: 2,
       userId: '',
       username: 'Madison Daniels',
       phoneNumber: '(XXX)-XXX-XXXX',
@@ -77,7 +76,7 @@ export const initialState: ContainerState = {
       wasModified: false,
     },
     {
-      jobId: '3',
+      jobId: 3,
       userId: '',
       username: 'Austin Jose',
       phoneNumber: '(XXX)-XXX-XXXX',
@@ -120,7 +119,7 @@ const jobsSlice = createSlice({
         action.payload.suggestedTimeId
       ] = action.payload.suggestedTime;
     },
-    setSelectedJob(state: ContainerState, action: PayloadAction<string>) {
+    setSelectedJob(state: ContainerState, action: PayloadAction<number>) {
       state.selectedJob = action.payload;
     },
   },

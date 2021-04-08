@@ -1,11 +1,11 @@
 export interface JobsState {
   userId: string;
-  selectedJob: string;
+  selectedJob: number;
   jobs: Array<Job>;
 }
 
 export interface Job {
-  jobId: string;
+  jobId: number;
   userId: string;
   username: string;
   phoneNumber: string;
@@ -21,19 +21,18 @@ export interface Job {
 }
 
 export interface SuggestedTime {
-  id: string;
   beginTime: string;
   endTime: string;
 }
 
 export interface AddedSuggestedTime {
-  jobId: string;
+  jobId: number;
   suggestedTime: SuggestedTime;
 }
 
 export interface UpdatedSuggestedTime {
-  jobId: string;
-  suggestedTimeId: string;
+  jobId: number;
+  suggestedTimeId: number;
   suggestedTime: SuggestedTime;
 }
 

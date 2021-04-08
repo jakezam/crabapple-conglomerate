@@ -46,9 +46,10 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
   // Add suggested times to calender
   let suggestedTimes: Array<any> = [];
   // TODO: Add a job ID to state
+  let index = 0;
   jobsState.jobs[jobsState.selectedJob].suggestedTimes.forEach(time => {
     suggestedTimes.push({
-      id: Math.random(),
+      id: index.toString(),
       calendarId: '0',
       title: 'Suggested Time',
       category: 'time',
@@ -58,6 +59,7 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
       bgColor: 'lightblue',
       location: 'test',
     });
+    index += 1;
   });
 
   const toggleCalType = prevState => {
@@ -99,7 +101,7 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
 
   const onBeforeCreateSchedule = scheduleData => {
     console.log('BEFORE CREATE SCHEDULE:', scheduleData);
-    let id = 1;
+    let id = jobsState.jobs[jobsState.selectedJob].suggestedTimes.length;
 
     const schedule = {
       id: id,
@@ -118,11 +120,10 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
     };
 
     // Add new suggested time to state
-    dispatch(
+    dispatch(() =>
       jobsActions.addSuggestedTime({
         jobId: jobsState.selectedJob,
         suggestedTime: {
-          id: uuidv4(),
           beginTime: scheduleData.start,
           endTime: scheduleData.end,
         },
@@ -134,6 +135,7 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
   };
 
   const onBeforeDeleteSchedule = res => {
+    console.log('BEFORE DELETE SCHEDULE:', res.schedule);
     const { id, calendarId } = res.schedule;
 
     // @ts-ignore
@@ -141,17 +143,17 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
   };
 
   const onBeforeUpdateSchedule = e => {
+    console.log('BEFORE UPDATE SCHEDULE:', e.schedule);
     const { schedule, changes } = e;
 
     // TODO: Update suggested times in state
     dispatch(
       jobsActions.updateSuggestedTimes({
-        jobId: uuidv4(),
+        jobId: jobsState.selectedJob,
         suggestedTimeId: schedule.id,
         suggestedTime: {
-          id: schedule.id,
-          beginTime: schedule.beginTime,
-          endTime: schedule.endTime,
+          beginTime: schedule.start._date,
+          endTime: schedule.end._date,
         },
       }),
     );
