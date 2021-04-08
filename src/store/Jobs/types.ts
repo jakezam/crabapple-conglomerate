@@ -21,13 +21,19 @@ export interface Job {
 }
 
 export interface SuggestedTime {
-  date: string;
+  id: string;
   beginTime: string;
   endTime: string;
 }
 
 export interface AddedSuggestedTime {
   jobId: string;
+  suggestedTime: SuggestedTime;
+}
+
+export interface UpdatedSuggestedTime {
+  jobId: string;
+  suggestedTimeId: string;
   suggestedTime: SuggestedTime;
 }
 

@@ -42,7 +42,6 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
   const dispatch = useDispatch();
   const [currentView, setCurrentView] = useState('week');
   const [calTypeOpen, setCalTypeOpen] = useState(false);
-  const [prevSchedule, setPrevSchedule] = useState([]);
 
   // Add suggested times to calender
   let suggestedTimes: Array<any> = [];
@@ -121,11 +120,11 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
     // Add new suggested time to state
     dispatch(
       jobsActions.addSuggestedTime({
-        jobId: uuidv4(),
+        jobId: jobsState.selectedJob,
         suggestedTime: {
+          id: uuidv4(),
           beginTime: scheduleData.start,
           endTime: scheduleData.end,
-          date: '',
         },
       }),
     );
@@ -144,7 +143,18 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
   const onBeforeUpdateSchedule = e => {
     const { schedule, changes } = e;
 
-    //TODO: Update suggested times in state
+    // TODO: Update suggested times in state
+    dispatch(
+      jobsActions.updateSuggestedTimes({
+        jobId: uuidv4(),
+        suggestedTimeId: schedule.id,
+        suggestedTime: {
+          id: schedule.id,
+          beginTime: schedule.beginTime,
+          endTime: schedule.endTime,
+        },
+      }),
+    );
 
     // @ts-ignore
     calRef.current.calendarInst.updateSchedule(
@@ -265,7 +275,7 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
         scheduleView={['time']}
         // useCreationPopup={true}
         useDetailPopup={true}
-        schedules={prevSchedule}
+        schedules={suggestedTimes}
         onClickSchedule={onClickSchedule}
         onBeforeCreateSchedule={onBeforeCreateSchedule}
         onBeforeDeleteSchedule={onBeforeDeleteSchedule}

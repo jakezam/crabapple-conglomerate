@@ -3,8 +3,19 @@ import {
   AddedSuggestedTime,
   ContainerState,
   SuggestedTime,
+  UpdatedSuggestedTime,
 } from 'store/Jobs/types';
 import { PayloadAction } from '@reduxjs/toolkit';
+
+// Date Utility Function //
+//Add hours to a dateTime//
+// @ts-ignore
+// eslint-disable-next-line
+Date.prototype.addHours = function (h) {
+  this.setTime(this.getTime() + h * 60 * 60 * 1000);
+  return this;
+};
+///////////////////////////
 
 export const initialState: ContainerState = {
   userId: '',
@@ -21,7 +32,14 @@ export const initialState: ContainerState = {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
       isAccepted: true,
       beginDate: 'October 10, 2020',
-      suggestedTimes: [],
+      suggestedTimes: [
+        {
+          id: '1234',
+          beginTime: new Date().toString(),
+          // @ts-ignore
+          endTime: new Date().addHours(2),
+        },
+      ],
       isOngoing: true,
       isProviding: true,
       wasModified: false,
@@ -92,6 +110,15 @@ const jobsSlice = createSlice({
       state.jobs[action.payload.jobId].suggestedTimes.push(
         action.payload.suggestedTime,
       );
+    },
+    updateSuggestedTimes(
+      state: ContainerState,
+      action: PayloadAction<UpdatedSuggestedTime>,
+    ) {
+      // TODO: Add a JobID to state to filter by
+      state.jobs[action.payload.jobId].suggestedTimes[
+        action.payload.suggestedTimeId
+      ] = action.payload.suggestedTime;
     },
     setSelectedJob(state: ContainerState, action: PayloadAction<string>) {
       state.selectedJob = action.payload;
