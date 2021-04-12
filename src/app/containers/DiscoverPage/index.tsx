@@ -13,20 +13,20 @@ import { Footer } from '../../components/Footer';
 import { NavigationBar } from '../../components/NavigationBar';
 import { RecentlyViewed } from './components/RecentlyViewed';
 import { CategoryContainer } from './components/CategoryContainer';
+import { selectDiscover } from 'store/Discover/selectors';
 
 export function DiscoverPage() {
+  const dispatch = useDispatch();
+  const discoverState = useSelector(selectDiscover);
+
   return (
     <>
       <NavigationBar />
       <Body>
         <div>
-          <RecentlyViewed />
+          <RecentlyViewed users={discoverState.recentlyViewed} />
           <CategoryContainer />
         </div>
-        {/* <div style={{ marginLeft: '100px' }}>
-          <SuggestedContainer />
-          <SuggestedContainer style={{ marginTop: '50px' }} />
-        </div> */}
       </Body>
       <Footer />
     </>

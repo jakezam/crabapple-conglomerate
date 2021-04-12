@@ -1,38 +1,42 @@
 import React, { useState } from 'react';
+import { SmallAccount } from 'store/Discover/types';
 import styled from 'styled-components/macro';
-import { Grid } from 'semantic-ui-react';
 import { SuggestedAccount } from '../../../components/SuggestedAccount/Loadable';
 
-export function RecentlyViewed() {
+interface IProps {
+  users: Array<SmallAccount>;
+}
+
+function determineTag(user: SmallAccount) {
+  if (user.isProvider) {
+    return user.providerData.category;
+  }
+  return user.userTag;
+}
+
+function determineRating(user: SmallAccount) {
+  if (user.isProvider) {
+    return user.providerData.rating;
+  }
+  return -1;
+}
+
+export function RecentlyViewed(props: IProps) {
+  let users = props.users;
+
+  let userCards = users.map(user => (
+    <SuggestedAccount
+      userId={user.userId}
+      username={user.username}
+      accountTag={determineTag(user)}
+      rating={determineRating(user)}
+    />
+  ));
+
   return (
     <Body>
       <h3 style={{ padding: '20px 0px 20px 20px' }}>Recently Viewed</h3>
-      <AccountContainer>
-        <SuggestedAccount
-          userId="1"
-          username="Jacob Zamani"
-          accountTag="Shelton, CT"
-          rating={4}
-        />
-        <SuggestedAccount
-          userId="7"
-          username="Jacob Zamani"
-          accountTag="Shelton, CT"
-          rating={-1}
-        />
-        <SuggestedAccount
-          userId="1"
-          username="Jacob Zamani"
-          accountTag="Shelton, CT"
-          rating={4}
-        />
-        <SuggestedAccount
-          userId="7"
-          username="Jacob Zamani"
-          accountTag="Shelton, CT"
-          rating={-1}
-        />
-      </AccountContainer>
+      <AccountContainer>{userCards}</AccountContainer>
     </Body>
   );
 }
