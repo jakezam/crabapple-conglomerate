@@ -1,11 +1,19 @@
 export interface DiscoverState {
   userId: string;
-  pageLoading: boolean;
+  resultsPageLoading: boolean;
+  discoverPageLoading: boolean;
+  categories: Array<Category>;
   searchQuery: string;
   categorySearch: boolean;
   filterByRating: boolean;
   recentlyViewed: Array<SmallAccount>;
   searchResults: Array<SmallAccount>;
+}
+
+export interface Category {
+  typeId: string;
+  category: string;
+  description: string;
 }
 
 export interface SmallAccount {

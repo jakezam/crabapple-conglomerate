@@ -5,8 +5,8 @@ import { env } from '../environment';
 import { DiscoverState, SmallAccount, ProviderSkills } from './types';
 
 function* getSearchedUsers() {
-  yield put(actions.setPageLoading(true));
-  yield put(actions.setPageLoading(false));
+  yield put(actions.setResultsPageLoading(true));
+  yield put(actions.setResultsPageLoading(false));
 }
 
 export function* discoverPageSaga() {

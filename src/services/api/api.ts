@@ -11,6 +11,8 @@ import {
   IProvider,
   ReviewSet,
   PostProviderCreateRequest,
+  IProviderType,
+  GetProviderTypesResponse,
 } from './api.types';
 import * as https from 'https';
 
@@ -195,5 +197,21 @@ export class Api {
     }
 
     return { kind: 'ok', response: response.data };
+  }
+
+  async GetProviderTypes(): Promise<Types.GetProviderTypesResponse> {
+    const response: ApiResponse<any> = await this.apisauce.get(
+      'api/providertypes',
+    );
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return response.data;
   }
 }

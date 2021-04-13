@@ -57,6 +57,11 @@ export interface PostProviderCreateRequest {
   Category: string;
   Website?: string;
 }
+export interface IProviderType {
+  typeId: string;
+  category: string;
+  description: string;
+}
 
 export type PostUserCreateResponse =
   | { kind: 'ok'; response?: IUser }
@@ -76,4 +81,8 @@ export type GetProvidersResponse =
 
 export type GetReviewSetResponse =
   | { kind: 'ok'; response?: ReviewSet }
+  | GeneralApiProblem;
+
+export type GetProviderTypesResponse =
+  | { kind: 'ok'; response?: IProviderType }
   | GeneralApiProblem;

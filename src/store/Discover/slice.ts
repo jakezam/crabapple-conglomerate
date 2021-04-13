@@ -4,7 +4,9 @@ import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
   userId: '',
-  pageLoading: false,
+  resultsPageLoading: false,
+  discoverPageLoading: false,
+  categories: [],
   searchQuery: '',
   categorySearch: false,
   filterByRating: true,
@@ -78,8 +80,17 @@ const discoverSlice = createSlice({
     changeId(state: ContainerState, action: PayloadAction<string>) {
       state.userId = action.payload;
     },
-    setPageLoading(state: ContainerState, action: PayloadAction<boolean>) {
-      state.pageLoading = action.payload;
+    setResultsPageLoading(
+      state: ContainerState,
+      action: PayloadAction<boolean>,
+    ) {
+      state.resultsPageLoading = action.payload;
+    },
+    setDiscoverPageLoading(
+      state: ContainerState,
+      action: PayloadAction<boolean>,
+    ) {
+      state.discoverPageLoading = action.payload;
     },
     updateQuery(state: ContainerState, action: PayloadAction<ISearchQuery>) {
       state.searchQuery = action.payload.query;

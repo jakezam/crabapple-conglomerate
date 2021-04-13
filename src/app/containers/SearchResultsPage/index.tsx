@@ -45,7 +45,7 @@ export function SearchResultsPage() {
     dispatch(actions.updateQuery(queryPayload));
   }, [dispatch, category, keyword]);
 
-  if (discoverState.pageLoading) {
+  if (discoverState.resultsPageLoading) {
     return (
       <>
         <NavigationBar />
