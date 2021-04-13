@@ -13,7 +13,17 @@ export const CommunicationSettings = (props: Props) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { t, i18n } = useTranslation();
 
-  return <Div>Communication Settings</Div>;
+  return (
+    <div>
+      <form className="ui form">
+        <div className="field">
+          <div className="ui checkbox">
+
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 const Div = styled.div``;
