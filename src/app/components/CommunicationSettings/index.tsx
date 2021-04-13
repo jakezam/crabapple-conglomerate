@@ -18,9 +18,18 @@ export const CommunicationSettings = (props: Props) => {
       <form className="ui form">
         <div className="field">
           <div className="ui checkbox">
-
+            <input type="checkbox" className="hidden"/>
+            <label>Enable email alerts from Providers</label>
           </div>
         </div>
+
+        <div className="field">
+          <div className="ui checkbox">
+            <input type="checkbox" className="hidden"/>
+            <label>Hide personal information from Providers </label>
+          </div>
+        </div>
+
       </form>
     </div>
   );
