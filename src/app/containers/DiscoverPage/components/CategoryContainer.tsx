@@ -8,27 +8,19 @@ import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 import { Button, Card, Popup } from 'semantic-ui-react';
 import { CategoryCard } from './CategoryCard';
+import { selectCategories } from 'store/Discover/selectors';
+import { useSelector } from 'react-redux';
 
 export function CategoryContainer() {
-  const categories = [
-    'Home Repair',
-    'Lawn Maintenance',
-    'Electrician',
-    'Cleaning Services',
-    'Furniture Assembly',
-    'Moving Services',
-    'Handyman',
-    'Painters',
-    'General Contracting',
-    'Personal Services',
-    'Winter Services',
-    'Event Coordinating',
-    'Photography/Videography',
-  ];
+  const categories = useSelector(selectCategories);
 
   // THIS IS NOT THE FINAL SOLUTION, TO BE CHANGED LATER TO BE MADE DYNAMIC
   let cards = categories.map(category => (
-    <CategoryCard key={0} category={category} />
+    <CategoryCard
+      key={0}
+      category={category.category}
+      description={category.description}
+    />
   ));
 
   return (

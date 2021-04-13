@@ -13,16 +13,17 @@ import { push } from 'connected-react-router';
 interface IProps {
   key: number;
   category: string;
+  description: string;
 }
 
 export function CategoryCard(props: IProps) {
   const dispatch = useDispatch();
+
   let category = props.category;
   let categoryNoSpaces = category.split(' ').join('').toLowerCase();
-  // THESE WILL BE PASSED IN THROUGH PROPS EVENTUALLY
+
   let subComment = 'Lorem ipsum, Lorem ipsum, Lorem ipsum, Lorem ipsum...';
-  let description =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac ullamcorper ante. Phasellus ut dui mollis, vulputate odio eget, malesuada dolor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce et ornare mi. Maecenas ac egestas elit. Fusce id consequat elit, lobortis sodales eros. Pellentesque facilisis orci quis enim bibendum, sit amet dictum eros sagittis.';
+  let description = props.description;
 
   let mainCard = (
     <Card
@@ -30,7 +31,7 @@ export function CategoryCard(props: IProps) {
       style={{ marginRight: '25px', marginBottom: '20px' }}
       header={category}
       description={subComment}
-      onClick={(e, { name }) => {
+      onClick={() => {
         dispatch(push('/results/' + categoryNoSpaces));
       }}
     />
@@ -38,7 +39,7 @@ export function CategoryCard(props: IProps) {
 
   return (
     <Body>
-      <Popup trigger={mainCard}>
+      <Popup trigger={mainCard} position="bottom left">
         <Popup.Header>{category}</Popup.Header>
         <Popup.Content>{description}</Popup.Content>
       </Popup>

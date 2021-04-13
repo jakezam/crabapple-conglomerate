@@ -105,6 +105,12 @@ const discoverSlice = createSlice({
     ) {
       state.categories = action.payload;
     },
+    setCategories(
+      state: ContainerState,
+      action: PayloadAction<Array<Category>>,
+    ) {
+      state.categories = action.payload;
+    },
   },
 });
 

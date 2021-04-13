@@ -29,6 +29,7 @@ function* setUpDiscoverPage() {
     }
   }
 
+  yield put(actions.setCategories(categories));
   yield put(actions.setResultsPageLoading(false));
 }
 
