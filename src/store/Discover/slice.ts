@@ -1,5 +1,5 @@
 import { createSlice } from 'utils/@reduxjs/toolkit';
-import { ContainerState, ISearchQuery } from 'store/Discover/types';
+import { ContainerState, ISearchQuery, Category } from 'store/Discover/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
@@ -98,6 +98,12 @@ const discoverSlice = createSlice({
     },
     setFilterKey(state: ContainerState, action: PayloadAction<boolean>) {
       state.filterByRating = action.payload;
+    },
+    initiateDiscoverSaga(
+      state: ContainerState,
+      action: PayloadAction<Array<Category>>,
+    ) {
+      state.categories = action.payload;
     },
   },
 });
