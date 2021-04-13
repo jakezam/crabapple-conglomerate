@@ -45,7 +45,9 @@ export function DiscoverPage() {
       <NavigationBar />
       <Body>
         <div>
-          <RecentlyViewed users={discoverState.recentlyViewed} />
+          {/* Recently viewed profiles is a very difficuly thing to implement
+              and is not essential for an MVP */}
+          {/* <RecentlyViewed users={discoverState.recentlyViewed} /> */}
           <CategoryContainer />
         </div>
       </Body>
@@ -58,14 +60,4 @@ const Body = styled.div`
   display: flex;
   padding: 75px 0;
   justify-content: center;
-`;
-
-const SuggestedContainer = styled.div`
-  width: 300px;
-  height: 450px;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.28571429rem;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
-  background-color: white;
 `;
