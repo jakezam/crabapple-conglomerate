@@ -5,12 +5,14 @@
  */
 import React from 'react';
 import styled from 'styled-components/macro';
-import { Button, Form, Modal, TextArea } from 'semantic-ui-react';
+import { Button, Form, Modal, Select, TextArea } from 'semantic-ui-react';
 import content from '*.scss';
+import { useSelector } from 'react-redux';
+import { selectViewedUserId } from 'store/ViewedUser/selectors';
 
 export function JobRequestForm() {
   const [open, setOpen] = React.useState(false);
-
+  const sendToUserId = useSelector(selectViewedUserId);
   let btnTrigger = (
     <Button
       primary
@@ -20,22 +22,37 @@ export function JobRequestForm() {
     </Button>
   );
 
+
+  const options = [
+    { key: '1', text: 'Job1', value: 'job1' },
+    { key: '2', text: 'Job2', value: 'job2' },
+    { key: '3', text: 'Job3', value: 'job3' },
+  ]
   let content = (
     <Form>
-      <Form.Group widths="equal">
+      {/*<Form.Group widths="equal">
         <Form.Input fluid label="First name" placeholder="First name" />
         <Form.Input fluid label="Last name" placeholder="Last name" />
-      </Form.Group>
+      </Form.Group>*/}
       <Form.Field
+        required={true}
         control={TextArea}
-        label="Description"
+        label="Message"
         placeholder="Briefly describe the job you're planning..."
       />
-      <Form.Input label="Email" placeholder="joe@schmoe.com" />
+      <Form.Field
+            control={Select}
+            label='Category'
+            options={options}
+            placeholder='Select Category'
+      />
+
+      
+      {/*<Form.Input label="Email" placeholder="joe@schmoe.com" />
       <Form.Field width="4">
         <label>Phone Number</label>
         <input placeholder="(XXX)-XXX-XXXX" />
-      </Form.Field>
+  </Form.Field>*/}
     </Form>
   );
 
