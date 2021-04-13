@@ -15,3 +15,8 @@ export const selectResultFilter = createSelector(
   [selectDomain],
   discoverState => discoverState.filterByRating,
 );
+
+export const selectCategories = createSelector(
+  [selectDomain],
+  discoverState => discoverState.categories,
+);
