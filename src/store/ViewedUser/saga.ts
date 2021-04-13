@@ -67,7 +67,7 @@ function* getProfile() {
   // If Provider, get the accounts they worked for with their most recent jobs
 
   userData = {
-    userId: userResponse.response ? userResponse.response.userId.valueOf() : 0,
+    userId: userResponse.response ? userResponse.response.userId.valueOf() : "0",
     isLoading: false,
     firstName: userResponse.response ? userResponse.response.firstName : '',
     lastName: userResponse.response ? userResponse.response.lastName : '',

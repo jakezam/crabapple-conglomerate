@@ -1,7 +1,7 @@
 import { GeneralApiProblem } from './api.problem';
 
 export interface IUser {
-  userId: Number;
+  userId: string;
   firstName: string;
   lastName: string;
   dateOfBirth: Date;
@@ -25,6 +25,13 @@ export interface PostUserCreateRequest {
   DateOfBirth: Date;
   Gender: string;
   State: string;
+}
+
+export interface PostConsultationRequestCreateRequest {
+  To: string;
+  From: string;
+  ProviderCategory: string;
+  Message: string;
 }
 
 export interface IProvider {
@@ -65,7 +72,11 @@ export type PostUserCreateResponse =
 export type PostProviderCreateResponse =
   | { kind: 'ok'; response?: IProvider }
   | GeneralApiProblem;
-
+  
+export type PostConsultationRequestCreateResponse =
+  | { kind: 'ok'; response?: IProvider }
+  | GeneralApiProblem;
+  
 export type GetUsersResponse =
   | { kind: 'ok'; response?: IUser }
   | GeneralApiProblem;

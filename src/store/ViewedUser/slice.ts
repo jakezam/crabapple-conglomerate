@@ -3,7 +3,7 @@ import { ContainerState, ViewedUserState } from 'store/ViewedUser/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
-  userId: 1,
+  userId: "1",
   isLoading: false,
   firstName: 'Jacob',
   lastName: 'Zamani',
@@ -136,7 +136,7 @@ const viewedUserSlice = createSlice({
   name: 'viewedUser',
   initialState,
   reducers: {
-    changeId(state: ContainerState, action: PayloadAction<number>) {
+    changeId(state: ContainerState, action: PayloadAction<string>) {
       state.userId = action.payload;
     },
     changeFollowStatus(state: ContainerState) {

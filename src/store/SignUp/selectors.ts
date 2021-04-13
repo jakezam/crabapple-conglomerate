@@ -10,7 +10,10 @@ export const selectSignUp = createSelector(
   [selectDomain],
   signUpState => signUpState,
 );
-
+export const selectUserId = createSelector(
+  [selectDomain],
+  signUpState => signUpState.userData.userId,
+);
 export const selectStep = createSelector(
   [selectDomain],
   signUpState => signUpState.currentStep,

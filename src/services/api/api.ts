@@ -100,6 +100,30 @@ export class Api {
     return { kind: 'ok', response: response.data };
   }
 
+  async PostCreateConsultationRequest(
+    consultationRequest: Types.PostConsultationRequestCreateRequest,
+  ): Promise<Types.PostConsultationRequestCreateResponse> {
+    const response: ApiResponse<IProvider> = await this.apisauce.post(
+      'api/jobs/request',
+      {
+        Message: consultationRequest.Message,
+        ProviderCategory: consultationRequest.ProviderCategory,
+        To: consultationRequest.To,
+        From: consultationRequest.From
+      } as Types.PostConsultationRequestCreateRequest,
+    );
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
+  }
+
   /**
    * Get All Users
    */

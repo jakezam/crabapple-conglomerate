@@ -8,11 +8,43 @@ import styled from 'styled-components/macro';
 import { Button, Form, Modal, Select, TextArea } from 'semantic-ui-react';
 import content from '*.scss';
 import { useSelector } from 'react-redux';
-import { selectViewedUserId } from 'store/ViewedUser/selectors';
+import { selectViewedUser, selectViewedUserId } from 'store/ViewedUser/selectors';
+import { selectPossibleSubCategories, selectUserData, selectUserId } from 'store/SignUp/selectors';
+import { Api, PostConsultationRequestCreateRequest } from 'services/api';
+import { env } from 'store/environment';
 
 export function JobRequestForm() {
   const [open, setOpen] = React.useState(false);
+  const [category, setCategory] = React.useState('');
+  const [message, setMessage] = React.useState('');
   const sendToUserId = useSelector(selectViewedUserId);
+  const fromUserId = useSelector(selectUserData).userId;
+  const providerCategories = useSelector(selectViewedUser).providerInfo.subcategories;
+  const handleCategoryChange = (e, { name, value }) => (setCategory(value));
+  const handleMessageChange = (e, { name, value }) => (setMessage(value));
+  const handleSubmit = async () => {
+    let body : PostConsultationRequestCreateRequest = {
+      To: sendToUserId,
+      From: sendToUserId,
+      ProviderCategory: category,
+      Message: message,
+    };
+
+    console.log(body);
+
+    let res = await env.api.PostCreateConsultationRequest(body);
+
+    console.log("Response: " + res.response);
+  }
+  let options:Array<{ key: string; text: string; value: string; }> = [];
+  for (let i = 0; i < providerCategories.length; i++) {
+    let entry = {
+      key: i.toString(),
+      text: providerCategories[i],
+      value: providerCategories[i]
+    }
+    options.push(entry);
+  }
   let btnTrigger = (
     <Button
       primary
@@ -21,15 +53,10 @@ export function JobRequestForm() {
       Send Job Request
     </Button>
   );
-
-
-  const options = [
-    { key: '1', text: 'Job1', value: 'job1' },
-    { key: '2', text: 'Job2', value: 'job2' },
-    { key: '3', text: 'Job3', value: 'job3' },
-  ]
   let content = (
-    <Form>
+    <Form
+    onSubmit={handleSubmit}
+    >
       {/*<Form.Group widths="equal">
         <Form.Input fluid label="First name" placeholder="First name" />
         <Form.Input fluid label="Last name" placeholder="Last name" />
@@ -38,15 +65,23 @@ export function JobRequestForm() {
         required={true}
         control={TextArea}
         label="Message"
+        onChange={handleMessageChange}
         placeholder="Briefly describe the job you're planning..."
       />
       <Form.Field
             control={Select}
             label='Category'
             options={options}
+            onChange={handleCategoryChange}
             placeholder='Select Category'
       />
-
+      <Form.Button 
+      style={{align: 'right' }}
+      content="Send"
+            labelPosition="right"
+            icon="send" 
+            positive
+            />
       
       {/*<Form.Input label="Email" placeholder="joe@schmoe.com" />
       <Form.Field width="4">
@@ -70,13 +105,7 @@ export function JobRequestForm() {
           <Button color="black" onClick={() => setOpen(false)}>
             Cancel
           </Button>
-          <Button
-            content="Send"
-            labelPosition="right"
-            icon="checkmark"
-            onClick={() => setOpen(false)}
-            positive
-          />
+          
         </Modal.Actions>
       </Modal>
     </Body>
