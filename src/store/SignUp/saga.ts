@@ -69,6 +69,8 @@ function* createProvider() {
     Company: providerData.companyTitle,
   };
 
+  // TODO: Add categories to database via API Call
+
   const postResponse: PostProviderCreateResponse = yield env.api.PostCreateProvider(
     postBody,
   );
