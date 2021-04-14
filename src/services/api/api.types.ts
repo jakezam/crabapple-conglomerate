@@ -22,7 +22,7 @@ export interface IProvider {
 export interface PostUserCreateRequest {
   FirstName: string;
   LastName: string;
-  DateOfBirth: Date;
+  DateOfBirth: string;
   Gender: string;
   State: string;
 }

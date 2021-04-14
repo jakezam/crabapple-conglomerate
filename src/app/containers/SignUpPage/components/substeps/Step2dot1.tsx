@@ -42,5 +42,5 @@ const Box = styled.div`
   flex-direction: column;
 
   // DEBUG STYLES //
-  border: red 5px solid;
+  //border: red 5px solid;
 `;

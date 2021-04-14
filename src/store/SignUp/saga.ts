@@ -13,12 +13,13 @@ function* createUser() {
   yield put(actions.setCreatingAccount(true));
   console.log('DEBUG SignUpSaga: Fetching User State');
   const userData: IUserData = yield select(selectUserData);
+
   const postBody: PostUserCreateRequest = {
     FirstName: userData.firstName,
     LastName: userData.lastName,
-    DateOfBirth: new Date(),
-    Gender: '', // Might end up removing these fields from DB
-    State: '', // Might end up removing these fields from DB
+    DateOfBirth: new Date().toJSON(),
+    Gender: 'none', // Might end up removing these fields from DB
+    State: 'none', // Might end up removing these fields from DB
   };
 
   console.log('DEBUG SignUpSaga: POST USER');
