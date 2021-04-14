@@ -41,12 +41,10 @@ export function ProfileBox(props) {
             // dispatch(actions.changeFollowState());
           }}
         >
-          Like {' '}
-          <Icon name='heart' />
+          Like <Icon name="heart" />
         </Button>
       );
     }
-
   }
 
   let displayName = user.firstName + ' ' + user.lastName;
@@ -127,7 +125,7 @@ export function ProfileBox(props) {
           <Grid.Column width={4}>
             {followButton}
             {requestButton}
-            <div style={{display: 'flex'}}>
+            <div style={{ display: 'flex' }}>
               <JobRequestForm />
             </div>
           </Grid.Column>

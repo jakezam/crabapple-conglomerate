@@ -21,6 +21,7 @@ export interface Job {
 }
 
 export interface SuggestedTime {
+  id: string;
   beginTime: string;
   endTime: string;
 }
@@ -33,7 +34,7 @@ export interface AddedSuggestedTime {
 export interface UpdatedSuggestedTime {
   jobId: number;
   suggestedTimeId: number;
-  suggestedTime: SuggestedTime;
+  suggestedTime: any;
 }
 
 export type ContainerState = JobsState;

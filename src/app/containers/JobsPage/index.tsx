@@ -47,7 +47,7 @@ export function JobsPage() {
   });
 
   return (
-    <>
+    <Container>
       <NavigationBar />
       <Body>
         <StyledTab
@@ -56,9 +56,19 @@ export function JobsPage() {
         />
       </Body>
       <Footer />
-    </>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  // DEBUG STYLES //
+  //border: 5px solid red;
+`;
 
 const StyledTab = styled(Tab)`
   margin: auto;
@@ -71,7 +81,7 @@ const StyledTab = styled(Tab)`
   flex-direction: column;
 
   // DEBUG STYLES //
-  border: 5px solid red;
+  //border: 5px solid red;
 `;
 
 const Body = styled.div`
@@ -79,5 +89,5 @@ const Body = styled.div`
   flex: 1;
 
   // DEBUG STYLES //
-  border: 5px solid purple;
+  //border: 5px solid purple;
 `;

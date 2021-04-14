@@ -1,5 +1,5 @@
 import Calendar from '@toast-ui/react-calendar';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 import 'tui-calendar/dist/tui-calendar.css';
@@ -8,13 +8,11 @@ import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
-  Modal,
 } from 'semantic-ui-react';
 import styled from 'styled-components/macro';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectJobs } from '../../../../store/Jobs/selectors';
-import { actions as jobsActions } from 'store/Jobs/slice';
-import { v4 as uuidv4 } from 'uuid';
+import { selectJobId, selectJobs } from '../../../../store/Jobs/selectors';
+import { actions as jobActions } from 'store/Jobs/slice';
 
 // Calendar Default Options //
 const mobileWeekOptions = {
@@ -24,14 +22,6 @@ const mobileWeekOptions = {
 const weekOptions = {};
 //////////////////////////////
 
-// Date Utility Function //
-//Add hours to a dateTime//
-// Date.prototype.addHours = function (h) {
-//   this.setTime(this.getTime() + h * 60 * 60 * 1000);
-//   return this;
-// };
-///////////////////////////
-
 interface IProps {
   setModalOpen: any;
 }
@@ -39,28 +29,40 @@ interface IProps {
 export const TimePicker = ({ setModalOpen }: IProps) => {
   const calRef = useRef(null);
   const jobsState = useSelector(selectJobs);
+  const selectedJobId = useSelector(selectJobId);
   const dispatch = useDispatch();
   const [currentView, setCurrentView] = useState('week');
   const [calTypeOpen, setCalTypeOpen] = useState(false);
+  const [jobTimes, setJobTimes] = useState<Array<any>>([]);
 
-  // Add suggested times to calender
-  let suggestedTimes: Array<any> = [];
-  // TODO: Add a job ID to state
-  let index = 0;
-  jobsState.jobs[jobsState.selectedJob].suggestedTimes.forEach(time => {
-    suggestedTimes.push({
-      id: index.toString(),
-      calendarId: '0',
-      title: 'Suggested Time',
-      category: 'time',
-      dueDateClass: '',
-      start: time.beginTime,
-      end: time.endTime,
-      bgColor: 'lightblue',
-      location: 'test',
-    });
-    index += 1;
-  });
+  useEffect(() => {
+    const updateJobTimes = () => {
+      console.log('running this');
+      let times: any = [];
+
+      console.log('JOB: ', jobsState);
+      jobsState.jobs[selectedJobId].suggestedTimes.forEach(jobTimes => {
+        times.push({
+          id: jobTimes.id,
+          title: 'Suggested Job Time!',
+          isAllDay: false,
+          start: new Date(jobTimes.beginTime),
+          end: new Date(jobTimes.endTime),
+          category: 'time',
+          dueDateClass: '',
+          bgColor: 'lightblue',
+        });
+
+        console.log('JOB TIMES: ', jobTimes);
+      });
+
+      console.log('DATES: ', times);
+
+      setJobTimes([...jobTimes, times]);
+    };
+
+    updateJobTimes();
+  }, [jobsState]);
 
   const toggleCalType = prevState => {
     setCalTypeOpen(!calTypeOpen);
@@ -82,21 +84,6 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
     // TODO: This is being called twice for some reason
     // TODO: Block the user from trying to create another appt, if they do it loops infinitely
     console.log('AFTER RENDER SCHEDULE:', e);
-    let startDay = e.schedule.start;
-    let endDay = e.schedule.end;
-    let apptLoc = e.schedule.location;
-    let apptSubj = e.schedule.title;
-
-    let apptDate = new Date(
-      startDay.getFullYear(),
-      startDay.getMonth(),
-      startDay.getDay(),
-    ).toDateString();
-
-    let apptStart = startDay.getTime();
-    let apptEnd = endDay.getTime();
-
-    // this.props.setAppt([apptDate, apptStart, apptEnd, apptLoc, apptSubj]);
   };
 
   const onBeforeCreateSchedule = scheduleData => {
@@ -105,27 +92,22 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
 
     const schedule = {
       id: id,
-      title: 'Tutor Time!',
-      isAllDay: scheduleData.isAllDay,
+      title: 'Suggested Job Time!',
+      isAllDay: false, // scheduleData.isAllDay,
       start: scheduleData.start,
       end: scheduleData.end,
-      category: scheduleData.isAllDay ? 'allday' : 'time',
+      category: 'time', // scheduleData.isAllDay ? 'allday' : 'time',
       dueDateClass: '',
       bgColor: 'lightblue',
-      // location: scheduleData.location,
-      // raw: {
-      //   class: scheduleData.raw["class"],
-      // },
-      // state: scheduleData.state,
     };
 
-    // Add new suggested time to state
-    dispatch(() =>
-      jobsActions.addSuggestedTime({
-        jobId: jobsState.selectedJob,
+    dispatch(
+      jobActions.addSuggestedTime({
+        jobId: selectedJobId,
         suggestedTime: {
-          beginTime: scheduleData.start,
-          endTime: scheduleData.end,
+          id: jobsState.jobs[selectedJobId].suggestedTimes.length.toString(),
+          beginTime: scheduleData.start._date.toString(),
+          endTime: scheduleData.end._date.toString(),
         },
       }),
     );
@@ -145,18 +127,6 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
   const onBeforeUpdateSchedule = e => {
     console.log('BEFORE UPDATE SCHEDULE:', e.schedule);
     const { schedule, changes } = e;
-
-    // TODO: Update suggested times in state
-    dispatch(
-      jobsActions.updateSuggestedTimes({
-        jobId: jobsState.selectedJob,
-        suggestedTimeId: schedule.id,
-        suggestedTime: {
-          beginTime: schedule.start._date,
-          endTime: schedule.end._date,
-        },
-      }),
-    );
 
     // @ts-ignore
     calRef.current.calendarInst.updateSchedule(
@@ -277,7 +247,7 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
         scheduleView={['time']}
         // useCreationPopup={true}
         useDetailPopup={true}
-        schedules={suggestedTimes}
+        schedules={jobTimes}
         onClickSchedule={onClickSchedule}
         onBeforeCreateSchedule={onBeforeCreateSchedule}
         onBeforeDeleteSchedule={onBeforeDeleteSchedule}

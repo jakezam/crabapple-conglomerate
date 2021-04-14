@@ -134,7 +134,6 @@ export function ProfilePage(props) {
               actions={actions}
               reviewCount={reviewState.currReviews.length}
             />
-            
           </ProfileInfoBox>
           {ProviderContent}
           <RecentActivityContainer></RecentActivityContainer>

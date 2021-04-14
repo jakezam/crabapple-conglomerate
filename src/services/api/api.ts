@@ -109,7 +109,7 @@ export class Api {
         Message: consultationRequest.Message,
         ProviderCategory: consultationRequest.ProviderCategory,
         To: consultationRequest.To,
-        From: consultationRequest.From
+        From: consultationRequest.From,
       } as Types.PostConsultationRequestCreateRequest,
     );
 

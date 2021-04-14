@@ -3,7 +3,7 @@ import { ContainerState, ViewedUserState } from 'store/ViewedUser/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
-  userId: "1",
+  userId: '1',
   isLoading: false,
   firstName: 'Jacob',
   lastName: 'Zamani',

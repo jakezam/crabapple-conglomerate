@@ -32,13 +32,7 @@ export const initialState: ContainerState = {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum',
       isAccepted: true,
       beginDate: 'October 10, 2020',
-      suggestedTimes: [
-        {
-          beginTime: new Date().toString(),
-          // @ts-ignore
-          endTime: new Date().addHours(3),
-        },
-      ],
+      suggestedTimes: [],
       isOngoing: true,
       isProviding: true,
       wasModified: false,
@@ -115,9 +109,12 @@ const jobsSlice = createSlice({
       action: PayloadAction<UpdatedSuggestedTime>,
     ) {
       // TODO: Add a JobID to state to filter by
-      state.jobs[action.payload.jobId].suggestedTimes[
-        action.payload.suggestedTimeId
-      ] = action.payload.suggestedTime;
+      Object.assign(
+        state.jobs[action.payload.jobId].suggestedTimes[
+          action.payload.suggestedTimeId
+        ],
+        action.payload.suggestedTime,
+      );
     },
     setSelectedJob(state: ContainerState, action: PayloadAction<number>) {
       state.selectedJob = action.payload;

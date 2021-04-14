@@ -176,7 +176,7 @@ const Body = styled.div<IsSmaller>`
   flex-direction: column;
 
   // DEBUG STYLES //
-  border: 5px green solid;
+  //border: 5px green solid;
 `;
 
 const InfoBody = styled.div`

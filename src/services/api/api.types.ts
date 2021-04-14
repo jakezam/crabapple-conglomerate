@@ -72,11 +72,11 @@ export type PostUserCreateResponse =
 export type PostProviderCreateResponse =
   | { kind: 'ok'; response?: IProvider }
   | GeneralApiProblem;
-  
+
 export type PostConsultationRequestCreateResponse =
   | { kind: 'ok'; response?: IProvider }
   | GeneralApiProblem;
-  
+
 export type GetUsersResponse =
   | { kind: 'ok'; response?: IUser }
   | GeneralApiProblem;

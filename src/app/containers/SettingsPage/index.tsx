@@ -54,13 +54,13 @@ export function SettingsPage() {
           </div>
         </div>
       </h2>
-      <div style={{display:"flex", justifyContent: "center"}}>
-        <Tab className="settings-tabs" panes={panes} style={tab_style}/>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Tab className="settings-tabs" panes={panes} style={tab_style} />
       </div>
     </>
   );
 }
 
 let tab_style = {
-  width: "100em"
-}
+  width: '100em',
+};

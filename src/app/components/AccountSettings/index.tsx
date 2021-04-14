@@ -7,7 +7,7 @@ import React, { memo } from 'react';
 import styled from 'styled-components/macro';
 import { useTranslation } from 'react-i18next';
 import { Form } from 'semantic-ui-react';
-import {Message} from 'semantic-ui-react'
+import { Message } from 'semantic-ui-react';
 
 interface Props {}
 
@@ -37,7 +37,6 @@ export const AccountSettings = (props: Props) => {
                 <p>Your username must be unique.</p>
               </Message>
             </FieldInfo>
-
           </div>
           <div className="field">
             <label style={label_style}>Email</label>
@@ -51,7 +50,10 @@ export const AccountSettings = (props: Props) => {
               />
               <Message info>
                 <div className="header">Changing Email</div>
-                <p>An email will be sent to the current address to verify the change.</p>
+                <p>
+                  An email will be sent to the current address to verify the
+                  change.
+                </p>
               </Message>
             </FieldInfo>
           </div>
@@ -59,13 +61,13 @@ export const AccountSettings = (props: Props) => {
           <label style={label_style}>Phone Number</label>
           <div className="inline fields" style={field_style}>
             <div className="field">
-              <input type="text" placeholder="(xxx)"/>
+              <input type="text" placeholder="(xxx)" />
             </div>
             <div className="field">
-              <input type="text" placeholder="xxx"/>
+              <input type="text" placeholder="xxx" />
             </div>
             <div className="field">
-              <input type="text" placeholder="xxxx"/>
+              <input type="text" placeholder="xxxx" />
             </div>
           </div>
 
@@ -73,9 +75,8 @@ export const AccountSettings = (props: Props) => {
             Save above changes
           </button>
 
-
           <div className="ui divider" />
-          <div style={{textAlign: 'center' }}>
+          <div style={{ textAlign: 'center' }}>
             <h3>Reset Password</h3>
           </div>
           <div className="field">
@@ -106,10 +107,10 @@ export const AccountSettings = (props: Props) => {
 };
 
 const FieldInfo = styled.div`
-  display: flex; 
+  display: flex;
   flex-direction: row;
-  justify-content: flex-start; 
-  align-items: baseline; 
+  justify-content: flex-start;
+  align-items: baseline;
   //border: 5px solid red;
 `;
 
@@ -119,9 +120,9 @@ let label_style = {
 };
 
 let field_style = {
-  maxWidth: "40%",
-  marginRight: "10%"
-}
+  maxWidth: '40%',
+  marginRight: '10%',
+};
 
 let label_section = {
   fontFamily: "Lato,'Helvetica Neue',Arial,Helvetica,sans-serif",

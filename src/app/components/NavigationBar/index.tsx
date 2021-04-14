@@ -25,8 +25,8 @@ export function NavigationBar() {
   let popupTrigger = <ProfilePic src="logo512.png" alt="none" />;
 
   return (
-    <StyledMenu secondary>
-      <Content>
+    <Content>
+      <StyledMenu secondary>
         <LeftContent>
           <Logo src="inployd_logo_v2.PNG" alt="none" />
           <Menu.Item
@@ -65,8 +65,8 @@ export function NavigationBar() {
             <Button basic>Settings</Button>
           </Popup>
         </RightContent>
-      </Content>
-    </StyledMenu>
+      </StyledMenu>
+    </Content>
   );
 }
 
@@ -77,16 +77,19 @@ const StyledMenu = styled(Menu)`
   align-items: center;
 
   // DEBUG STYLES //
-  border: 5px solid green;
+  //border: 5px solid green;
 `;
 
 const Content = styled.div`
   max-width: 2000px;
   display: flex;
-  flex: 1;
+  flex: 0;
+  margin-bottom: 5px;
+  //border-bottom: black 1px solid;
+  //background-color: aquamarine;
 
   // DEBUG STYLES //
-  border: 5px solid orange;
+  //border: 5px solid orange;
 `;
 
 const LeftContent = styled.div`
@@ -98,7 +101,7 @@ const LeftContent = styled.div`
   align-items: center;
 
   // DEBUG STYLES //
-  border: 5px solid green;
+  //border: 5px solid green;
 `;
 
 const RightContent = styled.div`
@@ -110,5 +113,5 @@ const RightContent = styled.div`
   align-items: center;
 
   // DEBUG STYLES //
-  border: 5px solid purple;
+  //border: 5px solid purple;
 `;
