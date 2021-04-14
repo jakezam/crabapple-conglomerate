@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 /**
  *
  * JobsPage
@@ -6,23 +5,23 @@
  */
 
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components/macro';
-
 import { selectJobs } from '../../../store/Jobs/selectors';
-import { actions as vUActions } from '../../../store/Jobs/slice';
-
 import { Tab } from 'semantic-ui-react';
 import { NavigationBar } from '../../components/NavigationBar';
 import { Footer } from '../../components/Footer';
 import { JobPane } from './components/JobPane';
+import { useMediaQuery } from 'react-responsive';
+import {
+  jobPageShrink,
+  smallerDesktopMediaParameters,
+} from '../../../utils/env.config';
 
-interface Props {}
-
-export function JobsPage(props: Props) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function JobsPage() {
   const dispatch = useDispatch();
   const jobState = useSelector(selectJobs);
+  const isSmaller = useMediaQuery(jobPageShrink);
 
   let panes = Array<{
     menuItem: { key: string; icon: string; content: string };
@@ -30,17 +29,20 @@ export function JobsPage(props: Props) {
   }>();
   jobState.jobs.forEach(job => {
     let iconName = '';
+
     if ((!job.isAccepted && job.isProviding) || job.wasModified) {
       iconName = 'exclamation circle';
     }
+
     let nextPane = {
       menuItem: { key: job.username, icon: iconName, content: job.username },
       render: () => (
-        <Tab.Pane style={{ minHeight: '600px' }}>
+        <Tab.Pane>
           <JobPane job={job} />
         </Tab.Pane>
       ),
     };
+
     panes.push(nextPane);
   });
 
@@ -48,8 +50,8 @@ export function JobsPage(props: Props) {
     <>
       <NavigationBar />
       <Body>
-        <Tab
-          menu={{ fluid: true, vertical: true, tabular: true }}
+        <StyledTab
+          menu={{ fluid: true, vertical: !isSmaller, tabular: true }}
           panes={panes}
         />
       </Body>
@@ -58,6 +60,24 @@ export function JobsPage(props: Props) {
   );
 }
 
+const StyledTab = styled(Tab)`
+  margin: auto;
+  max-width: 2000px;
+  display: flex;
+  flex: 1;
+
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  // DEBUG STYLES //
+  border: 5px solid red;
+`;
+
 const Body = styled.div`
-  padding: 75px 100px 100px 100px;
+  display: flex;
+  flex: 1;
+
+  // DEBUG STYLES //
+  border: 5px solid purple;
 `;
