@@ -33,36 +33,30 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
   const dispatch = useDispatch();
   const [currentView, setCurrentView] = useState('week');
   const [calTypeOpen, setCalTypeOpen] = useState(false);
-  const [jobTimes, setJobTimes] = useState<Array<any>>([]);
+  // const [jobTimes, setJobTimes] = useState<Array<any>>([]);
 
-  useEffect(() => {
-    const updateJobTimes = () => {
-      console.log('running this');
-      let times: any = [];
+  let times: Array<any> = [];
+  jobsState.jobs[selectedJobId].suggestedTimes.forEach(jobTimes => {
+    times.push({
+      id: jobTimes.id,
+      calendarId: '0',
+      title: 'Suggested Job Time!',
+      isAllDay: false,
+      start: new Date(jobTimes.beginTime),
+      end: new Date(jobTimes.endTime),
+      category: 'time',
+      dueDateClass: '',
+      bgColor: 'lightblue',
+    });
 
-      console.log('JOB: ', jobsState);
-      jobsState.jobs[selectedJobId].suggestedTimes.forEach(jobTimes => {
-        times.push({
-          id: jobTimes.id,
-          title: 'Suggested Job Time!',
-          isAllDay: false,
-          start: new Date(jobTimes.beginTime),
-          end: new Date(jobTimes.endTime),
-          category: 'time',
-          dueDateClass: '',
-          bgColor: 'lightblue',
-        });
+    console.log('JOB TIMES: ', jobTimes);
+  });
 
-        console.log('JOB TIMES: ', jobTimes);
-      });
+  console.log('DATES: ', times);
 
-      console.log('DATES: ', times);
-
-      setJobTimes([...jobTimes, times]);
-    };
-
-    updateJobTimes();
-  }, [jobsState]);
+  // setJobTimes([...jobTimes, times]);
+  // @ts-ignore
+  // calRef.current.calendarInst.createSchedules([times]);
 
   const toggleCalType = prevState => {
     setCalTypeOpen(!calTypeOpen);
@@ -101,19 +95,24 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
       bgColor: 'lightblue',
     };
 
+    let startDay = scheduleData.start;
+    let endDay = scheduleData.end;
+    let apptStart = startDay.getTime();
+    let apptEnd = endDay.getTime();
+
     dispatch(
       jobActions.addSuggestedTime({
         jobId: selectedJobId,
         suggestedTime: {
           id: jobsState.jobs[selectedJobId].suggestedTimes.length.toString(),
-          beginTime: scheduleData.start._date.toString(),
-          endTime: scheduleData.end._date.toString(),
+          beginTime: apptStart,
+          endTime: apptEnd,
         },
       }),
     );
 
     // @ts-ignore
-    calRef.current.calendarInst.createSchedules([schedule]);
+    // calRef.current.calendarInst.createSchedules([schedule]);
   };
 
   const onBeforeDeleteSchedule = res => {
@@ -121,18 +120,36 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
     const { id, calendarId } = res.schedule;
 
     // @ts-ignore
-    calRef.current.calendarInst.deleteSchedule(id, calendarId);
+    // calRef.current.calendarInst.deleteSchedule(id, calendarId);
   };
 
   const onBeforeUpdateSchedule = e => {
     console.log('BEFORE UPDATE SCHEDULE:', e.schedule);
     const { schedule, changes } = e;
+    let startDay = changes.start;
+    let endDay = changes.end;
+    let apptStart = startDay.getTime();
+    let apptEnd = endDay.getTime();
+
+    console.log('CHANGES: ', changes);
 
     // @ts-ignore
-    calRef.current.calendarInst.updateSchedule(
-      schedule.id,
-      schedule.calendarId,
-      changes,
+    // calRef.current.calendarInst.updateSchedule(
+    //   schedule.id,
+    //   schedule.calendarId,
+    //   changes,
+    // );
+
+    dispatch(
+      jobActions.updateSuggestedTimes({
+        jobId: selectedJobId,
+        suggestedTimeId: schedule.id,
+        suggestedTime: {
+          id: schedule.id,
+          beginTime: apptStart,
+          endTime: apptEnd,
+        },
+      }),
     );
   };
   ////////////////////////
@@ -247,7 +264,7 @@ export const TimePicker = ({ setModalOpen }: IProps) => {
         scheduleView={['time']}
         // useCreationPopup={true}
         useDetailPopup={true}
-        schedules={jobTimes}
+        schedules={times}
         onClickSchedule={onClickSchedule}
         onBeforeCreateSchedule={onBeforeCreateSchedule}
         onBeforeDeleteSchedule={onBeforeDeleteSchedule}

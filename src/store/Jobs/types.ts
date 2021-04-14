@@ -33,8 +33,8 @@ export interface AddedSuggestedTime {
 
 export interface UpdatedSuggestedTime {
   jobId: number;
-  suggestedTimeId: number;
-  suggestedTime: any;
+  suggestedTimeId: string;
+  suggestedTime: SuggestedTime;
 }
 
 export type ContainerState = JobsState;

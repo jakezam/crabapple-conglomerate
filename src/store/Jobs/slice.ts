@@ -109,12 +109,9 @@ const jobsSlice = createSlice({
       action: PayloadAction<UpdatedSuggestedTime>,
     ) {
       // TODO: Add a JobID to state to filter by
-      Object.assign(
-        state.jobs[action.payload.jobId].suggestedTimes[
-          action.payload.suggestedTimeId
-        ],
-        action.payload.suggestedTime,
-      );
+      state.jobs[action.payload.jobId].suggestedTimes[
+        action.payload.suggestedTimeId
+      ] = action.payload.suggestedTime;
     },
     setSelectedJob(state: ContainerState, action: PayloadAction<number>) {
       state.selectedJob = action.payload;
