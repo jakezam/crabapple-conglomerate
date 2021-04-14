@@ -101,7 +101,7 @@ const Body = styled.div`
   align-items: center;
 
   // DEBUG STYLES //
-  border: solid 5px orange;
+  //border: solid 5px orange;
 `;
 
 const InnerBody = styled.div<StepProps>`

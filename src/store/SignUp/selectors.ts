@@ -39,6 +39,16 @@ export const selectCompanyName = createSelector(
   signUpState => signUpState.providerData.companyTitle,
 );
 
+export const selectCreatingProviderAccount = createSelector(
+  [selectDomain],
+  signUpState => signUpState.creatingProviderAccount,
+);
+
+export const selectProviderData = createSelector(
+  [selectDomain],
+  signUpState => signUpState.providerData,
+);
+
 export const selectDescription = createSelector(
   [selectDomain],
   signUpState => signUpState.providerData.about,

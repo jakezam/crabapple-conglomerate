@@ -11,6 +11,7 @@ import {
   IProvider,
   ReviewSet,
   PostProviderCreateRequest,
+  ProviderResponse,
 } from './api.types';
 import * as https from 'https';
 
@@ -79,13 +80,20 @@ export class Api {
   async PostCreateProvider(
     provider: PostProviderCreateRequest,
   ): Promise<Types.PostProviderCreateResponse> {
-    const response: ApiResponse<IProvider> = await this.apisauce.post(
-      'api/provider',
+    const response: ApiResponse<ProviderResponse> = await this.apisauce.post(
+      'api/providers',
       {
         ProviderId: provider.ProviderId,
         Company: provider.Company,
         Category: provider.Category,
         Website: provider.Website,
+        About: provider.About,
+        AptNum: provider.AptNum === '' ? 'none' : provider.AptNum,
+        City: provider.City,
+        Zip: provider.Zip,
+        ExpertiseLevel: provider.ExpertiseLevel.toString(),
+        StreetAddress: provider.Zip,
+        State: provider.State,
       } as PostProviderCreateRequest,
     );
 
