@@ -18,33 +18,6 @@ export function ProfileBox(props) {
   const dispatch = useDispatch();
 
   let buttonStyle = { marginTop: '20px', padding: '12px', width: '145px' };
-  let followButton = <div />;
-  if (!user.isSelf) {
-    followButton = (
-      <Button
-        color={'red'}
-        style={buttonStyle}
-        onClick={() => {
-          // dispatch(actions.changeFollowState());
-        }}
-      >
-        Unfollow
-      </Button>
-    );
-    if (!user.isFollowing) {
-      followButton = (
-        <Button
-          color={'green'}
-          style={buttonStyle}
-          onClick={() => {
-            // dispatch(actions.changeFollowState());
-          }}
-        >
-          Follow
-        </Button>
-      );
-    }
-  }
 
   let displayName = user.firstName + ' ' + user.lastName;
   let rating = <div />;
@@ -61,7 +34,6 @@ export function ProfileBox(props) {
           size="huge"
           style={{ marginTop: '1px', marginRight: '4px' }}
         />
-        {/* <ReviewHeader>Reviews ({user.reviews.length})</ReviewHeader> */}
         <ReviewHeader>Reviews ({reviewCount})</ReviewHeader>
       </HorizontalAlign>
     );
@@ -86,9 +58,6 @@ export function ProfileBox(props) {
     );
   }
 
-  let followerCount = user.followerCount + ' \tfollowers';
-  let followingCount = user.numFollowing + ' \tfollowing';
-
   return (
     <div>
       <Grid style={{ padding: '15px' }}>
@@ -112,28 +81,9 @@ export function ProfileBox(props) {
             >
               {displayName}
             </h1>
-            <HorizontalAlign>
-              <h4
-                style={{ textAlign: 'left', marginTop: '0', marginLeft: '4px' }}
-              >
-                {followerCount}
-              </h4>
-              <h4
-                style={{
-                  textAlign: 'left',
-                  marginTop: '0',
-                  marginLeft: '50px',
-                }}
-              >
-                {followingCount}
-              </h4>
-            </HorizontalAlign>
             {rating}
           </Grid.Column>
-          <Grid.Column width={4}>
-            {followButton}
-            {requestButton}
-          </Grid.Column>
+          <Grid.Column width={4}>{requestButton}</Grid.Column>
         </Grid.Row>
         {provider}
       </Grid>
