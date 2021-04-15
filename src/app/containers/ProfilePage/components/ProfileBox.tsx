@@ -60,7 +60,6 @@ export function ProfileBox(props) {
   }
 
   let likeCount = user.followerCount + ' \tLikes';
-  //let followingCount = user.numFollowing + ' \tfollowing';
 
   return (
     <div>
@@ -87,19 +86,19 @@ export function ProfileBox(props) {
             </h1>
             <HorizontalAlign>
               <h4
-                style={{ textAlign: 'left', marginTop: '0', marginLeft: '4px' }}
+                style={{
+                  textAlign: 'left',
+                  marginTop: '0',
+                  marginLeft: '4px',
+                  marginBottom: '10px',
+                }}
               >
                 {likeCount}
               </h4>
             </HorizontalAlign>
             {rating}
           </Grid.Column>
-          <Grid.Column width={4}>
-            {requestButton}
-            <div style={{ display: 'flex' }}>
-              <JobRequestForm />
-            </div>
-          </Grid.Column>
+          <Grid.Column width={4}>{requestButton}</Grid.Column>
         </Grid.Row>
         {provider}
       </Grid>

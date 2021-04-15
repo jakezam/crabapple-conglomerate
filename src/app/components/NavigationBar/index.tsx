@@ -28,10 +28,7 @@ export function NavigationBar() {
 
   return (
     <Content>
-      <StyledMenu
-        secondary
-        // style={{ boxShadow: '0 4px 6px 0 rgb(0 0 0 / 8%);' }}
-      >
+      <StyledMenu secondary>
         <LeftContent>
           <Logo
             src={process.env.PUBLIC_URL + '/inployd_logo_v2.PNG'}
@@ -60,17 +57,30 @@ export function NavigationBar() {
             active={activeItem === 'profile'}
             onClick={(e, { name }) => {
               setActive('profile');
-              dispatch(push('/profile/ac784650-a769-40a1-8a67-08d8ce2fd834'));
+              dispatch(push('/profile/628c1d1a-c115-43ed-7535-08d8ffb79d0d'));
             }}
           />
         </LeftContent>
         <RightContent>
           {!isSmaller && <Search size={'mini'} />}
           <Popup trigger={popupTrigger} flowing hoverable>
-            <Button basic color="red">
+            <Button
+              basic
+              color="red"
+              onClick={(e, { name }) => {
+                dispatch(push('/'));
+              }}
+            >
               Logout
             </Button>
-            <Button basic>Settings</Button>
+            <Button
+              basic
+              onClick={(e, { name }) => {
+                dispatch(push('/settings'));
+              }}
+            >
+              Settings
+            </Button>
           </Popup>
         </RightContent>
       </StyledMenu>

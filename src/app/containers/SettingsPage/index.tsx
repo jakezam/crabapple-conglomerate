@@ -44,7 +44,7 @@ export function SettingsPage() {
       <NavigationBar />
       <h2
         className="ui center aligned icon header"
-        style={{ boxShadow: 'none', paddingBottom: '120px' }}
+        style={{ boxShadow: 'none' }}
       >
         <i className="settings icon" />
         <div className="content">
