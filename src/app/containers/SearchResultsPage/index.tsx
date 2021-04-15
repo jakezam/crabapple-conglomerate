@@ -41,9 +41,9 @@ export function SearchResultsPage() {
     isCategory: categorySearch,
   };
 
-  useEffect(() => {
-    dispatch(actions.updateQuery(queryPayload));
-  }, [dispatch, category, keyword]);
+  // useEffect(() => {
+  //   dispatch(actions.updateQuery(queryPayload));
+  // }, [dispatch, category, keyword]);
 
   if (discoverState.resultsPageLoading) {
     return (

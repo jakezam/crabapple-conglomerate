@@ -28,11 +28,19 @@ export interface PostUserCreateRequest {
 }
 
 export interface IProvider {
-  providerId: number;
+  providerId: string;
   company: string;
   category: string;
   website: string;
   rating: number;
+  expertiseLevel: string;
+  about: string;
+  streetAddress: string;
+  aptNum: string;
+  city: string;
+  state: string;
+  zip: string;
+  createdDate: string;
 }
 
 export interface IReview {

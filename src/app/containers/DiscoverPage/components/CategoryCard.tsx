@@ -9,6 +9,7 @@ import styled from 'styled-components/macro';
 import { Button, Card, Popup } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { push } from 'connected-react-router';
+import { actions } from 'store/Discover/slice';
 
 interface IProps {
   key: number;
@@ -32,6 +33,7 @@ export function CategoryCard(props: IProps) {
       header={category}
       description={subComment}
       onClick={() => {
+        dispatch(actions.updateQuery({ query: category, isCategory: true }));
         dispatch(push('/results/' + categoryNoSpaces));
       }}
     />

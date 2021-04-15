@@ -10,44 +10,7 @@ export const initialState: ContainerState = {
   searchQuery: '',
   categorySearch: false,
   filterByRating: true,
-  recentlyViewed: [
-    {
-      userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',
-      username: 'Jacob Zamani',
-      userTag: '',
-      isProvider: false,
-      providerData: {
-        category: '',
-        rating: -1,
-        location: '',
-        skills: [],
-      },
-    },
-    {
-      userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',
-      username: "Jordan's Contracting",
-      userTag: "Jordan's Contracting",
-      isProvider: true,
-      providerData: {
-        category: 'Contracting',
-        rating: 4,
-        location: 'Shelton CT',
-        skills: [],
-      },
-    },
-    {
-      userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',
-      username: 'Shelton Home Repairs',
-      userTag: 'Shelton Home Repairs',
-      isProvider: true,
-      providerData: {
-        category: 'Home Repair',
-        rating: 4,
-        location: 'Shelton CT',
-        skills: [],
-      },
-    },
-  ],
+  recentlyViewed: [],
   searchResults: [
     {
       userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',

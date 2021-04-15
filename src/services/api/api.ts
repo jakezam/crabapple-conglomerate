@@ -137,6 +137,24 @@ export class Api {
     return response.data;
   }
 
+  async GetProvidersByCategory(
+    category: string,
+  ): Promise<Types.GetProvidersResponse> {
+    const response: ApiResponse<any> = await this.apisauce.get(
+      'api/providers/?category=' + category,
+    );
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return response.data;
+  }
+
   /**
    * Create A Provider
   //  */
