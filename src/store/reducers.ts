@@ -11,6 +11,7 @@ import { reducer as discover } from './Discover/slice';
 import { reducer as signUp } from './SignUp/slice';
 import { reducer as viewedUser } from './ViewedUser/slice';
 import { reducer as review } from './Review/slice';
+import { reducer as jobs } from './Jobs/slice';
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
@@ -32,6 +33,7 @@ export function createReducer(injectedReducers: InjectedReducersType = {}) {
     discover,
     signUp,
     viewedUser,
+    jobs,
     review,
     ...injectedReducers,
     router: connectRouter(history) as Reducer<RouterState, AnyAction>,

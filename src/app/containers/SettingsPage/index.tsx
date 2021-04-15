@@ -7,6 +7,7 @@ import React from 'react';
 import { Tab } from 'semantic-ui-react';
 import { AccountSettings } from 'app/components/AccountSettings/Loadable';
 import { PrivacySettings } from 'app/components/PrivacySettings/Loadable';
+import { NavigationBar } from 'app/components/NavigationBar';
 import { CommunicationSettings } from 'app/components/CommunicationSettings/Loadable';
 import './Settings.scss';
 
@@ -40,6 +41,7 @@ export function SettingsPage() {
 
   return (
     <>
+      <NavigationBar />
       <h2
         className="ui center aligned icon header"
         style={{ boxShadow: 'none', paddingBottom: '120px' }}
@@ -52,11 +54,13 @@ export function SettingsPage() {
           </div>
         </div>
       </h2>
-      {/* <div className="ui top attached tabular menu">
-        <div className="active item">Tab 1</div>
-        <div className="item">Tab 2</div>
-      </div> */}
-      <Tab className="settings-tabs" panes={panes} />
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Tab className="settings-tabs" panes={panes} style={tab_style} />
+      </div>
     </>
   );
 }
+
+let tab_style = {
+  width: '100em',
+};

@@ -27,6 +27,7 @@ import { selectReview } from '../../../store/Review/selectors';
 import { ProfileBox } from './components/ProfileBox';
 import { ReviewBox } from './components/ReviewBox';
 import { Message, Segment } from 'semantic-ui-react';
+import { JobRequestForm } from './components/JobRequestForm';
 
 export function ProfilePage(props) {
   useInjectSaga({ key: sliceKey, saga: profilePageSaga });

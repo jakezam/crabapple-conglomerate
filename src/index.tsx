@@ -21,7 +21,7 @@ import { configureAppStore } from 'store/configureStore';
 
 // Initialize languages
 import './locales/i18n';
-import { ConnectedRouter } from 'connected-react-router';
+import { ConnectedRouter } from 'connected-react-router/immutable'; // WHEN I ADDED /IMMUTABLE IT SOLVED MY PROBLEM
 
 export const store = configureAppStore(history);
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;

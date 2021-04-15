@@ -10,7 +10,10 @@ export const selectSignUp = createSelector(
   [selectDomain],
   signUpState => signUpState,
 );
-
+export const selectUserId = createSelector(
+  [selectDomain],
+  signUpState => signUpState.userData.userId,
+);
 export const selectStep = createSelector(
   [selectDomain],
   signUpState => signUpState.currentStep,
@@ -34,6 +37,16 @@ export const selectExpertiseLevel = createSelector(
 export const selectCompanyName = createSelector(
   [selectDomain],
   signUpState => signUpState.providerData.companyTitle,
+);
+
+export const selectCreatingProviderAccount = createSelector(
+  [selectDomain],
+  signUpState => signUpState.creatingProviderAccount,
+);
+
+export const selectProviderData = createSelector(
+  [selectDomain],
+  signUpState => signUpState.providerData,
 );
 
 export const selectDescription = createSelector(

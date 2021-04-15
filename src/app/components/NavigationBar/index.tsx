@@ -1,124 +1,125 @@
-/**
- * NavigationBar
- */
-
-// Package Imports //
-import React from 'react';
-import styled from 'styled-components';
-// import { Search, Button } from 'semantic-ui-react';
-import { Menu, Input, Search, Button, Popup, Grid } from 'semantic-ui-react';
-import { Link, useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Button, Menu, Popup, Search } from 'semantic-ui-react';
 import { push } from 'connected-react-router';
-// import logo from '../../../../public/inployd_logo_v2.PNG';
-
-// Component Imports //
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components/macro';
+import { useMediaQuery } from 'react-responsive';
+import { smallerDesktopMediaParameters } from '../../../utils/env.config';
+import { Logo, ProfilePic } from './components/StyledComponents';
 
 export function NavigationBar() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const isSmaller = useMediaQuery(smallerDesktopMediaParameters);
+
   let currActive = history.location.pathname.substring(1);
+
+  // Set highlighted button
   let slashIndex = currActive.indexOf('/');
   if (slashIndex >= 0) {
     currActive = currActive.substring(0, slashIndex);
   }
 
   const [activeItem, setActive] = React.useState(currActive);
-
   let popupTrigger = (
     <ProfilePic src={process.env.PUBLIC_URL + '/logo512.png'} alt="none" />
   );
+
   return (
-    <Body>
-      <Menu secondary>
-        <Menu.Menu position="left">
+    <Content>
+      <StyledMenu secondary>
+        <LeftContent>
           <Logo
             src={process.env.PUBLIC_URL + '/inployd_logo_v2.PNG'}
             alt="none"
           />
-        </Menu.Menu>
-        {/* <Menu.Item
-          name="Home"
-          icon={'home'}
-          active={activeItem === 'home'}
-          onClick={(e, { name }) => {
-            setActive('home');
-            dispatch(push('/home'));
-          }}
-        /> */}
-        <Menu.Item
-          name="Discover"
-          icon={'map'}
-          active={activeItem === 'discover'}
-          onClick={(e, { name }) => {
-            setActive('discover');
-            dispatch(push('/discover'));
-          }}
-        />
-        <Menu.Item
-          name="Consultations"
-          icon={'address card'}
-          active={activeItem === 'Consultations'}
-          onClick={(e, { name }) => {
-            dispatch(push('/jobs'));
-          }}
-        />
-        <Menu.Item
-          name="Notifications"
-          icon={'lightbulb'}
-          active={activeItem === 'notifications'}
-          onClick={(e, { name }) => {
-            setActive('notifications');
-            dispatch(push('/notifications'));
-          }}
-        />
-        <Menu.Item
-          name="My Profile"
-          icon={'user'}
-          active={activeItem === 'profile'}
-          onClick={(e, { name }) => {
-            setActive('profile');
-            dispatch(push('/profile/ac784650-a769-40a1-8a67-08d8ce2fd834'));
-          }}
-        />
-        <Menu.Menu position="right">
-          <Menu.Item>
-            {/* <Input style={{paddingRight: '12.671429em !important', marginLeft: '140px'}} icon="search" placeholder="Search..." /> */}
-            <Search />
-          </Menu.Item>
+          <Menu.Item
+            name={isSmaller ? '' : 'Discover'}
+            icon={'map'}
+            active={activeItem === 'discover'}
+            onClick={(e, { name }) => {
+              setActive('discover');
+              dispatch(push('/discover'));
+            }}
+          />
+          <Menu.Item
+            name={isSmaller ? '' : 'Consultations'}
+            icon={'address card'}
+            active={activeItem === 'consultations'}
+            onClick={(e, { name }) => {
+              dispatch(push('/consultations'));
+            }}
+          />
+          <Menu.Item
+            name={isSmaller ? '' : 'My Profile'}
+            icon={'user'}
+            active={activeItem === 'profile'}
+            onClick={(e, { name }) => {
+              setActive('profile');
+              dispatch(push('/profile/ac784650-a769-40a1-8a67-08d8ce2fd834'));
+            }}
+          />
+        </LeftContent>
+        <RightContent>
+          {!isSmaller && <Search size={'mini'} />}
           <Popup trigger={popupTrigger} flowing hoverable>
             <Button basic color="red">
               Logout
             </Button>
             <Button basic>Settings</Button>
           </Popup>
-        </Menu.Menu>
-      </Menu>
-    </Body>
+        </RightContent>
+      </StyledMenu>
+    </Content>
   );
 }
 
-const Body = styled.div`
-  padding: 18px 170px 18px 100px;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.075);
-  height: 90px;
-  width: 100%;
-  background-color: #f0f9ff;
+const StyledMenu = styled(Menu)`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+  box-shadow: 0 4px 6px 0 rgb(0 0 0 / 8%);
+
+  // DEBUG STYLES //
+  //border: 5px solid green;
 `;
 
-const ProfilePic = styled.img`
-  width: 43px;
-  height: 43px;
-  border: 2.5px white solid;
-  border-radius: 6px;
-  margin: auto 0 auto 20px;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.045), 0 2px 4px 0 rgba(0, 0, 0, 0.045);
-  color: #white;
+const Content = styled.div`
+  max-width: 2000px;
+  display: flex;
+  flex: 0;
+  margin-bottom: 5px;
+  //border-bottom: black 1px solid;
+  //background-color: aquamarine;
+
+  // DEBUG STYLES //
+  //border: 5px solid orange;
 `;
 
-const Logo = styled.img`
-  height: 56px;
-  width: 104px;
-  display: block;
-  margin-right: 40px;
+const LeftContent = styled.div`
+  padding-left: 2em;
+
+  display: flex;
+  flex: 1 1;
+  justify-content: flex-start;
+  align-items: center;
+
+  // DEBUG STYLES //
+  //border: 5px solid green;
+`;
+
+const RightContent = styled.div`
+  padding-right: 2em;
+
+  display: flex;
+  flex: 1 1;
+  justify-content: flex-end;
+  align-items: center;
+
+  // DEBUG STYLES //
+  //border: 5px solid purple;
 `;

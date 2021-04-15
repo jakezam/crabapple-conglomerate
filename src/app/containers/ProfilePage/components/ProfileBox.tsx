@@ -9,6 +9,7 @@ import {
   Menu,
   Rating,
   Segment,
+  Icon,
 } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { JobRequestForm } from './JobRequestForm';
@@ -58,6 +59,9 @@ export function ProfileBox(props) {
     );
   }
 
+  let likeCount = user.followerCount + ' \tLikes';
+  //let followingCount = user.numFollowing + ' \tfollowing';
+
   return (
     <div>
       <Grid style={{ padding: '15px' }}>
@@ -81,9 +85,21 @@ export function ProfileBox(props) {
             >
               {displayName}
             </h1>
+            <HorizontalAlign>
+              <h4
+                style={{ textAlign: 'left', marginTop: '0', marginLeft: '4px' }}
+              >
+                {likeCount}
+              </h4>
+            </HorizontalAlign>
             {rating}
           </Grid.Column>
-          <Grid.Column width={4}>{requestButton}</Grid.Column>
+          <Grid.Column width={4}>
+            {requestButton}
+            <div style={{ display: 'flex' }}>
+              <JobRequestForm />
+            </div>
+          </Grid.Column>
         </Grid.Row>
         {provider}
       </Grid>

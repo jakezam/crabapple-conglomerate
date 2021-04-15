@@ -10,7 +10,6 @@ export const selectViewedUser = createSelector(
   [selectDomain],
   viewedUserState => viewedUserState,
 );
-
 export const selectViewedUserId = createSelector(
   [selectDomain],
   viewedUserState => viewedUserState.userId,

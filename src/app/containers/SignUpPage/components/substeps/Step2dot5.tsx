@@ -7,6 +7,8 @@ import { actions } from '../../../../../store/SignUp/slice';
 import {
   selectAptNum,
   selectCity,
+  selectCreatingAccount,
+  selectCreatingProviderAccount,
   selectState,
   selectStreetAddress,
   selectZip,
@@ -84,6 +86,7 @@ export function Step2dot5() {
   const city: string = useSelector(selectCity);
   const state: string = useSelector(selectState);
   const zip: string = useSelector(selectZip);
+  const creatingProviderAccount = useSelector(selectCreatingProviderAccount);
   ///////////
 
   const onFinish = (e, data) => {
@@ -110,7 +113,10 @@ export function Step2dot5() {
   const handleChange = (e, data) => {};
 
   return (
-    <Form onValidSubmit={handleSubmit(onFinish)}>
+    <Form
+      onValidSubmit={handleSubmit(onFinish)}
+      loading={creatingProviderAccount}
+    >
       <h1>Where Are You Located</h1>
       <Form.Input
         fluid
