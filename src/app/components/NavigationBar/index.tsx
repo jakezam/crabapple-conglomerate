@@ -28,7 +28,10 @@ export function NavigationBar() {
 
   return (
     <Content>
-      <StyledMenu secondary>
+      <StyledMenu
+        secondary
+        // style={{ boxShadow: '0 4px 6px 0 rgb(0 0 0 / 8%);' }}
+      >
         <LeftContent>
           <Logo
             src={process.env.PUBLIC_URL + '/inployd_logo_v2.PNG'}
@@ -76,24 +79,27 @@ export function NavigationBar() {
 }
 
 const StyledMenu = styled(Menu)`
+  max-width: 1500px;
   display: flex;
   flex: 1;
   justify-content: center;
   align-items: center;
 
+  margin-left: auto !important;
+  margin-right: auto !important;
+
   padding: 10px;
-  box-shadow: 0 4px 6px 0 rgb(0 0 0 / 8%);
 
   // DEBUG STYLES //
   //border: 5px solid green;
 `;
 
 const Content = styled.div`
-  max-width: 2000px;
+  width: 100%
   display: flex;
   flex: 0;
   margin-bottom: 5px;
-  //border-bottom: black 1px solid;
+  box-shadow: 0 4px 6px 0 rgb(0 0 0 / 8%);
   //background-color: aquamarine;
 
   // DEBUG STYLES //

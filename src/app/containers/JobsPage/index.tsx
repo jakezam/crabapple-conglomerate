@@ -72,13 +72,14 @@ const Container = styled.div`
 
 const StyledTab = styled(Tab)`
   margin: auto;
-  max-width: 2000px;
+  max-width: 1200px;
   display: flex;
   flex: 1;
 
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 35px;
 
   // DEBUG STYLES //
   //border: 5px solid red;

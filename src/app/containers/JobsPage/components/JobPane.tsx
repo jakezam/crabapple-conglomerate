@@ -13,6 +13,7 @@ import { useMediaQuery } from 'react-responsive';
 export function JobPane(props) {
   const { job } = props;
   const isSmaller = useMediaQuery(jobPageShrink);
+  const [calendarVisible, setCalendarVisible] = useState(false);
 
   let dateMessage = 'Planned For:';
   if (job.isOngoing) {
@@ -187,5 +188,5 @@ const InfoBody = styled.div`
   //width: 50%;
   height: 100%;
   padding: 15px;
-  border-right: 1px solid #d7d7d7;
+  // border-right: 1px solid #d7d7d7;
 `;
