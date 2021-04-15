@@ -1,11 +1,19 @@
-/* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
-import { Button, Grid, Header, Message } from 'semantic-ui-react';
+import { Button, Grid, Header, Message, Modal } from 'semantic-ui-react';
 import { ModificationForm } from './ModificationForm';
+import Calendar from '@toast-ui/react-calendar';
+import 'tui-date-picker/dist/tui-date-picker.css';
+import 'tui-time-picker/dist/tui-time-picker.css';
+import 'tui-calendar/dist/tui-calendar.css';
+import { TimePicker } from './TimePicker';
+import { jobPageShrink } from '../../../../utils/env.config';
+import { useMediaQuery } from 'react-responsive';
 
 export function JobPane(props) {
   const { job } = props;
+  const isSmaller = useMediaQuery(jobPageShrink);
+  const [calendarVisible, setCalendarVisible] = useState(false);
 
   let dateMessage = 'Planned For:';
   if (job.isOngoing) {
@@ -32,6 +40,7 @@ export function JobPane(props) {
         </Grid.Row>
       </>
     );
+
     if (job.wasModified) {
       header = (
         <>
@@ -149,47 +158,35 @@ export function JobPane(props) {
   );
 
   return (
-    <Body>
+    <Body isSmaller={isSmaller}>
       <InfoBody>
         <Header as="h3" icon="info circle" content="Job Information" block />
         {jobInfo}
       </InfoBody>
-      <MessagingBody>
-        <MessageHeader>
-          <Header as="h3" icon="mail" content="Messages" block />
-        </MessageHeader>
-        {/* <Message warning>
-          <Message.Header>Change coming soon</Message.Header>
-          <p>
-            Unfortunately in-app messaging has not been implemented, but our
-            developers are hard at work and we hope to have this feature done
-            ASAP!
-          </p>
-        </Message> */}
-      </MessagingBody>
     </Body>
   );
 }
 
-const Body = styled.div`
-  width: 100%;
-  height: 100%;
+interface IsSmaller {
+  isSmaller: boolean;
+}
+
+const Body = styled.div<IsSmaller>`
   display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  // DEBUG STYLES //
+  //border: 5px green solid;
 `;
 
 const InfoBody = styled.div`
-  width: 50%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  //width: 50%;
   height: 100%;
   padding: 15px;
-  border-right: 1px solid #d7d7d7;
-`;
-
-const MessagingBody = styled.div`
-  width: 50%;
-  height: 100%;
-  padding: 15px 5px 15px 30px;
-`;
-
-const MessageHeader = styled.div`
-  margin-bottom: 50px;
+  // border-right: 1px solid #d7d7d7;
 `;

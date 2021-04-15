@@ -27,4 +27,7 @@ export function Step2() {
 const Box = styled.div`
   width: 30vw;
   padding: 10px;
+
+  // DEBUG STYLES //
+  //border: red 5px solid;
 `;

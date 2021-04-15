@@ -1,10 +1,17 @@
 import { createSlice } from 'utils/@reduxjs/toolkit';
-import { ContainerState } from 'store/Discover/types';
+import { ContainerState, Category, SmallAccount } from 'store/Discover/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
   userId: '',
+  resultsPageLoading: false,
+  discoverPageLoading: false,
+  categories: [],
+  categoryQuery: '',
+  keywordQuery: '',
+  filterByRating: true,
   recentlyViewed: [],
+  searchResults: [],
 };
 
 const discoverSlice = createSlice({
@@ -13,6 +20,45 @@ const discoverSlice = createSlice({
   reducers: {
     changeId(state: ContainerState, action: PayloadAction<string>) {
       state.userId = action.payload;
+    },
+    setResultsPageLoading(
+      state: ContainerState,
+      action: PayloadAction<boolean>,
+    ) {
+      state.resultsPageLoading = action.payload;
+    },
+    setDiscoverPageLoading(
+      state: ContainerState,
+      action: PayloadAction<boolean>,
+    ) {
+      state.discoverPageLoading = action.payload;
+    },
+    updateCategoryQuery(state: ContainerState, action: PayloadAction<string>) {
+      state.categoryQuery = action.payload;
+    },
+    updateKeywordQuery(state: ContainerState, action: PayloadAction<string>) {
+      state.keywordQuery = action.payload;
+    },
+    setFilterKey(state: ContainerState, action: PayloadAction<boolean>) {
+      state.filterByRating = action.payload;
+    },
+    initiateDiscoverSaga(
+      state: ContainerState,
+      action: PayloadAction<Array<Category>>,
+    ) {
+      state.categories = action.payload;
+    },
+    setCategories(
+      state: ContainerState,
+      action: PayloadAction<Array<Category>>,
+    ) {
+      state.categories = action.payload;
+    },
+    setSearchResults(
+      state: ContainerState,
+      action: PayloadAction<Array<SmallAccount>>,
+    ) {
+      state.searchResults = action.payload;
     },
   },
 });

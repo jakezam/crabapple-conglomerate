@@ -93,4 +93,6 @@ const CardBody = styled.div`
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
   background-color: white;
   cursor: pointer;
+  margin-right: 60px;
+  margin-bottom: 15px;
 `;

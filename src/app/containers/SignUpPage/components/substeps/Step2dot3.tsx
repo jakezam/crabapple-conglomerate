@@ -35,26 +35,34 @@ export function Step2dot3() {
       generatedInputs.push(
         <Box key={i}>
           <h3>{category}</h3>
-          <Input
-            name={category + '_flatRate'}
-            labelPosition="left"
-            type="number"
-            placeholder="0.00"
-            value={standardRates[i]?.flatRate ?? ''}
-          >
-            <Label basic>$</Label>
-            <input />
-          </Input>
-          <Input
-            name={category + '_hourlyRate'}
-            labelPosition="left"
-            type="number"
-            placeholder="0.00"
-            value={standardRates[i]?.hourlyRate ?? ''}
-          >
-            <Label basic>$</Label>
-            <input />
-          </Input>
+          <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div>
+              Flat Rate
+              <Input
+                name={category + '_flatRate'}
+                labelPosition="left"
+                type="number"
+                placeholder="0.00"
+                value={standardRates[i]?.flatRate ?? ''}
+              >
+                <Label basic>$</Label>
+                <input />
+              </Input>
+            </div>
+            <div>
+              Hourly Rate
+              <Input
+                name={category + '_hourlyRate'}
+                labelPosition="left"
+                type="number"
+                placeholder="0.00"
+                value={standardRates[i]?.hourlyRate ?? ''}
+              >
+                <Label basic>$</Label>
+                <input />
+              </Input>
+            </div>
+          </div>
         </Box>,
       );
       i++;
@@ -91,56 +99,41 @@ export function Step2dot3() {
 
   return (
     <>
+      {' '}
       <h1>Standard Rates?</h1>
-      {subCategories === undefined && (
-        <Form onValidSubmit={handleSubmit(onNext)}>
-          {/*Option pricing options*/}
-          {/*See lucidcharts for detailed view*/}
-          <h3>Flat Rate</h3>
-          <Input
-            name={mainCategory + '_flatRate'}
-            labelPosition="left"
-            type="number"
-            placeholder="0.00"
-            required
-            validationErrors={{
-              isDefaultRequiredValue: 'Rate is Required',
-            }}
-          >
-            <Label basic>$</Label>
-            <input />
-          </Input>
-          <h3>Hourly Rate</h3>
-          <Input
-            name={mainCategory + '_hourlyRate'}
-            labelPosition="left"
-            type="number"
-            placeholder="0.00"
-            required
-            validationErrors={{
-              isDefaultRequiredValue: 'Rate is Required',
-            }}
-          >
-            <Label basic>$</Label>
-            <input />
-          </Input>
-          <Form.Group
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              margin: '15px',
-            }}
-          >
-            <Form.Button primary onClick={onBack} content="Back" />
-            <Form.Button primary content="Next" />
-          </Form.Group>
-        </Form>
-      )}
-      {subCategories !== undefined && (
-        <>
-          <h3>For each job input the hourly rate, flat rate, or both.</h3>
+      <Container>
+        {subCategories.length === 0 && (
           <Form onValidSubmit={handleSubmit(onNext)}>
-            {generatedInputs}
+            {/*Option pricing options*/}
+            {/*See lucidcharts for detailed view*/}
+            <h3>Flat Rate</h3>
+            <Input
+              name={mainCategory + '_flatRate'}
+              labelPosition="left"
+              type="number"
+              placeholder="0.00"
+              required
+              validationErrors={{
+                isDefaultRequiredValue: 'Rate is Required',
+              }}
+            >
+              <Label basic>$</Label>
+              <input />
+            </Input>
+            <h3>Hourly Rate</h3>
+            <Input
+              name={mainCategory + '_hourlyRate'}
+              labelPosition="left"
+              type="number"
+              placeholder="0.00"
+              required
+              validationErrors={{
+                isDefaultRequiredValue: 'Rate is Required',
+              }}
+            >
+              <Label basic>$</Label>
+              <input />
+            </Input>
             <Form.Group
               style={{
                 display: 'flex',
@@ -152,15 +145,43 @@ export function Step2dot3() {
               <Form.Button primary content="Next" />
             </Form.Group>
           </Form>
-        </>
-      )}
+        )}
+
+        {subCategories.length > 0 && (
+          <>
+            <h3>For each job input the hourly rate, flat rate, or both.</h3>
+            <Form onValidSubmit={handleSubmit(onNext)}>
+              {generatedInputs}
+              <Form.Group
+                style={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  margin: '15px',
+                }}
+              >
+                <Form.Button primary onClick={onBack} content="Back" />
+                <Form.Button primary content="Next" />
+              </Form.Group>
+            </Form>
+          </>
+        )}
+      </Container>
     </>
   );
 }
 
+const Container = styled.div`
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+`;
+
 const Box = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  //align-items: center;
+
+  // DEBUG STYLES //
+  //border: solid 5px orange;
 `;

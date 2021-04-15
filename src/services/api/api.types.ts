@@ -1,7 +1,8 @@
 import { GeneralApiProblem } from './api.problem';
+import { Expertise } from '../../store/SignUp/types';
 
 export interface IUser {
-  userId: Number;
+  userId: string;
   firstName: string;
   lastName: string;
   dateOfBirth: Date;
@@ -10,29 +11,65 @@ export interface IUser {
   createdDate: Date;
 }
 
-export interface IProvider {
-  id: number;
-  ProviderId: number;
-  Company: string;
-  Category: string;
-  Website: string;
-  Rating: number;
-}
+// export interface PostProvider {
+//   id: number;
+//   ProviderId: number;
+//   Company: string;
+//   Category: string;
+//   Website: string;
+//   ExpertiseLevel: string;
+//   About: string;
+//   StreetAddress: string;
+//   AptNum: string;
+//   City: string;
+//   State: string;
+//   Zip: string;
+// }
 
 export interface PostUserCreateRequest {
   FirstName: string;
   LastName: string;
-  DateOfBirth: Date;
+  DateOfBirth: string;
   Gender: string;
   State: string;
 }
 
+export interface PostConsultationRequestCreateRequest {
+  To: string;
+  From: string;
+  ProviderCategory: string;
+  Message: string;
+}
+
 export interface IProvider {
-  providerId: number;
+  providerId: string;
   company: string;
   category: string;
   website: string;
   rating: number;
+  expertiseLevel: string;
+  about: string;
+  streetAddress: string;
+  aptNum: string;
+  city: string;
+  state: string;
+  zip: string;
+  createdDate: string;
+}
+
+export interface ProviderResponse {
+  providerId: string;
+  company: string;
+  category: string;
+  rating: number;
+  expertiseLevel: string;
+  about: string;
+  streetAddress: string;
+  aptNum: string;
+  city: string;
+  state: string;
+  zip: string;
+  createdDate: string;
 }
 
 export interface IReview {
@@ -52,10 +89,22 @@ export interface ReviewSet {
 }
 
 export interface PostProviderCreateRequest {
-  ProviderId: number;
+  ProviderId: string;
   Company: string;
   Category: string;
-  Website?: string;
+  Website: string;
+  ExpertiseLevel: string;
+  About: string;
+  StreetAddress: string;
+  AptNum: string;
+  City: string;
+  State: string;
+  Zip: string;
+}
+export interface IProviderType {
+  typeId: string;
+  category: string;
+  description: string;
 }
 
 export type PostUserCreateResponse =
@@ -63,6 +112,13 @@ export type PostUserCreateResponse =
   | GeneralApiProblem;
 
 export type PostProviderCreateResponse =
+  | {
+      kind: 'ok';
+      response?: ProviderResponse;
+    }
+  | GeneralApiProblem;
+
+export type PostConsultationRequestCreateResponse =
   | { kind: 'ok'; response?: IProvider }
   | GeneralApiProblem;
 
@@ -76,4 +132,8 @@ export type GetProvidersResponse =
 
 export type GetReviewSetResponse =
   | { kind: 'ok'; response?: ReviewSet }
+  | GeneralApiProblem;
+
+export type GetProviderTypesResponse =
+  | { kind: 'ok'; response?: IProviderType }
   | GeneralApiProblem;

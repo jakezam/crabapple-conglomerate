@@ -27,6 +27,7 @@ import { selectReview } from '../../../store/Review/selectors';
 import { ProfileBox } from './components/ProfileBox';
 import { ReviewBox } from './components/ReviewBox';
 import { Message, Segment } from 'semantic-ui-react';
+import { JobRequestForm } from './components/JobRequestForm';
 
 export function ProfilePage(props) {
   useInjectSaga({ key: sliceKey, saga: profilePageSaga });
@@ -70,9 +71,6 @@ export function ProfilePage(props) {
   let nearbyProviders = viewedUser.providersInArea.map(account => (
     <RecommendedAccount key={0} account={account} />
   ));
-  let nearbyAccounts = viewedUser.accountsInArea.map(account => (
-    <RecommendedAccount key={0} account={account} />
-  ));
 
   let ProviderContent = <div />;
   let recommendedProfiles = (
@@ -81,27 +79,20 @@ export function ProfilePage(props) {
         <h4>Services in Your Area</h4>
         {nearbyProviders}
       </RecommendedContainer>
-      <RecommendedContainer style={{ marginTop: '25px' }}>
-        <h4>People in Your Area</h4>
-        {nearbyAccounts}
-      </RecommendedContainer>
     </div>
   );
   if (viewedUser.isProvider) {
     let otherProviders = viewedUser.providerInfo.otherCategoryAccounts.map(
       account => <RecommendedAccount key={0} account={account} />,
     );
-    let previousAccounts = viewedUser.providerInfo.previousJobs.map(account => (
-      <RecommendedAccount key={0} account={account} />
-    ));
 
     ProviderContent = (
       <div>
         <AboutContainer></AboutContainer>
-        <PorfolioContainer></PorfolioContainer>
         <ReviewContainer>
           <ReviewBox reviews={reviewState.currReviews} />
         </ReviewContainer>
+        <PorfolioContainer></PorfolioContainer>
       </div>
     );
     recommendedProfiles = (
@@ -109,14 +100,6 @@ export function ProfilePage(props) {
         <RecommendedContainer>
           <h4>Other {viewedUser.providerInfo.category} in Area</h4>
           {otherProviders}
-        </RecommendedContainer>
-        <RecommendedContainer style={{ marginTop: '25px' }}>
-          <h4>Previously Worked With</h4>
-          {previousAccounts}
-        </RecommendedContainer>
-        <RecommendedContainer style={{ marginTop: '25px' }}>
-          <h4>Services in Your Area</h4>
-          {nearbyProviders}
         </RecommendedContainer>
       </div>
     );
@@ -135,7 +118,6 @@ export function ProfilePage(props) {
             />
           </ProfileInfoBox>
           {ProviderContent}
-          <RecentActivityContainer></RecentActivityContainer>
         </LeftBody>
         <RightBody>{recommendedProfiles}</RightBody>
       </MainBody>
@@ -218,7 +200,7 @@ const RightBody = styled.div`
 
 const RecommendedContainer = styled.div`
   width: 300px;
-  height: 450px;
+  min-height: 450px;
   padding: 15px;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
