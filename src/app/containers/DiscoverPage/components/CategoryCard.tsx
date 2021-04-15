@@ -33,7 +33,7 @@ export function CategoryCard(props: IProps) {
       header={category}
       description={subComment}
       onClick={() => {
-        dispatch(actions.updateQuery({ query: category, isCategory: true }));
+        dispatch(actions.updateCategoryQuery(category));
         dispatch(push('/results/' + categoryNoSpaces));
       }}
     />

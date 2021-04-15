@@ -152,7 +152,7 @@ export class Api {
       if (problem) return problem;
     }
 
-    return response.data;
+    return { kind: 'ok', response: response.data };
   }
 
   /**

@@ -3,8 +3,8 @@ export interface DiscoverState {
   resultsPageLoading: boolean;
   discoverPageLoading: boolean;
   categories: Array<Category>;
-  searchQuery: string;
-  categorySearch: boolean;
+  categoryQuery: string;
+  keywordQuery: string;
   filterByRating: boolean;
   recentlyViewed: Array<SmallAccount>;
   searchResults: Array<SmallAccount>;

@@ -1,5 +1,5 @@
 import { createSlice } from 'utils/@reduxjs/toolkit';
-import { ContainerState, ISearchQuery, Category } from 'store/Discover/types';
+import { ContainerState, Category, SmallAccount } from 'store/Discover/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
@@ -7,33 +7,11 @@ export const initialState: ContainerState = {
   resultsPageLoading: false,
   discoverPageLoading: false,
   categories: [],
-  searchQuery: '',
-  categorySearch: false,
+  categoryQuery: '',
+  keywordQuery: '',
   filterByRating: true,
   recentlyViewed: [],
-  searchResults: [
-    {
-      userId: 'ac784650-a769-40a1-8a67-08d8ce2fd834',
-      username: "Jordan's Contracting",
-      userTag: "Jordan's Contracting",
-      isProvider: true,
-      providerData: {
-        category: 'Contracting',
-        rating: 4,
-        location: 'Shelton CT',
-        skills: [
-          {
-            name: 'Kitchens',
-            rate: 'N/A',
-          },
-          {
-            name: 'Bathrooms',
-            rate: 'N/A',
-          },
-        ],
-      },
-    },
-  ],
+  searchResults: [],
 };
 
 const discoverSlice = createSlice({
@@ -55,9 +33,11 @@ const discoverSlice = createSlice({
     ) {
       state.discoverPageLoading = action.payload;
     },
-    updateQuery(state: ContainerState, action: PayloadAction<ISearchQuery>) {
-      state.searchQuery = action.payload.query;
-      state.categorySearch = action.payload.isCategory;
+    updateCategoryQuery(state: ContainerState, action: PayloadAction<string>) {
+      state.categoryQuery = action.payload;
+    },
+    updateKeywordQuery(state: ContainerState, action: PayloadAction<string>) {
+      state.keywordQuery = action.payload;
     },
     setFilterKey(state: ContainerState, action: PayloadAction<boolean>) {
       state.filterByRating = action.payload;
@@ -73,6 +53,12 @@ const discoverSlice = createSlice({
       action: PayloadAction<Array<Category>>,
     ) {
       state.categories = action.payload;
+    },
+    setSearchResults(
+      state: ContainerState,
+      action: PayloadAction<Array<SmallAccount>>,
+    ) {
+      state.searchResults = action.payload;
     },
   },
 });
