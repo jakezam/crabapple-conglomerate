@@ -10,16 +10,15 @@ function* getProfile() {
   let userData: ViewedUserState;
   let providerData: ProviderAddition = {
     companyName: '',
-    websiteURL: '',
+    about: '',
     category: '',
     subcategories: [],
     rating: 0,
     location: '',
-    otherCategoryAccounts: [],
-    previousJobs: [],
   };
   let isProvider = false;
 
+  const currState = yield select(selectViewedUser);
   const id = yield select(selectViewedUserId);
   console.log('Profile Page Saga: Fetching User State for user', id);
   const userResponse: GetUsersResponse = yield env.api.GetUserById(id);
@@ -39,15 +38,16 @@ function* getProfile() {
     console.log('User is not a provider');
   } else {
     isProvider = true;
+    let location = providerResp.response
+      ? providerResp.response.city + ', ' + providerResp.response.state
+      : '';
     providerData = {
       companyName: providerResp.response ? providerResp.response.company : '',
-      websiteURL: providerResp.response ? providerResp.response.website : '',
+      about: providerResp.response ? providerResp.response.about : '',
       category: providerResp.response ? providerResp.response.category : '',
-      subcategories: [],
+      subcategories: currState.providerInfo.subcategories,
       rating: providerResp.response ? providerResp.response.rating : 0,
-      location: userResponse.response ? userResponse.response.state : '',
-      otherCategoryAccounts: [],
-      previousJobs: [],
+      location: providerResp.response ? location : '',
     };
   }
 
@@ -75,14 +75,9 @@ function* getProfile() {
     lastName: userResponse.response ? userResponse.response.lastName : '',
     isProvider: isProvider,
     isSelf: false,
-    numFollowing: 0,
-    followerCount: 0,
-    isFollowing: false,
-    accountsInArea: [],
     providersInArea: [],
     providerInfo: providerData,
     reviews: [],
-    totalReviews: 0,
     notFound: false,
   };
   yield put(actions.setProfile(userData));

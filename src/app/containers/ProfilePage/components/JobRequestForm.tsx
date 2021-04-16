@@ -45,14 +45,14 @@ export function JobRequestForm() {
     console.log('Response: ' + res.response);
   };
   let options: Array<{ key: string; text: string; value: string }> = [];
-  for (let i = 0; i < providerCategories.length; i++) {
-    let entry = {
-      key: i.toString(),
-      text: providerCategories[i],
-      value: providerCategories[i],
-    };
-    options.push(entry);
-  }
+  // for (let i = 0; i < providerCategories.length; i++) {
+  //   let entry = {
+  //     key: i.toString(),
+  //     text: providerCategories[i],
+  //     value: providerCategories[i],
+  //   };
+  //   options.push(entry);
+  // }
   let btnTrigger = (
     <Button
       primary

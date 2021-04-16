@@ -29,6 +29,10 @@ import { ReviewBox } from './components/ReviewBox';
 import { Message, Segment } from 'semantic-ui-react';
 import { JobRequestForm } from './components/JobRequestForm';
 
+import { smallerDesktopMediaParameters } from 'utils/env.config';
+import { useMediaQuery } from 'react-responsive';
+import { AboutBox } from './components/AboutBox';
+
 export function ProfilePage(props) {
   useInjectSaga({ key: sliceKey, saga: profilePageSaga });
   useInjectSaga({ key: reviewSliceKey, saga: reviewSaga });
@@ -36,6 +40,7 @@ export function ProfilePage(props) {
   const dispatch = useDispatch();
   const viewedUser = useSelector(selectViewedUser);
   const reviewState = useSelector(selectReview);
+  const isSmaller = useMediaQuery(smallerDesktopMediaParameters);
   const id = props.match.params.id;
 
   useEffect(() => {
@@ -82,24 +87,21 @@ export function ProfilePage(props) {
     </div>
   );
   if (viewedUser.isProvider) {
-    let otherProviders = viewedUser.providerInfo.otherCategoryAccounts.map(
-      account => <RecommendedAccount key={0} account={account} />,
-    );
-
     ProviderContent = (
       <div>
-        <AboutContainer></AboutContainer>
+        <AboutBox data={viewedUser.providerInfo}></AboutBox>
         <ReviewContainer>
-          <ReviewBox reviews={reviewState.currReviews} />
+          {/* <ReviewBox reviews={reviewState.currReviews} /> */}
+          <ReviewBox reviews={viewedUser.reviews} />
         </ReviewContainer>
-        <PorfolioContainer></PorfolioContainer>
+        {/* <PorfolioContainer></PorfolioContainer> */}
       </div>
     );
     recommendedProfiles = (
       <div>
         <RecommendedContainer>
           <h4>Other {viewedUser.providerInfo.category} in Area</h4>
-          {otherProviders}
+          {nearbyProviders}
         </RecommendedContainer>
       </div>
     );
@@ -119,7 +121,7 @@ export function ProfilePage(props) {
           </ProfileInfoBox>
           {ProviderContent}
         </LeftBody>
-        <RightBody>{recommendedProfiles}</RightBody>
+        {!isSmaller && <RightBody>{recommendedProfiles}</RightBody>}
       </MainBody>
       <Footer />
     </>
@@ -139,18 +141,6 @@ const ProfileInfoBox = styled.div`
   width: 730px;
   // height: 320px;
   text-align: center;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  color: rgba(0, 0, 0, 0.87);
-  border-radius: 0.28571429rem;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
-  background-color: white;
-`;
-
-const AboutContainer = styled.div`
-  width: 730px;
-  padding: 2rem 0 2.5rem;
-  min-height: 150px;
-  margin-top: 25px;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;

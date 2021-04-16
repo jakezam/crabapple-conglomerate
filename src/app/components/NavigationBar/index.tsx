@@ -110,7 +110,7 @@ const Content = styled.div`
   flex: 0;
   margin-bottom: 5px;
   box-shadow: 0 4px 6px 0 rgb(0 0 0 / 8%);
-  //background-color: aquamarine;
+  background-color: #f0f9ff;
 
   // DEBUG STYLES //
   //border: 5px solid orange;
