@@ -107,6 +107,24 @@ export interface IProviderType {
   description: string;
 }
 
+export interface PostProviderCreateCategoryResponse {
+  ProviderId: string;
+  CategoryNumber: number;
+  providerCategory: string;
+  hourlyRate: string;
+  flatRate: string;
+}
+
+export interface PostProviderCreateCategoryRequest {
+  providerCategory: string;
+  hourlyRate: string;
+  flatRate: string;
+}
+
+export type PostProviderCreateCategoryResponseType =
+  | { kind: 'ok'; response?: PostProviderCreateCategoryResponse }
+  | GeneralApiProblem;
+
 export type PostUserCreateResponse =
   | { kind: 'ok'; response?: IUser }
   | GeneralApiProblem;

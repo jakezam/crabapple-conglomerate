@@ -69,8 +69,6 @@ function* createProvider() {
     Company: providerData.companyTitle,
   };
 
-  // TODO: Add categories to database via API Call
-
   const postResponse: PostProviderCreateResponse = yield env.api.PostCreateProvider(
     postBody,
   );
@@ -84,6 +82,33 @@ function* createProvider() {
     yield put(actions.setCreatingProviderAccount(false));
     yield put(actions.setUnableToCreate(true));
   } else {
+    // Create main category
+    let rates = providerData.standardRate.filter(
+      (value, index) => value.category === providerData.mainCategory,
+    );
+    const createCategories = yield env.api.PostCreateProviderCategories(
+      userData.userId,
+      {
+        providerCategory: providerData.mainCategory,
+        flatRate: rates[0].flatRate,
+        hourlyRate: rates[0].hourlyRate,
+      },
+    );
+
+    // Create sub categories
+    providerData.standardRate.forEach(async value => {
+      if (value.category !== providerData.mainCategory) {
+        let response = await env.api.PostCreateProviderCategories(
+          userData.userId,
+          {
+            providerCategory: providerData.mainCategory,
+            flatRate: rates[0].flatRate,
+            hourlyRate: rates[0].hourlyRate,
+          },
+        );
+      }
+    });
+
     console.log('DEBUG SignUpSaga: Success creating provider!');
     history.push('/discover');
   }
