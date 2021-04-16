@@ -1,6 +1,6 @@
 {
   "name": "crabapple-conglomerate",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "devDependencies": {
     "@babel/helper-skip-transparent-expression-wrappers": "7.12.1",
