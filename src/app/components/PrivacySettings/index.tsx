@@ -6,7 +6,7 @@
 import React, { memo } from 'react';
 import styled from 'styled-components/macro';
 import { useTranslation } from 'react-i18next';
-import { Message } from 'semantic-ui-react';
+import { Button, Message } from 'semantic-ui-react';
 
 interface Props {}
 
@@ -38,14 +38,44 @@ export const PrivacySettings = (props: Props) => {
           </div>
         </div>
 
-        <Message info>
-          <div className="header">Personal Information</div>
-          <p>Includes first name, last name, and phone number. Only your username will be displayed. Messages can only be sent directly through Inployd.</p>
-        </Message>
+        <div className="field">
+          <button className="ui primary basic button" type="submit">
+            Clear Browsing History
+          </button>
+        </div>
 
+        <div className="ui divider" />
+
+        <ButtonInfo>
+        {/*<div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>*/}
+          <button className="negative ui button" type="submit" style={{display: "flex", marginRight: "3em"}}>
+            Reset Account
+          </button>
+            <StyledMessage info>
+              <div className="header">Account Reset Notice</div>
+              <p>
+                Resetting your account removes all data and job requests attached to your account except your username.
+              </p>
+            </StyledMessage>
+        {/*</div>*/}
+        </ButtonInfo>
       </form>
     </div>
   );
 };
 
 const Div = styled.div``;
+
+const ButtonInfo = styled.div`
+  display: flex;
+  //justify-content: space-between;
+  align-items: center;
+  // border: 5px solid green;
+`;
+
+const StyledMessage = styled(Message)`
+  //border: 5px solid red;
+  //display: flex;
+  margin-left: 20px;
+  //align-self: flex-end;
+`;
