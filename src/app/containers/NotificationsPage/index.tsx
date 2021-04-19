@@ -8,7 +8,10 @@ import React from 'react';
 import { NavigationBar } from '../../components/NavigationBar';
 import { Container, Grid, Header, List, Tab, Table } from 'semantic-ui-react';
 import MessagesTable from './components/MessagesTable';
+import { useSelector } from 'react-redux';
 export function NotificationsPage() {
+
+  //let messages = useSelector(selectUserMessages)
   let messages = [
     {
       messageId: 0,
