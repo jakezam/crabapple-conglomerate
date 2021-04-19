@@ -10,3 +10,8 @@ export const selectJobs = createSelector(
   [selectDomain],
   jobsState => jobsState,
 );
+
+export const selectJobId = createSelector(
+  [selectDomain],
+  jobsState => jobsState.selectedJob,
+);

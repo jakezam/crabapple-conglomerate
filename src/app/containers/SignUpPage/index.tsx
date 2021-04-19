@@ -17,6 +17,7 @@ import { StepBox } from './components/StepBox';
 import { Step0 } from './components/Step0';
 import { Step1 } from './components/Step1';
 import { Step2 } from './components/Step2';
+import { Footer } from '../../components/Footer';
 
 export function SignUpPage() {
   /* Instead of a global watcher, we will only activate the saga
@@ -56,9 +57,9 @@ export function SignUpPage() {
           </Modal.Actions>
         </Modal>
 
-        <InnerBody currentStep={signUpStep}>
-          <h1>Sign Up</h1>
+        <h1>Sign Up</h1>
 
+        <InnerBody currentStep={signUpStep}>
           {signUpStep === 2 && <StepBox />}
           <ContentBox>
             {/*Step zero -- init user*/}
@@ -72,7 +73,7 @@ export function SignUpPage() {
           </ContentBox>
         </InnerBody>
       </Body>
-      {/*<Footer />*/}
+      <Footer />
     </Container>
   );
 }
@@ -90,7 +91,7 @@ export const Container = styled.div`
   flex-direction: column;
 
   // DEBUG STYLES //
-  border: solid 5px green;
+  //border: solid 5px green;
 `;
 
 const Body = styled.div`
@@ -100,7 +101,7 @@ const Body = styled.div`
   align-items: center;
 
   // DEBUG STYLES //
-  border: solid 5px green;
+  //border: solid 5px orange;
 `;
 
 const InnerBody = styled.div<StepProps>`
@@ -116,7 +117,7 @@ const InnerBody = styled.div<StepProps>`
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.075);
 
   // DEBUG STYLES //
-  border: solid 5px green;
+  //border: solid 5px green;
 `;
 
 const ContentBox = styled.div`

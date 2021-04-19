@@ -3,6 +3,9 @@ export interface SignUpState {
   currentSubStep: number;
   unableToCreate: boolean;
   creatingAccount: boolean;
+  unableToCreateProvider: boolean;
+  creatingProviderAccount: boolean;
+
   possibleMainCategories: Array<ISelectableCategory>;
   possibleSubCategories: Array<ISelectableCategory>;
   userData: IUserData;

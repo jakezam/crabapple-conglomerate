@@ -9,3 +9,5 @@ export enum Environment {
 
 export const mobileMediaParameters = { query: '(max-width: 750px)' };
 export const smallerDesktopMediaParameters = { query: '(max-width: 820px)' };
+export const jobPageShrink = { query: '(max-width: 1300px)' };
+export const MaxWidth = 2000;

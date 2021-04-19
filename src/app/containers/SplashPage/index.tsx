@@ -37,7 +37,16 @@ export const SplashPage = () => {
             </Form.Field>
 
             <ButtonContainer>
-              <Button primary color="blue" style={{ width: '80%' }}>
+              <Button
+                primary
+                color="blue"
+                style={{ width: '80%' }}
+                onClick={(e, { name }) => {
+                  dispatch(
+                    push('/profile/628c1d1a-c115-43ed-7535-08d8ffb79d0d'),
+                  );
+                }}
+              >
                 Sign In
               </Button>
             </ButtonContainer>

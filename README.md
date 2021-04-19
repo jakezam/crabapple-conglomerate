@@ -1,5 +1,7 @@
 ![codename: crabapple-conglomerate](public/black_inployd.png)
 
+This is a work in progress, the code for this project is found in the `develop` branch
+
 ## General Overview
 
 **V**ersion control home to inployd! inployd is a business exchange social
@@ -33,3 +35,5 @@ construction to website development inployd will be able to do it!
 - **T**o keep the git repository organized and easier to use we will use:
   - **G**it flows: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
   - **C**onventional Commits: https://www.conventionalcommits.org/en/v1.0.0/
+
+:-)

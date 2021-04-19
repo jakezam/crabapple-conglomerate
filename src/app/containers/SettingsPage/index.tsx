@@ -44,7 +44,7 @@ export function SettingsPage() {
       <NavigationBar />
       <h2
         className="ui center aligned icon header"
-        style={{ boxShadow: 'none', paddingBottom: '120px' }}
+        style={{ boxShadow: 'none' }}
       >
         <i className="settings icon" />
         <div className="content">
@@ -54,13 +54,13 @@ export function SettingsPage() {
           </div>
         </div>
       </h2>
-      <div style={{display:"flex", justifyContent: "center"}}>
-        <Tab className="settings-tabs" panes={panes} style={tab_style}/>
+      <div style={{ display: 'flex', justifyContent: 'center' }}>
+        <Tab className="settings-tabs" panes={panes} style={tab_style} />
       </div>
     </>
   );
 }
 
 let tab_style = {
-  width: "100em"
-}
+  width: '100em',
+};

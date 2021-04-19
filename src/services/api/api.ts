@@ -1,16 +1,21 @@
 /* eslint-disable  @typescript-eslint/no-unused-vars */
 
-import { ApisauceInstance, create, ApiResponse } from 'apisauce';
+import { ApiResponse, ApisauceInstance, create } from 'apisauce';
 import { getGeneralApiProblem } from './api.problem';
 import { ApiConfig, DEFAULT_API_CONFIG } from './api.config';
 import * as Types from './api.types';
 import {
-  IUser,
-  PostUserCreateRequest,
-  GetProvidersResponse,
   IProvider,
-  ReviewSet,
+  IUser,
+  PostProviderCreateCategoryRequest,
+  PostProviderCreateCategoryResponse,
+  PostProviderCreateCategoryResponseType,
   PostProviderCreateRequest,
+  IProviderType,
+  GetProviderTypesResponse,
+  PostUserCreateRequest,
+  ProviderResponse,
+  ReviewSet,
 } from './api.types';
 import * as https from 'https';
 
@@ -73,20 +78,75 @@ export class Api {
     return { kind: 'ok', response: response.data };
   }
 
+  async PostCreateProviderCategories(
+    providerId: string,
+    request: PostProviderCreateCategoryRequest,
+  ): Promise<PostProviderCreateCategoryResponseType> {
+    const response: ApiResponse<PostProviderCreateCategoryResponse> = await this.apisauce.post(
+      'api/categories/' + providerId,
+      {
+        providerCategory: request.providerCategory,
+        flatRate: request.flatRate,
+        hourlyRate: request.flatRate,
+      } as PostProviderCreateCategoryRequest,
+    );
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
+  }
+
   /**
    * Create A Provider
    */
   async PostCreateProvider(
     provider: PostProviderCreateRequest,
   ): Promise<Types.PostProviderCreateResponse> {
-    const response: ApiResponse<IProvider> = await this.apisauce.post(
-      'api/provider',
+    const response: ApiResponse<ProviderResponse> = await this.apisauce.post(
+      'api/providers',
       {
         ProviderId: provider.ProviderId,
         Company: provider.Company,
         Category: provider.Category,
         Website: provider.Website,
+        About: provider.About,
+        AptNum: provider.AptNum === '' ? 'none' : provider.AptNum,
+        City: provider.City,
+        Zip: provider.Zip,
+        ExpertiseLevel: provider.ExpertiseLevel.toString(),
+        StreetAddress: provider.Zip,
+        State: provider.State,
       } as PostProviderCreateRequest,
+    );
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
+  }
+
+  async PostCreateConsultationRequest(
+    consultationRequest: Types.PostConsultationRequestCreateRequest,
+  ): Promise<Types.PostConsultationRequestCreateResponse> {
+    const response: ApiResponse<IProvider> = await this.apisauce.post(
+      'api/jobs/request',
+      {
+        Message: consultationRequest.Message,
+        ProviderCategory: consultationRequest.ProviderCategory,
+        To: consultationRequest.To,
+        From: consultationRequest.From,
+      } as Types.PostConsultationRequestCreateRequest,
     );
 
     // TEMP DEBUG //
@@ -135,34 +195,23 @@ export class Api {
     return response.data;
   }
 
-  /**
-   * Create A Provider
-  //  */
-  // async UpdateProvider(
-  //   provider: UpdateProviderRequest,
-  //   id: string,
-  // ): Promise<Types.UpdateProviderResponse> {
-  //   const route = 'api/providers/' + id;
-  //   const response: ApiResponse<IProvider> = await this.apisauce.post(
-  //     route,
-  //     {
-  //       ProviderId: provider.ProviderId,
-  //       Company: provider.Company,
-  //       Category: provider.Category,
-  //       Website: provider.Website,
-  //     } as UpdateProviderRequest,
-  //   );
+  async GetProvidersByCategory(
+    category: string,
+  ): Promise<Types.GetProvidersResponse> {
+    const response: ApiResponse<any> = await this.apisauce.get(
+      'api/providers/?category=' + category,
+    );
 
-  //   // TEMP DEBUG //
-  //   console.log('== Logging API Response: ', await response, ' ==');
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
 
-  //   if (!response.ok) {
-  //     const problem = getGeneralApiProblem(response);
-  //     if (problem) return problem;
-  //   }
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
 
-  //   return { kind: 'ok', response: response.data };
-  // }
+    return { kind: 'ok', response: response.data };
+  }
 
   /**
    * Get All Users
@@ -185,6 +234,22 @@ export class Api {
   async GetProviderReviews(id: string): Promise<Types.GetReviewSetResponse> {
     const route = 'api/reviews/?userId=' + id + '&receivedReviews=true';
     const response: ApiResponse<ReviewSet> = await this.apisauce.get(route);
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
+  }
+
+  async GetProviderTypes(): Promise<Types.GetProviderTypesResponse> {
+    const response: ApiResponse<any> = await this.apisauce.get(
+      'api/providertypes',
+    );
 
     // TEMP DEBUG //
     console.log('== Logging API Response: ', await response, ' ==');

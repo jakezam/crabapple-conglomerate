@@ -29,5 +29,5 @@ const Box = styled.div`
   padding: 10px;
 
   // DEBUG STYLES //
-  border: red 5px solid;
+  //border: red 5px solid;
 `;

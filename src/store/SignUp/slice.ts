@@ -15,9 +15,12 @@ import { FormInputs as Step2dot5Inputs } from '../../app/containers/SignUpPage/c
 
 export const initialState: ContainerState = {
   currentStep: 2, // Starts at 0
-  currentSubStep: 1, // Starts at 1
+  currentSubStep: 5, // Starts at 1
   unableToCreate: false,
   creatingAccount: false,
+  unableToCreateProvider: false,
+  creatingProviderAccount: false,
+
   /* We will want to get the categories from some database via API */
   possibleMainCategories: [
     { key: 'T1', text: 'Test1', value: 'test1' },
@@ -32,25 +35,25 @@ export const initialState: ContainerState = {
     { key: 'T4', text: 'Test4', value: 'test4' },
   ],
   userData: {
-    userId: '',
-    firstName: '',
-    lastName: '',
-    emailAddress: '',
-    password: '',
-    confirmPassword: '',
+    userId: 'c613d8bf-7700-48a1-d3ba-08d8ff7871a7',
+    firstName: 'Nick',
+    lastName: 'Arnold',
+    emailAddress: 'arnoln2@rpppi.edu ',
+    password: 'testtest',
+    confirmPassword: 'testtest',
   },
   providerData: {
-    mainCategory: '',
+    mainCategory: 'test1',
     subCategories: [],
     standardRate: [],
-    companyTitle: '',
-    expertiseLevel: Expertise.None,
-    about: '',
-    streetAddress: '',
+    companyTitle: '123',
+    expertiseLevel: 1,
+    about: '123',
+    streetAddress: '123',
     aptNum: '',
-    city: '',
-    state: '',
-    zip: '',
+    city: '123',
+    state: 'alabama',
+    zip: '123',
   },
 };
 
@@ -72,6 +75,12 @@ const signUpSlice = createSlice({
     },
     setCreatingAccount(state: ContainerState, action: PayloadAction<boolean>) {
       state.creatingAccount = action.payload;
+    },
+    setCreatingProviderAccount(
+      state: ContainerState,
+      action: PayloadAction<boolean>,
+    ) {
+      state.creatingProviderAccount = action.payload;
     },
     setUnableToCreate(state: ContainerState, action: PayloadAction<boolean>) {
       state.unableToCreate = action.payload;

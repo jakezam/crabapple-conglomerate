@@ -9,6 +9,8 @@ import {
   Menu,
   Rating,
   Segment,
+  Icon,
+  Label,
 } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { JobRequestForm } from './JobRequestForm';
@@ -18,37 +20,11 @@ export function ProfileBox(props) {
   const dispatch = useDispatch();
 
   let buttonStyle = { marginTop: '20px', padding: '12px', width: '145px' };
-  let followButton = <div />;
-  if (!user.isSelf) {
-    followButton = (
-      <Button
-        color={'red'}
-        style={buttonStyle}
-        onClick={() => {
-          // dispatch(actions.changeFollowState());
-        }}
-      >
-        Unfollow
-      </Button>
-    );
-    if (!user.isFollowing) {
-      followButton = (
-        <Button
-          color={'green'}
-          style={buttonStyle}
-          onClick={() => {
-            // dispatch(actions.changeFollowState());
-          }}
-        >
-          Follow
-        </Button>
-      );
-    }
-  }
 
   let displayName = user.firstName + ' ' + user.lastName;
   let rating = <div />;
   let requestButton = <div />;
+  let likeButton = <div />;
   let provider = <div />;
   if (user.isProvider) {
     displayName = user.providerInfo.companyName;
@@ -61,13 +37,23 @@ export function ProfileBox(props) {
           size="huge"
           style={{ marginTop: '1px', marginRight: '4px' }}
         />
-        {/* <ReviewHeader>Reviews ({user.reviews.length})</ReviewHeader> */}
         <ReviewHeader>Reviews ({reviewCount})</ReviewHeader>
       </HorizontalAlign>
     );
 
     if (!user.isSelf) {
       requestButton = <JobRequestForm />;
+      likeButton = (
+        <Button style={{ marginTop: '10px' }} as="div" labelPosition="right">
+          <Button color="red">
+            <Icon name="heart" />
+            Like
+          </Button>
+          <Label as="a" basic color="red" pointing="left">
+            2,048
+          </Label>
+        </Button>
+      );
     }
 
     provider = (
@@ -85,9 +71,6 @@ export function ProfileBox(props) {
       </>
     );
   }
-
-  let followerCount = user.followerCount + ' \tfollowers';
-  let followingCount = user.numFollowing + ' \tfollowing';
 
   return (
     <div>
@@ -112,27 +95,11 @@ export function ProfileBox(props) {
             >
               {displayName}
             </h1>
-            <HorizontalAlign>
-              <h4
-                style={{ textAlign: 'left', marginTop: '0', marginLeft: '4px' }}
-              >
-                {followerCount}
-              </h4>
-              <h4
-                style={{
-                  textAlign: 'left',
-                  marginTop: '0',
-                  marginLeft: '50px',
-                }}
-              >
-                {followingCount}
-              </h4>
-            </HorizontalAlign>
             {rating}
           </Grid.Column>
           <Grid.Column width={4}>
-            {followButton}
             {requestButton}
+            {likeButton}
           </Grid.Column>
         </Grid.Row>
         {provider}

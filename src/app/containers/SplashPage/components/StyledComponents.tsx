@@ -19,7 +19,7 @@ export const Content = styled.div`
   align-items: center;
 
   // DEBUG STYLES //
-  //border: solid 5px purple;
+  // border: solid 5px purple;
 `;
 
 export const ImageBox = styled.div`
@@ -49,5 +49,5 @@ export const FormBox = styled.div`
   align-items: center;
 
   // DEBUG STYLES //
-  //border: solid 5px purple;
+  // border: solid 5px purple;
 `;
