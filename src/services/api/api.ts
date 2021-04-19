@@ -143,7 +143,8 @@ export class Api {
       'api/jobs/request',
       {
         Message: consultationRequest.Message,
-        ProviderCategory: consultationRequest.ProviderCategory,
+        Day: consultationRequest.Day,
+        Time: consultationRequest.Time,
         To: consultationRequest.To,
         From: consultationRequest.From,
       } as Types.PostConsultationRequestCreateRequest,

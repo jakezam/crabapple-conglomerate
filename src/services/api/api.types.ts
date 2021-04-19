@@ -37,7 +37,8 @@ export interface PostUserCreateRequest {
 export interface PostConsultationRequestCreateRequest {
   To: string;
   From: string;
-  ProviderCategory: string;
+  Day: string;
+  Time: string;
   Message: string;
 }
 

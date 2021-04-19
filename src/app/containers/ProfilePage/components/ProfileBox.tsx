@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components/macro';
 import {
   Button,
@@ -17,16 +17,37 @@ import { JobRequestForm } from './JobRequestForm';
 
 export function ProfileBox(props) {
   const { user, actions, reviewCount } = props;
+  const [likes, setLikes] = useState(2048);
+  const [liked, setLiked] = useState(false);
   const dispatch = useDispatch();
 
+  const like = () => {
+    setLikes(likes + 1);
+    setLiked(true);
+  }
+
+  const unLike = () => {
+    setLikes(likes - 1);
+    setLiked(false);
+  }
   let buttonStyle = { marginTop: '20px', padding: '12px', width: '145px' };
 
   let displayName = user.firstName + ' ' + user.lastName;
   let rating = <div />;
   let requestButton = <div />;
-  let likeButton = <div />;
+  let likeButton = (
+    <Button style={{ marginTop: '10px' }} as="div" labelPosition="right">
+      <Button color={(liked ? "red" : "youtube")} onClick={liked ? unLike : like}>
+        <Icon name="heart" />
+        {liked ? "Unlike" : "Like"}
+      </Button>
+      <Label as="a" basic color="red" pointing="left">
+        {likes}
+      </Label>
+    </Button>
+  );
   let provider = <div />;
-  if (user.isProvider) {
+  //if (user.isProvider) {
     displayName = user.providerInfo.companyName;
     rating = (
       <HorizontalAlign>
@@ -41,20 +62,10 @@ export function ProfileBox(props) {
       </HorizontalAlign>
     );
 
-    if (!user.isSelf) {
+    //if (!user.isSelf) {
       requestButton = <JobRequestForm />;
-      likeButton = (
-        <Button style={{ marginTop: '10px' }} as="div" labelPosition="right">
-          <Button color="red">
-            <Icon name="heart" />
-            Like
-          </Button>
-          <Label as="a" basic color="red" pointing="left">
-            2,048
-          </Label>
-        </Button>
-      );
-    }
+      
+    //}
 
     provider = (
       <>
@@ -70,7 +81,7 @@ export function ProfileBox(props) {
         </Grid.Row>
       </>
     );
-  }
+  //}
 
   return (
     <div>
@@ -85,7 +96,7 @@ export function ProfileBox(props) {
               />
             </ImageContainer>
           </Grid.Column>
-          <Grid.Column width={8}>
+          <Grid.Column width={7}>
             <h1
               style={{
                 textAlign: 'left',
@@ -97,7 +108,7 @@ export function ProfileBox(props) {
             </h1>
             {rating}
           </Grid.Column>
-          <Grid.Column width={4}>
+          <Grid.Column width={5}>
             {requestButton}
             {likeButton}
           </Grid.Column>

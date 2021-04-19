@@ -22,19 +22,20 @@ import { env } from 'store/environment';
 
 export function JobRequestForm() {
   const [open, setOpen] = React.useState(false);
-  const [category, setCategory] = React.useState('');
+  const [day, setDay] = React.useState('');
+  const [time, setTime] = React.useState('');
   const [message, setMessage] = React.useState('');
   const sendToUserId = useSelector(selectViewedUserId);
   const fromUserId = useSelector(selectUserData).userId;
-  const providerCategories = useSelector(selectViewedUser).providerInfo
-    .subcategories;
-  const handleCategoryChange = (e, { name, value }) => setCategory(value);
+  const handleDayChange = (e, { name, value }) => setDay(value);
+  const handleTimeChange = (e, { name, value }) => setTime(value);
   const handleMessageChange = (e, { name, value }) => setMessage(value);
   const handleSubmit = async () => {
     let body: PostConsultationRequestCreateRequest = {
       To: sendToUserId,
       From: sendToUserId,
-      ProviderCategory: category,
+      Day: day,
+      Time: time,
       Message: message,
     };
 
@@ -44,15 +45,104 @@ export function JobRequestForm() {
 
     console.log('Response: ' + res.response);
   };
-  let options: Array<{ key: string; text: string; value: string }> = [];
-  // for (let i = 0; i < providerCategories.length; i++) {
-  //   let entry = {
-  //     key: i.toString(),
-  //     text: providerCategories[i],
-  //     value: providerCategories[i],
-  //   };
-  //   options.push(entry);
-  // }
+  let days: Array<{ key: string; text: string; value: string }> = [
+    {
+      key: "1",
+      text: "Monday",
+      value: "Monday",
+    },
+    {
+      key: "2",
+      text: "Tuesday",
+      value: "Tuesday",
+    },
+    {
+      key: "3",
+      text: "Wednesday",
+      value: "Wednesday",
+    },
+    {
+      key: "4",
+      text: "Thursday",
+      value: "Thursday",
+    },
+    {
+      key: "5",
+      text: "Friday",
+      value: "Friday",
+    },
+    {
+      key: "6",
+      text: "Saturday",
+      value: "Saturday",
+    },
+    {
+      key: "7",
+      text: "Sunday",
+      value: "Sunday",
+    },
+  ];
+  
+  let times: Array<{ key: string; text: string; value: string }> = [];
+  let key = 1;
+  for (let i = 6; i < 12; i++) {
+      let timeString1 = i.toString() + ':' + '00 AM';
+      let timeString2 = i.toString() + ':' + '30 AM';
+      times.push(
+        {
+          key: key.toString(),
+          text: timeString1,
+          value: timeString1,
+        }
+      );
+      key++;
+      times.push(
+        {
+          key: key.toString(),
+          text: timeString2,
+          value: timeString2,
+        }
+      );
+      key++;
+  }
+  times.push(
+    {
+      key: key.toString(),
+      text: "12:00 PM",
+      value: "12:00 PM",
+    }
+  );
+  key++;
+  times.push(
+    {
+      key: key.toString(),
+      text: "12:30 PM",
+      value: "12:30 PM",
+    }
+  );
+  key++;
+  for (let i = 1; i <= 6; i++) {
+      let timeString1 = i.toString() + ':' + '00 PM';
+      let timeString2 = i.toString() + ':' + '30 PM';
+      times.push(
+        {
+          key: key.toString(),
+          text: timeString1,
+          value: timeString1,
+        }
+      );
+      key++;
+      times.push(
+        {
+          key: key.toString(),
+          text: timeString2,
+          value: timeString2,
+        }
+      );
+      key++;
+  }
+
+
   let btnTrigger = (
     <Button
       primary
@@ -75,12 +165,22 @@ export function JobRequestForm() {
         placeholder="Briefly describe the job you're planning..."
       />
       <Form.Field
+      required={true}
         control={Select}
-        label="Category"
-        options={options}
-        onChange={handleCategoryChange}
-        placeholder="Select Category"
+        label="Day"
+        options={days}
+        onChange={handleDayChange}
+        placeholder="Select Preferred Day"
       />
+      <Form.Field
+      required={true}
+        control={Select}
+        label="Time"
+        options={times}
+        onChange={handleTimeChange}
+        placeholder="Select Preferred Time"
+      />
+      
       <Form.Button
         style={{ align: 'right' }}
         content="Send"
@@ -105,7 +205,7 @@ export function JobRequestForm() {
         open={open}
         trigger={btnTrigger}
       >
-        <Modal.Header>Build Request</Modal.Header>
+        <Modal.Header>Request Job Consultation</Modal.Header>
         <Modal.Content>{content}</Modal.Content>
         <Modal.Actions>
           <Button color="black" onClick={() => setOpen(false)}>
