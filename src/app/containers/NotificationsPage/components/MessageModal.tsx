@@ -8,6 +8,7 @@ import {
   Modal,
   Button,
 } from 'semantic-ui-react';
+import ReplyModal from './ReplyModal';
 
 function MessageModal(props) {
   const [open, setOpen] = React.useState(false);
@@ -35,13 +36,7 @@ function MessageModal(props) {
         <Button color="red" onClick={() => setOpen(false)}>
           Delete
         </Button>
-        <Button
-          content="Reply"
-          labelPosition="right"
-          icon="paper plane"
-          onClick={() => setOpen(false)}
-          positive
-        />
+        <ReplyModal to={from} subject={"Re: " + subject}/>
       </Modal.Actions>
     </Modal>
   );
