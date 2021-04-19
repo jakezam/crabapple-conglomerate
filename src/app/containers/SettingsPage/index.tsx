@@ -14,7 +14,7 @@ import './Settings.scss';
 export function SettingsPage() {
   const panes: any = [
     {
-      menuItem: 'AccountSettingsTab',
+      menuItem: 'Account',
       render: component => (
         <Tab.Pane>
           <AccountSettings />
@@ -22,7 +22,7 @@ export function SettingsPage() {
       ),
     },
     {
-      menuItem: 'CommunicationSettingsTab',
+      menuItem: 'Communication',
       render: () => (
         <Tab.Pane>
           <CommunicationSettings />
@@ -30,7 +30,7 @@ export function SettingsPage() {
       ),
     },
     {
-      menuItem: 'PrivacySettingsTab',
+      menuItem: 'Privacy',
       render: () => (
         <Tab.Pane>
           <PrivacySettings />

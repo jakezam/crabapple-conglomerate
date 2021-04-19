@@ -20,21 +20,21 @@ export const PrivacySettings = (props: Props) => {
         <div className="field">
           <div className="ui toggle checkbox">
             <input type="checkbox" className="hidden"/>
-            <label>Enable email alerts from Providers</label>
+            <label>Enable location while the site is open</label>
+          </div>
+        </div>
+
+        <div className="field">
+          <div className="ui toggle checkbox">
+            <input type="checkbox" className="hidden" checked={true}/>
+            <label>Allow site cookies</label>
           </div>
         </div>
 
         <div className="field">
           <div className="ui toggle checkbox">
             <input type="checkbox" className="hidden"/>
-            <label>Enable text message alerts from Providers</label>
-          </div>
-        </div>
-
-        <div className="field">
-          <div className="ui toggle checkbox">
-            <input type="checkbox" className="hidden"/>
-            <label>Hide personal information from Providers </label>
+            <label>Collect browsing data</label>
           </div>
         </div>
 
