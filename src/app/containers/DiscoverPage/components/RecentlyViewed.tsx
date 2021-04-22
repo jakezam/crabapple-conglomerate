@@ -24,14 +24,7 @@ function determineRating(user: SmallAccount) {
 export function RecentlyViewed(props: IProps) {
   let users = props.users;
 
-  let userCards = users.map(user => (
-    <SuggestedAccount
-      userId={user.userId}
-      username={user.username}
-      accountTag={determineTag(user)}
-      rating={determineRating(user)}
-    />
-  ));
+  let userCards = users.map(user => <SuggestedAccount account={user} />);
 
   return (
     <Body>

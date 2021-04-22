@@ -32,6 +32,7 @@ import { JobRequestForm } from './components/JobRequestForm';
 import { smallerDesktopMediaParameters } from 'utils/env.config';
 import { useMediaQuery } from 'react-responsive';
 import { AboutBox } from './components/AboutBox';
+import { SuggestedAccount } from 'app/components/SuggestedAccount';
 
 export function ProfilePage(props) {
   useInjectSaga({ key: sliceKey, saga: profilePageSaga });
@@ -74,7 +75,7 @@ export function ProfilePage(props) {
   }
 
   let nearbyProviders = viewedUser.providersInArea.map(account => (
-    <RecommendedAccount key={0} account={account} />
+    <SuggestedAccount key={0} account={account} />
   ));
 
   let ProviderContent = <div />;
@@ -100,8 +101,10 @@ export function ProfilePage(props) {
     recommendedProfiles = (
       <div>
         <RecommendedContainer>
-          <h4>Other {viewedUser.providerInfo.category} in Area</h4>
-          {/* {nearbyProviders} */}
+          <h4 style={{ marginBottom: '25px' }}>
+            Other {viewedUser.providerInfo.category} in Area
+          </h4>
+          {nearbyProviders}
         </RecommendedContainer>
       </div>
     );

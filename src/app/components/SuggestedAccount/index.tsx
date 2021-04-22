@@ -8,18 +8,17 @@ import styled from 'styled-components';
 import { Comment, Rating } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { push } from 'connected-react-router';
+import { SmallAccount } from 'store/Discover/types';
 
-interface Props {
-  userId: string;
-  username: string;
-  accountTag: string;
-  rating: number;
+interface IProps {
+  account: SmallAccount;
 }
 
-export function SuggestedAccount(props: Props) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function SuggestedAccount(props: IProps) {
   const dispatch = useDispatch();
-  const { userId, username, accountTag, rating } = props;
+  const { userId, username } = props.account;
+  const rating = props.account.providerData.rating;
+  const accountTag = props.account.providerData.location;
 
   let content = (
     <Comment.Content>
@@ -27,7 +26,7 @@ export function SuggestedAccount(props: Props) {
       <CardText>{accountTag}</CardText>
     </Comment.Content>
   );
-  if (rating > 0) {
+  if (rating >= 0) {
     content = (
       <Comment.Content>
         <CardUsername>{username}</CardUsername>
