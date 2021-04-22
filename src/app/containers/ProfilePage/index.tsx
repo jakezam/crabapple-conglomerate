@@ -101,7 +101,7 @@ export function ProfilePage(props) {
       <div>
         <RecommendedContainer>
           <h4>Other {viewedUser.providerInfo.category} in Area</h4>
-          {nearbyProviders}
+          {/* {nearbyProviders} */}
         </RecommendedContainer>
       </div>
     );

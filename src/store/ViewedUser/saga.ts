@@ -4,6 +4,7 @@ import { selectViewedUser, selectViewedUserId } from './selectors';
 import { env } from '../environment';
 import { ViewedUserState, ProviderAddition } from './types';
 import { GetUsersResponse, GetProvidersResponse } from '../../services/api';
+import { SmallAccount } from 'store/Discover/types';
 
 function* getProfile() {
   yield put(actions.setPageLoading(true));
@@ -16,6 +17,7 @@ function* getProfile() {
     rating: 0,
     location: '',
   };
+  let nearbyProviders: Array<SmallAccount> = [];
   let isProvider = false;
 
   const currState = yield select(selectViewedUser);
@@ -51,20 +53,43 @@ function* getProfile() {
     };
   }
 
-  // console.log('Profile Page Saga: GET ACCOUNT RECOMMENDATIONS');
-  // Get providers in area
-  // Get users in area
+  if (isProvider) {
+    const nearbyProviderResp: GetProvidersResponse = yield env.api.GetProvidersByCategory(
+      providerData.category,
+    );
+    console.log(
+      'GET NEARBY PROVIDERS: RESPONSE => ',
+      nearbyProviderResp.response,
+    );
 
-  // console.log('Profile Page Saga: GET FOLLOWER DATA');
-  // Get the number of users following them
-  // Get the number of users they follow
-  // If this isn't your profile check if you follow them
+    if (nearbyProviderResp.response) {
+      for (let i = 0; nearbyProviderResp.response[i]; i++) {
+        if (id === nearbyProviderResp.response[i].providerId) {
+          continue;
+        }
 
-  // console.log('Profile Page Saga: GET ADDITIONAL PROVIDER DATA');
-  // If Provider, get all reviews
-  // If Provider, get account description
-  // If Provider, get others accounts in their category
-  // If Provider, get the accounts they worked for with their most recent jobs
+        let providerLocation =
+          nearbyProviderResp.response[i].city +
+          ', ' +
+          nearbyProviderResp.response[i].state;
+
+        const user: SmallAccount = {
+          userId: nearbyProviderResp.response[i].providerId,
+          username: nearbyProviderResp.response[i].company,
+          userTag: nearbyProviderResp.response[i].company,
+          isProvider: true,
+          providerData: {
+            category: nearbyProviderResp.response[i].category,
+            rating: nearbyProviderResp.response[i].rating,
+            location: providerLocation,
+            skills: [],
+          },
+        };
+        nearbyProviders.push(user);
+      }
+    }
+  }
+  console.log(nearbyProviders);
 
   userData = {
     userId: userResponse.response
@@ -75,7 +100,7 @@ function* getProfile() {
     lastName: userResponse.response ? userResponse.response.lastName : '',
     isProvider: isProvider,
     isSelf: false,
-    providersInArea: [],
+    providersInArea: nearbyProviders,
     providerInfo: providerData,
     reviews: [],
     notFound: false,

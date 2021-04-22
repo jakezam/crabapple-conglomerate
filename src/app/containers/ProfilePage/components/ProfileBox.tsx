@@ -24,12 +24,12 @@ export function ProfileBox(props) {
   const like = () => {
     setLikes(likes + 1);
     setLiked(true);
-  }
+  };
 
   const unLike = () => {
     setLikes(likes - 1);
     setLiked(false);
-  }
+  };
   let buttonStyle = { marginTop: '20px', padding: '12px', width: '145px' };
 
   let displayName = user.firstName + ' ' + user.lastName;
@@ -37,9 +37,9 @@ export function ProfileBox(props) {
   let requestButton = <div />;
   let likeButton = (
     <Button style={{ marginTop: '10px' }} as="div" labelPosition="right">
-      <Button color={(liked ? "red" : "youtube")} onClick={liked ? unLike : like}>
+      <Button color={liked ? 'red' : 'youtube'} onClick={liked ? unLike : like}>
         <Icon name="heart" />
-        {liked ? "Unlike" : "Like"}
+        {liked ? 'Unlike' : 'Like'}
       </Button>
       <Label as="a" basic color="red" pointing="left">
         {likes}
@@ -48,39 +48,39 @@ export function ProfileBox(props) {
   );
   let provider = <div />;
   //if (user.isProvider) {
-    displayName = user.providerInfo.companyName;
-    rating = (
-      <HorizontalAlign>
-        <Rating
-          rating={user.providerInfo.rating}
-          maxRating={5}
-          disabled
-          size="huge"
-          style={{ marginTop: '1px', marginRight: '4px' }}
-        />
-        <ReviewHeader>Reviews ({reviewCount})</ReviewHeader>
-      </HorizontalAlign>
-    );
+  displayName = user.providerInfo.companyName;
+  rating = (
+    <HorizontalAlign>
+      <Rating
+        rating={user.providerInfo.rating}
+        maxRating={5}
+        disabled
+        size="huge"
+        style={{ marginTop: '1px', marginRight: '4px' }}
+      />
+      <ReviewHeader>Reviews ({reviewCount})</ReviewHeader>
+    </HorizontalAlign>
+  );
 
-    //if (!user.isSelf) {
-      requestButton = <JobRequestForm />;
-      
-    //}
+  //if (!user.isSelf) {
+  requestButton = <JobRequestForm />;
 
-    provider = (
-      <>
-        <Grid.Row style={{ paddingTop: '0' }}>
-          <Grid.Column>
-            <Segment floated="left" style={{ width: '25%' }}>
-              <h4 style={{ margin: '0 0' }}>{user.providerInfo.category}</h4>
-            </Segment>
-            <Segment floated="right" style={{ marginTop: '0', width: '25%' }}>
-              <h4 style={{ margin: '0 0' }}>{user.providerInfo.location}</h4>
-            </Segment>
-          </Grid.Column>
-        </Grid.Row>
-      </>
-    );
+  //}
+
+  provider = (
+    <>
+      <Grid.Row style={{ paddingTop: '0' }}>
+        <Grid.Column>
+          <Segment floated="left" style={{ width: '25%' }}>
+            <h4 style={{ margin: '0 0' }}>{user.providerInfo.category}</h4>
+          </Segment>
+          <Segment floated="right" style={{ marginTop: '0', width: '25%' }}>
+            <h4 style={{ margin: '0 0' }}>{user.providerInfo.location}</h4>
+          </Segment>
+        </Grid.Column>
+      </Grid.Row>
+    </>
+  );
   //}
 
   return (

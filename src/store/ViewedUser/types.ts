@@ -1,3 +1,5 @@
+import { SmallAccount } from 'store/Discover/types';
+
 export interface ViewedUserState {
   userId: string;
   isLoading: boolean;
@@ -5,7 +7,7 @@ export interface ViewedUserState {
   lastName: string;
   isProvider: boolean;
   isSelf: boolean;
-  providersInArea: Array<SubProfile>;
+  providersInArea: Array<SmallAccount>;
   providerInfo: ProviderAddition;
   reviews: Array<Review>;
   notFound: boolean;
@@ -29,19 +31,6 @@ export interface Review {
   wouldRecommend: boolean;
   numLikes: number;
   numDislikes: number;
-}
-
-export interface SubProfile {
-  userId: string;
-  firstName: string;
-  lastName: string;
-  isProvider: boolean;
-  providerInfo: {
-    companyName: string;
-    category: string;
-    rating: number;
-  };
-  profileTag: string;
 }
 
 export interface SubCategory {

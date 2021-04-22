@@ -10,7 +10,6 @@ import { Container, Grid, Header, List, Tab, Table } from 'semantic-ui-react';
 import MessagesTable from './components/MessagesTable';
 import { useSelector } from 'react-redux';
 export function NotificationsPage() {
-
   //let messages = useSelector(selectUserMessages)
   let messages = [
     {
@@ -73,7 +72,7 @@ export function NotificationsPage() {
           flexDirection: 'column',
           width: '50%',
           alignSelf: 'center',
-          marginTop: '20%',
+          marginTop: '50px',
         }}
       >
         <Header>Messages</Header>
