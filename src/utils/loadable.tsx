@@ -4,6 +4,7 @@ import React, { lazy, Suspense } from 'react';
 interface Opts {
   fallback: React.ReactNode;
 }
+
 type Unpromisify<T> = T extends Promise<infer P> ? P : never;
 
 export const lazyLoad = <

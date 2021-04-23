@@ -2,16 +2,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
-import {
-  Button,
-  Grid,
-  Dropdown,
-  Menu,
-  Rating,
-  Segment,
-  Icon,
-  Label,
-} from 'semantic-ui-react';
+import { Button, Grid, Icon, Label, Rating, Segment } from 'semantic-ui-react';
 import { useDispatch } from 'react-redux';
 import { JobRequestForm } from './JobRequestForm';
 

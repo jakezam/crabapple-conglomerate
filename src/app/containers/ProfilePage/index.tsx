@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Footer } from '../../components/Footer';
 import { NavigationBar } from '../../components/NavigationBar';
-import { RecommendedAccount } from '../../components/RecommendedAccount';
 
 import { selectViewedUser } from '../../../store/ViewedUser/selectors';
 import { actions, sliceKey } from '../../../store/ViewedUser/slice';
@@ -27,7 +26,6 @@ import { selectReview } from '../../../store/Review/selectors';
 import { ProfileBox } from './components/ProfileBox';
 import { ReviewBox } from './components/ReviewBox';
 import { Message, Segment } from 'semantic-ui-react';
-import { JobRequestForm } from './components/JobRequestForm';
 
 import { smallerDesktopMediaParameters } from 'utils/env.config';
 import { useMediaQuery } from 'react-responsive';

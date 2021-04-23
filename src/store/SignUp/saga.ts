@@ -1,4 +1,4 @@
-import { takeLatest, select, put } from 'redux-saga/effects';
+import { put, select, takeLatest } from 'redux-saga/effects';
 import { actions } from './slice';
 import { selectProviderData, selectUserData } from './selectors';
 import { env } from '../environment';

@@ -1,13 +1,12 @@
-import { takeLatest, select, put } from 'redux-saga/effects';
+import { put, select, takeLatest } from 'redux-saga/effects';
 import { actions } from './slice';
 import { selectDiscover } from './selectors';
 import { env } from '../environment';
-import { DiscoverState, SmallAccount, ProviderSkills, Category } from './types';
+import { Category, DiscoverState, SmallAccount } from './types';
 import {
   GetProvidersResponse,
   GetProviderTypesResponse,
 } from '../../services/api';
-import { type } from 'node:os';
 
 function* getCategoryUsers() {
   yield put(actions.setResultsPageLoading(true));

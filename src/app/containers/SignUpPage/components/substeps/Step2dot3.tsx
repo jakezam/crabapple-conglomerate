@@ -1,4 +1,4 @@
-import { Dropdown, Form, Input } from 'formsy-semantic-ui-react';
+import { Form, Input } from 'formsy-semantic-ui-react';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';

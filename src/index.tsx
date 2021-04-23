@@ -2,7 +2,8 @@
  * index.tsx
  *
  * This is the entry file for the application, only setup and boilerplate
- * code.
+ * code. Here we also setup the redux store and add it to the app
+ * lifecycle.
  */
 
 import 'react-app-polyfill/ie11';
@@ -23,6 +24,7 @@ import { configureAppStore } from 'store/configureStore';
 import './locales/i18n';
 import { ConnectedRouter } from 'connected-react-router/immutable'; // WHEN I ADDED /IMMUTABLE IT SOLVED MY PROBLEM
 
+// Create redux store
 export const store = configureAppStore(history);
 const MOUNT_NODE = document.getElementById('root') as HTMLElement;
 
@@ -34,7 +36,7 @@ const ConnectedApp = ({ Component }: Props) => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <HelmetProvider>
-        {/*<React.StrictMode>*/}
+        {/*/!*<React.StrictMode>*!/ React strict mode disallows certain things, when the app is built for production it is removed anyway*/}
         <Component />
         {/*</React.StrictMode>*/}
       </HelmetProvider>

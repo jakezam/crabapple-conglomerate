@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Header, List, Table } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 import MessageModal from './MessageModal';
 
 function MessagesTable(props) {
@@ -35,4 +35,5 @@ function MessagesTable(props) {
     </Table>
   );
 }
+
 export default MessagesTable;

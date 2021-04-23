@@ -1,3 +1,4 @@
+/* Splash page, this is the page you see when you go to the website */
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import {
@@ -13,7 +14,6 @@ import { push } from 'connected-react-router';
 import { mobileMediaParameters } from '../../../utils/env.config';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
-import { useHistory } from 'react-router-dom';
 
 export const SplashPage = () => {
   const dispatch = useDispatch();

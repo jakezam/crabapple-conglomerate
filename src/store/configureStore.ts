@@ -1,5 +1,8 @@
 /**
- * Create the store with dynamic reducers
+ * Create the store with dynamic reducers. This project uses
+ * redux which is state management. We also use redux-toolkit which
+ * is an extension that allows for easier creation of reducers, actions,
+ * and accessing the store.
  */
 
 import {
@@ -13,7 +16,6 @@ import createSagaMiddleware from 'redux-saga';
 import { History } from 'history';
 import { createReducer } from './reducers';
 import { initSagas } from './saga';
-import { Environment } from './environment';
 
 export function configureAppStore(history?: History) {
   const reduxSagaMonitorOptions = {};
@@ -42,6 +44,7 @@ export function configureAppStore(history?: History) {
     enhancers,
   });
 
+  // Hot reloadable means that when you make a change in the code it wil dynamically updated
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
   if (module.hot) {

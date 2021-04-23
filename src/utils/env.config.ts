@@ -1,4 +1,5 @@
-// Gotta be a better way to do this!
+/* This is the middleman for reaching out to the .env files, It establishes
+default values in the situation when the .env file contains no value for key */
 export const REACT_APP_API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export enum Environment {

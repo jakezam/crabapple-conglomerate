@@ -1,4 +1,4 @@
-import { Form, Checkbox } from 'formsy-semantic-ui-react';
+import { Checkbox, Form } from 'formsy-semantic-ui-react';
 import React from 'react';
 import { Label } from 'semantic-ui-react';
 import { useForm } from 'react-hook-form';
@@ -23,6 +23,7 @@ const errorLabel = <Label color="red" pointing />;
 
 /* Initial User Creation, here the user will enter their
    First Name, Last Name, Email Address, and Password */
+
 /* Opted to not include gender and location information as
    it is not necessarily needed. User location can be obtained
    through browser. Such a location option will be included in

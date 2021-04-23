@@ -11,8 +11,6 @@ import {
   PostProviderCreateCategoryResponse,
   PostProviderCreateCategoryResponseType,
   PostProviderCreateRequest,
-  IProviderType,
-  GetProviderTypesResponse,
   PostUserCreateRequest,
   ProviderResponse,
   ReviewSet,

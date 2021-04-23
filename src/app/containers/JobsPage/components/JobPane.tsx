@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/macro';
-import { Button, Grid, Header, Message, Modal } from 'semantic-ui-react';
+import { Button, Grid, Header, Message } from 'semantic-ui-react';
 import { ModificationForm } from './ModificationForm';
-import Calendar from '@toast-ui/react-calendar';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 import 'tui-calendar/dist/tui-calendar.css';
-import { TimePicker } from './TimePicker';
 import { jobPageShrink } from '../../../../utils/env.config';
 import { useMediaQuery } from 'react-responsive';
 

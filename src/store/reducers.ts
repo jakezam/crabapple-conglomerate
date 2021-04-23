@@ -2,7 +2,7 @@
  * Combine all reducers in this file and export the combined reducers.
  */
 
-import { combineReducers, AnyAction, Reducer } from '@reduxjs/toolkit';
+import { AnyAction, combineReducers, Reducer } from '@reduxjs/toolkit';
 import { InjectedReducersType } from 'utils/types/injector-typings';
 import { connectRouter, RouterState } from 'connected-react-router';
 import { history } from 'utils/history';
@@ -12,6 +12,7 @@ import { reducer as signUp } from './SignUp/slice';
 import { reducer as viewedUser } from './ViewedUser/slice';
 import { reducer as review } from './Review/slice';
 import { reducer as jobs } from './Jobs/slice';
+
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
@@ -28,6 +29,7 @@ import { reducer as jobs } from './Jobs/slice';
 //   }
 // }
 
+// Create and add all slices to state, dynamically add injected reducers as well
 export function createReducer(injectedReducers: InjectedReducersType = {}) {
   const rootReducer = combineReducers({
     discover,

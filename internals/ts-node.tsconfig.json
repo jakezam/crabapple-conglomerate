@@ -6,7 +6,9 @@
     "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "style/*": ["src/style/*"]
+      "style/*": [
+        "src/style/*"
+      ]
     }
   }
 }

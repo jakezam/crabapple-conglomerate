@@ -1,5 +1,4 @@
 import { GeneralApiProblem } from './api.problem';
-import { Expertise } from '../../store/SignUp/types';
 
 export interface IUser {
   userId: string;
@@ -102,6 +101,7 @@ export interface PostProviderCreateRequest {
   State: string;
   Zip: string;
 }
+
 export interface IProviderType {
   typeId: string;
   category: string;

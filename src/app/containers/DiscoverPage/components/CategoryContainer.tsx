@@ -4,9 +4,8 @@
  *
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
-import { Button, Card, Popup } from 'semantic-ui-react';
 import { CategoryCard } from './CategoryCard';
 import { selectCategories } from 'store/Discover/selectors';
 import { useSelector } from 'react-redux';

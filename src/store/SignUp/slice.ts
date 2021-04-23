@@ -1,15 +1,14 @@
 import { createSlice } from 'utils/@reduxjs/toolkit';
 import {
   ContainerState,
+  Expertise,
   IProviderData,
   ISelectableCategory,
   IStandardRates,
   IUserData,
-  Expertise,
 } from 'store/SignUp/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { FormInputs as Step2dot2Inputs } from '../../app/containers/SignUpPage/components/substeps/Step2dot2';
-import { FormInputs as Step2dot3Inputs } from '../../app/containers/SignUpPage/components/substeps/Step2dot3';
 import { FormInputs as Step2dot4Inputs } from '../../app/containers/SignUpPage/components/substeps/Step2dot4';
 import { FormInputs as Step2dot5Inputs } from '../../app/containers/SignUpPage/components/substeps/Step2dot5';
 

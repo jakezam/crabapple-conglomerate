@@ -1,8 +1,4 @@
-/* eslint-disable  @typescript-eslint/no-unused-vars */
-
-import { all } from 'redux-saga/effects';
-import { spawnSaga } from 'store/helpers';
-import { watchSignUp } from './watchers';
+/* Here is where global sagas are added, Sagas that are created at app start */
 
 export function* initSagas() {
   // Watchers can spawn cascading updates

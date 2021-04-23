@@ -1,7 +1,7 @@
 import { Icon, Step } from 'semantic-ui-react';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectStep, selectSubStep } from '../../../../store/SignUp/selectors';
+import { selectSubStep } from '../../../../store/SignUp/selectors';
 import styled from 'styled-components';
 
 /*

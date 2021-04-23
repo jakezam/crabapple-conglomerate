@@ -1,7 +1,9 @@
-import { put, call, spawn } from 'redux-saga/effects';
+/* Redux-toolkit helpers */
+
+import { call, put, spawn } from 'redux-saga/effects';
 import { ErrorLoadingActions } from 'store/types';
 import { CaseReducer, Draft, PayloadAction } from '@reduxjs/toolkit';
-import { keys, intersection } from 'lodash';
+import { intersection, keys } from 'lodash';
 
 export function withLoading<T extends ErrorLoadingActions>(actions: T, fn) {
   return function* () {

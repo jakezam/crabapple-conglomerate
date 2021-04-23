@@ -13,10 +13,7 @@ import { NavigationBar } from '../../components/NavigationBar';
 import { Footer } from '../../components/Footer';
 import { JobPane } from './components/JobPane';
 import { useMediaQuery } from 'react-responsive';
-import {
-  jobPageShrink,
-  smallerDesktopMediaParameters,
-} from '../../../utils/env.config';
+import { jobPageShrink } from '../../../utils/env.config';
 
 export function JobsPage() {
   const dispatch = useDispatch();

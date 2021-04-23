@@ -4,10 +4,9 @@ This is a work in progress, the code for this project is found in the `develop` 
 
 ## General Overview
 
-**V**ersion control home to inployd! inployd is a business exchange social
-media web app (and future mobile app) that allows consumers pair
-up with reputable producers to get jobs done! Contracting building
-construction to website development inployd will be able to do it!
+**V**ersion control home to inployd! inployd is a business exchange social media web app (and future mobile app) that
+allows consumers pair up with reputable producers to get jobs done! Contracting building construction to website
+development inployd will be able to do it!
 
 ## Programming Overview
 
@@ -23,17 +22,22 @@ construction to website development inployd will be able to do it!
 - **B**oilerplate from
   [React Boilerplate meets CRA](https://github.com/react-boilerplate/react-boilerplate-cra-template)
 - [**S**emantic UI](https://react.semantic-ui.com/)
+- And a whole bunch of libraries
 
 ## How to get started
 
 - Clone the repository
 - Run: yarn install
 - Then run: yarn start
+- If you need backend interaction you will also have to clone the backed repository and run that,
+  see: https://github.com/jakezam/legendary-garbanzo
 
 ## Git Best Practices
 
 - **T**o keep the git repository organized and easier to use we will use:
-  - **G**it flows: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+  - **G**it flow: https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
   - **C**onventional Commits: https://www.conventionalcommits.org/en/v1.0.0/
+- We have husky installed, when you run yarn install it should be installed. Husky should automatically install git
+  hooks to automatically enforce conventional commit rules.
 
 :-)

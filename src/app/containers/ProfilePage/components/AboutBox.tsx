@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
-import { Dropdown, Grid, Pagination, Table } from 'semantic-ui-react';
+import { Table } from 'semantic-ui-react';
 import { ProviderAddition } from 'store/ViewedUser/types';
 
 interface IProps {

@@ -12,7 +12,7 @@ import { actions, sliceKey } from '../../../store/SignUp/slice';
 import { Header } from '../../components/Header';
 import { useInjectSaga } from '../../../utils/redux-injectors';
 import { signUpPageSaga } from 'store/SignUp/saga';
-import { Modal, Button } from 'semantic-ui-react';
+import { Button, Modal } from 'semantic-ui-react';
 import { StepBox } from './components/StepBox';
 import { Step0 } from './components/Step0';
 import { Step1 } from './components/Step1';

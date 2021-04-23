@@ -7,7 +7,6 @@ import { actions } from '../../../../../store/SignUp/slice';
 import {
   selectAptNum,
   selectCity,
-  selectCreatingAccount,
   selectCreatingProviderAccount,
   selectState,
   selectStreetAddress,

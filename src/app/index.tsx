@@ -1,3 +1,6 @@
+/* App router, here we create all the routes
+that we can navigate to */
+
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Route, Switch } from 'react-router-dom';
@@ -17,7 +20,10 @@ export function App() {
   return (
     <>
       <Helmet titleTemplate="inployd - %s" defaultTitle="inployd">
-        <meta name="description" content="A React Boilerplate application" />
+        <meta
+          name="description"
+          content="Connecting service providers to those who need work done"
+        />
       </Helmet>
 
       <Switch>

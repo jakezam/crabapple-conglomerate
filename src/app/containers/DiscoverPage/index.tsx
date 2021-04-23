@@ -12,7 +12,6 @@ import { useInjectSaga } from 'utils/redux-injectors';
 
 import { Footer } from '../../components/Footer';
 import { NavigationBar } from '../../components/NavigationBar';
-import { RecentlyViewed } from './components/RecentlyViewed';
 import { CategoryContainer } from './components/CategoryContainer';
 import { Segment } from 'semantic-ui-react';
 

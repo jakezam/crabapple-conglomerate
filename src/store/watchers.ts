@@ -1,11 +1,12 @@
-/* eslint-disable  @typescript-eslint/no-unused-vars */
+/* Add your watchers here, watchers are just functions that
+will fire off a saga when an action is fired */
 
 // Package Imports//
-import { takeLatest, all, put, call } from 'redux-saga/effects';
+import { all, takeLatest } from 'redux-saga/effects';
 import { spawnSaga } from 'store/helpers';
 
 // State Imports //
-import * as signUp from './SignUp/slice';
+
 // import { updateSignUp } from './SignUp/saga';
 
 interface IType {

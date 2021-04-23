@@ -1,9 +1,9 @@
-import { takeLatest, select, put } from 'redux-saga/effects';
+import { put, select, takeLatest } from 'redux-saga/effects';
 import { actions } from './slice';
 import { selectViewedUser, selectViewedUserId } from './selectors';
 import { env } from '../environment';
-import { ViewedUserState, ProviderAddition } from './types';
-import { GetUsersResponse, GetProvidersResponse } from '../../services/api';
+import { ProviderAddition, ViewedUserState } from './types';
+import { GetProvidersResponse, GetUsersResponse } from '../../services/api';
 import { SmallAccount } from 'store/Discover/types';
 
 function* getProfile() {

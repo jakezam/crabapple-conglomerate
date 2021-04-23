@@ -3,12 +3,11 @@ import fs from 'fs';
 import rimraf from 'rimraf';
 import shell from 'shelljs';
 import path from 'path';
-import nodePlop from 'node-plop';
+import nodePlop, { PlopGenerator as PG } from 'node-plop';
 
 import { BACKUPFILE_EXTENSION } from '../generators/plopfile';
 import { ComponentProptNames } from '../generators/component';
 import { ContainerProptNames } from '../generators/container';
-import { PlopGenerator as PG } from 'node-plop';
 
 interface PlopGenerator extends PG {
   runActions?: <T extends string | number>(
@@ -61,9 +60,9 @@ function removeContainer(name: string) {
 }
 
 async function handleResult({
-  changes,
-  failures,
-}: {
+                              changes,
+                              failures,
+                            }: {
   changes: [];
   failures: [];
 }) {
@@ -74,6 +73,7 @@ async function handleResult({
     resolve(changes);
   });
 }
+
 function feedbackToUser(info) {
   return (result?: any) => {
     console.info(chalk.blue(info));
@@ -94,6 +94,7 @@ function reportErrors(reason: Error, shouldExist = true) {
     process.exit(1);
   }
 }
+
 function restoreBackupFile(
   path: string,
   backupFileExtension = BACKUPFILE_EXTENSION,
@@ -186,7 +187,7 @@ async function generateContainer() {
 /**
  * Run
  */
-(async function () {
+(async function() {
   const componentCleanup = await generateComponent().catch(reason => {
     reportErrors(reason);
     return [];

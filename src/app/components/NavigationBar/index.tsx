@@ -52,14 +52,14 @@ export function NavigationBar() {
             }}
           />
           <Menu.Item
-          name="Notifications"
-          icon={'lightbulb'}
-          active={activeItem === 'notifications'}
-          onClick={(e, { name }) => {
-            setActive('notifications');
-            dispatch(push('/notifications'));
-          }}
-        />
+            name="Notifications"
+            icon={'lightbulb'}
+            active={activeItem === 'notifications'}
+            onClick={(e, { name }) => {
+              setActive('notifications');
+              dispatch(push('/notifications'));
+            }}
+          />
           <Menu.Item
             name={isSmaller ? '' : 'My Profile'}
             icon={'user'}

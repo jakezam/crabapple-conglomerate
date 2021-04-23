@@ -1,5 +1,5 @@
 import { createSlice } from 'utils/@reduxjs/toolkit';
-import { ContainerState, ViewedUserState } from 'store/ViewedUser/types';
+import { ContainerState } from 'store/ViewedUser/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {

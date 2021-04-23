@@ -1,4 +1,4 @@
-import { Message, Button } from 'semantic-ui-react';
+import { Button, Message } from 'semantic-ui-react';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { actions } from '../../../../../store/SignUp/slice';

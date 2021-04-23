@@ -1,5 +1,5 @@
 import React from 'react';
-import { Segment, Placeholder } from 'semantic-ui-react';
+import { Placeholder, Segment } from 'semantic-ui-react';
 
 export function ProfilePlaceholder() {
   return (

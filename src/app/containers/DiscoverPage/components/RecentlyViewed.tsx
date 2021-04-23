@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { SmallAccount } from 'store/Discover/types';
 import styled from 'styled-components/macro';
 import { SuggestedAccount } from '../../../components/SuggestedAccount/Loadable';

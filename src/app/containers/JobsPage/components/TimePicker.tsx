@@ -1,5 +1,5 @@
 import Calendar from '@toast-ui/react-calendar';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import 'tui-date-picker/dist/tui-date-picker.css';
 import 'tui-time-picker/dist/tui-time-picker.css';
 import 'tui-calendar/dist/tui-calendar.css';
@@ -20,6 +20,7 @@ const mobileWeekOptions = {
 };
 
 const weekOptions = {};
+
 //////////////////////////////
 
 interface IProps {

@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  Container,
-  Grid,
-  Header,
-  List,
-  Table,
-  Modal,
-  Button,
-} from 'semantic-ui-react';
+import { Button, Header, Modal } from 'semantic-ui-react';
 import ReplyModal from './ReplyModal';
 
 function MessageModal(props) {
@@ -36,9 +28,10 @@ function MessageModal(props) {
         <Button color="red" onClick={() => setOpen(false)}>
           Delete
         </Button>
-        <ReplyModal to={from} subject={"Re: " + subject}/>
+        <ReplyModal to={from} subject={'Re: ' + subject} />
       </Modal.Actions>
     </Modal>
   );
 }
+
 export default MessageModal;

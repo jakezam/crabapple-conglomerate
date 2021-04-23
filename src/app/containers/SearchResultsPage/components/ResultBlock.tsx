@@ -9,7 +9,7 @@ import styled from 'styled-components/macro';
 import { SmallAccount } from '../../../../store/Discover/types';
 
 import { selectResultFilter } from 'store/Discover/selectors';
-import { actions, sliceKey } from 'store/Discover/slice';
+import { actions } from 'store/Discover/slice';
 
 import { UserCard } from './UserCard';
 import { Button, Dropdown } from 'semantic-ui-react';

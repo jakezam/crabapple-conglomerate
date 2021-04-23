@@ -1,7 +1,4 @@
-// Package Imports //
 import { CaseReducerActions } from '@reduxjs/toolkit';
-
-// State Imports //
 import { SignUpState } from './SignUp/types';
 import { ReviewState } from './Review/types';
 import { ViewedUserState } from './ViewedUser/types';
@@ -31,6 +28,7 @@ export type SubType<Base, Condition> = Pick<
 >;
 export type NullableString = string | null | undefined;
 
+// Type out what the state looks like for easier interaction
 export interface RootState {
   // State Assignment
   review: ReviewState;

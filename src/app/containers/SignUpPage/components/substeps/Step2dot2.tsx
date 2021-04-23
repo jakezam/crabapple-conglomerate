@@ -1,22 +1,16 @@
 import { Dropdown, Form } from 'formsy-semantic-ui-react';
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectMainCategory,
   selectPossibleMainCategories,
   selectPossibleSubCategories,
-  selectStep,
   selectSubCategories,
 } from '../../../../../store/SignUp/selectors';
 import { actions } from '../../../../../store/SignUp/slice';
-import styled from 'styled-components';
-import { Label, Popup, Icon } from 'semantic-ui-react';
-import {
-  IProviderData,
-  ISelectableCategory,
-  IUserData,
-} from '../../../../../store/SignUp/types';
+import { Icon, Label, Popup } from 'semantic-ui-react';
+import { ISelectableCategory } from '../../../../../store/SignUp/types';
 
 export type FormInputs = {
   mainWorkCategory: string;

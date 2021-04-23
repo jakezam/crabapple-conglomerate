@@ -2,7 +2,6 @@ import { createSlice } from 'utils/@reduxjs/toolkit';
 import {
   AddedSuggestedTime,
   ContainerState,
-  SuggestedTime,
   UpdatedSuggestedTime,
 } from 'store/Jobs/types';
 import { PayloadAction } from '@reduxjs/toolkit';

@@ -3,10 +3,9 @@
  * AccountSettings
  *
  */
-import React, { memo } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
 import { useTranslation } from 'react-i18next';
-import { Form } from 'semantic-ui-react';
 import { Message } from 'semantic-ui-react';
 
 interface Props {}

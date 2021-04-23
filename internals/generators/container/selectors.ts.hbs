@@ -6,6 +6,6 @@ import { initialState } from './slice';
 const selectDomain = (state: RootState) => state.{{ camelCase ComponentName }} || initialState;
 
 export const select{{ properCase ComponentName }} = createSelector(
-  [selectDomain],
-  {{ camelCase ComponentName }}State => {{ camelCase ComponentName }}State,
+[selectDomain],
+{{ camelCase ComponentName }}State => {{ camelCase ComponentName }}State,
 );

@@ -1,7 +1,7 @@
-import { takeLatest, select, put } from 'redux-saga/effects';
+import { put, select, takeLatest } from 'redux-saga/effects';
 import { actions } from './slice';
 import { env } from '../environment';
-import { selectReceivingUserId, selectPostingUserId } from './selectors';
+import { selectPostingUserId, selectReceivingUserId } from './selectors';
 import { GetReviewSetResponse } from '../../services/api';
 import { Review } from './types';
 

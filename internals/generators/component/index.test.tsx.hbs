@@ -4,8 +4,8 @@ import { render } from '@testing-library/react';
 import { {{ properCase ComponentName }} } from '..';
 
 describe('<{{ properCase ComponentName }}  />', () => {
-  it('should match snapshot', () => {
-    const loadingIndicator = render(<{{ properCase ComponentName }} />);
-    expect(loadingIndicator.container.firstChild).toMatchSnapshot();
-  });
+it('should match snapshot', () => {
+const loadingIndicator = render(<{{ properCase ComponentName }} />);
+expect(loadingIndicator.container.firstChild).toMatchSnapshot();
+});
 });

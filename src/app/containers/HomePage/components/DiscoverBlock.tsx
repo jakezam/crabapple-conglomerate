@@ -1,5 +1,4 @@
 import React from 'react';
-import css from '../HomePage.scss';
 import { Button, Grid } from 'semantic-ui-react';
 import { ProfilePlaceholder } from './ProfilePlaceholder';
 

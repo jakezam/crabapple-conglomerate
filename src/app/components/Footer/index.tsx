@@ -1,7 +1,7 @@
 /**
  * Footer
  */
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, Icon, Label } from 'semantic-ui-react';
 import { mobileMediaParameters } from '../../../utils/env.config';
 import { useMediaQuery } from 'react-responsive';
@@ -12,7 +12,6 @@ import {
   TopBox,
 } from './components/StyledComponents';
 import ReactDynamicFont from 'react-dynamic-font';
-import useResizeObserver from 'use-resize-observer';
 
 export function Footer() {
   const isMobile = useMediaQuery(mobileMediaParameters);

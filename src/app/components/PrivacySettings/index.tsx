@@ -3,10 +3,10 @@
  * PrivacySettings
  *
  */
-import React, { memo } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
 import { useTranslation } from 'react-i18next';
-import { Button, Message } from 'semantic-ui-react';
+import { Message } from 'semantic-ui-react';
 
 interface Props {}
 
@@ -19,21 +19,21 @@ export const PrivacySettings = (props: Props) => {
       <form className="ui form">
         <div className="field">
           <div className="ui toggle checkbox">
-            <input type="checkbox" className="hidden"/>
+            <input type="checkbox" className="hidden" />
             <label>Enable location while the site is open</label>
           </div>
         </div>
 
         <div className="field">
           <div className="ui toggle checkbox">
-            <input type="checkbox" className="hidden" checked={true}/>
+            <input type="checkbox" className="hidden" checked={true} />
             <label>Allow site cookies</label>
           </div>
         </div>
 
         <div className="field">
           <div className="ui toggle checkbox">
-            <input type="checkbox" className="hidden"/>
+            <input type="checkbox" className="hidden" />
             <label>Collect browsing data</label>
           </div>
         </div>
@@ -47,17 +47,22 @@ export const PrivacySettings = (props: Props) => {
         <div className="ui divider" />
 
         <ButtonInfo>
-        {/*<div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>*/}
-          <button className="negative ui button" type="submit" style={{display: "flex", marginRight: "3em"}}>
+          {/*<div style={{display: "flex", flexDirection: "row", alignItems: "center"}}>*/}
+          <button
+            className="negative ui button"
+            type="submit"
+            style={{ display: 'flex', marginRight: '3em' }}
+          >
             Reset Account
           </button>
-            <StyledMessage info>
-              <div className="header">Account Reset Notice</div>
-              <p>
-                Resetting your account removes all data and job requests attached to your account except your username.
-              </p>
-            </StyledMessage>
-        {/*</div>*/}
+          <StyledMessage info>
+            <div className="header">Account Reset Notice</div>
+            <p>
+              Resetting your account removes all data and job requests attached
+              to your account except your username.
+            </p>
+          </StyledMessage>
+          {/*</div>*/}
         </ButtonInfo>
       </form>
     </div>
