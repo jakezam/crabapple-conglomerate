@@ -4,7 +4,7 @@ import ReplyModal from './ReplyModal';
 
 function MessageModal(props) {
   const [open, setOpen] = React.useState(false);
-  const { from, subject, message, messageId, firstColumn, fromId, toId, isInbox } = props;
+  const { from, subject, message, messageId, firstColumn, fromId, toId, to, isInbox } = props;
   return (
     <Modal
       onClose={() => setOpen(false)}
@@ -13,7 +13,7 @@ function MessageModal(props) {
       trigger={<Button>View</Button>}
     >
       <Modal.Header>
-        Message {firstColumn}: {from}
+        Message {firstColumn}: {isInbox ? from : to}
       </Modal.Header>
       <Modal.Content image>
         <Modal.Description>

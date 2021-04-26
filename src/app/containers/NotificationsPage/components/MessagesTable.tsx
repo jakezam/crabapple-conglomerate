@@ -34,6 +34,7 @@ function MessagesTable(props: IProps) {
                 fromId={el.from}
                 toId={el.to}
                 isInbox={firstColumn === 'From' ? true : false}
+                to={el.toName}
               />
             </Table.Cell>
           </Table.Row>
