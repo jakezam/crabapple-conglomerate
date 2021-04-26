@@ -3,14 +3,16 @@ import { actions } from './slice';
 import { selectProviderData, selectUserData } from './selectors';
 import { env } from '../environment';
 import {
+  GetProviderTypesResponse,
   IUser,
   PostProviderCreateRequest,
   PostProviderCreateResponse,
   PostUserCreateRequest,
   PostUserCreateResponse,
 } from '../../services/api';
-import { IProviderData, IUserData } from './types';
+import { IProviderData, ISelectableCategory, IUserData } from './types';
 import { history } from '../../utils/history';
+import { Category } from 'store/Discover/types';
 
 // Step 0 - init user //
 function* createUser() {
@@ -25,7 +27,21 @@ function* createUser() {
     Gender: 'none', // Might end up removing these fields from DB
     State: 'none', // Might end up removing these fields from DB
   };
+  const typesResponse: GetProviderTypesResponse = yield env.api.GetProviderTypes();
+  console.log('GET PROVIDER TYPES: RESPONSE => ', typesResponse);
+  let categories:Array<ISelectableCategory> = [];
+  if (typesResponse.response) {
+    for (let i = 0; typesResponse.response[i]; i++) {
+      const type: ISelectableCategory = {
+        key: typesResponse.response[i].typeId,
+        text: typesResponse.response[i].category,
+        value: typesResponse.response[i].typeId,
+      };
+      categories.push(type);
+    }
+  }
 
+  yield put(actions.setPossibleMainCategories(categories));
   console.log('DEBUG SignUpSaga: POST USER');
   const postResponse: PostUserCreateResponse = yield env.api.PostCreateUser(
     postBody,
