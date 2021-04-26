@@ -108,6 +108,13 @@ export interface IProviderType {
   description: string;
 }
 
+export interface IMessage {
+  subject: string;
+  message: string;
+  from: string;
+  to: string;
+}
+
 export interface PostProviderCreateCategoryResponse {
   ProviderId: string;
   CategoryNumber: number;
@@ -141,6 +148,10 @@ export type PostConsultationRequestCreateResponse =
   | { kind: 'ok'; response?: IProvider }
   | GeneralApiProblem;
 
+export type PostMessageResponse =
+  | { kind: 'ok'; response?: IMessage }
+  | GeneralApiProblem;
+
 export type GetUsersResponse =
   | { kind: 'ok'; response?: IUser }
   | GeneralApiProblem;
@@ -155,4 +166,8 @@ export type GetReviewSetResponse =
 
 export type GetProviderTypesResponse =
   | { kind: 'ok'; response?: IProviderType }
+  | GeneralApiProblem;
+
+export type GetMessageResponse =
+  | { kind: 'ok'; response?: Array<IMessage> }
   | GeneralApiProblem;

@@ -260,4 +260,59 @@ export class Api {
 
     return { kind: 'ok', response: response.data };
   }
+
+  async GetInbox(user : string): Promise<Types.GetMessageResponse> {
+    const response: ApiResponse<any> = await this.apisauce.get(
+      'api/PrivateMessage/' + user + '/inbox',
+    );
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
+  }
+
+  async GetSent(user : string): Promise<Types.GetMessageResponse> {
+    const response: ApiResponse<any> = await this.apisauce.get(
+      'api/PrivateMessage/' + user + '/inbox',
+    );
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
+  }
+  async PostMessage(message : Types.IMessage): Promise<Types.PostMessageResponse> {
+    const response: ApiResponse<Types.IMessage> = await this.apisauce.post(
+      'api/PrivateMessage',
+      {
+        To: message.to,
+        From: message.from,
+        Subject: message.subject,
+        Message: message.message
+      },
+    );
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
+  }
+  
+
 }
