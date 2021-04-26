@@ -13,8 +13,8 @@ import { FormInputs as Step2dot4Inputs } from '../../app/containers/SignUpPage/c
 import { FormInputs as Step2dot5Inputs } from '../../app/containers/SignUpPage/components/substeps/Step2dot5';
 
 export const initialState: ContainerState = {
-  currentStep: 2, // Starts at 0
-  currentSubStep: 5, // Starts at 1
+  currentStep: 0, // Starts at 0
+  currentSubStep: 1, // Starts at 1
   unableToCreate: false,
   creatingAccount: false,
   unableToCreateProvider: false,
@@ -42,17 +42,17 @@ export const initialState: ContainerState = {
     confirmPassword: 'testtest',
   },
   providerData: {
-    mainCategory: 'test1',
+    mainCategory: '',
     subCategories: [],
     standardRate: [],
-    companyTitle: '123',
+    companyTitle: '',
     expertiseLevel: 1,
-    about: '123',
-    streetAddress: '123',
+    about: '',
+    streetAddress: '',
     aptNum: '',
-    city: '123',
-    state: 'alabama',
-    zip: '123',
+    city: '',
+    state: '',
+    zip: '',
   },
 };
 
