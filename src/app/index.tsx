@@ -21,7 +21,7 @@ export function App() {
     <>
       <Helmet titleTemplate="inployd - %s" defaultTitle="inployd">
         <meta
-          name="description"
+          name="Inployd"
           content="Connecting service providers to those who need work done"
         />
       </Helmet>
