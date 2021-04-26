@@ -1,27 +1,29 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Button, Form, Input, Modal, TextArea } from 'semantic-ui-react';
+import { IMessage } from 'services/api';
+import { env } from 'store/environment';
 import { selectUserData } from 'store/SignUp/selectors';
 import { selectViewedUserId } from 'store/ViewedUser/selectors';
 
 function ReplyModal(props) {
   const [open, setOpen] = React.useState(false);
-  const { to, subject } = props;
+  const [opens, setOpens] = React.useState(false);
+  const { toId, fromId, to, subject } = props;
   const [message, setMessage] = React.useState('');
   const [sub, setSub] = React.useState(subject);
-  const sendToUserId = useSelector(selectViewedUserId);
-  const fromUserId = useSelector(selectUserData).userId;
   const handleSubChange = (e, { name, value }) => setSub(value);
   const handleMessageChange = (e, { name, value }) => setMessage(value);
   const handleSubmit = async () => {
-    let body = {
-      To: sendToUserId,
-      From: fromUserId,
-      Subject: sub,
-      Message: message,
-    };
 
-    console.log(body);
+    let body : IMessage = {
+      to: toId,
+      from: fromId,
+      subject: sub,
+      message: message,
+    };
+    env.api.PostMessage(body);
+    setOpens(true);
   };
   return (
     <Modal
@@ -65,11 +67,22 @@ function ReplyModal(props) {
             positive
           />
 
-          {/*<Form.Input label="Email" placeholder="joe@schmoe.com" />
-      <Form.Field width="4">
-        <label>Phone Number</label>
-        <input placeholder="(XXX)-XXX-XXXX" />
-  </Form.Field>*/}
+          {
+
+              <Modal
+              onClose={() => setOpens(false)}
+              onOpen={() => setOpens(true)}
+              open={opens}
+              >
+              <Modal.Header>Reply sent.</Modal.Header>
+
+              <Modal.Actions>
+                <Button color='black' onClick={() => {setOpens(false);setOpen(false);}}>
+                  Okay
+                </Button>
+              </Modal.Actions>
+              </Modal>
+          }
         </Form>
       </Modal.Content>
       <Modal.Actions>

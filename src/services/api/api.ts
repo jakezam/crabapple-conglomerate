@@ -279,7 +279,7 @@ export class Api {
 
   async GetSent(user : string): Promise<Types.GetMessageResponse> {
     const response: ApiResponse<any> = await this.apisauce.get(
-      'api/PrivateMessage/' + user + '/inbox',
+      'api/PrivateMessage/' + user + '/outbox',
     );
 
     // TEMP DEBUG //

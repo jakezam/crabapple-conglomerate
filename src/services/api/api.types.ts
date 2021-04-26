@@ -114,7 +114,15 @@ export interface IMessage {
   from: string;
   to: string;
 }
-
+export interface IMessageRead {
+  messageId: string;
+  subject: string;
+  message: string;
+  from: string;
+  to: string;
+  fromName: string;
+  toName: string;
+}
 export interface PostProviderCreateCategoryResponse {
   ProviderId: string;
   CategoryNumber: number;
@@ -169,5 +177,5 @@ export type GetProviderTypesResponse =
   | GeneralApiProblem;
 
 export type GetMessageResponse =
-  | { kind: 'ok'; response?: Array<IMessage> }
+  | { kind: 'ok'; response?: Array<IMessageRead> }
   | GeneralApiProblem;
