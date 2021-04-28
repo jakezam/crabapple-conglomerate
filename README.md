@@ -11,7 +11,8 @@ construction to website development inployd will be able to do it!
 
 ## Programming Overview
 
-- **T**ake note this is the front end repository
+- **T**ake note this is the frontend repository. 
+    - All code pertaining to the backend is available [here](https://github.com/jakezam/legendary-garbanzo).
 - **U**ses react, [redux](https://redux.js.org/),
   [redux-toolkit](https://redux-toolkit.js.org/),
   [saga](https://github.com/redux-saga/redux-saga),
