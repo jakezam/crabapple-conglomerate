@@ -1,10 +1,16 @@
 import { put, select, takeLatest } from 'redux-saga/effects';
 import { actions } from './slice';
+import { actions as profileActions } from '../ViewedUser/slice';
 import { env } from '../environment';
-import { selectReceivingUserId } from './selectors';
-import { GetReviewSetResponse } from '../../services/api';
+import { selectReceivingUserId, selectReview } from './selectors';
+import {
+  GetReviewSetResponse,
+  PostReviewCreateRequest,
+  PostReviewCreateResponse,
+} from '../../services/api';
 import { Review } from './types';
 import { selectLoginId } from 'store/Login/selectors';
+import { selectUserId } from 'store/SignUp/selectors';
 
 function* getReviews() {
   yield put(actions.setLoadingStatus(true));
@@ -46,7 +52,28 @@ function* getReviews() {
 }
 
 function* postReview() {
+  const reviewState = yield select(selectReview);
+  const userId = yield select(selectUserId);
+
+  const postBody: PostReviewCreateRequest = {
+    receivingUserId: reviewState.receivingUserId,
+    userId: userId,
+    username: reviewState.username,
+    rating: reviewState.rating,
+    header: reviewState.header,
+    description: reviewState.description,
+    wouldRecommend: reviewState.isRecommending,
+  };
+
+  const postResponse: PostReviewCreateResponse = yield env.api.PostCreateReview(
+    postBody,
+  );
+
+  console.log('DEBUG SignUpSaga: RESPONSE DATA =>, ', postResponse.response);
+  console.log('DEBUG SignUpSaga: RESPONSE KIND =>, ', postResponse.kind);
+
   yield put(actions.clearState());
+  yield put(profileActions.changeId(reviewState.receivingUserId));
   console.log('Ready to post review');
 }
 

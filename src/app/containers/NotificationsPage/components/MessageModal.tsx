@@ -4,7 +4,17 @@ import ReplyModal from './ReplyModal';
 
 function MessageModal(props) {
   const [open, setOpen] = React.useState(false);
-  const { from, subject, message, messageId, firstColumn, fromId, toId, to, isInbox } = props;
+  const {
+    from,
+    subject,
+    message,
+    messageId,
+    firstColumn,
+    fromId,
+    toId,
+    to,
+    isInbox,
+  } = props;
   return (
     <Modal
       onClose={() => setOpen(false)}
@@ -28,8 +38,16 @@ function MessageModal(props) {
         <Button color="red" onClick={() => setOpen(false)}>
           Delete
         </Button>
-        {isInbox ? <ReplyModal to={from} fromId={toId} subject={'Re: ' + subject} toId={fromId} /> : <div></div>}
-        
+        {isInbox ? (
+          <ReplyModal
+            to={from}
+            fromId={toId}
+            subject={'Re: ' + subject}
+            toId={fromId}
+          />
+        ) : (
+          <div></div>
+        )}
       </Modal.Actions>
     </Modal>
   );

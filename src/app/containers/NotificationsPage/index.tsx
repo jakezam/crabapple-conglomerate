@@ -14,27 +14,21 @@ import { IMessage, IMessageRead } from 'services/api/api.types';
 export function NotificationsPage() {
   //let messages = useSelector(selectUserMessages)
   const [loading, setLoading] = useState(true);
-  let messages : Array<IMessageRead> | undefined;
+  let messages: Array<IMessageRead> | undefined;
 
-  let sent : Array<IMessageRead> | undefined;
-  env.api.GetInbox("27c27d08-8988-4734-ccab-08d908d5d085").then(
-    value => {
-      if (value.kind === 'ok') {
-        messages = value.response
-      }
-      setLoading(false);
+  let sent: Array<IMessageRead> | undefined;
+  env.api.GetInbox('27c27d08-8988-4734-ccab-08d908d5d085').then(value => {
+    if (value.kind === 'ok') {
+      messages = value.response;
     }
-  );
-  
-  env.api.GetSent("27c27d08-8988-4734-ccab-08d908d5d085").then(
-    value => {
-      if (value.kind === 'ok') {
-        sent = value.response
-      }
-    }
-  );
-  
+    setLoading(false);
+  });
 
+  env.api.GetSent('27c27d08-8988-4734-ccab-08d908d5d085').then(value => {
+    if (value.kind === 'ok') {
+      sent = value.response;
+    }
+  });
 
   const panes = [
     {
@@ -69,8 +63,11 @@ export function NotificationsPage() {
         }}
       >
         <Header>Messages</Header>
-        {!loading ? <Tab menu={{ secondary: true, pointing: true }} panes={panes} /> : "Loading..."}
-        
+        {!loading ? (
+          <Tab menu={{ secondary: true, pointing: true }} panes={panes} />
+        ) : (
+          'Loading...'
+        )}
       </Container>
     </div>
   );

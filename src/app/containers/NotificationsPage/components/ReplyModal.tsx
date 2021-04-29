@@ -15,8 +15,7 @@ function ReplyModal(props) {
   const handleSubChange = (e, { name, value }) => setSub(value);
   const handleMessageChange = (e, { name, value }) => setMessage(value);
   const handleSubmit = async () => {
-
-    let body : IMessage = {
+    let body: IMessage = {
       to: toId,
       from: fromId,
       subject: sub,
@@ -68,20 +67,25 @@ function ReplyModal(props) {
           />
 
           {
-
-              <Modal
+            <Modal
               onClose={() => setOpens(false)}
               onOpen={() => setOpens(true)}
               open={opens}
-              >
+            >
               <Modal.Header>Reply sent.</Modal.Header>
 
               <Modal.Actions>
-                <Button color='black' onClick={() => {setOpens(false);setOpen(false);}}>
+                <Button
+                  color="black"
+                  onClick={() => {
+                    setOpens(false);
+                    setOpen(false);
+                  }}
+                >
                   Okay
                 </Button>
               </Modal.Actions>
-              </Modal>
+            </Modal>
           }
         </Form>
       </Modal.Content>

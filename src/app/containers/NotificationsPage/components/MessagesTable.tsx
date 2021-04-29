@@ -17,29 +17,31 @@ function MessagesTable(props: IProps) {
           <Table.HeaderCell>View Message</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
-      {messages !== undefined ? messages.map(el => {
-        return (
-          <Table.Row key={el.messageId}>
-            <Table.Cell>
-              {firstColumn === 'From' ? el.fromName : el.toName}
-            </Table.Cell>
-            <Table.Cell>{el.subject}</Table.Cell>
-            <Table.Cell>
-              <MessageModal
-                messageId={el.messageId}
-                subject={el.subject}
-                message={el.message}
-                firstColumn={firstColumn}
-                from={el.fromName}
-                fromId={el.from}
-                toId={el.to}
-                isInbox={firstColumn === 'From' ? true : false}
-                to={el.toName}
-              />
-            </Table.Cell>
-          </Table.Row>
-        );
-      }) : ""}
+      {messages !== undefined
+        ? messages.map(el => {
+            return (
+              <Table.Row key={el.messageId}>
+                <Table.Cell>
+                  {firstColumn === 'From' ? el.fromName : el.toName}
+                </Table.Cell>
+                <Table.Cell>{el.subject}</Table.Cell>
+                <Table.Cell>
+                  <MessageModal
+                    messageId={el.messageId}
+                    subject={el.subject}
+                    message={el.message}
+                    firstColumn={firstColumn}
+                    from={el.fromName}
+                    fromId={el.from}
+                    toId={el.to}
+                    isInbox={firstColumn === 'From' ? true : false}
+                    to={el.toName}
+                  />
+                </Table.Cell>
+              </Table.Row>
+            );
+          })
+        : ''}
     </Table>
   );
 }
