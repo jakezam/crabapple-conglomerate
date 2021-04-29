@@ -9,6 +9,7 @@ import { history } from 'utils/history';
 
 import { reducer as discover } from './Discover/slice';
 import { reducer as signUp } from './SignUp/slice';
+import { reducer as login } from './Login/slice';
 import { reducer as viewedUser } from './ViewedUser/slice';
 import { reducer as review } from './Review/slice';
 import { reducer as jobs } from './Jobs/slice';
@@ -34,6 +35,7 @@ export function createReducer(injectedReducers: InjectedReducersType = {}) {
   const rootReducer = combineReducers({
     discover,
     signUp,
+    login,
     viewedUser,
     jobs,
     review,

@@ -1,5 +1,6 @@
 import { CaseReducerActions } from '@reduxjs/toolkit';
 import { SignUpState } from './SignUp/types';
+import { LoginState } from './Login/types';
 import { ReviewState } from './Review/types';
 import { ViewedUserState } from './ViewedUser/types';
 import { JobsState } from './Jobs/types';
@@ -33,6 +34,7 @@ export interface RootState {
   // State Assignment
   review: ReviewState;
   signUp: SignUpState;
+  login: LoginState;
   viewedUser: ViewedUserState;
   jobs: JobsState;
   discover: DiscoverState;
