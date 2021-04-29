@@ -3,8 +3,7 @@ import { ContainerState, Review } from 'store/Review/types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 export const initialState: ContainerState = {
-  userId: 7,
-  receivingUserId: 2,
+  receivingUserId: '2',
   username: '',
   rating: 0,
   header: '',
@@ -30,7 +29,7 @@ const reviewSlice = createSlice({
   name: 'review',
   initialState,
   reducers: {
-    setReceivingUserId(state: ContainerState, action: PayloadAction<number>) {
+    setReceivingUserId(state: ContainerState, action: PayloadAction<string>) {
       state.receivingUserId = action.payload;
     },
     setLoadingStatus(state: ContainerState, action: PayloadAction<boolean>) {
@@ -40,8 +39,7 @@ const reviewSlice = createSlice({
       state.leftReview = action.payload;
     },
     clearState(state: ContainerState) {
-      // state.userId = 1;
-      // state.receivingUserId = 2;
+      state.receivingUserId = '2';
       state.rating = 0;
       state.header = '';
       state.description = '';

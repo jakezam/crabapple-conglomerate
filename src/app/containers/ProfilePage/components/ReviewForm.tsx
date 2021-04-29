@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useInjectSaga } from '../../../../utils/redux-injectors';
 import { reviewSaga } from 'store/Review/saga';
 import { selectReview } from '../../../../store/Review/selectors';
+import { selectViewedUserId } from 'store/ViewedUser/selectors';
 
 const errorLabel = <Label color="red" pointing />;
 
@@ -25,6 +26,7 @@ export function ReviewForm() {
   useInjectSaga({ key: sliceKey, saga: reviewSaga });
 
   const dispatch = useDispatch();
+  const receivingUser = useSelector(selectViewedUserId);
   const reviewState = useSelector(selectReview);
 
   const [open, setOpen] = React.useState(false);
@@ -104,6 +106,9 @@ export function ReviewForm() {
           content="Leave Review"
           labelPosition="right"
           icon="checkmark"
+          onClick={() => {
+            dispatch(actions.setReceivingUserId(receivingUser));
+          }}
           positive
         />
       </Form.Group>

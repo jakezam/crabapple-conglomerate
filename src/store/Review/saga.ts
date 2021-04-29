@@ -1,15 +1,16 @@
 import { put, select, takeLatest } from 'redux-saga/effects';
 import { actions } from './slice';
 import { env } from '../environment';
-import { selectPostingUserId, selectReceivingUserId } from './selectors';
+import { selectReceivingUserId } from './selectors';
 import { GetReviewSetResponse } from '../../services/api';
 import { Review } from './types';
+import { selectLoginId } from 'store/Login/selectors';
 
 function* getReviews() {
   yield put(actions.setLoadingStatus(true));
 
   const id = yield select(selectReceivingUserId);
-  const userId = yield select(selectPostingUserId);
+  const userId = yield select(selectLoginId);
   console.log('Ready to get reviews');
   let reviews: Array<Review> = [];
 
@@ -22,7 +23,7 @@ function* getReviews() {
   } else {
     if (reviewResp.response) {
       for (let i = 0; reviewResp.response[i]; i++) {
-        if (reviewResp.response[i].userId === parseInt(userId, 10)) {
+        if (reviewResp.response[i].userId === userId) {
           yield put(actions.setPageReviewed(true));
         }
         const temp: Review = {

@@ -15,8 +15,3 @@ export const selectReceivingUserId = createSelector(
   [selectDomain],
   reviewState => reviewState.receivingUserId,
 );
-
-export const selectPostingUserId = createSelector(
-  [selectDomain],
-  reviewState => reviewState.userId,
-);

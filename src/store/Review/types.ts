@@ -1,6 +1,5 @@
 export interface ReviewState {
-  userId: number;
-  receivingUserId: number;
+  receivingUserId: string;
   username: string;
   rating: number;
   header: string;
