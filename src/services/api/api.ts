@@ -246,6 +246,36 @@ export class Api {
     return { kind: 'ok', response: response.data };
   }
 
+  /**
+   * Create A User
+   */
+  async PostCreateReview(
+    review: Types.PostReviewCreateRequest,
+  ): Promise<PostReviewCreateResponse> {
+    const response: ApiResponse<Types.PostReviewCreateRequest> = await this.apisauce.post(
+      'api/reviews',
+      {
+        ReceivingUserId: review.receivingUserId,
+        UserId: review.userId,
+        Username: review.username,
+        Rating: review.rating,
+        Header: review.header,
+        Description: review.description,
+        WouldRecommend: review.wouldRecommend,
+      },
+    );
+
+    // TEMP DEBUG //
+    console.log('== Logging API Response: ', await response, ' ==');
+
+    if (!response.ok) {
+      const problem = getGeneralApiProblem(response);
+      if (problem) return problem;
+    }
+
+    return { kind: 'ok', response: response.data };
+  }
+
   async GetProviderTypes(): Promise<Types.GetProviderTypesResponse> {
     const response: ApiResponse<any> = await this.apisauce.get(
       'api/providertypes',
