@@ -88,6 +88,16 @@ export interface ReviewSet {
   reviews: Array<IReview>;
 }
 
+export interface PostReviewCreateRequest {
+  receivingUserId: string;
+  userId: string;
+  username: string;
+  rating: number;
+  header: string;
+  description: string;
+  wouldRecommend: boolean;
+}
+
 export interface PostProviderCreateRequest {
   ProviderId: string;
   Company: string;
@@ -143,6 +153,10 @@ export type PostProviderCreateCategoryResponseType =
 
 export type PostUserCreateResponse =
   | { kind: 'ok'; response?: IUser }
+  | GeneralApiProblem;
+
+export type PostReviewCreateResponse =
+  | { kind: 'ok'; response?: PostReviewCreateRequest }
   | GeneralApiProblem;
 
 export type PostProviderCreateResponse =

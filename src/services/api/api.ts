@@ -12,6 +12,7 @@ import {
   PostProviderCreateCategoryResponseType,
   PostProviderCreateRequest,
   PostUserCreateRequest,
+  PostReviewCreateResponse,
   ProviderResponse,
   ReviewSet,
 } from './api.types';
@@ -261,7 +262,7 @@ export class Api {
     return { kind: 'ok', response: response.data };
   }
 
-  async GetInbox(user : string): Promise<Types.GetMessageResponse> {
+  async GetInbox(user: string): Promise<Types.GetMessageResponse> {
     const response: ApiResponse<any> = await this.apisauce.get(
       'api/PrivateMessage/' + user + '/inbox',
     );
@@ -277,7 +278,7 @@ export class Api {
     return { kind: 'ok', response: response.data };
   }
 
-  async GetSent(user : string): Promise<Types.GetMessageResponse> {
+  async GetSent(user: string): Promise<Types.GetMessageResponse> {
     const response: ApiResponse<any> = await this.apisauce.get(
       'api/PrivateMessage/' + user + '/outbox',
     );
@@ -292,14 +293,16 @@ export class Api {
 
     return { kind: 'ok', response: response.data };
   }
-  async PostMessage(message : Types.IMessage): Promise<Types.PostMessageResponse> {
+  async PostMessage(
+    message: Types.IMessage,
+  ): Promise<Types.PostMessageResponse> {
     const response: ApiResponse<Types.IMessage> = await this.apisauce.post(
       'api/PrivateMessage',
       {
         To: message.to,
         From: message.from,
         Subject: message.subject,
-        Message: message.message
+        Message: message.message,
       },
     );
 
@@ -313,6 +316,4 @@ export class Api {
 
     return { kind: 'ok', response: response.data };
   }
-  
-
 }
