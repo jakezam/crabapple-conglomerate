@@ -1,8 +1,12 @@
 import React from 'react';
 import { Table } from 'semantic-ui-react';
+import { IMessageRead } from 'services/api';
 import MessageModal from './MessageModal';
-
-function MessagesTable(props) {
+export interface IProps {
+  messages: Array<IMessageRead> | undefined;
+  firstColumn: string;
+}
+function MessagesTable(props: IProps) {
   const { messages, firstColumn } = props;
   return (
     <Table celled selectable>
@@ -13,11 +17,11 @@ function MessagesTable(props) {
           <Table.HeaderCell>View Message</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
-      {messages.map(el => {
+      {messages !== undefined ? messages.map(el => {
         return (
           <Table.Row key={el.messageId}>
             <Table.Cell>
-              {el.firstName} {el.lastName}
+              {firstColumn === 'From' ? el.fromName : el.toName}
             </Table.Cell>
             <Table.Cell>{el.subject}</Table.Cell>
             <Table.Cell>
@@ -26,12 +30,16 @@ function MessagesTable(props) {
                 subject={el.subject}
                 message={el.message}
                 firstColumn={firstColumn}
-                from={el.firstName + ' ' + el.lastName}
+                from={el.fromName}
+                fromId={el.from}
+                toId={el.to}
+                isInbox={firstColumn === 'From' ? true : false}
+                to={el.toName}
               />
             </Table.Cell>
           </Table.Row>
         );
-      })}
+      }) : ""}
     </Table>
   );
 }
