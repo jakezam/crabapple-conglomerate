@@ -82,7 +82,7 @@
     "seamless-immutable": "7.1.4",
     "semantic-ui-react": "2.0.3",
     "serve": "11.3.2",
-    "shelljs": "0.8.4",
+    "shelljs": "0.8.5",
     "styled-components": "5.2.1",
     "use-resize-observer": "7.0.0",
     "uuid": "8.3.2"
